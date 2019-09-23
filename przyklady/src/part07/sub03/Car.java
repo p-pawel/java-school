@@ -1,4 +1,4 @@
-package part07;
+package part07.sub03;
 
 public class Car {                          // <--- deklaracja klasy
 
@@ -16,6 +16,9 @@ public class Car {                          // <--- deklaracja klasy
 
     long mileage;
 
+
+    // METODY:
+
     // KONSTRUKTOR:
 
     public Car(String colour, String made, int year) {
@@ -26,8 +29,6 @@ public class Car {                          // <--- deklaracja klasy
         this.mileage = 0;
     }
 
-
-    // METODY:
 
     void ignite() {
         this.used = true;

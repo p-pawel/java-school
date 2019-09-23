@@ -1,4 +1,4 @@
-package part07;
+package part07.sub03;
 
 public class CarUsage {
 
