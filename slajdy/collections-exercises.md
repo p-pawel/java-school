@@ -160,8 +160,8 @@ Klucze mapy powinny zachować kolejność alfabetyczną.
 ## Zadanie 11
 Skopiuj do swojego projektu pliki:
 
-*  <a href="files/Person.java" target="_blank"><code>Person.java</code></a>
-*  <a href="files/PersonArrayFactory.java" target="_blank"><code>PersonArrayFactory.java</code></a>
+*  <a href="Person.java" target="_blank"><code>Person.java</code></a>
+*  <a href="PersonArrayFactory.java" target="_blank"><code>PersonArrayFactory.java</code></a>
 
 oraz utwórz klasę `Task11` o następującej zawartości:
 
