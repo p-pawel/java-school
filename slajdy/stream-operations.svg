@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="941px"
+     height="81px" viewBox="-0.5 -0.5 941 121"
+     content="&lt;mxfile host=&quot;www.draw.io&quot; modified=&quot;2019-10-25T07:17:06.593Z&quot; agent=&quot;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0&quot; etag=&quot;VhiJNvbRgM_d6sZOjIFf&quot; version=&quot;12.1.5&quot; type=&quot;device&quot; pages=&quot;1&quot;&gt;&lt;diagram name=&quot;Page-1&quot; id=&quot;d9b1e647-120fa-b4a2-5024-87a742678bcc&quot;&gt;3ZXBbtswDIafxscBjuQoPi/rustOOewsS7QtVDYNhamTPf2kWIrttcO6oiiKGT6QHylKIn/YGd9353snh/Y7arAZy/U5418yxjYFY1l4c32ZyG4nJtA4o2PSDA7mJ0SYR3oyGo6rREK0ZIY1VNj3oGjFpHM4rtNqtOtdB9nAE3BQ0j6lP4ymNtJNns+Bb2CaNm5dbmOgkuqhcXjq434Z4/X1mcKdTLVi/rGVGscF4ncZ3ztEmqzuvAcbepvaNq37+ofo7dwOenrJgu2uBiErUHlZ54WqPsUKj9KeIF1BWF/rszaP3myCmZBJ4IgnpyBhv535PdWzVYHr5emSGu77MATzSDD4+NgagsMgVWCj15hnLXXWextv1thTFA0rg2+s3aNFdy0WOs6UCscihw+wiGhRia24HWDZp3RxcATnBYp9uwfsgNzFp6RoEkPU+KaM/jgrhheRtUuxRCajSJtb6XlQ3oizeuHc+KvmZnoC14E2kv5pen+vjAM4SQb7jyIKLaGsnxWFUCVU9duIovhQohCvEkWQhOml/d8FsYVSF88JomQVF2/0ldi9oyC8O/85rrHF75nf/QI=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 0 0 L 272 0 L 340 60 L 272 120 L 0 120 L 68 60 Z" fill="#fff2cc" stroke="#d6b656"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(122.5,7.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="none" width="95" height="32"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 28px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 96px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+                            <div>
+                                <i>source</i>
+                            </div>
+                            <div>
+                                <i style="opacity: 0">.</i>
+                            </div>
+                            <div>
+                                (1)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="48" y="30" fill="#000000" text-anchor="middle" font-size="28px" font-family="Helvetica">
+                    source (1)
+                </text>
+            </switch>
+        </g>
+        <path d="M 300 0 L 572 0 L 640 60 L 572 120 L 300 120 L 368 60 Z" fill="#dae8fc" stroke="#6c8ebf"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(377.5,7.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="none" width="184" height="65"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 28px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 185px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+                            <div>
+                                <i>intermediate</i>
+                            </div>
+                            <div>
+                                <i>operation</i>
+                            </div>
+                            <div>
+                                (0..n)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="92" y="47" fill="#000000" text-anchor="middle" font-size="28px" font-family="Helvetica">
+                    intermediate operation (0..n)
+                </text>
+            </switch>
+        </g>
+        <path d="M 600 0 L 872 0 L 940 60 L 872 120 L 600 120 L 668 60 Z" fill="#d5e8d4" stroke="#82b366"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(701.5,7.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="none" width="137" height="65"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 28px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 138px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+                            <div>
+                                <i>terminal</i>
+                            </div>
+                            <div>
+                                <i>operation</i>
+                            </div>
+                            <div>
+                                (1)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="69" y="47" fill="#000000" text-anchor="middle" font-size="28px" font-family="Helvetica">
+                    terminal operation (1)
+                </text>
+            </switch>
+        </g>
+    </g>
+</svg>
