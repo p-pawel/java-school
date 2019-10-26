@@ -225,7 +225,7 @@ Fixed size, so:
 | create | `new String[4];` | `new ArrayList<String>` |
 | read | `String x = myArray[2]` | `String x = myArrayList.get(2)` |
 | set | `myArray[2] = "Hello"` | `myArrayList.set(2, "Hello")` |
-| append | - | `myArrayList.put("Hi")` |
+| append | - | `myArrayList.add("Hi")` |
 | length | `myArray.length` | `myArrayList.size()` |
 </div>
 
