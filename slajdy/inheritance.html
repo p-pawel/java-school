@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Inheritance</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Inheritance</h1>
+</section>
+
+<section><section id="inheritance-in-java" class="title-slide slide level1"><h1>Inheritance in Java</h1></section><section id="single-inheritance" class="title-slide slide level2"><h2>Single inheritance</h2><p>(diamond problem)</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Diamond_inheritance.svg/682px-Diamond_inheritance.svg.png" style="width: 30%"/></p></section><section id="how-to-inherit" class="title-slide slide level2"><h2>How to inherit?</h2><p>By extending a class:</p>
+<pre><code>public class Elephant {
+...
+}
+
+public class AfricanElephant extends Elephant {
+...
+}
+
+public class IndianElephant extends Elephant {
+...
+}
+</code></pre></section><section id="class-access-modifiers" class="title-slide slide level2"><h2>Class Access Modifiers</h2><ul>
+<li><code>public</code></li>
+<li><code>       </code> (package-default)</li>
+<li><code>private</code> - only to inner classes,</li>
+<li><code>protected</code> - only to inner classes,</li>
+</ul></section><section id="the-object" class="title-slide slide level2"><h2>The Object</h2><ul>
+<li><p>In Java, all classes inherit from a single class, <code>java.lang.Object</code>.</p></li>
+<li><p><code>java.lang.Object</code> is the only class that doesn’t have any parent classes.</p></li>
+</ul>
+<table style="width: 100%">
+<tr>
+<td>
+<pre><code>class Whatever {
+}</code></pre>
+</td>
+<td>
+<pre><code>class Whatever extends Object {
+}</code></pre>
+</td>
+</tr>
+</table></section></section>
+<section><section id="constructors-in-inherited-classes" class="title-slide slide level1"><h1>Constructors in inherited classes</h1></section><section id="recap-constructors" class="title-slide slide level2"><h2>Recap: constructors</h2><p>Each class needs a constructor, if none declared a default no-argument constructor is added.</p>
+<table style="width: 100%">
+<tr>
+<td>
+<pre><code>class Whatever {
+
+
+
+}</code></pre>
+</td>
+<td>
+<pre><code>class Whatever {
+   public Whatever() {
+
+   }
+}</code></pre>
+</td>
+</tr>
+</table></section><section id="constructor-in-extended-class" class="title-slide slide level2"><h2>Constructor in extended class</h2><p>First statement in constructor:</p>
+<ul>
+<li><code>this()</code> - calls another constructor in the class</li>
+<li><code>super()</code> - calls constructor of direct parent class</li>
+</ul>
+<pre><code>public class Elephant {
+  private int weight;
+  public Elephant(int weight) {
+    super();
+    this.weight = weight;
+  }
+}
+
+public class AfricanElephant extends Elephant {
+  public AfricanElephant(int weight) {
+    super(weight);
+  }
+  public AfricanElephant() {
+    this(4000);
+  }
+}</code></pre></section><section id="compilation-enhancements" class="title-slide slide level2"><h2>Compilation Enhancements</h2><table style="width: 100%">
+<tr>
+<td>
+<pre><code>class Whatever {
+
+
+
+}</code></pre>
+</td>
+<td>
+<pre><code>class Whatever {
+   public Whatever() {
+
+   }
+}</code></pre>
+</td>
+<td>
+<pre><code>class Whatever {
+   public Whatever() {
+      super();
+   }
+}</code></pre>
+</td>
+</tr>
+</table></section><section id="constructor-definition-rules" class="title-slide slide level2"><h2>Constructor Definition Rules</h2></section><section class="slide level3">
+
+<p>Either <code>this()</code> or <code>super()</code> is the first statement of every constructor.</p>
+</section><section class="slide level3">
+
+<ul>
+<li><code>super()</code> is added during compilation as the first statement of the constructor - if none <code>super()</code> is declared.</li>
+<li><code>this()</code> is never called automatically, it needs to be called explicitly</li>
+</ul>
+</section><section class="slide level3">
+
+<p>Neither <code>super()</code> nor <code>this()</code> cannot be used after the first statement of the constructor.</p>
+<p><em>Example</em></p>
+<pre><code>class Whatever {
+    public Whatever() {
+        System.out.println(&quot;hello&quot;); 
+        super();                          // compile error
+    }
+
+    public Whatever(int i) {
+        System.out.println(&quot;hello param&quot;);
+        this();                           // compile error
+    }
+}</code></pre>
+</section><section class="slide level3">
+
+<p>Parent with only parameterized constructors + child with no constructors =&gt; compilation error.</p>
+<p><em>Example</em></p>
+</section><section class="slide level3">
+
+<p>Parent with only parameterized constructors =&gt; each child constructor must call parent constructor explicitly.</p>
+<p><em>Example</em></p>
+</section><section id="calling-constructors" class="title-slide slide level2"><h2>Calling Constructors</h2><p>The parent constructor executes before the child constructor.</p>
+<pre><code>public class Elephant {
+  public Elephant() {
+    System.out.println(&quot;Elephant&quot;);
+  }
+}
+public class AfricanElephant {
+  public AfricanElephant() {
+    System.out.println(&quot;AfricanElephant&quot;);
+  }
+}</code></pre>
+<p>What would be the output when <code>new AfricanElephant()</code> is called?</p></section></section>
+<section><section id="using-inherited-methods-and-fields" class="title-slide slide level1"><h1>Using Inherited Methods and Fields</h1></section><section id="using-inherited-methods-and-fields-1" class="title-slide slide level2"><h2>Using Inherited Methods and Fields</h2><p><code>this.</code></p>
+<p><code>super.</code></p></section><section id="super-and-super" class="title-slide slide level2"><h2><code>super()</code> and <code>super</code></h2><pre><code>public AfricanElephant(int weight) {
+  super();
+  super.setWeight(4000);
+}</code></pre></section><section id="method-overriding" class="title-slide slide level2"><h2>Method Overriding</h2><pre><code>public class Elephant {
+  public void hello() {
+    System.out.println(&quot;Hi, I am Elephant&quot;);
+  }
+}
+public class AfricanElephant {
+  public void hello() {
+    System.out.println(&quot;Hi, I am AfricanElephant&quot;);
+  }
+}
+
+new Elephant().hello();
+new AfricanElephant().hello();
+</code></pre></section><section id="method-override-rules" class="slide level3">
+<h3>Method override rules</h3>
+</section><section class="slide level3">
+
+<p>The method in the child class must have the same signature as the method in the parent class.</p>
+<p><em>Example</em></p>
+</section><section class="slide level3">
+
+<p>The method in the child class must be at least as accessible or more accessible than the method in the parent class.</p>
+<p><em>Example</em></p>
+</section><section class="slide level3">
+
+<p>The checked exception thrown from the child class may not broader than one in the parent class.</p>
+<p><em>Example</em></p>
+</section><section class="slide level3">
+
+<p>Returned value must be the same or a subclass of the method in the parent class (<em>covariant return types</em>).</p>
+<p><em>Example</em></p>
+</section><section id="can-we-overload-inherited-methods" class="title-slide slide level2"><h2>Can we overload inherited methods?</h2><pre><code>public class Elephant {
+  public void hello() {
+    System.out.println(&quot;Hi, I am Elephant&quot;);
+  }
+}
+
+public class AfricanElephant {
+  public int hello() {                 // error
+    System.out.println(&quot;Hi, I am AfricanElephant&quot;);
+  }
+}
+</code></pre></section><section id="can-private-method-be-inherited" class="title-slide slide level2"><h2>Can private method be inherited?</h2><p>Static methods can be <strong>redeclared</strong> only, not overridden.</p>
+<p><em>Example: parent and child with the same private methods.</em></p></section><section id="can-static-method-be-inherited" class="title-slide slide level2"><h2>Can static method be inherited?</h2><p>Static methods can be <strong>hidden</strong> only, not overridden.</p>
+<p><em>Example: parent and child with the same private methods.</em></p>
+<p>Overriding vs. Hiding Methods:</p>
+<ul>
+<li><p>overridden method replaces the parent method in calls defined in both the parent and child</p></li>
+<li><p>hidden method replaces the parent method in calls defined only in child</p></li>
+</ul></section><section id="can-final-method-be-inherited" class="title-slide slide level2"><h2>Can final method be inherited?</h2><p><em>Example: attempt to inherit final method</em></p></section><section id="can-field-be-inherited" class="title-slide slide level2"><h2>Can field be inherited?</h2><p>Fields are always hidden, not overridden.</p>
+<p><em>Example: child and parent both calling same name field.</em></p>
+<p><strong>Field hiding is bad practice. Trap.</strong></p>
+<p><em>Example: polymorphic call to public overridden field</em></p></section></section>
+<section><section id="abstract-classes" class="title-slide slide level1"><h1>Abstract classes</h1></section><section id="defining-an-abstract-class" class="title-slide slide level2"><h2>Defining an Abstract Class</h2><p>Use <code>abstract</code> specifier.</p>
+<p><em>Example: declare abstract class</em></p></section><section id="creating-a-concrete-class" class="title-slide slide level2"><h2>Creating a Concrete Class</h2><p>By <code>extends</code> of abstract parent.</p>
+<p><em>Example: instantiate concrete class</em></p></section><section id="extending-an-abstract-class" class="title-slide slide level2"><h2>Extending an Abstract Class</h2><p><code>public abstract class ... extends ...</code></p>
+<p><em>Example: abstract class extending abstract class</em></p></section><section id="ac-vs-interface" class="title-slide slide level2"><h2>AC vs Interface</h2><p>An <strong>interface</strong> is a description of the behaviour an implementing class will have. The implementing class ensures, that it will have these methods that can be used on it. It is basically a contract or a promise the class has to make.</p>
+<p>An <strong>abstract class</strong> is a basis for different subclasses that share behaviour which does not need to be repeatedly created. Subclasses must complete the behaviour and have the option to override predefined behaviour (as long as it is not defined as final or private).</p>
+<p><a href="https://beginnersbook.com/2013/05/abstract-class-vs-interface-in-java/">[more]</a> <a href="https://stackoverflow.com/a/18778228/2045440">[more]</a></p></section></section>
+<section><section id="polymorphism" class="title-slide slide level1"><h1>Polymorphism</h1><p><em>Πολυμορφισμός</em></p></section><section id="example" class="title-slide slide level2"><h2>Example</h2><pre><code>public interface Mammable {
+    void drinkMilk();
+}
+
+public interface Carnivore extends Mammable {
+    void eatMeat();
+}
+
+public class Lion implements Carnivore {
+    ...
+}
+
+public static void main(String[] args) {
+    Lion lion = new Lion();
+    Carnivore carnivore = lion;
+    Mammable mammable = lion;
+}</code></pre></section><section id="question" class="title-slide slide level2"><h2>Question</h2><pre><code>public interface Mammable {
+    void drinkMilk();
+}
+
+public interface Carnivore extends Mammable {
+    void eatMeat();
+}
+
+public class Lion implements Carnivore {
+    ...
+}
+
+public static void main(String[] args) {
+    Lion lion = new Lion();
+    Carnivore carnivore = lion;
+    Mammable mammable = lion;
+
+    // Which will compile?
+    lion.eatMeat();         // 1
+    lion.drinkMilk();       // 2
+    carnivore.eatMeat();    // 3
+    carnivore.drinkMilk();  // 4
+    mammable.eatMeat();     // 5
+    mammable.drinkMilk();   // 6
+}</code></pre></section><section id="object-vs.-reference" class="title-slide slide level2"><h2>Object vs. Reference</h2><ol type="1">
+<li>The type of the object determines which properties exist within the object in memory.</li>
+<li>The type of the reference to the object determines which methods and variables are accessible to the Java program.</li>
+</ol></section><section id="casting-objects" class="title-slide slide level2"><h2>Casting Objects</h2><ul>
+<li><p>Casting from a subclass to a superclass -&gt; cast not required</p></li>
+<li><p>Casting from a superclass to a subclass -&gt; an explicit cast required</p></li>
+<li><p>Casting to unrelated type -&gt; compile error</p></li>
+<li><p>Casting from a superclass to child class -&gt; runtime error</p></li>
+</ul></section><section id="virtual-methods" class="title-slide slide level2"><h2>Virtual methods</h2><ul>
+<li><p>a virtual method is a method in which the specific implementation is not determined until runtime.</p></li>
+<li><p>there is no <em>virtual</em> keyword (like in <em>C++</em>)</p></li>
+<li><p>in Java all methods (that are not final, static, or private) are virtual and can be overridden</p></li>
+<li><p>if you call a method on an object that overrides a method, you get the overridden method, even if the call to the method is on a parent reference or within the parent class.</p></li>
+<li><p>Dynamic binding means the JVM will decide at runtime which method implementation to invoke based on the class of the object.</p></li>
+</ul>
+<p>Late bound (dynamic dispatch)</p></section><section id="polymorphic-parameters" class="title-slide slide level2"><h2>Polymorphic Parameters</h2><p>Any class that implements the interface can be passed to the method.</p>
+<p>Since you’re casting from a subtype to a supertype, an explicit cast is not required.</p>
+<p><em>Example: parent class, 1-2 children and use of them</em></p></section><section id="polymorphism-and-method-overriding" class="title-slide slide level2"><h2>Polymorphism and Method Overriding</h2><p>All rules applied to method overriding enable polymorphism.</p></section></section>
+<section><section id="to-inherit-or-to-compose" class="title-slide slide level1"><h1>To inherit or to compose?</h1></section><section id="inherit-compose-example" class="title-slide slide level2"><h2>Inherit-compose example</h2></section></section>
+<section><section id="solid" class="title-slide slide level1"><h1>SOLID</h1></section><section id="solid-principles" class="title-slide slide level2"><h2>SOLID principles</h2><ul>
+<li>Single responsibility principle</li>
+<li>Open/closed principle</li>
+<li>Liskov substitution principle</li>
+<li>Interface segregation principle</li>
+<li>Dependency inversion principle</li>
+</ul></section></section>
+<section><section id="design-patterns" class="title-slide slide level1"><h1>Design patterns</h1></section><section id="section" class="title-slide slide level2"><h2></h2><table>
+<tr>
+<td>
+<p><img data-src="https://static01.helion.com.pl/helion/okladki/326x466/wzoelv.jpg" /></p>
+</td>
+<td>
+<p><img data-src="https://static01.helion.com.pl/helion/okladki/326x466/wzorvv.jpg" /></p>
+</td>
+</tr>
+</table></section></section>
+<section id="the-end" class="title-slide slide level1"><h1>THE END</h1><style>
+.reveal code {
+    font-family: monospace;
+    text-transform: none;
+    /* font-weight: 700; */
+    /* border: solid 1px #888; */
+    background: #333;
+    color: #ffff80;
+}
+
+section.level2, section.level3 {
+text-align:left;
+}
+section.level2 h2, section.level3 h3{
+text-align:center;
+}
+</style>
+<script>
+    var Reveal;
+    (function() {
+        setTimeout(function () {
+            Reveal.configure({ slideNumber: true });    
+        }, 1000);
+    })();
+</script>
+<style>
+    a[target=_blank]::after {
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+
+        margin-left: 0.3em;
+        font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f35d";
+    }
+</style>
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" /></p>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-41987357-2');
+</script></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
