@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title><code>java.time</code>- zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1><code>java.time</code>- zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p>Wypisz aktualną datę/godzinę wskazaną przez poznane typy z pakietu <code>java.time</code> i przeanalizuj różnice pomiędzy nimi.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<p><code>now()</code></p>
+</div></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Zbuduj datę/godzinę wskazaną przez poznane typy z pakietu <code>java.time</code> i przeanalizuj różnice pomiędzy nimi.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<p><code>now()</code></p>
+</div></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>30 października 2019 r. trener wystawił fakturę z 21 dniowym terminem płatności. Korzystając z możliwości pakietu <code>java.time</code> wyznacz, którego dnia najpóźniej faktura powinna zostać opłacona.</p></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Pewna karta kredytowa ma okres rozliczeniowy kończący się 18 dnia każdego miesiąca. Termin bezodsetkowej spłaty zadłużenia to 25 dni. Wyznacz terminy bezodsetkowych spłat dla okresów rozliczeniowych kończących się w każdym z miesięcy 2019 roku.</p></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>Wypisz w jakich dniach tygodnia (tylko liczby od 1 do 7) będzie obchodzone następnych dziesięć Barbórek.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<p><code>.getDayOfWeek()</code></p>
+</div></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Kota należy karmić 5 razy dziennie.</p>
+<p>Napisz program który będzie mógł posłużyć do wyznacznia godzin wydawania karmy z automatycznego karmidełka dla kota w regularnych odstępach czasu.</p>
+<p>Wypisz 10 kolejnych dni i godzin karmienia, zakładając że pierwsze karmienie odbywa się 16 listopada 2019 r. o godz. 13:00.</p></section>
+<section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7</h2><p>Ostatnia pełnia księżyca miała miejsce 12 listopada.</p>
+<p>Korzystając z możliwości pakietu <code>java.time</code> wyznacz daty następnych 5 pełni.</p>
+<p>Na potrzeby zadania przyjmijmy że pełnia występuje co 29 dni.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<p><code>Period</code></p>
+</div></section>
+<section id="zadanie-8" class="title-slide slide level2"><h2>Zadanie 8</h2><p>Dużego psa należy karmić 2 razy dziennie.</p>
+<p>Dostosuj kod z zadania z karmidełkiem dla kota tak, aby tego samego programu do wyznaczania pór karmienia można było użyć do karmidełek zarówno dla psa jak i kota.</p>
+<p>Wypisz 10 kolejnych dni i godzin karmienia, zakładając że pierwsze karmienie odbywa się 16 listopada 2019 r. o godz. 13:00.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<p><code>Duration</code></p>
+</div></section>
+<section id="zadanie-9" class="title-slide slide level2"><h2>Zadanie 9</h2><p>Java 1.0 została wydana 23.01.1996. Warsztaty w Javie rozpoczęły się 14 września 2019r.</p>
+<p>Oblicz ile miesięcy upłynęło pomiędzy tymi datami.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>ChronoUnit.between</code></li>
+</ul>
+</div></section>
+<section id="zadanie-10" class="title-slide slide level2"><h2>Zadanie 10</h2><p><em>Once in a blue moon</em></p>
+<p><quote>Niebieski księżyc</quote> – określenie drugiej pełni Księżyca w ciągu jednego miesiąca kalendarzowego.</p>
+<p>Ostatnia pełnia księżyca miała miejsce 12 listopada o godzinie 14:34.</p>
+<p>Korzystając z możliwości pakietu <code>java.time</code> wyznacz daty kolejnych <quote>niebieskich księżyców</quote> do roku 2029 (włącznie).</p>
+<p>Na potrzeby zadania przyjmijmy że pełnia występuje co 29.5 dnia.</p></section>
+<section id="zadanie-11" class="title-slide slide level2"><h2>Zadanie 11</h2><p>Wypisz jaka jest teraz godzina:</p>
+<ul>
+<li><p>w Londynie</p></li>
+<li><p>w Tokyo</p></li>
+</ul></section>
+<section id="zadanie-12" class="title-slide slide level2"><h2>Zadanie 12</h2><p>Kolejna pełnia księżyca wystąpi 12 grudnia 2019 r. o godz. <code>06:14</code> naszego czasu.</p>
+<p>Wyznacz jaka będzie wtedy godzina w:</p>
+<ul>
+<li><p>w Moskwie</p></li>
+<li><p>w Nowym Jorku</p></li>
+</ul></section>
+<section id="zadanie-13" class="title-slide slide level2"><h2>Zadanie 13</h2><p>Programista z Katowic umówia się z kolegą z zespołu z Kalkuty na rozmowę w najbliższy poniedziałek. Programista z Kalkuty proponuje aby rozmowę odbyć o godzinie 10:00. Posługuje się on czasem lokalnym dla Kalkuty.</p>
+<p>Jaka będzie wtedy data/godzina w Katowicach?</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<p><code>with(TemporalAdjuster)</code></p>
+<p><code>Asia/Kolkata</code></p>
+</div></section>
+<section id="zadanie-14" class="title-slide slide level2"><h2>Zadanie 14</h2><p>W weekend 26-27 października 2019, warsztaty rozpoczynały sie o godzinie 9:00.</p>
+<p>Oblicz ile godzin minęło pomiędzy rozpoczęciem zajęć w sobotę a rozpoczęciem zajęć w niedzielę.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>ZonedDateTime.of</code></li>
+<li>Period/Duration?</li>
+</ul>
+</div></section>
+<section id="zadanie-15" class="title-slide slide level2"><h2>Zadanie 15</h2><p>Oblicz która godzina była w Polsce w dniu 27 października jedną godzinę po godzinie 2:30.</p></section>
+<section id="zadanie-16" class="title-slide slide level2"><h2>Zadanie 16</h2><p>Wypisz wszystkie strefy czasowe dostępne aktualnie w Javie.</p></section>
+<section id="zadanie-17" class="title-slide slide level2"><h2>Zadanie 17</h2><p>Wypisz aktualny czas w innych dostępnych systemach kalendarzowych.</p></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

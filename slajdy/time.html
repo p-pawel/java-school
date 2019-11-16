@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Date and Time in Java</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Date and Time in Java</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="intro" class="title-slide slide level1"><h1>Intro</h1><ul>
+<li>since JDK 8 <code>java.time</code></li>
+<li>pre JDK 8 <code>java.util.Date</code> with external libraries like <code>Joda</code></li>
+</ul>
+<p>Examples:</p>
+<pre><code>        Date date = new Date(2019, 11, 16);
+        System.out.println(date);</code></pre>
+<pre><code>        Calendar c = Calendar.getInstance();
+        c.set(2019,11, 16);
+        System.out.println(c.getTime());</code></pre></section>
+<section><section id="creating-dates-and-times" class="title-slide slide level1"><h1>Creating Dates and Times</h1></section><section id="date-and-time-classes" class="title-slide slide level2"><h2>Date and Time classes</h2><ul>
+<li><code>Instant</code> - the simplest timestamp in UTC</li>
+<li><code>LocalDate</code> - a date without a time, nor any reference to an offset or time-zone</li>
+<li><code>LocalTime</code> - a time without a date, nor any reference to an offset or time-zone</li>
+<li><code>LocalDateTime</code> - combines date and time, but still without any offset or time-zone</li>
+<li><code>ZonedDateTime</code> - a “full” date-time with time-zone and resolved offset from UTC/Greenwich</li>
+</ul></section><section id="date-and-time---create" class="title-slide slide level2"><h2>Date and Time - create</h2><p>Tasks:</p>
+<ul>
+<li><p><a href="time-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></p></li>
+<li><p><a href="time-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></p></li>
+</ul></section><section id="manipulating-dates-and-times" class="title-slide slide level2"><h2>Manipulating Dates and Times</h2><p>Date and time classes are <strong>immutable</strong></p>
+<table style="font-size: 75%">
+<tr>
+<td>
+<pre><code>
+plusDays(long)
+plusHours(long)
+plusMinutes(long)
+plusMonths(long)
+plusNanos(long)
+plusSeconds(long)
+plusYears(long)
+plusWeeks(long)
+
+plus(long, TemporalUnit)
+
+plus(TemporalAmount)</code></pre>
+</td>
+<td>
+<pre><code>
+minusDays(long)
+minusHours(long)
+minusMinutes(long)
+minusMonths(long)
+minusNanos(long)
+minusSeconds(long)
+minusYears(long)
+minusWeeks(long)
+
+minus(long, TemporalUnit)
+
+minus(TemporalAmount)</code></pre>
+</td>
+<td>
+<pre><code>withDayOfMonth(int)
+withDayOfYear(int)
+withHour(int)
+withMinute(int)
+withMonth(int)
+withNano(int)
+withSecond(int)
+withYear(int)
+
+
+with(LocalDate, LocalTime)
+
+with(TemporalAdjuster)
+
+with(TemporalField, long)</code></pre>
+</td>
+</tr>
+</table></section><section id="manipulating-dates-and-times-1" class="title-slide slide level2"><h2>Manipulating Dates and Times</h2><p>Tasks:</p>
+<ul>
+<li><p><a href="time-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></p></li>
+<li><p><a href="time-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></p></li>
+<li><p><a href="time-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></p></li>
+<li><p><a href="time-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></p></li>
+</ul></section></section>
+<section><section id="pieces-of-time" class="title-slide slide level1"><h1>Pieces of time</h1></section><section id="period" class="title-slide slide level2"><h2>Period</h2><p>A Period uses date-based values (years, months, days).</p>
+<p>Create:</p>
+<pre><code>Period.ofDays(int)
+Period.ofWeeks(int)
+Period.ofYears(int)
+Period.ofYears(int)
+
+Period.of(int years, int months, int days)
+</code></pre></section><section id="duration" class="title-slide slide level2"><h2>Duration</h2><p>A Duration measures an amount of time using time-based values (seconds, nanoseconds).</p>
+<p>Create:</p>
+<pre><code>Duration.ofDays(int)
+Period.ofWeeks(int)
+Period.ofYears(int)
+Period.ofYears(int)
+
+Period.of(int years, int months, int days)
+</code></pre></section><section id="chronounit" class="title-slide slide level2"><h2>ChronoUnit</h2><div style="font-size: 60%">
+<ul>
+<li><code>NANOS</code> - a nanosecond, the smallest supported unit of time.</li>
+<li><code>MICROS</code> - a microsecond.</li>
+<li><code>MILLIS</code> - a millisecond.</li>
+<li><code>SECONDS</code> - a second.</li>
+<li><code>MINUTES</code> - a minute.</li>
+<li><code>HOURS</code> - an hour.</li>
+<li><code>HALF_DAYS</code> - half a day, as used in AM/PM.</li>
+<li><code>DAYS</code> - a day.</li>
+<li><code>MONTHS</code> - a month.</li>
+<li><code>WEEKS</code> - a week.</li>
+<li><code>YEARS</code> - a year.</li>
+<li><code>DECADES</code> - a decade.</li>
+<li><code>CENTURIES</code> - a century.</li>
+<li><code>MILLENNIA</code> - a millennium.</li>
+<li><code>ERAS</code> - an era.</li>
+<li><code>FOREVER</code> - artificial unit forever.</li>
+</ul>
+</div></section><section id="time-pieces---tasks" class="title-slide slide level2"><h2>Time pieces - tasks</h2><p>Tasks:</p>
+<ul>
+<li><a href="time-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+<li><a href="time-tasks.html#/zadanie-8" target="_blank">[Task 8]</a></li>
+<li><a href="time-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+<li><a href="time-tasks.html#/zadanie-10" target="_blank">[Task 10]</a></li>
+</ul></section></section>
+<section><section id="format-and-parse" class="title-slide slide level1"><h1>Format and Parse</h1></section><section id="formatting" class="title-slide slide level2"><h2>Formatting</h2><ul>
+<li><p>get data out of date/time</p></li>
+<li><p><code>DateTimeFormatter</code></p></li>
+</ul>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html" target="_blank">[reference]</a></p></section><section id="parsing" class="title-slide slide level2"><h2>Parsing</h2><p>Default:</p>
+<pre><code>dateTime.parse(String)</code></pre>
+<p>Using formatter:</p>
+<pre><code>dateTime.parse(String, DateTimeFormatter)</code></pre></section></section>
+<section><section id="time-zones-and-daylight-saving-time" class="title-slide slide level1"><h1>Time zones and Daylight saving time</h1></section><section id="time-zones" class="title-slide slide level2"><h2>Time zones</h2><ul>
+<li><code>ZonedDateTime</code></li>
+<li><code>OffsetDateTime</code></li>
+</ul></section><section id="daylight-saving-time" class="title-slide slide level2"><h2>Daylight saving time</h2></section><section id="time-zones---tasks" class="title-slide slide level2"><h2>Time zones - tasks</h2><ul>
+<li><a href="time-tasks.html#/zadanie-11" target="_blank">[Task 11]</a></li>
+<li><a href="time-tasks.html#/zadanie-12" target="_blank">[Task 12]</a></li>
+<li><a href="time-tasks.html#/zadanie-13" target="_blank">[Task 13]</a></li>
+<li><a href="time-tasks.html#/zadanie-14" target="_blank">[Task 14]</a></li>
+<li><a href="time-tasks.html#/zadanie-15" target="_blank">[Task 15]</a></li>
+<li><a href="time-tasks.html#/zadanie-16" target="_blank">[Task 16]</a></li>
+</ul></section></section>
+<section><section id="other" class="title-slide slide level1"><h1>Other</h1></section><section id="other-calendar-systems" class="title-slide slide level2"><h2>Other calendar systems</h2><ul>
+<li><p><code>HijrahDate</code></p></li>
+<li><p><code>ThaiBuddhistDate</code></p></li>
+<li><p><code>JapaneseDate</code> e.g. <code>Heisei 31</code> - <a href="https://en.wikipedia.org/wiki/Heisei" target="_blank">Heisei</a> vs <a href="https://en.wikipedia.org/wiki/Reiwa" target="_blank">Reiwa</a></p></li>
+<li><p><code>MinguoDate</code> - Taiwan</p></li>
+</ul>
+<p><a href="time-tasks.html#/zadanie-17" target="_blank">[Task 17]</a></p></section><section id="leap-second" class="title-slide slide level2"><h2>Leap second</h2><p><a href="https://en.wikipedia.org/wiki/%CE%94T" target="_blank">ΔT</a></p></section></section>
+<section id="the-end" class="title-slide slide level1"><h1>The end</h1></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

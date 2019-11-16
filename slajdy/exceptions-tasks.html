@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Exceptions - Zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Exceptions - Zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p><em>Fail gracefully</em></p>
+<p>Napisz program, który: - wypełni pięcioelementową tablicę/listę liczbami od 1 do 5 - dokona dziesięciu losowań liczb z przedziału <code>[0, 10]</code> i wypisze liczbę znajdującą na tej wylosowanej pozycji w tablicy/liście.</p>
+<p>Zapewnij <quote>“wdzięczną”</quote> obsługę błędóW - wypisując 0 jeśli pozycja będzie nieprawidłowa.</p>
+<p>Typ danych - w wybranym wariancie: (1) tablica (2) lista</p></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Z danych trzech odcinków o długości a, b i c można zbudować trójkąt, jeżeli:</p>
+<ul>
+<li><code>a &lt; b + c</code></li>
+<li><code>b &lt; a + c</code></li>
+<li><code>c &lt; b + a</code></li>
+</ul>
+<p>Napisz klasę dla trójkąta, która w konstruktorze będzie wymagała podania prawdiłowych dla trójkąta wartości <code>a</code>, <code>b</code> i <code>c</code>.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>throws ...</code></li>
+<li><code>throw new ...</code></li>
+</ul>
+</div></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>Napisz program, który spróbuje odczytać zawartość pliku, i przed zakończeniem pożegna się z użytkownikiem. Pożegnanie powinno zostać wypisane nawet jeśli wystąpi błąd w dostępie do pliku.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li>Skorzystaj z klasy <code>FileReader</code>: <code>FileReader fileReader = new FileReader("plik.txt");</code></li>
+<li><code>finally</code></li>
+</ul>
+</div></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
