@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Git</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Git</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section><section id="about" class="title-slide slide level2"><h2>About</h2><p><img style="width: 40%" src="https://git-scm.com/book/en/v2/images/distributed.png"/></p></section><section id="brief-history" class="title-slide slide level2"><h2>Brief History</h2><div style="width: 30%; font-size: 80%;  float:right">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg/800px-LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg"/></p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<p>Linus Torvalds</p>
+</div>
+</div>
+<div style="width: 65%; font-size: 80%">
+<p>Design criteria:</p>
+<ul>
+<li>patching should take no more than three seconds</li>
+<li>Take <code>CVS</code> as an example of what not to do; if in doubt, make the exact opposite decision.</li>
+<li>Support a distributed workflow (BitKeeper-like)</li>
+<li>Include very strong safeguards against corruption, either accidental or malicious.</li>
+</ul>
+<p>Begin development 3 Apr 2005 -&gt; 16 Jun 2005 used to host Linux 2.6.12</p>
+</div></section><section id="features" class="title-slide slide level2"><h2>Features</h2></section><section id="snapshots-not-differences" class="slide level3">
+<h3>Snapshots, Not Differences</h3>
+<p><img data-src="https://git-scm.com/book/en/v2/images/deltas.png" /> <img data-src="https://git-scm.com/book/en/v2/images/snapshots.png" /></p>
+</section><section id="operations-are-local" class="slide level3">
+<h3>Operations Are Local</h3>
+</section><section id="integrity" class="slide level3">
+<h3>Integrity</h3>
+<pre><code>24b9da6552252987aa493b52f8696cd6d3b00373</code></pre>
+</section><section id="git-generally-only-adds-data" class="slide level3">
+<h3>Git Generally Only Adds Data</h3>
+</section><section id="the-three-states" class="slide level3">
+<h3>The Three States</h3>
+<p><img data-src="https://git-scm.com/book/en/v2/images/areas.png" /></p>
+</section><section id="git-book" class="slide level3">
+<h3>Git book</h3>
+<p><img alt="Git book" style="width: 40%" src="git-book.png"/></p>
+<p><a href="https://git-scm.com/book">https://git-scm.com/book</a></p>
+</section></section>
+<section><section id="start" class="title-slide slide level1"><h1>Start</h1></section><section id="install" class="title-slide slide level2"><h2>Install</h2><p><a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p></section><section id="starting-with-repo" class="title-slide slide level2"><h2>Starting with repo</h2><ol type="1">
+<li>Init</li>
+</ol>
+<pre><code>git init</code></pre>
+<ol start="2" type="1">
+<li>Clone</li>
+</ol>
+<pre><code>git clone ...</code></pre></section><section id="getting-started---tasks" class="title-slide slide level2"><h2>Getting started - tasks</h2><ul>
+<li><a href="git-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
+<li><a href="git-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
+</ul></section></section>
+<section><section id="saving-changes" class="title-slide slide level1"><h1>Saving changes</h1></section><section id="untracked-vs-tracked" class="title-slide slide level2"><h2>Untracked vs Tracked</h2><p><img data-src="https://git-scm.com/book/en/v2/images/lifecycle.png" /></p>
+<p><a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository" target="_blank">[reference]</a></p></section><section id="checking-the-status-of-your-files" class="title-slide slide level2"><h2>Checking the Status of Your Files</h2><ul>
+<li><code>git status</code></li>
+</ul></section><section id="tracking-new-files" class="title-slide slide level2"><h2>Tracking New Files</h2><ul>
+<li>create new file</li>
+<li><code>git add ...</code></li>
+</ul></section><section id="staging-modified-files" class="title-slide slide level2"><h2>Staging Modified Files</h2><ul>
+<li>modify</li>
+<li><code>git status</code></li>
+<li><code>git add ...</code></li>
+</ul>
+<!-- ## ~Short Status~ --></section><section id="ignoring-files" class="title-slide slide level2"><h2>Ignoring Files</h2><p><code>.gitignore</code></p></section><section id="viewing-your-staged-and-unstaged-changes" class="title-slide slide level2"><h2>Viewing Your Staged and Unstaged Changes</h2><ul>
+<li><p><code>git status</code></p></li>
+<li><p><code>git diff</code></p></li>
+<li><p><code>git diff --staged</code></p></li>
+</ul>
+<p><a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository" target="_blank">[reference]</a></p></section><section id="committing-your-changes" class="title-slide slide level2"><h2>Committing Your Changes</h2><!-- ## ~Skipping the Staging Area~ --></section><section id="saving-changes---tasks" class="title-slide slide level2"><h2>Saving changes - tasks</h2><ul>
+<li><a href="git-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+<li><a href="git-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+<li><a href="git-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+</ul></section></section>
+<section><section id="managing-changes" class="title-slide slide level1"><h1>Managing changes</h1></section><section id="removing-files-from-repository" class="title-slide slide level2"><h2>Removing Files from Repository</h2><p><code>git rm</code></p>
+<p><a href="https://git-scm.com/docs/git-rm" target="_blank">[reference]</a></p></section><section id="moving-files" class="title-slide slide level2"><h2>Moving files</h2><p><code>git mv ...</code></p>
+<p><a href="https://git-scm.com/docs/git-mv" target="_blank">[reference]</a></p></section><section id="viewing-the-commit-history" class="title-slide slide level2"><h2>Viewing the Commit History</h2><ul>
+<li><code>git log</code></li>
+</ul>
+<p>https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History</p></section><section id="managing-changes---tasks" class="title-slide slide level2"><h2>Managing changes - tasks</h2><ul>
+<li><a href="git-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+<li><a href="git-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+<li><a href="git-tasks.html#/zadanie-8" target="_blank">[Task 8]</a></li>
+</ul></section></section>
+<section><section id="undoing-things" class="title-slide slide level1"><h1>Undoing Things</h1></section><section id="modifying-last-commit" class="title-slide slide level2"><h2>Modifying last commit</h2><p><code>git commit --amend</code></p></section><section id="unstaging-a-staged-file" class="title-slide slide level2"><h2>Unstaging a Staged File</h2><p><code>git reset HEAD README.md</code></p></section><section id="unmodifying-a-modified-file" class="title-slide slide level2"><h2>Unmodifying a Modified File</h2><p><code>git checkout -- README.md</code></p></section><section id="reverting-changes" class="title-slide slide level2"><h2>Reverting changes</h2><p><code>git revert &lt;commit-id&gt;</code></p>
+<p>E.g. <code>git revert cdd5117</code></p>
+<!-- ### ~Git Basics - Git Aliases~ 
+https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
+--></section><section id="undoing-things---tasks" class="title-slide slide level2"><h2>Undoing Things - tasks</h2><ul>
+<li><a href="git-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+<li><a href="git-tasks.html#/zadanie-10" target="_blank">[Task 10]</a></li>
+<li><a href="git-tasks.html#/zadanie-11" target="_blank">[Task 11]</a></li>
+</ul></section></section>
+<section><section id="git-branching" class="title-slide slide level1"><h1>Git Branching</h1></section><section id="branches" class="title-slide slide level2"><h2>Branches</h2><p>A branch in Git is simply a lightweight movable pointer to one of commits.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-1.png" style="width: 70%"/></p>
+<ul>
+<li>Create branch: <code>git branch &lt;branch-name&gt;</code></li>
+<li>Switching Branches: <code>git checkout &lt;branch-name&gt;</code></li>
+</ul></section><section id="basic-branching" class="title-slide slide level2"><h2>Basic Branching</h2><p>To create a new branch and switch to it at the same time:</p>
+<p><code>git checkout -b &lt;branch-name&gt;</code></p>
+<p>This is shorthand for:</p>
+<pre><code>git branch &lt;branch-name&gt;
+git checkout &lt;branch-name&gt;</code></pre></section><section id="basic-merging" class="title-slide slide level2"><h2>Basic Merging</h2><p>Merge scenario:</p>
+<ul>
+<li>switch to new branch: <code>git checkout -b &lt;another-branch&gt;</code></li>
+<li>change something, e.g. <code>vim index.html</code></li>
+<li>commit changes, e.g. <code>git commit -a -m 'fixed whatever'</code></li>
+<li>back to main branch, e.g. <code>git checkout master</code></li>
+<li>merge <code>&lt;another-branch&gt;</code> into <code>master</code>, e.g. <code>git merge &lt;another-branch&gt;</code></li>
+</ul>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" target="_blank">[reference]</a></p></section><section id="merge-fast-forward-vs-3-way" class="title-slide slide level2"><h2>Merge: Fast-Forward vs 3-Way</h2><p><img data-src="fast-forward-merge.jpg" /></p></section><section id="merge-conflicts" class="title-slide slide level2"><h2>Merge conflicts</h2><p>If you changed the same part of the same file differently in the two branches you’re merging, Git won’t be able to merge them cleanly.</p>
+<pre><code>git merge &lt;another-branch&gt;</code></pre>
+<pre><code>Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.</code></pre></section><section id="branch-management" class="title-slide slide level2"><h2>Branch Management</h2><ul>
+<li><p>Get a simple listing of current branches: <code>git branch</code></p></li>
+<li><p>See the last commit on each branch: <code>git branch -v</code></p></li>
+<li><p>Deleting branch:</p>
+<ul>
+<li><p><code>git branch -d &lt;branch-name&gt;</code></p></li>
+<li><p><code>git branch -D &lt;branch-name&gt;</code> - if branch is not merged</p></li>
+</ul></li>
+</ul>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Branch-Management" target="_blank">[reference]</a></p></section><section id="branching---tasks" class="title-slide slide level2"><h2>Branching - tasks</h2><ul>
+<li><a href="git-tasks.html#/zadanie-14" target="_blank">[Task 14]</a></li>
+<li><a href="git-tasks.html#/zadanie-15" target="_blank">[Task 15]</a></li>
+<li><a href="git-tasks.html#/zadanie-16" target="_blank">[Task 16]</a></li>
+<li><a href="git-tasks.html#/zadanie-17" target="_blank">[Task 17]</a></li>
+<li><a href="git-tasks.html#/zadanie-18" target="_blank">[Task 18]</a></li>
+<li><a href="git-tasks.html#/zadanie-19" target="_blank">[Task 19]</a></li>
+</ul></section><section id="branching-workflows" class="title-slide slide level2"><h2>Branching Workflows</h2><p>Long-Running Branches and Topic Branches</p>
+<p><img data-src="https://git-scm.com/book/en/v2/images/lr-branches-2.png" /></p>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows" target="_blank">[reference]</a></p></section><section id="git-flow" class="title-slide slide level2"><h2>Git Flow</h2><p><img src="5488984404_c37e1d60a2_o.png" style="float:right; width: 40%"></p>
+<ul>
+<li>The main branches
+<ul>
+<li><code>master</code></li>
+<li><code>develop</code></li>
+</ul></li>
+<li>Supporting branches
+<ul>
+<li>Feature branches</li>
+<li>Release branches</li>
+<li>Hotfix branches</li>
+</ul></li>
+</ul>
+<p><a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank">[reference]</a></p></section><section id="rebasing" class="title-slide slide level2"><h2>Rebasing</h2><p>Using <code>rebase</code> you can take all changes that committed on one branch and replay them on a different branch.</p>
+<p>E.g. You can check out the <code>experiment</code> branch, and then <code>rebase</code> it onto the <code>master</code> branch as follows:</p>
+<pre><code>git checkout experiment
+git rebase master</code></pre>
+<p><img data-src="https://git-scm.com/book/en/v2/images/basic-rebase-3.png" /></p>
+<!--
+
+# Tags
+* annotated
+* light
+https://git-scm.com/book/en/v2/Git-Basics-Tagging
+--></section><section id="interactive-rebase" class="title-slide slide level2"><h2>Interactive rebase</h2><pre><code>git rebase -i &lt;commit-id&gt;</code></pre>
+<ul>
+<li><p>changing multiple commit messages</p></li>
+<li><p>reordering commits</p></li>
+<li><p>squashing commits</p></li>
+<li><p>splitting a commit</p></li>
+</ul></section><section id="rebasing---tasks" class="title-slide slide level2"><h2>Rebasing - tasks *</h2><ul>
+<li><a href="git-tasks.html#/zadanie-20" target="_blank">[Task 20]</a></li>
+<li><a href="git-tasks.html#/zadanie-21" target="_blank">[Task 21]</a></li>
+</ul></section></section>
+<section><section id="working-with-remotes" class="title-slide slide level1"><h1>Working with Remotes</h1><p><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes" target="_blank">[reference]</a></p></section><section id="showing-your-remotes" class="title-slide slide level2"><h2>Showing Your Remotes</h2><p>The easiest way to configure remote is to clone from existing remote repository</p>
+<ul>
+<li><code>git clone &lt;url&gt;</code></li>
+</ul>
+<p>To see what remote servers are configured:</p>
+<ul>
+<li><p><code>git remote</code></p></li>
+<li><p><code>git remote -v</code></p></li>
+</ul></section><section id="managing-remote-repositories" class="title-slide slide level2"><h2>Managing Remote Repositories</h2><p>Remote can also be configured explicitly:</p>
+<ul>
+<li><code>git remote add &lt;name&gt; &lt;url&gt;</code></li>
+</ul>
+<p>and managed:</p>
+<ul>
+<li><p><code>git remote remove &lt;name&gt;</code></p></li>
+<li><p><code>git remote rename &lt;old-name&gt; &lt;new-name&gt;</code></p></li>
+</ul></section><section id="fetching-and-pulling-from-your-remotes" class="title-slide slide level2"><h2>Fetching and Pulling from Your Remotes</h2><p>To get data from remote projects:</p>
+<ul>
+<li><code>git fetch &lt;remote-name&gt;</code>
+<ul>
+<li>only downloads data but doesn’t merge</li>
+</ul></li>
+<li><code>git pull &lt;remote-name&gt;</code>
+<ul>
+<li>fetches and tries to merge</li>
+</ul></li>
+</ul></section><section id="pushing-to-your-remotes" class="title-slide slide level2"><h2>Pushing to Your Remotes</h2><p>Push changes upstream, to share the project:</p>
+<ul>
+<li><p><code>git push &lt;remote-name&gt; &lt;branch-name&gt;</code></p></li>
+<li><p>e.g. <code>git push origin master</code></p></li>
+</ul></section><section id="inspecting-a-remote" class="title-slide slide level2"><h2>Inspecting a Remote</h2><p>If you want to see more information about a particular remote, you can use the <code>git remote show &lt;remote-name&gt;</code></p></section><section id="remotes---tasks" class="title-slide slide level2"><h2>Remotes - tasks *</h2><ul>
+<li><a href="git-tasks.html#/zadanie-22" target="_blank">[Task 22]</a></li>
+<li><a href="git-tasks.html#/zadanie-23" target="_blank">[Task 23]</a></li>
+<li><a href="git-tasks.html#/zadanie-24" target="_blank">[Task 24]</a></li>
+<li><a href="git-tasks.html#/zadanie-25" target="_blank">[Task 25]</a></li>
+</ul></section></section>
+<section id="pull-request" class="title-slide slide level1"><h1>Pull Request</h1><p>Pull requests let you tell others about changes you’ve pushed to a branch in a repository.</p>
+<ul>
+<li><p>from another branch - usually possible within one team / company (not public repositories)</p></li>
+<li><p>from forked repository - common in open source projects - If you don’t have access to create branches on that repository, there is no way to create a pull request without forking.</p></li>
+</ul>
+<p>References [1] https://git-scm.com/book/en/v2</p></section>
+<section id="the-end" class="title-slide slide level1"><h1>The end</h1></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

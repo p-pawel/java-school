@@ -95,7 +95,8 @@ body {
 .reveal ul {
   display: inline-block;
   text-align: left;
-  margin: 0 0 0 1em; }
+  margin: 0 0 0 1em;
+  }
 
 .reveal ol {
   list-style-type: decimal; }
@@ -272,7 +273,7 @@ body {
   .backgrounds {
     background-color: #191919; } }
 
-.reveal p {
+.reveal p, .reveal ul {
   font-size: 90%; }
 
 .reveal section img {

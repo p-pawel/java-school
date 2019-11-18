@@ -124,15 +124,19 @@ with(TemporalField, long)</code></pre>
 <p>Create:</p>
 <pre><code>Period.ofDays(int)
 Period.ofWeeks(int)
-Period.ofYears(int)
+Period.ofMonths(int)
 Period.ofYears(int)
 
 Period.of(int years, int months, int days)
 </code></pre></section><section id="duration" class="title-slide slide level2"><h2>Duration</h2><p>A Duration measures an amount of time using time-based values (seconds, nanoseconds).</p>
 <p>Create:</p>
 <pre><code>Duration.ofDays(int)
+Duration.ofHours(int)
+Duration.ofMinutes(int)
+Duration.ofSeconds(int)
+Duration.ofSeconds(long seconds, )
 Period.ofWeeks(int)
-Period.ofYears(int)
+Period.ofMonths(int)
 Period.ofYears(int)
 
 Period.of(int years, int months, int days)
@@ -187,7 +191,8 @@ Period.of(int years, int months, int days)
 <li><p><code>JapaneseDate</code> e.g. <code>Heisei 31</code> - <a href="https://en.wikipedia.org/wiki/Heisei" target="_blank">Heisei</a> vs <a href="https://en.wikipedia.org/wiki/Reiwa" target="_blank">Reiwa</a></p></li>
 <li><p><code>MinguoDate</code> - Taiwan</p></li>
 </ul>
-<p><a href="time-tasks.html#/zadanie-17" target="_blank">[Task 17]</a></p></section><section id="leap-second" class="title-slide slide level2"><h2>Leap second</h2><p><a href="https://en.wikipedia.org/wiki/%CE%94T" target="_blank">ΔT</a></p></section></section>
+<p><a href="time-tasks.html#/zadanie-17" target="_blank">[Task 17]</a></p></section><section id="leap-second" class="title-slide slide level2"><h2>Leap second</h2><p>Not supported by <code>java.time</code>.</p>
+<p><a href="https://en.wikipedia.org/wiki/%CE%94T" target="_blank">ΔT</a></p></section></section>
 <section id="the-end" class="title-slide slide level1"><h1>The end</h1></section>
     </div>
   </div>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Git - Zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Git - Zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p>Pobierz ze strony <a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a> instalator odpowiedni dla Twojego systemu operacyjnego, i zainstaluj Git.</p>
+<p>Następnie zweryfikuj poprawność instalacji wykonując z linii poleceń komendę:</p>
+<pre><code>git --version</code></pre>
+<p>Po poprawnej instalacji polecenie powinno zwrócić aktualną wersję Gita, np.</p>
+<pre><code>git version 2.17.1</code></pre></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Utwórz nowy folder, i zainicjalizuj w nim nowe repozytorium Git.</p>
+<div class="clicker" tabindex="1">
+
+</div>
+<div class="hiddendiv">
+<p><code>git init</code></p>
+</div>
+<p>Po inicjalizacji powinien wyświetlić się komunikat:</p>
+<pre><code>Initialized empty Git repository in &lt;twoj-katalog&gt;</code></pre>
+<p>Sprawdź co wyświetli <code>git status</code></p></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>W katalogu z zainicjalizowanym repozytorium utwórz plik <code>PIERWSZY.md</code> i sprawdź status repozytorium.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<p><code>git status</code></p>
+<pre><code>On branch master
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    PIERWSZY.md</code></pre>
+</div></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>W tym samym katalogu utwórz plik <code>DRUGI.md</code>, i dodaj go do plików śledzonych przez repozytorium. Sprawdź status.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>git add DRUGI.md</code></li>
+<li><code>git status</code></li>
+</ul>
+<pre><code>On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    new file:   DRUGI.md
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    PIERWSZY.md</code></pre>
+</div></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>W tym samym katalogu utwórz plik <code>TRZECI.md</code>, i dodaj go do plików śledzonych przez repozytorium, a następnie zatwierdź zmiany zapisując je w repozytorium z opisem <code>Add third file</code>.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>git add TRZECI.md</code></li>
+<li><code>git commit -m "Add third file"</code></li>
+</ul>
+</div>
+<p>Obserwuj jak zmienia się status pomiędzy kolejnymi operacjami.</p>
+<p>Po zakończeniu sprawdź jakie pliki zostały zatwierdzone. Dlaczego tak się stało?</p></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Usuń plik <code>PIERWSZY.md</code> z repozytorium, i zatwierdź zmiany.</p>
+<p>Sprawdź status i historię operacji.</p></section>
+<section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7</h2><p>Zmień nazwę pliku <code>DRUGI.md</code> w repozytorium na <code>SECOND.md</code>, i zatwierdź zmiany.</p>
+<p>Sprawdź status i historię operacji.</p></section>
+<section id="zadanie-8" class="title-slide slide level2"><h2>Zadanie 8</h2><p>Sprawdź dzinnik Gita.</p></section>
+<section id="zadanie-9" class="title-slide slide level2"><h2>Zadanie 9</h2><p><em>Po zaimportowaniu projektu do IntelliJ, IDEA utworzyła kilka plików w katalogu <code>.idea</code>, a niekoniecznie pliki konfiguracyjne IDE są tymi, które chcemy trzymać w repozytorium.</em></p>
+<p>Oznacz pliki z katalogu <code>.idea</code> jako ignorowane.</p>
+<p>Zmiany te zapisz z komunikatem <code>Ignoruję pliki</code>.</p>
+<p>Po operacji sprawdź status, i zobacz historię zmian.</p></section>
+<section id="zadanie-9a" class="title-slide slide level2"><h2>Zadanie 9a</h2><p>Oznacz plik <code>SECOND.md</code> jako ignorowany.</p>
+<p>Zmiany te zapisz z komunikatem <code>Ignoruję jakiś plik</code>.</p>
+<p>Po operacji sprawdź status, i zobacz historię zmian.</p></section>
+<section id="zadanie-10" class="title-slide slide level2"><h2>Zadanie 10</h2><p>Popraw wiadomość z ostatniego zadania, tak aby bardziej precyzyjnie określała co zostało zmienione, np. <code>Ignoruję pierwszy plik</code>.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>git commit --amend -m "Ignoruję pierwszy plik"</code></li>
+</ul>
+</div>
+<p>Po operacji sprawdź status, i zobacz historię zmian.</p></section>
+<section id="zadanie-10a" class="title-slide slide level2"><h2>Zadanie 10a</h2><p>Zmodyfikuj ostatni commit w ten sposób, żeby obejmował również nowo utworzony plik <code>ZAPOMNIANY.md</code>.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>touch ZAPOMNIANY.md</code></li>
+<li><code>git add</code></li>
+<li><code>git commit --amend</code></li>
+</ul>
+</div>
+<p>Po operacji sprawdź status, i zobacz historię zmian.</p></section>
+<section id="zadanie-11" class="title-slide slide level2"><h2>Zadanie 11</h2><p>Dodanie pliku <code>ZAPOMNIANY.md</code> i usunięcie <code>SECOND.md</code> było pomyłką.</p>
+<p>Cofnij poprzednią operację. Po operacji sprawdź status.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<p><code>git revert &lt;commit-id&gt;</code>, np. <code>git revert cdd5117</code></p>
+</div></section>
+<section id="zadanie-12" class="title-slide slide level2"><h2>Zadanie 12</h2><p>Utwórz plik <code>NOWY.md</code>, i dodaj do śledzonych plików. Wycofaj dodany plik z indeksu.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>git reset HEAD NOWY.md</code></li>
+</ul>
+</div></section>
+<section id="zadanie-13" class="title-slide slide level2"><h2>Zadanie 13</h2><p>Najpierw wprowadź zmiany <code>NOWY.txt</code> (bez zatwierdzania), a potem wycofaj zmiany w pliku <code>NOWY.txt</code>.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>git checkout -- SECOND.md</code>
+</div></li>
+</ul></section>
+<section id="zadanie-14" class="title-slide slide level2"><h2>Zadanie 14</h2><p>Utwórz nową gałąź <code>hotfix-1</code> (z aktualnego <code>master</code>). W tej gałęzi utwórz zmianę (commit) dodającą plik <code>FIX.md</code>.</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<ul>
+<li><code>git checkout -b hotfix-1</code></li>
+<li><code>touch FIX.md</code></li>
+<li><code>git add FIX.md</code></li>
+<li><code>git commit -m "HOTFIX-1 Fix the bug..."</code>
+</div></li>
+</ul>
+<p>Przeanalizuj aktualne drzewo zmian w repozytorium.</p></section>
+<section id="zadanie-15" class="title-slide slide level2"><h2>Zadanie 15</h2><p>Scal gałąź <code>hotfix-1</code> do gałęzi <code>master</code>.</p></section>
+<section id="zadanie-16" class="title-slide slide level2"><h2>Zadanie 16</h2><ul>
+<li>Utwórz nową gałąź <code>hotfix-2</code> z aktualnej <code>master</code>.</li>
+<li>W gałęzi <code>hotfix-2</code> utwórz i zatwierdź zmianę, która w pliku <code>FIX2.md</code> umieści tekst <code>16 listopada</code>.</li>
+<li>W gałęzi <code>master</code> utwórz i zatwierdź zmianę, która w pliku <code>FIX3.md</code> umieści tekst <code>17 listopada</code>.</li>
+</ul>
+<p>Przeanalizuj aktualne drzewo zmian w repozytorium.</p></section>
+<section id="zadanie-17" class="title-slide slide level2"><h2>Zadanie 17</h2><ul>
+<li>Scal gałąź <code>hotfix-2</code> do gałęzi <code>master</code>.</li>
+</ul>
+<p>Przeanalizuj aktualne drzewo zmian w repozytorium.</p></section>
+<section id="zadanie-18" class="title-slide slide level2"><h2>Zadanie 18</h2><ul>
+<li>Utwórz nową gałąź <code>hotfix-3</code> z aktualnej <code>master</code>.</li>
+<li>W gałęzi <code>hotfix-3</code> utwórz i zatwierdź zmianę, która w pliku <code>FIX3.md</code> umieści tekst <code>18 listopada 2019</code>.</li>
+<li>W gałęzi <code>master</code> utwórz i zatwierdź zmianę, która w pliku <code>FIX3.md</code> umieści tekst <code>19 listopada 2019</code>.</li>
+</ul>
+<p>Przeanalizuj aktualne drzewo zmian w repozytorium.</p></section>
+<section id="zadanie-19" class="title-slide slide level2"><h2>Zadanie 19</h2><ul>
+<li>Scal gałąź <code>hotfix-3</code> do gałęzi <code>master</code>.</li>
+</ul>
+<p>Przeanalizuj aktualne drzewo zmian w repozytorium.</p></section>
+<section id="zadanie-20" class="title-slide slide level2"><h2>Zadanie 20</h2><p>Zad.16 - rebase</p></section>
+<section id="zadanie-21" class="title-slide slide level2"><h2>Zadanie 21</h2><p>Zad.17 - rebase</p></section>
+<section id="zadanie-22" class="title-slide slide level2"><h2>Zadanie 22</h2><p>Przejdź do nowego katalogu - poza dotychczasowym repozytorium.</p>
+<p>Sklonuj istniejące zdalne repozytorium <code>https://github.com/p-pawel/the-project.git</code></p>
+<p>Sprawdź status. Zaimportuj do IDE.</p></section>
+<section id="zadanie-23" class="title-slide slide level2"><h2>Zadanie 23</h2><p>[Poczekaj na zdalne zmiany]</p>
+<p>Pobierz dane o zmianch ze zdalnego repozytorium.</p></section>
+<section id="zadanie-24" class="title-slide slide level2"><h2>Zadanie 24</h2><p>Wyślij swoje zmiany do zdalnego repozytorium.</p></section>
+<section id="zadanie-25" class="title-slide slide level2"><h2>Zadanie 25</h2><p>Wprowadź zmiany na innej gałęzi <code>issue-1</code> i wyślij te zmiany do zdalnego repozytorium.</p></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

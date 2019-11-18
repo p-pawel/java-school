@@ -1,0 +1,113 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #191919;
+
+$mainColor: #fff;
+$headingColor: #fff;
+
+$mainFontSize: 42px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: #42affa;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+  &, h1, h2, h3, h4, h5, h6 {
+    color: #222;
+  }
+}
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+.reveal p, .reveal ul {
+  font-size: 90%;
+}
+
+.reveal section img {
+  margin: 15px 0px;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.reveal code {
+  font-family: monospace;
+  text-transform: none;
+  /* font-weight: 700; */
+  /* border: solid 1px #888; */
+  background: #333;
+  color: #ffff80;
+  font-size: 0.55em;
+}
+
+section.level2 {
+  text-align: left;
+}
+
+section.level2 h2 {
+  text-align: center;
+}
+
+
+a[target=_blank]::after {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+
+  margin-left: 0.3em;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f35d";
+}
+
+
+.clicker {
+  outline: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.clicker {
+  content: '<span class="fa fa-question-circle"></span>';
+}
+
+.hiddendiv{
+  display: none;
+  /* height: 200px; */
+  /* background-color: green; */
+  border: solid 1px #888;
+  opacity: 0.75;
+  font-size: 80%;
+}
+
+.clicker:focus + .hiddendiv{
+  display:block;
+}
