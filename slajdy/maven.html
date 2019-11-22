@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title><img data-src="Maven_white.svg" /></title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1><img data-src="Maven_white.svg" /></h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section class="slide level3">
+
+<!--
+## {data-background="https://upload.wikimedia.org/wikipedia/commons/0/0b/Maven_logo.svg"}
+
+```
+****  intro: bld manually
+****    
+.*** bld from cmdline
+**** (np from ide
+...* np with deps
+****
+*.     ant, gradle, CI
+
+  **
+****
+```
+
+
+-->
+<!--
+
+https://maven.apache.org/guides/getting-started/
+
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+
+
+
+https://www.quora.com/Why-do-we-use-Maven-in-Java
+
+https://stackoverflow.com/questions/10764576/why-do-we-need-maven-or-ant-if-we-already-have-eclipse
+
+
+
+Dlaczego Maven jest fajny i przy większych projektach bez tego typu narzędzi nie można by wydajnie pracować. Wydajnie albo i stabilnie, powtarzalnie, bo narzędzia budowania mają tę zaletę, 
+
+
+
+https://www.baeldung.com/java-create-jar
+https://en.wikipedia.org/wiki/Java_Classloader#JAR_hell
+https://dzone.com/articles/what-is-jar-hell
+https://dzone.com/articles/jar-hell-made-easy
+https://stackoverflow.com/questions/21108953/solving-a-jar-hell-with-maven
+
+-->
+</section>
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section><section id="why-need-any-building-tool" class="title-slide slide level2"><h2>Why need any building tool?</h2><p>Recap: manual compilation</p>
+<pre><code>javac src\com\company\*.java</code></pre>
+<p>Manual commandline packaging.</p>
+<pre><code>jar cf Example.jar src\com\company\*.class</code></pre>
+<!--
+Let's
+
+https://www.baeldung.com/java-create-jar
+
+--></section><section id="packages-artifacts" class="title-slide slide level2"><h2>Packages / Artifacts</h2><pre><code>groupId
+artifactId
+version</code></pre></section><section id="repositories" class="title-slide slide level2"><h2>Repositories</h2><ul>
+<li><p>Local</p></li>
+<li><p>Remote</p></li>
+</ul></section><section id="features" class="title-slide slide level2"><h2>Features</h2><ul>
+<li><p>Superior dependency management including automatic updating, dependency closures (also known as transitive dependencies)</p></li>
+<li><p>A large and growing repository of libraries and metadata to use out of the box, and arrangements in place with the largest Open Source projects for real-time availability of their latest releases</p></li>
+<li><p>Consistent usage across all projects - means no ramp up time for new developers coming onto a project</p></li>
+<li><p>Release management and distribution publication: Without much additional configuration, Maven will integrate with your source control system (such as Subversion or Git)</p></li>
+<li><p>manage the release of a project based on a certain tag.</p></li>
+<li><p>publish to a distribution location for use by other projects Maven is able to publish individual outputs such as a JAR, an archive including other dependencies and documentation, or as a source distribution.</p></li>
+<li><p>Able to easily work with multiple projects at the same time</p></li>
+<li><p>Extensible, with the ability to easily write plugins in Java or scripting languages</p></li>
+<li><p>Instant access to new features with little or no extra configuration</p></li>
+<li><p>Ant tasks for dependency management and deployment outside of Maven</p></li>
+<li><p>Model based builds: Maven is able to build any number of projects into predefined output types such as a JAR, WAR, or distribution based on metadata about the project, without the need to do any scripting in most cases.</p></li>
+<li><p>Coherent site of project information: Using the same metadata as for the build process, Maven is able to generate a web site or PDF including</p>
+<ul>
+<li>any documentation you care to add, and adds to that standard</li>
+<li>reports about the state of development of the project.</li>
+</ul></li>
+<li><p>Dependency management: Maven encourages the use of a central repository of JARs and other dependencies. Maven comes with a mechanism that your project’s clients can use to download any JARs required for building your project from a central JAR repository much like Perl’s CPAN. This allows users of Maven to reuse JARs across projects and encourages communication between projects to ensure that backward compatibility issues are dealt with.</p></li>
+</ul></section><section id="benefits" class="title-slide slide level2"><h2>Benefits</h2><ul>
+<li><p>package management</p></li>
+<li><p>standard conventions and practices - to accelerate development cycle, while at the same time helping you achieve a higher rate of success.</p></li>
+<li><p>Simple project setup that follows best practices - get a new project or module started in seconds</p></li>
+</ul></section></section>
+<section><section id="lets-go" class="title-slide slide level1"><h1>Let’s go</h1></section><section id="install" class="title-slide slide level2"><h2>Install</h2><p>Download from <a href="https://maven.apache.org/download.cgi" target="_blank">https://maven.apache.org/download.cgi</a></p>
+<pre><code>mvn --version</code></pre></section><section id="maven-install---task" class="title-slide slide level2"><h2>Maven install - task</h2><ul>
+<li><a href="git-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
+</ul></section><section id="creating-the-project" class="title-slide slide level2"><h2>Creating the project</h2><p>The initial project setup can be generated by Maven.</p>
+<p>The simplest of Maven projects can be created with this simple command:</p>
+<div style="font-size: 85%">
+<pre><code>mvn archetype:generate                          \
+-DarchetypeGroupId=org.apache.maven.archetypes  \
+-DarchetypeArtifactId=maven-archetype-quickstart\
+-DarchetypeVersion=1.4                          \
+-DgroupId=com.mycompany                         \
+-DartifactId=my-app</code></pre>
+</div></section><section id="creating-the-project---task" class="title-slide slide level2"><h2>Creating the project - task</h2><ul>
+<li><a href="git-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
+<li><a href="git-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section><section id="project-tree" class="title-slide slide level2"><h2>Project tree</h2><pre><code>|-- src
+|   |-- main
+|   |   |-- java
+|   |       |-- com.mycompany
+|   |           |-- App.java
+|   |-- test
+|       |-- java
+|           |-- com.mycompany
+|               |-- AppTest.java
+|-- pom.xml</code></pre></section><section id="create-project---tasks" class="title-slide slide level2"><h2>Create project - tasks</h2></section></section>
+<section><section id="maven-cli" class="title-slide slide level1"><h1>Maven CLI</h1></section><section id="syntax" class="title-slide slide level2"><h2>Syntax</h2><pre><code>mvn &lt;goal&gt;</code></pre>
+<pre><code>mvn &lt;plugin&gt;:&lt;goal&gt;</code></pre></section><section id="compilation" class="title-slide slide level2"><h2>Compilation</h2><pre><code>mvn compile</code></pre></section><section id="compilation---task" class="title-slide slide level2"><h2>Compilation - task</h2></section><section id="packaging" class="title-slide slide level2"><h2>Packaging</h2><pre><code>mvn package</code></pre></section><section id="packaging---task" class="title-slide slide level2"><h2>Packaging - task</h2><ul>
+<li><a href="git-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section><section id="test" class="title-slide slide level2"><h2>Test</h2><pre><code>mvn test</code></pre></section><section id="installing-to-local-repository" class="title-slide slide level2"><h2>Installing to local repository</h2><pre><code>mvn install</code></pre></section><section id="installing-to-local-repository---task" class="title-slide slide level2"><h2>Installing to local repository - task</h2><ul>
+<li><a href="git-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+</ul></section><section id="deploying-to-remote-repository" class="title-slide slide level2"><h2>Deploying to remote repository</h2><p>This will deploy to configured Nexus repository:</p>
+<pre><code>mvn deploy</code></pre></section><section id="cleaning" class="title-slide slide level2"><h2>Cleaning</h2><pre><code>mvn clean</code></pre></section><section id="cleaning---task" class="title-slide slide level2"><h2>Cleaning - task</h2><ul>
+<li><a href="git-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+</ul></section><section id="lifecycle-summary" class="title-slide slide level2"><h2>Lifecycle summary</h2><ol type="1">
+<li><p><em>Goal</em> - is the single unit of task which does some real work. E.g.</p></li>
+<li><p><em>Phase</em> - is a group of ordered goals.</p></li>
+<li><p><em>Build Lifecycle</em> - is a group of ordered phases</p></li>
+</ol></section><section id="lifecycle-example" class="title-slide slide level2"><h2>Lifecycle example</h2><p>The lifecycle for the POM packaging <code>jar</code> includes the following phases:</p>
+<p><code>validate</code> <code>initialize</code> <code>generate-sources</code> <code>process-sources</code> <code>generate-resources</code> <code>process-resources</code> <code>compile</code> <code>process-classes</code> <code>generate-test-sourcess</code> <code>process-test-sources</code> <code>generate-test-resources</code> <code>process-test-resources</code> <code>test-compile</code> <code>process-test-classes</code> <code>test</code> <code>prepare-package</code> <code>package</code> <code>pre-integration-test</code> <code>integration-test</code> <code>post-integration-test</code> <code>verify</code> <code>install</code> <code>deploy</code></p>
+<p>You can get it by: <code>mvn help:describe -Dcmd=compile</code></p></section></section>
+<section><section id="work-with-dependencies" class="title-slide slide level1"><h1>Work with Dependencies</h1></section><section id="using-java-libraries" class="title-slide slide level2"><h2>Using java libraries</h2><p>For example, we want to calculate difference between two strings using <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank">Levenhstein distance</a> metric.</p>
+<p>For this we would like to use <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/similarity/LevenshteinDistance.html">LevenshteinDistance</a> class from <code>The Commons Text Package</code> by Apache.</p>
+<p>let’s download</p>
+<p><a href="https://commons.apache.org/proper/commons-text/userguide.html" target="_blank">apache.</a></p></section><section id="maven-project-in-ide" class="title-slide slide level2"><h2>Maven project in IDE</h2></section><section id="using-dependencies" class="title-slide slide level2"><h2>Using dependencies</h2></section><section id="our-project-as-dependency" class="title-slide slide level2"><h2>Our project as dependency</h2></section><section id="multi-module-maven-project" class="title-slide slide level2"><h2>Multi-module Maven project</h2></section></section>
+<section><section id="section" class="title-slide slide level1"><h1></h1></section><section id="scopes" class="title-slide slide level2"><h2>Scopes</h2></section><section id="profiles" class="title-slide slide level2"><h2>Profiles</h2></section></section>
+<section><section id="related-tools" class="title-slide slide level1"><h1>Related tools</h1></section><section id="plugins" class="title-slide slide level2"><h2>Plugins</h2><p>TODO</p>
+<p>E.g. generate Java classes from XML XSD.</p></section><section id="ant" class="title-slide slide level2"><h2>ANT</h2><p>Sample <code>build.xml</code> - ANT build file:</p>
+<div style="font-size: 30%">
+<pre><code>&lt;project&gt;
+
+    &lt;target name=&quot;clean&quot;&gt;
+        &lt;delete dir=&quot;build&quot;/&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;compile&quot;&gt;
+        &lt;mkdir dir=&quot;build/classes&quot;/&gt;
+        &lt;javac srcdir=&quot;src&quot; destdir=&quot;build/classes&quot;/&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;jar&quot;&gt;
+        &lt;mkdir dir=&quot;build/jar&quot;/&gt;
+        &lt;jar destfile=&quot;build/jar/HelloWorld.jar&quot; basedir=&quot;build/classes&quot;&gt;
+            &lt;manifest&gt;
+                &lt;attribute name=&quot;Main-Class&quot; value=&quot;oata.HelloWorld&quot;/&gt;
+            &lt;/manifest&gt;
+        &lt;/jar&gt;
+    &lt;/target&gt;
+
+    &lt;target name=&quot;run&quot;&gt;
+        &lt;java jar=&quot;build/jar/HelloWorld.jar&quot; fork=&quot;true&quot;/&gt;
+    &lt;/target&gt;
+
+&lt;/project&gt;</code></pre>
+</div>
+<p>Usage: <code>ant clean compile jar run</code></p>
+<p><a href="https://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html" target="_blank">more</a></p></section><section id="gradle" class="title-slide slide level2"><h2>Gradle</h2><pre><code>compile &#39;com.company:site-core:1.0-SNAPSHOT&#39;</code></pre></section><section id="continuous-integration" class="title-slide slide level2"><h2>Continuous Integration</h2><p><img data-src="jenkins2.svg" /></p></section></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
