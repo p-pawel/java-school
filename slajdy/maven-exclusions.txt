@@ -1,0 +1,43 @@
+<!--
+## {data-background="https://upload.wikimedia.org/wikipedia/commons/0/0b/Maven_logo.svg"}
+
+```
+****  intro: bld manually
+****    
+.*** bld from cmdline
+**** (np from ide
+...* np with deps
+****
+*.     ant, gradle, CI
+
+  **
+****
+```
+
+
+--><!--
+
+https://maven.apache.org/guides/getting-started/
+
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+
+
+
+https://www.quora.com/Why-do-we-use-Maven-in-Java
+
+https://stackoverflow.com/questions/10764576/why-do-we-need-maven-or-ant-if-we-already-have-eclipse
+
+
+
+Dlaczego Maven jest fajny i przy większych projektach bez tego typu narzędzi nie można by wydajnie pracować. Wydajnie albo i stabilnie, powtarzalnie, bo narzędzia budowania mają tę zaletę, 
+
+
+
+https://www.baeldung.com/java-create-jar
+https://en.wikipedia.org/wiki/Java_Classloader#JAR_hell
+https://dzone.com/articles/what-is-jar-hell
+https://dzone.com/articles/jar-hell-made-easy
+https://stackoverflow.com/questions/21108953/solving-a-jar-hell-with-maven
+
+-->

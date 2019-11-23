@@ -60,22 +60,70 @@ Przeanalizuj strukturę plików.
 
 ## Zadanie 6
 
+Zainstaluj paczkę z programem z poprzednich zadań do lokalnego repozytorium.
+
+Przeanalizuj strukturę plików.   
+
+
+## Zadanie 7
+
+Wyczyść dane budowania z poprzednich zadań.
+
+Przeanalizuj strukturę plików.   
+
+
+## Zadanie 8
+
+Dla plików z poprzednich zadań wykonaj jednym poleceniem poniższe kroki: 
+* wyczyszczenie danych budowania 
+* kompilacja programu
+* zbudowanie paczki
+* instalacja paczki do 
+
+
+Przeanalizuj strukturę plików.   
+
+
+
+## Zadanie 9
+
 Zmodyfikuj aplikację tak, aby wyświetlała tekst `Hello Maven`.
 
 Z linii poleceń zbuduj paczkę z programem i uruchom program. 
 
 
 
-### Zadanie 7
+### Zadanie 10
  
 Utwórz projekt Maven w IDE
 
-### Zadanie 8
+### Zadanie 11
 Projekt z zależnościami
 
-### Zadanie 9
-Dwa projekty - zależne od siebie 
-`mvn install`
+### Zadanie 12
+Dwa moduły - zależne od siebie.
 
-### Zadanie 10
+
+### Zadanie 13
 Projekt wielomodułowy
+
+
+
+
+## Zadanie 14
+
+1) Ze strony [https://gradle.org/releases/](https://gradle.org/releases/)
+pobierz paczkę z programem Gradle odpowiednią dla Twojego systemu operacyjnego.
+
+2) Rozpakuj paczkę w wybranym katalogu, np. `C:\opt\`
+
+3) Dodaj podkatalog `bin` z tego katalogu do zmiennej środowiskowej `PATH`.
+
+4) Zweryfikuj instalację uruchamiając `gradle -version` lub `gradle --version`
+<small>(aby sprawdzić poprawnośc ustawień zmiennej środowiskowej `PATH` Upewnij się, że jesteś w innym katalogu niże)</small>
+
+
+
+## Zadanie 15 
+
+Utwórz 

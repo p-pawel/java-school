@@ -1,68 +1,25 @@
-% ![](maven_white.svg)
+% Building tools
 
-<!--
-## {data-background="https://upload.wikimedia.org/wikipedia/commons/0/0b/Maven_logo.svg"}
-
-```
-****  intro: bld manually
-****    
-.*** bld from cmdline
-**** (np from ide
-...* np with deps
-****
-*.     ant, gradle, CI
-
-  **
-****
-```
-
-
--->
-
-
-
-
-<!--
-
-https://maven.apache.org/guides/getting-started/
-
-https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
-
-
-
-
-https://www.quora.com/Why-do-we-use-Maven-in-Java
-
-https://stackoverflow.com/questions/10764576/why-do-we-need-maven-or-ant-if-we-already-have-eclipse
-
-
-
-Dlaczego Maven jest fajny i przy większych projektach bez tego typu narzędzi nie można by wydajnie pracować. Wydajnie albo i stabilnie, powtarzalnie, bo narzędzia budowania mają tę zaletę, 
-
-
-
-https://www.baeldung.com/java-create-jar
-https://en.wikipedia.org/wiki/Java_Classloader#JAR_hell
-https://dzone.com/articles/what-is-jar-hell
-https://dzone.com/articles/jar-hell-made-easy
-https://stackoverflow.com/questions/21108953/solving-a-jar-hell-with-maven
-
--->
 
 # Intro
 
-## Why need any building tool?
-Recap: manual compilation
+## Need of building tool
 
-
-```
-javac src\com\company\*.java
-```
-
-Manual commandline packaging. 
+Recap: manual compilation:
 
 ```
-jar cf Example.jar src\com\company\*.class
+javac src/com/company/*.java
+```
+
+Manual command-line JAR packaging: 
+
+```
+jar cf HelloWorld.jar src/com/company/*.class
+```
+Manual command-line JAR packaging with manifest: 
+
+```
+jar cfe HelloWorld.jar com.company.Main ./*
 ```
 
 
@@ -73,9 +30,85 @@ https://www.baeldung.com/java-create-jar
 
 -->
 
+
+# Scripting
+
+## Bash/Batch scripts
+
+
+## Makefiles
+
+
+# Apache Ant
+
+![](maven-apache-ant-logo.svg)
+
+## Apache Ant - intro
+
+Software tool for automating software build processes which originated from the Apache Tomcat project
+ in early 2000. 
+ 
+Replacement for the `Make` build tool of Unix, and was created due to a number of problems with Unix's make.
+
+It is similar to `Make` but is implemented using the Java language, requires the Java platform, 
+and is best suited to building Java projects. 
+
+----
+
+Sample `build.xml` - ANT build file:
+
+<div style="font-size: 70%">
+
+```
+<project>
+
+    <target name="clean">
+        <delete dir="ant-build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="ant-build/classes"/>
+        <javac srcdir="src" destdir="ant-build/classes"/>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="ant-build/jar"/>
+        <jar destfile="ant-build/jar/HelloWorld.jar" basedir="ant-build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="com.company.Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="ant-build/jar/HelloWorld.jar" fork="true"/>
+    </target>
+
+</project>
+
+```
+</div>
+
+Usage: `ant clean compile jar run`
+
+<a href="https://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html" target="_blank">more</a>
+
+
+
+# ![](maven_white.svg)
+
+
+## Maven - intro
+
+Maven addresses two aspects of building software: 
+
+* how software is built
+ 
+* software dependencies
+
+* it uses conventions for the build procedure 
+
 ## Packages / Artifacts
-
-
 
 ```
 groupId
@@ -100,40 +133,52 @@ version
 
 
 
-* Consistent usage across all projects - means no ramp up time for new developers coming onto a project
+* Consistent usage across all projects (no ramp up time)
 
 
 
-* Release management and distribution publication: Without much additional configuration, 
+* Release management and distribution publication <!-- Without much additional configuration, 
 Maven will integrate with your source control system (such as Subversion or Git)
- * manage the release of a project based on a certain tag.
-  
+ * manage the release of a project based on a certain tag. 
   * publish to a distribution location for use by other projects 
  Maven is able to publish individual outputs such as a JAR, an archive including other dependencies and documentation,
   or as a source distribution.
 
-
+-->
+  
 
 
 * Able to easily work with multiple projects at the same time
 
+---
 
-* Extensible, with the ability to easily write plugins in Java or scripting languages
+
+* Extensible with plugins in Java or scripting languages
 
 * Instant access to new features with little or no extra configuration
+
 * Ant tasks for dependency management and deployment outside of Maven
 
 * Model based builds: Maven is able to build any number of projects into predefined output types such as a JAR, WAR, 
 or distribution based on metadata about the project, without the need to do any scripting in most cases.
 
+
+## Reports and documentation
+
 * Coherent site of project information: Using the same metadata as for the build process, Maven is able to generate 
 a web site or PDF including 
+
     * any documentation you care to add, and adds to that standard 
+
     * reports about the state of development of the project.
  
 
 
-* Dependency management: Maven encourages the use of a central repository of JARs and other dependencies. Maven comes with a mechanism that your project's clients can use to download any JARs required for building your project from a central JAR repository much like Perl's CPAN. This allows users of Maven to reuse JARs across projects and encourages communication between projects to ensure that backward compatibility issues are dealt with.
+## Dependency management
+
+Maven encourages the use of a central repository of JARs and other dependencies.
+ 
+ This allows users of Maven to reuse JARs across projects and encourages communication between projects to ensure that backward compatibility issues are dealt with.
 
 
 ## Benefits
@@ -208,11 +253,11 @@ mvn archetype:generate                          \
 ## Syntax
 
 ```
-mvn <goal>
+mvn <phase>
 ```
 
 ```
-mvn <plugin>:<goal>
+mvn <plugin>:<phase>
 ```
 
 ## Compilation
@@ -222,6 +267,7 @@ mvn compile
 
 ## Compilation - task
 
+* <a href="git-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
 
 ## Packaging
 
@@ -232,7 +278,7 @@ mvn package
 
 ## Packaging - task
 
-* <a href="git-tasks.html#/zadanie-3" target="_blank">[Task 3]</a>
+* <a href="git-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 
 ## Test
 
@@ -247,7 +293,8 @@ mvn install
 ```
 
 ## Installing to local repository - task
-* <a href="git-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
+* <a href="git-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
+
 
 ## Deploying to remote repository
 
@@ -266,15 +313,28 @@ mvn clean
 
 ## Cleaning - task
 
+* <a href="git-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>
 
-* <a href="git-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
+## Sequence of phases and goals
+
+E.g.
+```
+mvn <phase> <phase:goal> ...
+``` 
+
+## Chaining of commands 
+
+* <a href="git-tasks.html#/zadanie-8" target="_blank">[Task 8]</a>
 
 ## Lifecycle summary
 
 1. <em>Goal</em> - is the single unit of task which does some real work.
-E.g. 
+
+e.g. `mvn compiler:compile`
 
 2. <em>Phase</em> - is a group of ordered goals.
+
+e.g. `mvn compile`
 
 3. <em>Build Lifecycle</em> - is a group of ordered phases 
 
@@ -309,12 +369,16 @@ The lifecycle for the POM packaging `jar` includes the following phases:
 `install`
 `deploy`
 
-You can get it by: `mvn help:describe -Dcmd=compile`
+Get it by: `mvn help:describe -Dcmd=compile`
 
+
+## Maven CLI summary - task
+
+* <a href="git-tasks.html#/zadanie-9" target="_blank">[Task 9]</a>
 
 # Work with Dependencies
 
-## Using java libraries
+## Using java libraries - manually
 
 For example, we want to calculate difference between two strings using <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank">Levenhstein distance</a> metric.
 
@@ -329,78 +393,223 @@ let's download
 
 ## Maven project in IDE
 
+* <a href="git-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
+
+
 
 ## Using dependencies
 
+In `dependencies` section:
+
+```
+<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.6</version>
+</dependency>
+```
+
+## Using dependencies - task
+
+* <a href="git-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
 
 ## Our project as dependency
+
+Only artifacts available in repository can be used as dependencies.
+ 
+## Our project as dependency - task
+
+* <a href="git-tasks.html#/zadanie-11" target="_blank">[Task 11]</a>
 
 
 
 ## Multi-module Maven project
 
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+		 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.company.multi</groupId>
+    <artifactId>java-multi-modules</artifactId>
+    <packaging>pom</packaging>
+	<version>1.0</version>
+
+	<modules>
+        <module>core</module>
+        <module>web</module>
+        <module>utils</module>
+    </modules>
+	
+</project>
+```
+## Multi-module Maven project - task
+
+* <a href="git-tasks.html#/zadanie-12" target="_blank">[Task 12]</a>
 
 
-# 
+# More Maven 
 
 ## Scopes
 
+* `compile` (default) - Dependencies with this scope are available on the classpath of the project in all build tasks and they're propagated to the dependent projects.
+
+```
+<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.6</version>
+</dependency>
+```
+
+It is transitive.
+
+
+
+##
+
+* `provided` - this scope is used to mark dependencies that should be provided at runtime by JDK or a container
+
+```
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>2.5</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+
+## 
+
+* `runtime` - the dependencies with this scope are required at runtime, but they're not needed for compilation of the project code
+
+```
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>6.0.6</version>
+    <scope>runtime</scope>
+</dependency>
+```
+
+
+##
+
+
+* `test` - this scope is used to indicate that dependency isn't required at standard runtime of the application, but is used only for test purposes
+
+```
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+    <scope>test</scope>
+</dependency>
+```
+It is not transitive
+
+
 ## Profiles
 
-# Related tools
+```
+    <profiles>
+      <profile>
+        <activation>
+          <property>
+            <name>environment</name>
+            <value>test</value>
+          </property>
+        </activation>
+        ...
+      </profile>
+    </profiles>
+```
 
+```
+mvn groupId:artifactId:goal -P profile-1,profile-2
+```
+More: [https://maven.apache.org/guides/introduction/introduction-to-profiles.html](https://maven.apache.org/guides/introduction/introduction-to-profiles.html)
 
 ## Plugins
 
-TODO
-
 E.g. generate Java classes from XML XSD.
 
-## ANT
+```
+       <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jaxb2-maven-plugin</artifactId>
+       </plugin>
+```
 
-Sample `build.xml` - ANT build file:
+More: [https://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_xjc_basic.html](https://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_xjc_basic.html)
 
-<div style="font-size: 30%">
+
+# <img src="maven-gradle-white.svg" style="width: 70%" />
+
+## Install
+
+Download from: 
+[https://gradle.org/releases/](https://gradle.org/releases/)
+
+Verify: `gradle --version`
+
+## Install - task
+
+* <a href="git-tasks.html#/zadanie-13" target="_blank">[Task 13]</a>
+
+## Create project
 
 ```
-<project>
-
-    <target name="clean">
-        <delete dir="build"/>
-    </target>
-
-    <target name="compile">
-        <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes"/>
-    </target>
-
-    <target name="jar">
-        <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
-            <manifest>
-                <attribute name="Main-Class" value="oata.HelloWorld"/>
-            </manifest>
-        </jar>
-    </target>
-
-    <target name="run">
-        <java jar="build/jar/HelloWorld.jar" fork="true"/>
-    </target>
-
-</project>
+gradle init
 ```
-</div>
 
-Usage: `ant clean compile jar run`
+## Create project - task
 
-<a href="https://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html" target="_blank">more</a>
+* <a href="git-tasks.html#/zadanie-14" target="_blank">[Task 14]</a>
 
-## Gradle
-
+<!--
 ```
 compile 'com.company:site-core:1.0-SNAPSHOT'
-```
+``` -->
 
-## Continuous Integration
+# Continuous Integration
+
+## what why
+
+https://www.katalon.com/resources-center/blog/benefits-continuous-integration-delivery/
+
+https://dzone.com/articles/9-bene-ts-of-continuous-integration
+
+https://nevercode.io/blog/what-is-continuous-integration-and-how-to-benefit-from-it/
+
+https://pantheon.io/blog/5-advantages-continuous-integration
+
+
+## tools
+
+https://code-maze.com/top-8-continuous-integration-tools/
+https://www.guru99.com/top-20-continuous-integration-tools.html
+
+
+## example: jenkins
+
+https://jenkins.io/doc/book/pipeline/
+
+https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/
+https://wiki.jenkins.io/display/JENKINS/Pipeline+Maven+Plugin
+https://jenkins.io/blog/2017/02/07/declarative-maven-project/
 
 ![](jenkins2.svg)
+
+## ci cd 
+
+## some best practices 
+
+https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-practices
+
+
+

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>JUnit</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>JUnit</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="intro" class="title-slide slide level1"><h1>intro</h1><p>Intro o testach ogólnie i gdzie jest miejsce testowania w cyklu życia oprogramowania</p>
+<p>http://testerzy.pl/baza-wiedzy/poziomy-testowania</p>
+<p>http://testerzy.pl/praktyka-testowania/automatyzacja-w-procesie-testowania</p></section>
+<section><section id="junit" class="title-slide slide level1"><h1>JUnit</h1></section><section id="where-to-get-from" class="title-slide slide level2"><h2>Where to get from?</h2></section><section id="simple-test" class="title-slide slide level2"><h2>Simple test</h2><pre><code>public class MyUnitTest {
+
+    @Test
+    public void testSum() {
+        assertEquals(3, 1 + 2);
+    }
+}</code></pre></section><section id="simple-test---tasks" class="title-slide slide level2"><h2>Simple test - tasks</h2></section><section id="testing-exceptions" class="title-slide slide level2"><h2>Testing exceptions</h2></section><section id="testing-exceptions---task" class="title-slide slide level2"><h2>Testing exceptions - task</h2></section><section id="parameterized-tests" class="title-slide slide level2"><h2>parameterized tests</h2><p>Annot Method Csv</p></section><section id="assertj-fest-czy-warto-przy-ju5" class="title-slide slide level2"><h2>assertj / fest? Czy warto przy ju5?</h2></section><section id="coverage" class="title-slide slide level2"><h2>Coverage</h2></section></section>
+<section><section id="tdd" class="title-slide slide level1"><h1>Tdd</h1></section><section id="przykład" class="title-slide slide level2"><h2>przykład</h2></section><section id="zadania" class="title-slide slide level2"><h2>Zadania</h2></section></section>
+<section><section id="inne" class="title-slide slide level1"><h1>inne</h1></section><section id="spock" class="title-slide slide level2"><h2>Spock</h2></section><section id="testng" class="title-slide slide level2"><h2>testng?</h2></section><section id="bddcucumber" class="title-slide slide level2"><h2>bdd/cucumber</h2><p>http://testerzy.pl/baza-wiedzy/behaviour-driven-development</p></section></section>
+<section><section id="mocks-stubs-fake-dummy" class="title-slide slide level1"><h1>Mocks, stubs, fake, dummy</h1></section><section id="why-mocking" class="title-slide slide level2"><h2>Why mocking?</h2></section><section id="mockito" class="title-slide slide level2"><h2>Mockito</h2><p><img data-src="https://raw.githubusercontent.com/mockito/mockito.github.io/master/img/logo%402x.png" /></p></section></section>
+<section id="best-practices" class="title-slide slide level1"><h1>best practices</h1><!--
+simple mocking:
+
+https://www.vogella.com/tutorials/Mockito/article.html
+https://stackoverflow.com/questions/28295625/mockito-spy-vs-mock
+
+https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da
+
+https://www.baeldung.com/mockito-mock-methods
+
+
+
+
+adnotacje
+https://www.baeldung.com/mockito-annotations
+
+j8
+https://www.baeldung.com/mockito-2-java-8
+
+inne
+https://www.baeldung.com/mockito-series & https://www.baeldung.com/?s=mockito
+
+
+--></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
