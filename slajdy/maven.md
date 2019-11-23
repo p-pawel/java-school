@@ -203,7 +203,7 @@ mvn --version
 
 ## Maven install - task
 
-* <a href="git-tasks.html#/zadanie-1" target="_blank">[Task 1]</a>
+* <a href="maven-tasks.html#/zadanie-1" target="_blank">[Task 1]</a>
 
 
 
@@ -227,8 +227,8 @@ mvn archetype:generate                          \
 
 ## Creating the project - task
 
-* <a href="git-tasks.html#/zadanie-2" target="_blank">[Task 2]</a>
-* <a href="git-tasks.html#/zadanie-3" target="_blank">[Task 3]</a>
+* <a href="maven-tasks.html#/zadanie-2" target="_blank">[Task 2]</a>
+* <a href="maven-tasks.html#/zadanie-3" target="_blank">[Task 3]</a>
 
 ## Project tree
 
@@ -267,7 +267,7 @@ mvn compile
 
 ## Compilation - task
 
-* <a href="git-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
+* <a href="maven-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
 
 ## Packaging
 
@@ -278,7 +278,7 @@ mvn package
 
 ## Packaging - task
 
-* <a href="git-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
+* <a href="maven-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 
 ## Test
 
@@ -293,7 +293,7 @@ mvn install
 ```
 
 ## Installing to local repository - task
-* <a href="git-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
+* <a href="maven-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
 
 
 ## Deploying to remote repository
@@ -313,7 +313,7 @@ mvn clean
 
 ## Cleaning - task
 
-* <a href="git-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>
+* <a href="maven-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>
 
 ## Sequence of phases and goals
 
@@ -324,7 +324,7 @@ mvn <phase> <phase:goal> ...
 
 ## Chaining of commands 
 
-* <a href="git-tasks.html#/zadanie-8" target="_blank">[Task 8]</a>
+* <a href="maven-tasks.html#/zadanie-8" target="_blank">[Task 8]</a>
 
 ## Lifecycle summary
 
@@ -374,7 +374,7 @@ Get it by: `mvn help:describe -Dcmd=compile`
 
 ## Maven CLI summary - task
 
-* <a href="git-tasks.html#/zadanie-9" target="_blank">[Task 9]</a>
+* <a href="maven-tasks.html#/zadanie-9" target="_blank">[Task 9]</a>
 
 # Work with Dependencies
 
@@ -393,7 +393,7 @@ let's download
 
 ## Maven project in IDE
 
-* <a href="git-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
+* <a href="maven-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
 
 
 
@@ -411,7 +411,7 @@ In `dependencies` section:
 
 ## Using dependencies - task
 
-* <a href="git-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
+* <a href="maven-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
 
 ## Our project as dependency
 
@@ -419,7 +419,7 @@ Only artifacts available in repository can be used as dependencies.
  
 ## Our project as dependency - task
 
-* <a href="git-tasks.html#/zadanie-11" target="_blank">[Task 11]</a>
+* <a href="maven-tasks.html#/zadanie-11" target="_blank">[Task 11]</a>
 
 
 
@@ -448,7 +448,7 @@ Only artifacts available in repository can be used as dependencies.
 ```
 ## Multi-module Maven project - task
 
-* <a href="git-tasks.html#/zadanie-12" target="_blank">[Task 12]</a>
+* <a href="maven-tasks.html#/zadanie-12" target="_blank">[Task 12]</a>
 
 
 # More Maven 
@@ -559,7 +559,7 @@ Verify: `gradle --version`
 
 ## Install - task
 
-* <a href="git-tasks.html#/zadanie-13" target="_blank">[Task 13]</a>
+* <a href="maven-tasks.html#/zadanie-13" target="_blank">[Task 13]</a>
 
 ## Create project
 
@@ -569,7 +569,7 @@ gradle init
 
 ## Create project - task
 
-* <a href="git-tasks.html#/zadanie-14" target="_blank">[Task 14]</a>
+* <a href="maven-tasks.html#/zadanie-14" target="_blank">[Task 14]</a>
 
 <!--
 ```
