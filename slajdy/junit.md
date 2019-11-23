@@ -21,9 +21,12 @@ http://testerzy.pl/praktyka-testowania/automatyzacja-w-procesie-testowania
 -->
 
 # JUnit 
+
 ## Where to get from?
 
+---
 
+[https://github.com/junit-team/junit5-samples/blob/r5.5.2/junit5-jupiter-starter-maven/pom.xml](https://github.com/junit-team/junit5-samples/blob/r5.5.2/junit5-jupiter-starter-maven/pom.xml)
 
 ## Simple test
 
