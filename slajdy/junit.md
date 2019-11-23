@@ -1,12 +1,24 @@
 % JUnit
 
-# intro
+# Intro
+
+## Test levels
+
+![](http://www.duncannisbet.co.uk/wp-content/uploads/2012/07/test_pyramid-300x218.gif)
+
+## V model
+
+![](https://insights.sei.cmu.edu/assets/content/F1%20-%20Traditional%20V%20Model.jpg)
+
+<!--
+
 Intro o testach ogólnie i gdzie jest miejsce testowania w cyklu życia oprogramowania
 
 http://testerzy.pl/baza-wiedzy/poziomy-testowania
 
 http://testerzy.pl/praktyka-testowania/automatyzacja-w-procesie-testowania
 
+-->
 
 # JUnit 
 ## Where to get from?
@@ -28,23 +40,50 @@ public class MyUnitTest {
 ## Simple test - tasks
 
 
+* <a href="junit-tasks.html#/zadanie-1" target="_blank">[Task 1]</a>
+
 ## Testing exceptions
+
+```
+@Test
+void testExpectedException() {
+ 
+  Assertions.assertThrows(NumberFormatException.class, () -> {
+    Integer.parseInt("One");
+  });
+ 
+}
+```
 
 ## Testing exceptions - task
 
+* <a href="junit-tasks.html#/zadanie-2" target="_blank">[Task 2]</a>
 
 
-## parameterized tests
-Annot
-Method 
-Csv
+# Parameterized tests
 
+## Parameters from annotation
+
+## Parameters from annotation - task
+
+## Parameters from Method 
+
+## Parameters from Method - task
+
+## Parameters from CSV-file
+
+## Parameters from CSV-file - task
+
+
+
+# Utilities
 
 ## assertj / fest? Czy warto przy ju5? 
 
 ## Coverage
 
 # Tdd
+
 ## przykład 
 ## Zadania 
 

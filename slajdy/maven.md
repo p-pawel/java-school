@@ -317,9 +317,9 @@ mvn clean
 
 ## Sequence of phases and goals
 
-E.g.
+
 ```
-mvn <phase> <phase:goal> ...
+mvn <phase-1> <phase-2> <...>
 ``` 
 
 ## Chaining of commands 
@@ -376,6 +376,12 @@ Get it by: `mvn help:describe -Dcmd=compile`
 
 * <a href="maven-tasks.html#/zadanie-9" target="_blank">[Task 9]</a>
 
+
+## Maven project in IDE
+
+* <a href="maven-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
+
+
 # Work with Dependencies
 
 ## Using java libraries - manually
@@ -390,10 +396,6 @@ let's download
 
 
 <a href="https://commons.apache.org/proper/commons-text/userguide.html" target="_blank">apache.</a>
-
-## Maven project in IDE
-
-* <a href="maven-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
 
 
 
@@ -550,6 +552,33 @@ More: [https://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_xj
 
 # <img src="maven-gradle-white.svg" style="width: 70%" />
 
+## Gradle
+
+* open source build automation tool focused on flexibility and performance
+
+* build scripts can be written in DSL (Domain Specific Language) using Groovy or Kotlin
+
+* official Android build tool
+ 
+## Features
+
+* **Highly customizable** 
+
+* **Fast** - completes Task quickly due to:
+ * reusing outputs of previous executions if not changed
+ * executing tasks in parallel
+ 
+ * **Powerful** - comes with support for many popular languages and technologies
+
+## Concepts
+
+* **Build** - consists of one or more projects 
+
+* **Project** - might represent a library JAR or a web application
+
+* **Tasks** - represent some atomic piece of work 
+
+
 ## Install
 
 Download from: 
@@ -578,8 +607,19 @@ compile 'com.company:site-core:1.0-SNAPSHOT'
 
 # Continuous Integration
 
-## what why
+## What & why
 
+* Smaller Code Changes
+
+* Deploy Your Code to Production
+
+* Build Stuff Now & Build Faster:
+ * Faster Mean Time To Resolution (MTTR)  
+ * Never Ship Broken Code
+
+* Build Repeatable Processes
+
+<!--
 https://www.katalon.com/resources-center/blog/benefits-continuous-integration-delivery/
 
 https://dzone.com/articles/9-bene-ts-of-continuous-integration
@@ -587,29 +627,45 @@ https://dzone.com/articles/9-bene-ts-of-continuous-integration
 https://nevercode.io/blog/what-is-continuous-integration-and-how-to-benefit-from-it/
 
 https://pantheon.io/blog/5-advantages-continuous-integration
+-->
 
+## Tools
 
-## tools
+* TeamCity
 
+* Jenkins
+
+* Travis CI
+
+* Bamboo
+
+* GitLab CI
+
+<!--
 https://code-maze.com/top-8-continuous-integration-tools/
 https://www.guru99.com/top-20-continuous-integration-tools.html
+-->
 
+## Example: jenkins
 
-## example: jenkins
+![](jenkins2.svg)
 
+<!--
 https://jenkins.io/doc/book/pipeline/
 
 https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/
 https://wiki.jenkins.io/display/JENKINS/Pipeline+Maven+Plugin
 https://jenkins.io/blog/2017/02/07/declarative-maven-project/
+-->
 
-![](jenkins2.svg)
 
-## ci cd 
+## Continuous Integration / Contineous Delivery 
 
+<!--
 ## some best practices 
 
 https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-practices
 
 
 
+-->

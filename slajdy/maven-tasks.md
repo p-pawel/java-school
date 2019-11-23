@@ -1,4 +1,4 @@
-% Maven - zadania 
+% Building tools - zadania 
 
 ## Zadanie 1
 
@@ -74,11 +74,12 @@ Przeanalizuj strukturę plików.
 
 ## Zadanie 8
 
-Dla plików z poprzednich zadań wykonaj jednym poleceniem poniższe kroki: 
+Dla plików z poprzednich zadań wykonaj jednym poleceniem poniższe kroki:
+ 
 * wyczyszczenie danych budowania 
 * kompilacja programu
 * zbudowanie paczki
-* instalacja paczki do 
+* instalacja paczki do lokalnego repozytorium.
 
 
 Przeanalizuj strukturę plików.   

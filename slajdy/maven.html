@@ -169,8 +169,7 @@ Maven will integrate with your source control system (such as Subversion or Git)
 </ul></section><section id="deploying-to-remote-repository" class="title-slide slide level2"><h2>Deploying to remote repository</h2><p>This will deploy to configured Nexus repository:</p>
 <pre><code>mvn deploy</code></pre></section><section id="cleaning" class="title-slide slide level2"><h2>Cleaning</h2><pre><code>mvn clean</code></pre></section><section id="cleaning---task" class="title-slide slide level2"><h2>Cleaning - task</h2><ul>
 <li><a href="maven-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
-</ul></section><section id="sequence-of-phases-and-goals" class="title-slide slide level2"><h2>Sequence of phases and goals</h2><p>E.g.</p>
-<pre><code>mvn &lt;phase&gt; &lt;phase:goal&gt; ...</code></pre></section><section id="chaining-of-commands" class="title-slide slide level2"><h2>Chaining of commands</h2><ul>
+</ul></section><section id="sequence-of-phases-and-goals" class="title-slide slide level2"><h2>Sequence of phases and goals</h2><pre><code>mvn &lt;phase-1&gt; &lt;phase-2&gt; &lt;...&gt;</code></pre></section><section id="chaining-of-commands" class="title-slide slide level2"><h2>Chaining of commands</h2><ul>
 <li><a href="maven-tasks.html#/zadanie-8" target="_blank">[Task 8]</a></li>
 </ul></section><section id="lifecycle-summary" class="title-slide slide level2"><h2>Lifecycle summary</h2><ol type="1">
 <li><em>Goal</em> - is the single unit of task which does some real work.</li>
@@ -186,13 +185,13 @@ Maven will integrate with your source control system (such as Subversion or Git)
 <p><code>validate</code> <code>initialize</code> <code>generate-sources</code> <code>process-sources</code> <code>generate-resources</code> <code>process-resources</code> <code>compile</code> <code>process-classes</code> <code>generate-test-sourcess</code> <code>process-test-sources</code> <code>generate-test-resources</code> <code>process-test-resources</code> <code>test-compile</code> <code>process-test-classes</code> <code>test</code> <code>prepare-package</code> <code>package</code> <code>pre-integration-test</code> <code>integration-test</code> <code>post-integration-test</code> <code>verify</code> <code>install</code> <code>deploy</code></p>
 <p>Get it by: <code>mvn help:describe -Dcmd=compile</code></p></section><section id="maven-cli-summary---task" class="title-slide slide level2"><h2>Maven CLI summary - task</h2><ul>
 <li><a href="maven-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+</ul></section><section id="maven-project-in-ide" class="title-slide slide level2"><h2>Maven project in IDE</h2><ul>
+<li><a href="maven-tasks.html#/zadanie-10" target="_blank">[Task 10]</a></li>
 </ul></section></section>
 <section><section id="work-with-dependencies" class="title-slide slide level1"><h1>Work with Dependencies</h1></section><section id="using-java-libraries---manually" class="title-slide slide level2"><h2>Using java libraries - manually</h2><p>For example, we want to calculate difference between two strings using <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank">Levenhstein distance</a> metric.</p>
 <p>For this we would like to use <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/similarity/LevenshteinDistance.html">LevenshteinDistance</a> class from <code>The Commons Text Package</code> by Apache.</p>
 <p>let’s download</p>
-<p><a href="https://commons.apache.org/proper/commons-text/userguide.html" target="_blank">apache.</a></p></section><section id="maven-project-in-ide" class="title-slide slide level2"><h2>Maven project in IDE</h2><ul>
-<li><a href="maven-tasks.html#/zadanie-10" target="_blank">[Task 10]</a></li>
-</ul></section><section id="using-dependencies" class="title-slide slide level2"><h2>Using dependencies</h2><p>In <code>dependencies</code> section:</p>
+<p><a href="https://commons.apache.org/proper/commons-text/userguide.html" target="_blank">apache.</a></p></section><section id="using-dependencies" class="title-slide slide level2"><h2>Using dependencies</h2><p>In <code>dependencies</code> section:</p>
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;commons-lang&lt;/groupId&gt;
     &lt;artifactId&gt;commons-lang&lt;/artifactId&gt;
@@ -273,7 +272,21 @@ Maven will integrate with your source control system (such as Subversion or Git)
             &lt;artifactId&gt;jaxb2-maven-plugin&lt;/artifactId&gt;
        &lt;/plugin&gt;</code></pre>
 <p>More: <a href="https://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_xjc_basic.html">https://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_xjc_basic.html</a></p></section></section>
-<section><section id="section-4" class="title-slide slide level1"><h1><img src="maven-gradle-white.svg" style="width: 70%" /></h1></section><section id="install-1" class="title-slide slide level2"><h2>Install</h2><p>Download from: <a href="https://gradle.org/releases/">https://gradle.org/releases/</a></p>
+<section><section id="section-4" class="title-slide slide level1"><h1><img src="maven-gradle-white.svg" style="width: 70%" /></h1></section><section id="gradle" class="title-slide slide level2"><h2>Gradle</h2><ul>
+<li><p>open source build automation tool focused on flexibility and performance</p></li>
+<li><p>build scripts can be written in DSL (Domain Specific Language) using Groovy or Kotlin</p></li>
+<li><p>official Android build tool</p></li>
+</ul></section><section id="features-1" class="title-slide slide level2"><h2>Features</h2><ul>
+<li><p><strong>Highly customizable</strong></p></li>
+<li><p><strong>Fast</strong> - completes Task quickly due to:</p></li>
+<li><p>reusing outputs of previous executions if not changed</p></li>
+<li><p>executing tasks in parallel</p></li>
+<li><p><strong>Powerful</strong> - comes with support for many popular languages and technologies</p></li>
+</ul></section><section id="concepts" class="title-slide slide level2"><h2>Concepts</h2><ul>
+<li><p><strong>Build</strong> - consists of one or more projects</p></li>
+<li><p><strong>Project</strong> - might represent a library JAR or a web application</p></li>
+<li><p><strong>Tasks</strong> - represent some atomic piece of work</p></li>
+</ul></section><section id="install-1" class="title-slide slide level2"><h2>Install</h2><p>Download from: <a href="https://gradle.org/releases/">https://gradle.org/releases/</a></p>
 <p>Verify: <code>gradle --version</code></p></section><section id="install---task" class="title-slide slide level2"><h2>Install - task</h2><ul>
 <li><a href="maven-tasks.html#/zadanie-13" target="_blank">[Task 13]</a></li>
 </ul></section><section id="create-project" class="title-slide slide level2"><h2>Create project</h2><pre><code>gradle init</code></pre></section><section id="create-project---task" class="title-slide slide level2"><h2>Create project - task</h2><ul>
@@ -283,12 +296,48 @@ Maven will integrate with your source control system (such as Subversion or Git)
 ```
 compile 'com.company:site-core:1.0-SNAPSHOT'
 ``` --></section></section>
-<section><section id="continuous-integration" class="title-slide slide level1"><h1>Continuous Integration</h1></section><section id="what-why" class="title-slide slide level2"><h2>what why</h2><p>https://www.katalon.com/resources-center/blog/benefits-continuous-integration-delivery/</p>
-<p>https://dzone.com/articles/9-bene-ts-of-continuous-integration</p>
-<p>https://nevercode.io/blog/what-is-continuous-integration-and-how-to-benefit-from-it/</p>
-<p>https://pantheon.io/blog/5-advantages-continuous-integration</p></section><section id="tools" class="title-slide slide level2"><h2>tools</h2><p>https://code-maze.com/top-8-continuous-integration-tools/ https://www.guru99.com/top-20-continuous-integration-tools.html</p></section><section id="example-jenkins" class="title-slide slide level2"><h2>example: jenkins</h2><p>https://jenkins.io/doc/book/pipeline/</p>
-<p>https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/ https://wiki.jenkins.io/display/JENKINS/Pipeline+Maven+Plugin https://jenkins.io/blog/2017/02/07/declarative-maven-project/</p>
-<p><img data-src="jenkins2.svg" /></p></section><section id="ci-cd" class="title-slide slide level2"><h2>ci cd</h2></section><section id="some-best-practices" class="title-slide slide level2"><h2>some best practices</h2><p>https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-practices</p></section></section>
+<section><section id="continuous-integration" class="title-slide slide level1"><h1>Continuous Integration</h1></section><section id="what-why" class="title-slide slide level2"><h2>What &amp; why</h2><ul>
+<li><p>Smaller Code Changes</p></li>
+<li><p>Deploy Your Code to Production</p></li>
+<li><p>Build Stuff Now &amp; Build Faster:</p></li>
+<li><p>Faster Mean Time To Resolution (MTTR)<br />
+</p></li>
+<li><p>Never Ship Broken Code</p></li>
+<li><p>Build Repeatable Processes</p></li>
+</ul>
+<!--
+https://www.katalon.com/resources-center/blog/benefits-continuous-integration-delivery/
+
+https://dzone.com/articles/9-bene-ts-of-continuous-integration
+
+https://nevercode.io/blog/what-is-continuous-integration-and-how-to-benefit-from-it/
+
+https://pantheon.io/blog/5-advantages-continuous-integration
+--></section><section id="tools" class="title-slide slide level2"><h2>Tools</h2><ul>
+<li><p>TeamCity</p></li>
+<li><p>Jenkins</p></li>
+<li><p>Travis CI</p></li>
+<li><p>Bamboo</p></li>
+<li><p>GitLab CI</p></li>
+</ul>
+<!--
+https://code-maze.com/top-8-continuous-integration-tools/
+https://www.guru99.com/top-20-continuous-integration-tools.html
+--></section><section id="example-jenkins" class="title-slide slide level2"><h2>Example: jenkins</h2><p><img data-src="jenkins2.svg" /></p>
+<!--
+https://jenkins.io/doc/book/pipeline/
+
+https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/
+https://wiki.jenkins.io/display/JENKINS/Pipeline+Maven+Plugin
+https://jenkins.io/blog/2017/02/07/declarative-maven-project/
+--></section><section id="continuous-integration-contineous-delivery" class="title-slide slide level2"><h2>Continuous Integration / Contineous Delivery</h2><!--
+## some best practices 
+
+https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-practices
+
+
+
+--></section></section>
     </div>
   </div>
     <script src="reveal.js/js/reveal.js"></script>
