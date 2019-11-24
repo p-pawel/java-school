@@ -65,50 +65,144 @@ void testExpectedException() {
 
 # Parameterized tests
 
+## Series of tests
+
+* <a href="junit-tasks.html#/zadanie-1" target="_blank">[Task 1]</a>
+
 ## Parameters from annotation
+```
+@ParameterizedTest
+@ValueSource(strings = { "racecar", "radar", "able was I ere I saw elba" })
+void palindromes(String candidate) {
+    assertTrue(StringUtils.isPalindrome(candidate));
+}
+```
+
+
 
 ## Parameters from annotation - task
 
-## Parameters from Method 
+* <a href="junit-tasks.html#/zadanie-3" target="_blank">[Task 3]</a>
 
+
+## Parameters from Method 
 ## Parameters from Method - task
+* <a href="junit-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
 
 ## Parameters from CSV-file
-
 ## Parameters from CSV-file - task
+* <a href="junit-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 
 
 
 # Utilities
 
-## assertj / fest? Czy warto przy ju5? 
+## AssertJ 
 
 ## Coverage
 
-# Tdd
+# Test Driven Development
 
-## przykład 
-## Zadania 
+## TDD 
 
-# inne 
-## Spock 
-## testng? 
-## bdd/cucumber 
+<div style="height: 2em"></div>
+<div style="font-size: 200%; font-weight: bold; color: #888">
+<span style="color:red">Red</span>
+<i class="fas fa-arrow-circle-right" ></i>
+<span style="color:green">Green</span>
+<i class="fas fa-arrow-circle-right"></i>
+<span style="color:blue">Refactor</span>
+ </div>
 
-http://testerzy.pl/baza-wiedzy/behaviour-driven-development
+<div style="height: 2em"></div>
+ 
+## TDD - example
 
-# Mocks, stubs, fake, dummy
+Let's write method checking if given String is a palindrome (e.g. `kayak`).
+
+## TDD - task
+* <a href="junit-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
+
+ 
+
+# Other testing frameworks
+ 
+
+## TestNG
+ 
+## Spock
+
+```
+def "two plus two should equal four"() {
+    given:
+        int left = 2
+        int right = 2
+ 
+    when:
+        int result = left + right
+ 
+    then:
+        result == 4
+}
+``` 
+
+## Behaviour Driven Development
+
+```
+Given...
+
+When...
+
+Then...
+```
+
+
+## BDD - Cucumber 
+
+
+```
+Feature: Is it Friday yet?
+  Everybody wants to know when it's Friday
+
+  Scenario: Sunday isn't Friday
+    Given today is Sunday
+    When I ask whether it's Friday yet
+    Then I should be told "Nope"
+```
+
+
+# Test doubles
 
 ## Why mocking?
 
+## Test doubles
+
+* dummy
+* fake
+* mock
+* stub 
+
+## Dummy
+
+Simple object just to satisfy compiler.
+
+## Fake
+
+Fakes are objects that have working implementations, but not same as production one. Usually they take some shortcut and have simplified version of production code.
+
+## Mock
+
+Mocks are objects that register calls they receive.
+In test assertion we can verify on Mocks that all expected actions were performed.
+
+## Stub
+
+Stub is an object that holds predefined data and uses it to answer calls during tests. It is used when we cannot or don’t want to involve objects that would answer with real data or have undesirable side effects.
 
 ## Mockito 
 
 ![](https://raw.githubusercontent.com/mockito/mockito.github.io/master/img/logo%402x.png)
 
-
-
-# best practices
 <!--
 simple mocking:
 
@@ -121,7 +215,13 @@ https://www.baeldung.com/mockito-mock-methods
 
 
 
+# best practices
 
+-->
+
+
+
+<!--
 adnotacje
 https://www.baeldung.com/mockito-annotations
 
@@ -133,3 +233,5 @@ https://www.baeldung.com/mockito-series & https://www.baeldung.com/?s=mockito
 
 
 -->
+
+# The end

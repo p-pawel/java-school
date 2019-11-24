@@ -73,12 +73,59 @@ void testExpectedException() {
 }</code></pre></section><section id="testing-exceptions---task" class="title-slide slide level2"><h2>Testing exceptions - task</h2><ul>
 <li><a href="junit-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
 </ul></section></section>
-<section><section id="parameterized-tests" class="title-slide slide level1"><h1>Parameterized tests</h1></section><section id="parameters-from-annotation" class="title-slide slide level2"><h2>Parameters from annotation</h2></section><section id="parameters-from-annotation---task" class="title-slide slide level2"><h2>Parameters from annotation - task</h2></section><section id="parameters-from-method" class="title-slide slide level2"><h2>Parameters from Method</h2></section><section id="parameters-from-method---task" class="title-slide slide level2"><h2>Parameters from Method - task</h2></section><section id="parameters-from-csv-file" class="title-slide slide level2"><h2>Parameters from CSV-file</h2></section><section id="parameters-from-csv-file---task" class="title-slide slide level2"><h2>Parameters from CSV-file - task</h2></section></section>
-<section><section id="utilities" class="title-slide slide level1"><h1>Utilities</h1></section><section id="assertj-fest-czy-warto-przy-ju5" class="title-slide slide level2"><h2>assertj / fest? Czy warto przy ju5?</h2></section><section id="coverage" class="title-slide slide level2"><h2>Coverage</h2></section></section>
-<section><section id="tdd" class="title-slide slide level1"><h1>Tdd</h1></section><section id="przykład" class="title-slide slide level2"><h2>przykład</h2></section><section id="zadania" class="title-slide slide level2"><h2>Zadania</h2></section></section>
-<section><section id="inne" class="title-slide slide level1"><h1>inne</h1></section><section id="spock" class="title-slide slide level2"><h2>Spock</h2></section><section id="testng" class="title-slide slide level2"><h2>testng?</h2></section><section id="bddcucumber" class="title-slide slide level2"><h2>bdd/cucumber</h2><p>http://testerzy.pl/baza-wiedzy/behaviour-driven-development</p></section></section>
-<section><section id="mocks-stubs-fake-dummy" class="title-slide slide level1"><h1>Mocks, stubs, fake, dummy</h1></section><section id="why-mocking" class="title-slide slide level2"><h2>Why mocking?</h2></section><section id="mockito" class="title-slide slide level2"><h2>Mockito</h2><p><img data-src="https://raw.githubusercontent.com/mockito/mockito.github.io/master/img/logo%402x.png" /></p></section></section>
-<section id="best-practices" class="title-slide slide level1"><h1>best practices</h1><!--
+<section><section id="parameterized-tests" class="title-slide slide level1"><h1>Parameterized tests</h1></section><section id="series-of-tests" class="title-slide slide level2"><h2>Series of tests</h2><ul>
+<li><a href="junit-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
+</ul></section><section id="parameters-from-annotation" class="title-slide slide level2"><h2>Parameters from annotation</h2><pre><code>@ParameterizedTest
+@ValueSource(strings = { &quot;racecar&quot;, &quot;radar&quot;, &quot;able was I ere I saw elba&quot; })
+void palindromes(String candidate) {
+    assertTrue(StringUtils.isPalindrome(candidate));
+}</code></pre></section><section id="parameters-from-annotation---task" class="title-slide slide level2"><h2>Parameters from annotation - task</h2><ul>
+<li><a href="junit-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section><section id="parameters-from-method" class="title-slide slide level2"><h2>Parameters from Method</h2></section><section id="parameters-from-method---task" class="title-slide slide level2"><h2>Parameters from Method - task</h2><ul>
+<li><a href="junit-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+</ul></section><section id="parameters-from-csv-file" class="title-slide slide level2"><h2>Parameters from CSV-file</h2></section><section id="parameters-from-csv-file---task" class="title-slide slide level2"><h2>Parameters from CSV-file - task</h2><ul>
+<li><a href="junit-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+</ul></section></section>
+<section><section id="utilities" class="title-slide slide level1"><h1>Utilities</h1></section><section id="assertj" class="title-slide slide level2"><h2>AssertJ</h2></section><section id="coverage" class="title-slide slide level2"><h2>Coverage</h2></section></section>
+<section><section id="test-driven-development" class="title-slide slide level1"><h1>Test Driven Development</h1></section><section id="tdd" class="title-slide slide level2"><h2>TDD</h2><div style="height: 2em">
+
+</div>
+<div style="font-size: 200%; font-weight: bold; color: #888">
+<span style="color:red">Red</span> <i class="fas fa-arrow-circle-right" ></i> <span style="color:green">Green</span> <i class="fas fa-arrow-circle-right"></i> <span style="color:blue">Refactor</span>
+</div>
+<div style="height: 2em">
+
+</div></section><section id="tdd---example" class="title-slide slide level2"><h2>TDD - example</h2><p>Let’s write method checking if given String is a palindrome (e.g. <code>kayak</code>).</p></section><section id="tdd---task" class="title-slide slide level2"><h2>TDD - task</h2><ul>
+<li><a href="junit-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+</ul></section></section>
+<section><section id="other-testing-frameworks" class="title-slide slide level1"><h1>Other testing frameworks</h1></section><section id="testng" class="title-slide slide level2"><h2>TestNG</h2></section><section id="spock" class="title-slide slide level2"><h2>Spock</h2><pre><code>def &quot;two plus two should equal four&quot;() {
+    given:
+        int left = 2
+        int right = 2
+ 
+    when:
+        int result = left + right
+ 
+    then:
+        result == 4
+}</code></pre></section><section id="behaviour-driven-development" class="title-slide slide level2"><h2>Behaviour Driven Development</h2><pre><code>Given...
+
+When...
+
+Then...</code></pre></section><section id="bdd---cucumber" class="title-slide slide level2"><h2>BDD - Cucumber</h2><pre><code>Feature: Is it Friday yet?
+  Everybody wants to know when it&#39;s Friday
+
+  Scenario: Sunday isn&#39;t Friday
+    Given today is Sunday
+    When I ask whether it&#39;s Friday yet
+    Then I should be told &quot;Nope&quot;</code></pre></section></section>
+<section><section id="test-doubles" class="title-slide slide level1"><h1>Test doubles</h1></section><section id="why-mocking" class="title-slide slide level2"><h2>Why mocking?</h2></section><section id="test-doubles-1" class="title-slide slide level2"><h2>Test doubles</h2><ul>
+<li>dummy</li>
+<li>fake</li>
+<li>mock</li>
+<li>stub</li>
+</ul></section><section id="dummy" class="title-slide slide level2"><h2>Dummy</h2><p>Simple object just to satisfy compiler.</p></section><section id="fake" class="title-slide slide level2"><h2>Fake</h2><p>Fakes are objects that have working implementations, but not same as production one. Usually they take some shortcut and have simplified version of production code.</p></section><section id="mock" class="title-slide slide level2"><h2>Mock</h2><p>Mocks are objects that register calls they receive. In test assertion we can verify on Mocks that all expected actions were performed.</p></section><section id="stub" class="title-slide slide level2"><h2>Stub</h2><p>Stub is an object that holds predefined data and uses it to answer calls during tests. It is used when we cannot or don’t want to involve objects that would answer with real data or have undesirable side effects.</p></section><section id="mockito" class="title-slide slide level2"><h2>Mockito</h2><p><img data-src="https://raw.githubusercontent.com/mockito/mockito.github.io/master/img/logo%402x.png" /></p>
+<!--
 simple mocking:
 
 https://www.vogella.com/tutorials/Mockito/article.html
@@ -90,7 +137,10 @@ https://www.baeldung.com/mockito-mock-methods
 
 
 
+# best practices
 
+-->
+<!--
 adnotacje
 https://www.baeldung.com/mockito-annotations
 
@@ -101,7 +151,8 @@ inne
 https://www.baeldung.com/mockito-series & https://www.baeldung.com/?s=mockito
 
 
---></section>
+--></section></section>
+<section id="the-end" class="title-slide slide level1"><h1>The end</h1></section>
     </div>
   </div>
     <script src="reveal.js/js/reveal.js"></script>

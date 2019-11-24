@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Databases</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Databases</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section><section id="what-database-is-for" class="title-slide slide level2"><h2>What database is for?</h2></section><section id="importance-of-database-systems" class="title-slide slide level2"><h2>Importance of database systems</h2><p>Databases are the heart of every information system.</p></section><section id="benefits" class="title-slide slide level2"><h2>Benefits</h2><ul>
+<li><p>Better Data Access Within the Company</p></li>
+<li><p>Stronger Relationships Between Data</p></li>
+<li><p>Improved Data Security</p></li>
+</ul></section><section id="task-database-ideas" class="title-slide slide level2"><h2>Task: Database ideas</h2><p>Let’s gather couple database ideas.</p></section></section>
+<section><section id="elements-of-relationship-model" class="title-slide slide level1"><h1>Elements of Relationship Model</h1></section><section id="relational-database" class="title-slide slide level2"><h2>Relational Database</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Relational_model_concepts.png" /></p></section><section id="section" class="title-slide slide level2"><h2></h2><p>This model organizes data into one or more <strong>tables</strong> (or “relations”) of columns and rows, with a unique key identifying each row.</p>
+<ul>
+<li><p>Rows are also called <strong>records</strong> (or tuples)</p></li>
+<li><p>Columns are also called <strong>attributes</strong></p></li>
+<li><p>Each table represents one <strong>entity type</strong> (e.g as “customer” or “product”).</p></li>
+<li><p>The rows represent instances of that type of entity (such as “Lee” or “chair”).</p></li>
+<li><p>The columns representing values attributed to that instance (e.g. “address” or “price”).</p></li>
+</ul></section><section class="slide level3">
+
+<p><i class="fas fa-car" style="color:blue"></i></p>
+</section><section id="database" class="title-slide slide level2"><h2>Database</h2></section><section id="table" class="title-slide slide level2"><h2>Table</h2></section><section id="entity" class="title-slide slide level2"><h2>Entity</h2></section><section id="columns-types" class="title-slide slide level2"><h2>Columns types</h2><ul>
+<li>Numeric</li>
+<li>Date and Time</li>
+<li>Character and String</li>
+<li>Unicode Character and String</li>
+<li>Binary</li>
+<li>Miscellaneous</li>
+</ul></section><section id="constraints" class="title-slide slide level2"><h2>Constraints</h2><ul>
+<li>Primary Key (PK)</li>
+<li>Unique</li>
+<li>Nullable</li>
+<li>Index</li>
+<li>Foreign Key (FK)</li>
+</ul></section><section id="primary-key-pk" class="title-slide slide level2"><h2>Primary Key (PK)</h2><p>A specific choice of a minimal set of attributes (columns) that uniquely specify a tuple (row) in a relation (table).</p>
+<p>Informally, a primary key is “which attributes identify a record”, and in simple cases are simply a single attribute: a unique id.</p></section><section id="unique" class="title-slide slide level2"><h2>Unique</h2><p>The UNIQUE constraint ensures that all values in a column are different.</p>
+<p>Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness for a column or set of columns.</p>
+<p>A PRIMARY KEY constraint automatically has a UNIQUE constraint.</p>
+<p>However, you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.</p></section><section id="nullable-not-null" class="title-slide slide level2"><h2>Nullable / Not Null</h2><p>The NOT NULL constraint enforces a column to NOT accept NULL values.</p>
+<p>This enforces a field to always contain a value, which means that you cannot insert a new record, or update a record without adding a value to this field.</p></section><section id="index" class="title-slide slide level2"><h2>Index</h2><p>The CREATE INDEX statement is used to create indexes in tables.</p>
+<p>Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries.</p></section><section id="foreign-key" class="title-slide slide level2"><h2>Foreign Key</h2><p>A FOREIGN KEY is a key used to link two tables together.</p>
+<p>A FOREIGN KEY is a field (or collection of fields) in one table that refers to the PRIMARY KEY in another table.</p>
+<p>The table containing the foreign key is called the child table, and the table containing the candidate key is called the referenced or parent table.</p></section><section id="database-design---task" class="title-slide slide level2"><h2>Database design - task</h2><p>Let’s design one database.</p>
+<!--
+# Database modeling
+
+## ERD
+
+## Entity
+
+## Attribute etr...?
+
+
+## Relations
+
+
+## ERD - zad
+--></section></section>
+<section><section id="database-normalization" class="title-slide slide level1"><h1>Database Normalization</h1></section><section id="normal-forms" class="title-slide slide level2"><h2>Normal forms</h2><p>Database normalization is the process of structuring a relational database in accordance with a series of so-called “normal forms” in order to reduce data redundancy and improve data integrity.</p></section><section id="nf---first-normal-form" class="title-slide slide level2"><h2>1NF - First Normal Form</h2><p>A relation is in first normal form if and only if the domain of each attribute contains only atomic (indivisible) values, and the value of each attribute contains only a single value from that domain</p></section><section id="nf---second-normal-form" class="title-slide slide level2"><h2>2NF - Second Normal Form</h2><p>A relation is in the second normal form if it fulfills the following two requirements:</p>
+<ul>
+<li>It is in first normal form.</li>
+<li>It does not have any non-prime attribute that is functionally dependent on any proper subset of any candidate key of the relation. A non-prime attribute of a relation is an attribute that is not a part of any candidate key of the relation.</li>
+</ul></section><section id="nf---third-normal-form" class="title-slide slide level2"><h2>3NF - Third Normal Form</h2><p>Third normal form (3NF) is a normal form that is used in normalizing a database design to reduce the duplication of data and ensure referential integrity by ensuring that:</p>
+<ul>
+<li>The entity is in second normal form.</li>
+<li>No non-prime (non-key) attribute is transitively dependent on any key i.e. no non-prime attribute depends on other non-prime attributes. All the non-prime attributes must depend only on the candidate keys.</li>
+</ul></section><section id="more-normal-forms" class="title-slide slide level2"><h2>More normal forms</h2><p><a href="https://en.wikipedia.org/wiki/Database_normalization#Normal_forms">https://en.wikipedia.org/wiki/Database_normalization#Normal_forms</a></p></section></section>
+<section><section id="transactions" class="title-slide slide level1"><h1>Transactions</h1></section><section id="transaction" class="title-slide slide level2"><h2>Transaction</h2><p>A transaction symbolizes a unit of work performed within a database management system against a database, and treated in a coherent and reliable way independent of other transactions.</p>
+<p>A transaction generally represents any change in a database.</p>
+<ol type="1">
+<li><strong>Begin</strong> the transaction.</li>
+<li>Execute a set of data manipulations and/or queries.</li>
+<li>If no errors: <strong>commit</strong> the transaction and end it.</li>
+<li>If errors occur: <strong>roll back</strong> the transaction and end it.</li>
+</ol></section><section id="acid" class="title-slide slide level2"><h2>ACID</h2><ul>
+<li>Atomicity</li>
+<li>Consistency</li>
+<li>Isolation</li>
+<li>Durability</li>
+</ul></section><section id="isolation-levels" class="title-slide slide level2"><h2>Isolation levels</h2><ul>
+<li>Serializable</li>
+<li>Repeatable reads</li>
+<li>Read committed</li>
+<li>Read uncommitted - “dirty reads” are allowed</li>
+</ul></section></section>
+<section><section id="relations" class="title-slide slide level1"><h1>Relations</h1></section><section id="visualisations" class="title-slide slide level2"><h2>Visualisations</h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/ERD_Representation.svg/1200px-ERD_Representation.svg.png" style="width: 40%" /></p></section><section id="crows-foot-james-martin-notation" class="title-slide slide level2"><h2>Crow’s Foot (James Martin) Notation</h2><p><img data-src="https://i.stack.imgur.com/rb3Ig.jpg" /></p></section><section id="min-max-notation" class="title-slide slide level2"><h2>Min-Max notation</h2><p><img data-src="https://image.slidesharecdn.com/erdexamples-111122070102-phpapp02/95/erd-examples-1-728.jpg?cb=1321945740" /></p></section><section id="one-to-one" class="title-slide slide level2"><h2>One-to-one</h2><!-- https://it.toolbox.com/blogs/craigborysowich/understanding-relationships-in-e-r-diagrams-020607 -->
+<p><img data-src="https://farm1.static.flickr.com/131/381402223_c7cfa9ed5a.jpg" /></p></section><section id="one-to-many" class="title-slide slide level2"><h2>One-to-many</h2><p><img data-src="https://farm1.static.flickr.com/123/381402225_cc6b7b02b5.jpg?v=0" /></p></section><section id="many-to-many" class="title-slide slide level2"><h2>Many-to-many</h2><p><img data-src="https://farm1.static.flickr.com/148/381402227_8df41aef25.jpg?v=0" /></p></section><section id="relationships---task" class="title-slide slide level2"><h2>Relationships - task</h2><p>Let’s adjust our designs to handle relationships.</p>
+<!--
+------
+
+# view
+
+
+-- - - -
+
+https://en.wikipedia.org/wiki/Relational_model
+
+https://en.wikipedia.org/wiki/Unnormalized_form
+https://en.wikipedia.org/wiki/Database_normalization
+
+
+
+https://www.sqlpedia.pl/projektowanie-i-normalizacja-bazy-danych/
+
+--></section></section>
+<section><section id="another-types-of-databases" class="title-slide slide level1"><h1>Another types of databases</h1></section><section id="nosql" class="title-slide slide level2"><h2>NoSQL</h2><ul>
+<li>Object-oriented</li>
+<li>Document-oriented</li>
+<li>Graph</li>
+</ul></section><section id="document-databases" class="title-slide slide level2"><h2>Document databases</h2><ul>
+<li>MongoDB</li>
+<li>some aspects of PostreSQL</li>
+<li>Solr / Lucene</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Document-oriented_database" target="_blank">more</a></p></section><section id="graph-database" class="title-slide slide level2"><h2>Graph database</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/3/3a/GraphDatabase_PropertyGraph.png" /></p>
+<p>E.g. <quote>Neo4j</p></section></section>
+<section id="to-be-continued" class="title-slide slide level1"><h1>To be continued</h1><!--
+https://opensource.com/article/18/2/getting-started-sql
+
+
+https://learntocodewith.me/posts/sql-guide/
+
+
+
+
+SEQUEL (Structured English Query Language)
+
+
+--></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
