@@ -48,7 +48,7 @@ Parameters from annotation - task
 
 ## Zadanie 6
 
-<div style="font-size: 80%">
+<div style="font-size: 75%">
 * Od 1 marca 2018 obowiązuje zakaz handlu w niedziele. Od tej daty w 2018 zakupy robiliśmy tylko w pierwszą i ostatnią niedzielę miesiąca. 
 
 * W 2019 roku zakaz został zaostrzony i sklepy mogą być otwarte tylko w ostatnią niedzielę miesiąca.
@@ -62,7 +62,7 @@ Parameters from annotation - task
 
   * niedzielę bezpośrednio poprzedzającą pierwszy dzień Wielkiej Nocy;
 
-* Zakaz stosuje się również jeżeli w pierwszą lub ostatnią niedzielę miesiąca przypada święto.
+* Zakaz stosuje się również jeżeli w pierwszą lub ostatnią niedzielę miesiąca przypada święto (1 stycznia, 6 stycznia, 1 maja, 3 maja, ~~15 sierpnia~~, 1 listopada, ~~11 listopada,~~ Wielkanoc, Zielone Świątki 49 dni po Wielkanocy,)
 
 * Przyjmijmy, że przed marcem 2018 roku wszystkie niedziele były handlowe.
 
