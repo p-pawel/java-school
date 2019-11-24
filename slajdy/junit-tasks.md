@@ -62,7 +62,7 @@ Parameters from annotation - task
 
   * niedzielę bezpośrednio poprzedzającą pierwszy dzień Wielkiej Nocy;
 
-* Zakaz stosuje się również jeżeli w pierwszą lub ostatnią niedzielę miesiąca przypada święto (1 stycznia, 6 stycznia, 1 maja, 3 maja, ~~15 sierpnia~~, 1 listopada, ~~11 listopada,~~ Wielkanoc, Zielone Świątki 49 dni po Wielkanocy,)
+* Zakaz stosuje się również jeżeli w pierwszą lub ostatnią niedzielę miesiąca przypada święto (1 stycznia, 6 stycznia, 1 maja, 3 maja, ~~15 sierpnia~~, 1 listopada, ~~11 listopada,~~ 25-26 grudnia, Wielkanoc, Zielone Świątki - 49 dni po Wielkanocy)
 
 * Przyjmijmy, że przed marcem 2018 roku wszystkie niedziele były handlowe.
 
