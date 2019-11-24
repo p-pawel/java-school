@@ -3,7 +3,7 @@
 
 ## Zadanie 1
 
-Napisz klasę która pozwoli na zamianę liczb od 0 do 10 na ich postać słowną (po polsku), np. 0 - `zero`, 10 - `dziesięć`.
+Napisz klasę/metodę która pozwoli na zamianę liczb od 0 do 10 na ich postać słowną (po polsku), np. dla parametru `0` zwróci wartość `zero`, dla `10` zwróci `dziesięć`.
 
 Napisz testy jednostkowe weryfikujące implementację.
 
@@ -61,6 +61,8 @@ Parameters from annotation - task
   * kolejne dwie niedziele poprzedzające pierwszy dzień Bożego Narodzenia;
 
   * niedzielę bezpośrednio poprzedzającą pierwszy dzień Wielkiej Nocy;
+
+* Zakaz stosuje się również jeżeli w pierwszą lub ostatnią niedzielę miesiąca przypada święto.
 
 * Przyjmijmy, że przed marcem 2018 roku wszystkie niedziele były handlowe.
 

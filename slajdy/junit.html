@@ -79,16 +79,21 @@ void testExpectedException() {
 @ValueSource(strings = { &quot;racecar&quot;, &quot;radar&quot;, &quot;able was I ere I saw elba&quot; })
 void palindromes(String candidate) {
     assertTrue(StringUtils.isPalindrome(candidate));
-}</code></pre></section><section id="parameters-from-annotation---task" class="title-slide slide level2"><h2>Parameters from annotation - task</h2><ul>
+}</code></pre>
+<ul>
+<li>it can only be used on test methods that have a single parameter</li>
+</ul></section><section id="parameters-from-annotation---task" class="title-slide slide level2"><h2>Parameters from annotation - task</h2><ul>
 <li><a href="junit-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
 </ul></section><section id="parameters-from-method" class="title-slide slide level2"><h2>Parameters from Method</h2><pre><code>@ParameterizedTest
-@MethodSource(&quot;stringProvider&quot;)
-void testWithExplicitLocalMethodSource(String argument) {
-    assertNotNull(argument);
+@MethodSource(&quot;createWordsWithLength&quot;)
+void withMethodSource(String word, int length) {
+    assertEquals(length, word.length());
 }
-
-static Stream&lt;String&gt; stringProvider() {
-    return Stream.of(&quot;apple&quot;, &quot;banana&quot;);
+ 
+private static Stream&lt;Arguments&gt; createWordsWithLength() {
+    return Stream.of(
+        Arguments.of(&quot;Hello&quot;, 5),
+        Arguments.of(&quot;JUnit 5&quot;, 7));
 }</code></pre></section><section id="parameters-from-method---task" class="title-slide slide level2"><h2>Parameters from Method - task</h2><ul>
 <li><a href="junit-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
 </ul></section><section id="parameters-from-csv-file" class="title-slide slide level2"><h2>Parameters from CSV-file</h2><pre><code>@ParameterizedTest

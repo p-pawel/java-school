@@ -78,7 +78,7 @@ void palindromes(String candidate) {
 }
 ```
 
-
+* it can only be used on test methods that have a single parameter
 
 ## Parameters from annotation - task
 
@@ -88,13 +88,15 @@ void palindromes(String candidate) {
 ## Parameters from Method 
 ```
 @ParameterizedTest
-@MethodSource("stringProvider")
-void testWithExplicitLocalMethodSource(String argument) {
-    assertNotNull(argument);
+@MethodSource("createWordsWithLength")
+void withMethodSource(String word, int length) {
+    assertEquals(length, word.length());
 }
-
-static Stream<String> stringProvider() {
-    return Stream.of("apple", "banana");
+ 
+private static Stream<Arguments> createWordsWithLength() {
+	return Stream.of(
+		Arguments.of("Hello", 5),
+		Arguments.of("JUnit 5", 7));
 }
 ```
 ## Parameters from Method - task
