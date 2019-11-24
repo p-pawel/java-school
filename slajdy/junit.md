@@ -86,10 +86,37 @@ void palindromes(String candidate) {
 
 
 ## Parameters from Method 
+```
+@ParameterizedTest
+@MethodSource("stringProvider")
+void testWithExplicitLocalMethodSource(String argument) {
+    assertNotNull(argument);
+}
+
+static Stream<String> stringProvider() {
+    return Stream.of("apple", "banana");
+}
+```
 ## Parameters from Method - task
 * <a href="junit-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
 
 ## Parameters from CSV-file
+
+```
+@ParameterizedTest
+@CsvFileSource(resources = "/two-column.csv", numLinesToSkip = 1)
+void testWithCsvFileSource(String country, int reference) {
+    assertNotNull(country);
+    assertNotEquals(0, reference);
+}
+```
+
+```
+Country, reference
+Sweden, 1
+Poland, 2
+"United States of America", 3
+```
 ## Parameters from CSV-file - task
 * <a href="junit-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 
@@ -97,7 +124,19 @@ void palindromes(String candidate) {
 
 # Utilities
 
-## AssertJ 
+## AssertJ
+
+JUnit: 
+```
+assertEquals(expected, actual);
+```
+
+AssertJ:
+```
+assertThat(actual).isEqualTo(expected);
+```
+
+More: [https://joel-costigliola.github.io/assertj/index.html](https://joel-costigliola.github.io/assertj/index.html)
 
 ## Coverage
 

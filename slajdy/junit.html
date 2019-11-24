@@ -81,12 +81,33 @@ void palindromes(String candidate) {
     assertTrue(StringUtils.isPalindrome(candidate));
 }</code></pre></section><section id="parameters-from-annotation---task" class="title-slide slide level2"><h2>Parameters from annotation - task</h2><ul>
 <li><a href="junit-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
-</ul></section><section id="parameters-from-method" class="title-slide slide level2"><h2>Parameters from Method</h2></section><section id="parameters-from-method---task" class="title-slide slide level2"><h2>Parameters from Method - task</h2><ul>
+</ul></section><section id="parameters-from-method" class="title-slide slide level2"><h2>Parameters from Method</h2><pre><code>@ParameterizedTest
+@MethodSource(&quot;stringProvider&quot;)
+void testWithExplicitLocalMethodSource(String argument) {
+    assertNotNull(argument);
+}
+
+static Stream&lt;String&gt; stringProvider() {
+    return Stream.of(&quot;apple&quot;, &quot;banana&quot;);
+}</code></pre></section><section id="parameters-from-method---task" class="title-slide slide level2"><h2>Parameters from Method - task</h2><ul>
 <li><a href="junit-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
-</ul></section><section id="parameters-from-csv-file" class="title-slide slide level2"><h2>Parameters from CSV-file</h2></section><section id="parameters-from-csv-file---task" class="title-slide slide level2"><h2>Parameters from CSV-file - task</h2><ul>
+</ul></section><section id="parameters-from-csv-file" class="title-slide slide level2"><h2>Parameters from CSV-file</h2><pre><code>@ParameterizedTest
+@CsvFileSource(resources = &quot;/two-column.csv&quot;, numLinesToSkip = 1)
+void testWithCsvFileSource(String country, int reference) {
+    assertNotNull(country);
+    assertNotEquals(0, reference);
+}</code></pre>
+<pre><code>Country, reference
+Sweden, 1
+Poland, 2
+&quot;United States of America&quot;, 3</code></pre></section><section id="parameters-from-csv-file---task" class="title-slide slide level2"><h2>Parameters from CSV-file - task</h2><ul>
 <li><a href="junit-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
 </ul></section></section>
-<section><section id="utilities" class="title-slide slide level1"><h1>Utilities</h1></section><section id="assertj" class="title-slide slide level2"><h2>AssertJ</h2></section><section id="coverage" class="title-slide slide level2"><h2>Coverage</h2></section></section>
+<section><section id="utilities" class="title-slide slide level1"><h1>Utilities</h1></section><section id="assertj" class="title-slide slide level2"><h2>AssertJ</h2><p>JUnit:</p>
+<pre><code>assertEquals(expected, actual);</code></pre>
+<p>AssertJ:</p>
+<pre><code>assertThat(actual).isEqualTo(expected);</code></pre>
+<p>More: <a href="https://joel-costigliola.github.io/assertj/index.html">https://joel-costigliola.github.io/assertj/index.html</a></p></section><section id="coverage" class="title-slide slide level2"><h2>Coverage</h2></section></section>
 <section><section id="test-driven-development" class="title-slide slide level1"><h1>Test Driven Development</h1></section><section id="tdd" class="title-slide slide level2"><h2>TDD</h2><div style="height: 2em">
 
 </div>
