@@ -281,16 +281,5 @@ E.g. <quote>Neo4j
 
 # To be continued
 
-<!--
-https://opensource.com/article/18/2/getting-started-sql
+# JDBC
 
-
-https://learntocodewith.me/posts/sql-guide/
-
-
-
-
-SEQUEL (Structured English Query Language)
-
-
--->

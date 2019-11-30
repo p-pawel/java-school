@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Databases - JDBC</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Databases - JDBC</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="connecting-to-database" class="title-slide slide level1"><h1>Connecting to database</h1></section><section id="connection-url" class="title-slide slide level2"><h2>Connection URL</h2><p><em>protocol</em> <code>:</code> <em>product-name</em> <code>:</code> <em>connection-details (DB specific)</em></p>
+<p>E.g.</p>
+<pre><code>jdbc:postgresql://localhost:5432/my-schema</code></pre>
+<pre><code>jdbc:h2:~/temp-database;IGNORECASE=TRUE;MODE=MYSQL;DATABASE_TO_UPPER=false</code></pre>
+<pre><code>jdbc:mysql://localhost:3306/my-database?useUnicode=yes&amp;characterEncoding=UTF-8</code></pre></section><section id="creating-connection" class="title-slide slide level2"><h2>Creating connection</h2><pre><code>import java.sql.*;
+
+
+Connection c = DriverManager.getConnection(&quot;jdbc:derby:db&quot;);</code></pre></section><section id="connection-properties" class="title-slide slide level2"><h2>Connection properties</h2><pre><code>String url = &quot;...&quot;;
+
+Properties props = new Properties();
+props.setProperty(&quot;user&quot;,&quot;user-name&quot;);
+props.setProperty(&quot;password&quot;,&quot;secret&quot;);
+
+Connection c = DriverManager.getConnection(url, props);</code></pre></section><section id="connecting---task" class="title-slide slide level2"><h2>Connecting - Task</h2><p>Utwórz projekt typu Maven, dodaj zależność do sterownika do bazy danych Postgres na podstawie danych <a href="https://mvnrepository.com/artifact/org.postgresql/postgresql">stąd</a></p>
+<p>W programie utwórz obiekt typu <code>java.sql.Connection</code>, który połączy się z Twoją lokalną bazą danych PostgreSQL.</p></section></section>
+<section><section id="querying" class="title-slide slide level1"><h1>Querying</h1></section><section id="executing-statements" class="title-slide slide level2"><h2>Executing statements</h2><ul>
+<li>Update statements</li>
+</ul>
+<pre><code>Statement statement = conn.createStatement();
+int result = statement.executeUpdate(&quot;delete * from log&quot;);</code></pre>
+<ul>
+<li>Query statements</li>
+</ul>
+<pre><code>ResultSet resultSet = statement.executeQuery(&quot;select * from product&quot;);</code></pre></section><section id="prepared-statements" class="title-slide slide level2"><h2>Prepared statements</h2><p>SQL-injection vulnerable:</p>
+<pre><code>Statement statement = conn.createStatement();
+String sql = &quot;delete * product where name = &#39;&quot; + name + &quot;&#39;&quot;;
+System.out.println(sql);
+statement.executeUpdate(sql);</code></pre>
+<p>With prepared statement:</p>
+<pre><code>PreparedStatement statement = conn.prepareStatement(&quot;delete from product where name = ?&quot;);
+statement.setString(1, name);
+statement.execute();</code></pre></section><section id="reading-resultset" class="title-slide slide level2"><h2>Reading ResultSet</h2><ul>
+<li><code>ResultSet.get...(int)</code> - by index (from 1)</li>
+<li><code>ResultSet.get...(String)</code> - by name</li>
+</ul>
+<p>E.g.</p>
+<pre><code>while (resultSet.next()) {
+    int id = resultSet.getInt(&quot;id&quot;);
+    String name = resultSet.getString(2);
+    
+    System.out.println(id + &quot; &quot; + name);
+}</code></pre></section><section id="reading-primitives-string-object" class="title-slide slide level2"><h2>Reading primitives, String, Object</h2><ul>
+<li><code>boolean getBoolean(...)</code></li>
+<li><code>int getInt(...)</code></li>
+<li><code>long getLong(...)</code></li>
+<li><code>float getFloat(...)</code></li>
+<li><code>double getDouble(...)</code></li>
+<li><code>String getString(...)</code></li>
+<li><code>String getObject(...)</code></li>
+</ul></section><section id="null-treatment" class="title-slide slide level2"><h2>Null treatment</h2><p>Note: <code>getInt</code> for <code>NULL</code> values returns <code>0</code></p>
+<pre><code>int nValue = rs.getInt(strColName);
+return rs.wasNull() ? null : nValue;</code></pre></section><section id="reading-dates" class="title-slide slide level2"><h2>Reading dates</h2><ul>
+<li><code>java.sql.Time getTime(...)</code></li>
+<li><code>java.sql.Time getTimeStamp(...)</code></li>
+<li><code>java.sql.Time getDate(...)</code></li>
+</ul>
+<p>Then: * <code>LocalTime localTime = sqlTime.toLocalTime();</code> * <code>LocalDateTime localTime = sqlTime.toLocalDateTime();</code></p></section><section id="result-set-cursor" class="title-slide slide level2"><h2>Result Set cursor</h2><ul>
+<li><code>connection.createStatement();</code></li>
+<li><code>connection.createStatement(int type, int concurrency);</code></li>
+<li><code>connection.createStatement(int type, int concurrency, int holdability);</code></li>
+</ul>
+<p>E.g.</p>
+<pre><code>conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);</code></pre></section><section class="slide level3">
+
+<ul>
+<li><code>resulsSet.next()</code></li>
+<li><code>resulsSet.previous()</code></li>
+<li><code>resulsSet.beforeFirst()</code></li>
+<li><code>resulsSet.afterLast()</code></li>
+</ul>
+</section></section>
+<section><section id="final" class="title-slide slide level1"><h1>Final</h1></section><section id="closing-connection" class="title-slide slide level2"><h2>Closing connection</h2><pre><code>try (Connection c = DriverManager.getConnection(&quot;jdbc:postgresql://localhost:5432/postgres&quot;)) {
+
+   ...
+
+}
+</code></pre></section><section id="exceptions" class="title-slide slide level2"><h2>Exceptions</h2></section></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

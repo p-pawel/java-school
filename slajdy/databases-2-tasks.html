@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Bazy danych - zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Bazy danych - zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p>Zainstaluj silnik wybranej bazy danych, np. <a href="https://www.postgresql.org/download/" target="_blank">PostgreSQL</a>.</p>
+<p>Możesz też zainstalować uniwersalne narzędzie do prac programistycznych z bazą danych, np. <a href="https://dbeaver.io/" target="_blank">DBeaver</a>.</p>
+<p>Zweryfikuj poprawność instalacji i konfiguracji bazy danych łącząc się ze swoją bazą danych z narzędzia.</p></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Utwórz schemat danych oraz tabele na podstawie diagramu.</p>
+<p><img src="databases-2-tasks-diagram-names.svg" style="border: solid 1em white" /></p></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>Zmieniamy konwencję nazewniczą, zodyfikujemy strukturę tabeli. Zmodyfikuj tabele z poprzedniego zadania na podstawie diagramu:</p>
+<p><img src="databases-2-tasks-diagram.png" style="border: solid 1em white" /></p>
+<p>Zmianę nazwy przeprowadź modyfikując strukturę istniejącej bazy danych, a nie usuwając starą bazę i tworząc ją jeszcze raz :)</p></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Wykonaj instrukcje: * dodającą jeden wiersz do tabeli z produktami, * dodającą dwa wiersze do tabeli z produktami.</p>
+<p>Jako <code>id</code> użyj kolejnych liczb 1, 2, 3…</p></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>Wykonaj instrukcję, która zmieni nazwę produktu z <code>id</code> równym 1.</p></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Wykonaj instrukcję, która usunie produkt o <code>id</code> równym 2.</p></section>
+<section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7*</h2><p>Korzystając z języka definicji danych dostosuj bazę tak aby wartość klucza głównego w każdej z tabel była generowana automatycznie przy dodawaniu nowych.</p>
+<p><a href="https://stackoverflow.com/a/9490532/2045440" target="_blank">https://stackoverflow.com/a/9490532/2045440</a></p></section>
+<section id="zadanie-8.1" class="title-slide slide level2"><h2>Zadanie 8.1</h2><p>Wykonaj zapytanie, które wypisze wszystkie produkty.</p></section>
+<section id="zadanie-8.2" class="title-slide slide level2"><h2>Zadanie 8.2</h2><p>Wykonaj zapytanie, które wypisze identyfikatory i stany magazynowe produktów.</p></section>
+<section id="zadanie-8.3" class="title-slide slide level2"><h2>Zadanie 8.3</h2><p>Wykonaj zapytanie, które policzy ile mamy produktów.</p></section>
+<section id="zadanie-8.4" class="title-slide slide level2"><h2>Zadanie 8.4</h2><p>Wykonaj zapytanie, które wypisze dane produktu o <code>id</code> równym 3.</p></section>
+<section id="zadanie-8.5" class="title-slide slide level2"><h2>Zadanie 8.5</h2><p>Wykonaj zapytanie, które wypisze dane produktu o <code>id</code> mniejszym niż 3 i cenie większej od 10.</p></section>
+<section id="zadanie-8.6" class="title-slide slide level2"><h2>Zadanie 8.6</h2><p>Wykonaj zapytanie, które wypisze produkty bez zdjęcia.</p></section>
+<section id="zadanie-8.7" class="title-slide slide level2"><h2>Zadanie 8.7</h2><p>Wykonaj zapytanie, które wypisze dane produktów: * zawierajacych literę <code>a</code> w nazwie</p></section>
+<section id="zadanie-8.8" class="title-slide slide level2"><h2>Zadanie 8.8</h2><p>Wykonaj zapytanie, które wypisze dane produktów: * ułożone według cen od najniższej do najwyższej * ułożone według cen od najwyższej do najniższej</p></section>
+<section id="zadanie-8.9" class="title-slide slide level2"><h2>Zadanie 8.9</h2><p>Dodaj kilka wierszy do tabeli zamówień.</p>
+<p>Wykonaj zapytanie, które wypisze zamówienia pogrupowane według klientów.</p></section>
+<section id="zadanie-8.10" class="title-slide slide level2"><h2>Zadanie 8.10</h2><p>Wykonaj zapytanie, które wypisze zamówienia pogrupowane według klientów i wartość największego zamówienia każdego z nich.</p></section>
+<section id="zadanie-8.11" class="title-slide slide level2"><h2>Zadanie 8.11</h2><p>Wykonaj zapytanie, które wypisze zamówienia pogrupowane według klientów i wskaże sumę zamówień każdego z nich, biorąc pod uwagę tylko tych, dla których ta suma była większa niż 100.</p></section>
+<section id="zadanie-9" class="title-slide slide level2"><h2>Zadanie 9</h2><p>Zmodyfikuj schemat bazy danych tak, aby uwzględniał powiązania (FK) pomiędzy tabelami, zgodnie z poniższym schematem:</p>
+<p><img src="databases-2-tasks-diagram-fk.png" style="border: solid 1em white" /></p></section>
+<section id="zadanie-10.1" class="title-slide slide level2"><h2>Zadanie 10.1</h2><p>Wykonaj zapytanie, które zwróci listę zamówień wraz z informacjami o obsługujących je pracownikach (z uwzględnieniem tylko zamówienia przypisane do pracowników).</p></section>
+<section id="zadanie-10.2" class="title-slide slide level2"><h2>Zadanie 10.2</h2><p>Wykonaj zapytanie, które zwróci listę zamówień wraz z informacjami o obsługujących je pracownikach (uwzględniająć wszystkie zamówienia, nawet te nieprzypisane do pracowników).</p></section>
+<section id="zadanie-10.3" class="title-slide slide level2"><h2>Zadanie 10.3</h2><p>Wykonaj zapytanie, które zwróci listę pracowników wraz z informacjami o przypisanych do nich zamówieniach (uwzględniająć wszystkich pracowników, nawet tych bez zamówień).</p></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

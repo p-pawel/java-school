@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Databases - ⅔</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Databases - ⅔</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section><section id="sql" class="title-slide slide level2"><h2>SQL</h2><!--
+https://opensource.com/article/18/2/getting-started-sql
+
+
+https://learntocodewith.me/posts/sql-guide/
+
+
+
+
+
+-->
+<ul>
+<li><p>SQL - Structured Query Language</p></li>
+<li><p>1970s: SEQUEL (Structured English Query Language)</p></li>
+</ul></section><section id="database-sub-languages" class="title-slide slide level2"><h2>Database sub-languages</h2><p>Database sub-languages are special-purpose languages, which allow one or more of the following tasks, sometimes distinguished as sublanguages:</p>
+<ul>
+<li><strong>Data definition language (DDL)</strong> – defines data types such as creating, altering, or dropping tables and the relationships among them;</li>
+<li><strong>Data manipulation language (DML)</strong> – performs tasks such as inserting, updating, or deleting data occurrences;</li>
+<li><strong>Data query language (DQL)</strong> – allows searching for information and computing derived information.</li>
+</ul></section><section id="section" class="title-slide slide level2"><h2></h2><ul>
+<li><strong>Transaction Query Language (TQL)</strong> - Transaction control statement are use to apply the changes permanently save into database.</li>
+<li><strong>Data control language (DCL)</strong> – Data control statements are use to give privileges to access limited data or share the information between users</li>
+<li><strong>Session Control Language (SCL)</strong> - Session control statement are manage properties dynamically of a user session.</li>
+</ul>
+<p><a href="https://www.interviewsansar.com/2018/11/16/sql-sub-languages/" target="_top">[more info]</a></p></section><section id="query-types" class="title-slide slide level2"><h2>Query types</h2><ul>
+<li><p>execute/update</p></li>
+<li><p>procedures</p></li>
+<li><p>view</p></li>
+</ul></section><section id="popular-engines" class="title-slide slide level2"><h2>Popular engines</h2><p><a href="https://db-engines.com/en/ranking" target="_blank"></a></p>
+<hr/>
+<p><a href="https://www.oracle.com/database/technologies/xe-downloads.html" > <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" style="height:1em; vertical-align: middle; margin: 0;" /> </a> <a href="https://dev.mysql.com/downloads/mysql/"> <img src="https://upload.wikimedia.org/wikipedia/en/6/62/MySQL.svg" style="width:200px; vertical-align: bottom; margin: 0 1em;" /> </a> <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads"> <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" style="width:200px; vertical-align: bottom; margin: 0 1em;" /> </a></p>
+<p><a href="https://www.postgresql.org/download/"> <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" style="height:3em; vertical-align: bottom; margin: 0 1em;" /> </a> <a href=""> <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg" style="width:200px; vertical-align: bottom; margin: 0 1em;" /> </a> <a href="https://downloads.mariadb.org/"> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/MariaDB_Logo.png" style="width:200px; vertical-align: bottom; margin: 0 1em;" /> </a></p>
+<hr/>
+<p>Light embedded engines: <a href="https://mvnrepository.com/artifact/org.hsqldb/hsqldb"> <img src="http://hsqldb.org/images/hypersql_logo.png" style="width:200px; vertical-align: bottom; margin: 0 1em;" /> </a> <a href="https://mvnrepository.com/artifact/com.h2database/h2"> <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/H2_logo.png" style="height: 1em; vertical-align: bottom; margin: 0 1em;" /> </a></p></section><section id="database-engines---task" class="title-slide slide level2"><h2>Database engines - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
+</ul></section></section>
+<section><section id="data-definition-language-ddl" class="title-slide slide level1"><h1>Data definition language (DDL)</h1></section><section id="create-new-database-schema" class="title-slide slide level2"><h2>Create new database schema</h2><pre><code>CREATE DATABASE database_name;</code></pre>
+<pre><code>CREATE SCHEMA schema_name;</code></pre>
+<!-- 
+* https://launchbylunch.com/posts/2014/Feb/16/sql-naming-conventions/
+* https://stackoverflow.com/questions/7662/database-table-and-column-naming-conventions
+--></section><section id="create-new-table" class="title-slide slide level2"><h2>Create new table</h2><p>Simplified statement:</p>
+<pre><code>CREATE TABLE table_name(
+    field1 FIELD_TYPE,
+    field2 FIELD_TYPE,
+    ...
+);</code></pre>
+<p>E.g.</p>
+<pre><code>CREATE TABLE animal (
+    id BIGINT,
+    name TEXT
+);</code></pre></section><section id="data-types" class="title-slide slide level2"><h2>Data types</h2><p>Data types are specific to database engines.</p>
+<ul>
+<li><p>numeric types: <code>smallint</code>, <code>integer</code>, <code>bigint</code>, <code>decimal</code>, <code>numeric</code>, <code>real</code>, <code>double precision</code>, <code>smallserial</code>, <code>serial</code>, <code>bigserial</code> <a href="https://www.postgresql.org/docs/current/datatype.html" target="_blank"></a>, monetary type: <code>money</code> <a href="https://www.postgresql.org/docs/current/datatype-money.html" target="_blank"></a></p></li>
+<li><p>character type: <code>character varying(n), varchar(n)</code>, <code>character(n), char(n)</code>, <code>text</code> <a href="https://www.postgresql.org/docs/current/datatype-character.html" target="_blank"></a></p></li>
+<li><p>binary data type: <code>bytea</code> <a href="https://www.postgresql.org/docs/current/datatype-binary.html" target="_blank"></a></p></li>
+<li><p>date-time types: <code>timestamp</code>, <code>date</code>, <code>time</code>, <code>interval</code> <a href="https://www.postgresql.org/docs/current/datatype-datetime.html" target="_blank"></a></p></li>
+<li><p>enumerated, geometric, network address, bit string, text search, UUID, XML, JSON, array, range, domain…</p></li>
+</ul></section><section id="deleting-table" class="title-slide slide level2"><h2>Deleting table</h2><pre><code>DROP TABLE table_name;</code></pre>
+<pre><code>DROP TABLE IF EXISTS table_name;</code></pre></section><section id="deleting-database" class="title-slide slide level2"><h2>Deleting database</h2><p><a href="https://www.youtube.com/watch?v=1aEqd4bl6Bs"> <img data-src="https://i.ytimg.com/vi/1aEqd4bl6Bs/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLCnsdSIpSNjaKvGTMg61OylWZMeMQ" /> </a></p></section><section id="creating-structures---task" class="title-slide slide level2"><h2>Creating structures - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
+</ul></section><section id="modifying-table-structure" class="title-slide slide level2"><h2>Modifying table structure</h2><p><code>ALTER TABLE table_name actions...</code></p>
+<p>Sample actions:</p>
+<pre><code>ALTER TABLE table_name
+  RENAME TO new_table_name;</code></pre>
+<pre><code>ALTER TABLE table_name
+  ADD new_column1 column_definition,
+  ADD new_column2 column_definition,</code></pre>
+<pre><code>ALTER TABLE table_name
+  ALTER COLUMN column_name TYPE column_definition;</code></pre>
+<pre><code>ALTER TABLE table_name
+  RENAME COLUMN old_name TO new_name;</code></pre></section><section id="modifying-table-structure---task" class="title-slide slide level2"><h2>Modifying table structure - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section></section>
+<section><section id="data-manipulation-language-dml" class="title-slide slide level1"><h1>Data Manipulation Language (DML)</h1></section><section id="modifications-of-data" class="title-slide slide level2"><h2>Modifications of data</h2><ul>
+<li>insert</li>
+<li>update</li>
+<li>delete</li>
+</ul></section><section id="insert" class="title-slide slide level2"><h2>Insert</h2><p><code>INSERT</code> – create new rows in a table</p>
+<p>Simplified query:</p>
+<pre><code>INSERT INTO table_name (..., ...) VALUES ( ..., ... )</code></pre></section><section id="insert---example" class="title-slide slide level2"><h2>Insert - example</h2><p>Insert single full row:</p>
+<pre><code>INSERT INTO films VALUES
+    (&#39;UA502&#39;, &#39;Bananas&#39;, 105, &#39;1971-07-13&#39;, &#39;Comedy&#39;, &#39;82 minutes&#39;);</code></pre>
+<p>Insert selected fields (another are default if set):</p>
+<pre><code>INSERT INTO films (code, title, did, date_prod, kind)
+    VALUES (&#39;T_601&#39;, &#39;Yojimbo&#39;, 106, &#39;1961-06-16&#39;, &#39;Drama&#39;);</code></pre>
+<p>Insert multiple rows:</p>
+<pre><code>INSERT INTO films (code, title, did, date_prod, kind) VALUES
+    (&#39;B6717&#39;, &#39;Tampopo&#39;, 110, &#39;1985-02-10&#39;, &#39;Comedy&#39;),
+    (&#39;HG120&#39;, &#39;The Dinner Game&#39;, 140, DEFAULT, &#39;Comedy&#39;);</code></pre>
+<p>And <a href="https://www.postgresql.org/docs/9.2/sql-insert.html" target="_blank">more</a>.</p></section><section id="update" class="title-slide slide level2"><h2>Update</h2><p><code>UPDATE</code> – update rows of a table</p>
+<p>Simplified query:</p>
+<pre><code>UPDATE table_name
+    SET column_name = expression,
+    SET column_name = expression</code></pre></section><section id="update---example" class="title-slide slide level2"><h2>Update - example</h2><pre><code>UPDATE films SET kind = &#39;Dramatic&#39; WHERE kind = &#39;Drama&#39;;</code></pre></section><section id="delete" class="title-slide slide level2"><h2>Delete</h2><p><code>DELETE</code> – delete rows of a table</p>
+<pre><code>DELETE FROM table_name
+    WHERE condition</code></pre></section><section id="delete---example" class="title-slide slide level2"><h2>Delete - example</h2><p>Delete all films but musicals:</p>
+<pre><code>DELETE FROM films WHERE kind &lt;&gt; &#39;Musical&#39;;</code></pre>
+<p>Clear the table films:</p>
+<pre><code>DELETE FROM films;</code></pre></section><section id="auto-increment-column" class="title-slide slide level2"><h2>Auto increment column</h2><pre><code>CREATE TABLE table_name(
+    id SERIAL
+);</code></pre></section><section id="auto-increment-column---task" class="title-slide slide level2"><h2>Auto increment column - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+<li><a href="databases-2-tasks.html#/zadanie-2" target="_blank">[Task 2]</a> - auto increment</li>
+</ul></section></section>
+<section><section id="dql" class="title-slide slide level1"><h1>DQL</h1></section><section id="select-all" class="title-slide slide level2"><h2>Select all</h2><pre><code>SELECT * FROM table_name;</code></pre></section><section id="select-all---task" class="title-slide slide level2"><h2>Select all - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.1" target="_blank">[Task 8.1]</a></li>
+</ul></section><section id="select-columns" class="title-slide slide level2"><h2>Select columns</h2><pre><code>SELECT id, name FROM table_name;</code></pre></section><section id="select-columns---task" class="title-slide slide level2"><h2>Select columns - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.2" target="_blank">[Task 8.2]</a></li>
+</ul></section><section id="aliases" class="title-slide slide level2"><h2>Aliases</h2><pre><code>SELECT id, name AS full_name FROM table_name;</code></pre></section><section id="select-count" class="title-slide slide level2"><h2>Select count</h2><pre><code>SELECT COUNT(*) FROM table_name;</code></pre>
+<pre><code>SELECT COUNT(name) FROM table_name;</code></pre></section><section id="select-count---task" class="title-slide slide level2"><h2>Select count - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.3" target="_blank">[Task 8.3]</a></li>
+</ul></section></section>
+<section><section id="subquery-where" class="title-slide slide level1"><h1>Subquery <code>Where</code></h1></section><section id="where-equal" class="title-slide slide level2"><h2>Where equal</h2><pre><code>SELECT * FROM table_name WHERE id = 1;</code></pre></section><section id="where-equal---task" class="title-slide slide level2"><h2>Where equal - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.4" target="_blank">[Task 8.4]</a></li>
+</ul></section><section id="where-operators" class="title-slide slide level2"><h2>Where operators</h2><pre><code>SELECT * FROM table_name WHERE id &gt; 3 AND name LIKE &#39;Adam%&#39;;</code></pre></section><section id="where-operators---task" class="title-slide slide level2"><h2>Where operators - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.5" target="_blank">[Task 8.5]</a></li>
+</ul></section><section id="null-values" class="title-slide slide level2"><h2>Null values</h2><pre><code>SELECT * FROM table_name WHERE column IS NULL;</code></pre>
+<pre><code>SELECT * FROM table_name WHERE column IS NOT NULL;</code></pre></section><section id="null-values---task" class="title-slide slide level2"><h2>Null values - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.6" target="_blank">[Task 8.6]</a></li>
+</ul></section><section id="like" class="title-slide slide level2"><h2>Like</h2><ul>
+<li>Percent <code>%</code> for matching any sequence of characters.</li>
+<li>Underscore <code>_</code> for matching any single character.</li>
+</ul></section><section id="like---task" class="title-slide slide level2"><h2>Like - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.7" target="_blank">[Task 8.7]</a></li>
+</ul></section><section id="ordering" class="title-slide slide level2"><h2>Ordering</h2><p>Simplified query:</p>
+<pre><code>SELECT * FROM table_name
+WHERE conditions
+ORDER BY expression [ ASC | DESC ]</code></pre></section><section id="ordering---task" class="title-slide slide level2"><h2>Ordering - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.8" target="_blank">[Task 8.8]</a></li>
+</ul></section><section id="distinct" class="title-slide slide level2"><h2>Distinct</h2><pre><code>SELECT DISTINCT column1, column2 FROM table_name; </code></pre></section></section>
+<section><section id="grouping-results" class="title-slide slide level1"><h1>Grouping results</h1></section><section id="grouping" class="title-slide slide level2"><h2>Grouping</h2><pre><code>SELECT * FROM table_name
+GROUP BY expression</code></pre></section><section id="grouping---task" class="title-slide slide level2"><h2>Grouping - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.9" target="_blank">[Task 8.9]</a></li>
+</ul></section><section id="aggregate-functions" class="title-slide slide level2"><h2>Aggregate functions</h2><p>Functions: <code>MIN</code>, <code>MAX</code>, <code>AVG</code>…</p></section><section id="grouping---task-1" class="title-slide slide level2"><h2>Grouping - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.10" target="_blank">[Task 8.10]</a></li>
+</ul></section><section id="having" class="title-slide slide level2"><h2>Having</h2><pre><code>SELECT * FROM table_name
+GROUP BY expression
+HAVING condition</code></pre></section><section id="having---task" class="title-slide slide level2"><h2>Having - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-8.11" target="_blank">[Task 8.11]</a></li>
+</ul></section></section>
+<section><section id="constraints" class="title-slide slide level1"><h1>Constraints</h1></section><section id="foreign-key" class="title-slide slide level2"><h2>Foreign key</h2><pre><code>CREATE TABLE table_name
+  ...
+  some_column REFERENCES another_table(id)
+  ...</code></pre></section><section id="foreign-keys---task" class="title-slide slide level2"><h2>Foreign keys - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+</ul></section><section id="indexes" class="title-slide slide level2"><h2>Indexes</h2><pre><code>CREATE INDEX idx_name 
+ON table_name(field_name);</code></pre></section></section>
+<section><section id="joining-tables" class="title-slide slide level1"><h1>Joining tables</h1></section><section id="join" class="title-slide slide level2"><h2>Join</h2><ul>
+<li>Inner</li>
+<li>Outer
+<ul>
+<li>Left</li>
+<li>Right</li>
+<li>Full</li>
+</ul></li>
+</ul></section><section id="inner" class="title-slide slide level2"><h2>Inner</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/SQL_Join_-_07_A_Inner_Join_B.svg/330px-SQL_Join_-_07_A_Inner_Join_B.svg.png" /></p>
+<pre><code>SELECT * FROM table_A
+INNER JOIN table_B ON table_B.parent_id = table_A.id</code></pre></section><section id="inner-join---task" class="title-slide slide level2"><h2>Inner join - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-10.1" target="_blank">[Task 10.1]</a></li>
+</ul></section><section id="left-outer-join" class="title-slide slide level2"><h2>Left Outer Join</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/SQL_Join_-_01_A_Left_Join_B.svg/330px-SQL_Join_-_01_A_Left_Join_B.svg.png" /></p>
+<pre><code>SELECT * FROM table_A
+LEFT JOIN table_B ON table_B.parent_id = table_A.id</code></pre></section><section id="left-outer-join---task" class="title-slide slide level2"><h2>Left outer join - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-10.2" target="_blank">[Task 10.2]</a></li>
+</ul></section><section id="right-outer-join" class="title-slide slide level2"><h2>Right Outer Join</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/SQL_Join_-_03_A_Right_Join_B.svg/330px-SQL_Join_-_03_A_Right_Join_B.svg.png" /></p>
+<pre><code>SELECT * FROM table_A
+RIGHT JOIN table_B ON table_B.parent_id = table_A.id</code></pre></section><section id="left-outer-join---task-1" class="title-slide slide level2"><h2>Left outer join - task</h2><ul>
+<li><a href="databases-2-tasks.html#/zadanie-10.3" target="_blank">[Task 10.3]</a></li>
+</ul></section><section id="full-outer-join" class="title-slide slide level2"><h2>Full Outer Join</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/SQL_Join_-_05b_A_Full_Join_B.svg/330px-SQL_Join_-_05b_A_Full_Join_B.svg.png" /></p>
+<pre><code>SELECT * FROM table_A
+FULL JOIN table_B ON table_B.parent_id = table_A.id</code></pre></section><section id="joining-best-practices" class="title-slide slide level2"><h2>Joining best practices</h2><ul>
+<li>nested joining may be expensive (but on other hand, databases are well suited to do it efficiently)</li>
+<li>indexing columns may speeds up the joining <!--* `NULL` --></li>
+</ul></section></section>
+<section><section id="others" class="title-slide slide level1"><h1>Others</h1></section><section id="transactions" class="title-slide slide level2"><h2>Transactions</h2><pre><code>BEGIN;
+
+COMMIT;</code></pre></section><section id="data-dump" class="title-slide slide level2"><h2>Data dump</h2><p><a href="https://stackoverflow.com/questions/14486241/how-can-i-export-the-schema-of-a-database-in-postgresql">https://stackoverflow.com/questions/14486241/how-can-i-export-the-schema-of-a-database-in-postgresql</a></p></section></section>
+<section id="to-be-continued" class="title-slide slide level1"><h1>To be continued</h1></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
