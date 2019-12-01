@@ -44,7 +44,8 @@
 
 <section><section id="connecting-to-database" class="title-slide slide level1"><h1>Connecting to database</h1></section><section id="connection-url" class="title-slide slide level2"><h2>Connection URL</h2><p><em>protocol</em> <code>:</code> <em>product-name</em> <code>:</code> <em>connection-details (DB specific)</em></p>
 <p>E.g.</p>
-<pre><code>jdbc:postgresql://localhost:5432/my-schema</code></pre>
+<pre><code>jdbc:postgresql://localhost:5432/my-database
+jdbc:postgresql://localhost:5432/my-database?currentSchema=my-schema</code></pre>
 <pre><code>jdbc:h2:~/temp-database;IGNORECASE=TRUE;MODE=MYSQL;DATABASE_TO_UPPER=false</code></pre>
 <pre><code>jdbc:mysql://localhost:3306/my-database?useUnicode=yes&amp;characterEncoding=UTF-8</code></pre></section><section id="creating-connection" class="title-slide slide level2"><h2>Creating connection</h2><pre><code>import java.sql.*;
 

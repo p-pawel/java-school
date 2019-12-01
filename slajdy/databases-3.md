@@ -9,7 +9,8 @@ _protocol_ `:` _product-name_ `:` _connection-details (DB specific)_
 
 E.g.
 ```
-jdbc:postgresql://localhost:5432/my-schema
+jdbc:postgresql://localhost:5432/my-database
+jdbc:postgresql://localhost:5432/my-database?currentSchema=my-schema
 ```
 
 ```
