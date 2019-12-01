@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Web application fundamentals</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Web application fundamentals</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="http" class="title-slide slide level1"><h1>HTTP</h1></section><section id="network-model" class="title-slide slide level2"><h2>Network model</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg" /></p></section><section id="http-1" class="title-slide slide level2"><h2>HTTP</h2><p>HTTP is an application layer protocol designed within the framework of the Internet protocol suite. Its definition presumes an underlying and reliable transport layer protocol,[8] and Transmission Control Protocol (TCP) is commonly used.</p></section><section id="uri-url" class="title-slide slide level2"><h2>URI &amp; URL</h2><p>HTTP resources are identified and located on the network by Uniform Resource Locators (URLs), using the Uniform Resource Identifiers (URI’s) schemes http and https. For example, including all optional components:</p>
+<div style="font-size: 64%">
+<pre><code>            userinfo          host        port
+        ┌───────┴───────┐ ┌────┴────────┐ ┌┴┐
+ http://john.doe:password@www.example.com:123/forum/questions/?tag=networking&amp;order=newest#top
+ └─┬─┘ └───────────┬────────────────────────┘└─┬─────────────┘└────────┬──────────────────┘└┬─┘
+ scheme         authority                      path                  query             fragment</code></pre>
+</div></section><section id="request-and-response" class="title-slide slide level2"><h2>Request and Response</h2><p>HTTP is an asymmetric request-response client-server protocol:</p>
+<ul>
+<li>client sends a request message to an HTTP server<br />
+</li>
+<li>server, in turn, returns a response message</li>
+</ul>
+<p>HTTP is a pull protocol.</p>
+<p><img data-src="https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/images/HTTP.png" /></p></section><section class="slide level3">
+
+<p><img data-src="https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/images/HTTP_Steps.png" /></p>
+<p><a href="https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html">more</a></p>
+</section><section id="https-methods" class="title-slide slide level2"><h2>HTTPS Methods</h2><table>
+<tr>
+<td>
+<ul>
+<li><code>GET</code> (safe)</li>
+<li><code>POST</code> (unsafe)</li>
+<li><code>PUT</code> (unsafe)</li>
+<li><code>DELETE</code> (unsafe)</li>
+</ul>
+</td>
+<td>
+<ul>
+<li><code>HEAD</code> (safe)</li>
+<li><code>OPTIONS</code> (safe)</li>
+<li><code>PATCH</code> (unsafe)</li>
+<li><code>CONNECT</code> (unsafe)</li>
+<li><code>TRACE</code> (safe)</li>
+</ul>
+</td>
+</tr>
+</table></section><section id="sample-get-request" class="title-slide slide level2"><h2>Sample GET request</h2><pre><code>GET /questions HTTP/1.0
+Host: stackoverflow.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: pl,en-US;q=0.7,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+</code></pre></section><section id="example-request" class="title-slide slide level2"><h2>Example: request</h2><pre><code>telnet stackoverflow.com 80</code></pre>
+<pre><code>GET /questions HTTP/1.0
+Host: stackoverflow.com
+
+
+</code></pre></section><section id="example-request-1" class="title-slide slide level2"><h2>Example: request</h2><pre><code>curl -v stackoverflow.com/questions</code></pre></section><section id="response-statuses" class="title-slide slide level2"><h2>Response statuses</h2><ul>
+<li><code>100+</code> - info</li>
+<li><code>200+</code> - OK</li>
+<li><code>300+</code> - redirect</li>
+<li><code>400+</code> - user errors
+<div class="clicker" tabindex="1" style="display: inline;" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<em>you f%cked up</em>
+</div></li>
+<li><code>500+</code> - server erorrs
+<div class="clicker" tabindex="1" style="display: inline;" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<em>we f%cked up</em>
+</div></li>
+</ul></section><section id="mime-types" class="title-slide slide level2"><h2>Mime types</h2><p>A media type (also known as a Multipurpose Internet Mail Extensions or MIME type) is a standard that indicates the nature and format of a document, file, or assortment of bytes. It is defined and standardized in IETF’s RFC 6838.</p>
+<p><code>type/subtype</code> or <code>type/subtype;parameter=value</code></p>
+<p>E.g. * <code>text/plain</code> * <code>text/css</code> * <code>text/html</code> * <code>text/javascript</code> * <code>image/jpeg</code> * <code>application/json</code></p>
+<!--
+## HTTPS
+--></section></section>
+<section><section id="rest" class="title-slide slide level1"><h1>REST</h1><p>REST - acronym for <em>REpresentational State Transfer</em>,</p></section><section id="constraints" class="title-slide slide level2"><h2>Constraints</h2><ul>
+<li>Client-Server</li>
+<li>Stateless</li>
+<li>Cacheable</li>
+<li>Layered System</li>
+<li>Code on Demand (optional)</li>
+<li>Uniform Interface Contract</li>
+</ul>
+<p><a href="https://www.restapitutorial.com/lessons/whatisrest.html" target="_blank">[more]</a> <a href="https://www.guru99.com/restful-web-services.html" target="_blank">[more]</a> <a href="https://www.edureka.co/blog/what-is-rest-api/" target="_blank">[more]</a></p></section><section id="client-server" class="slide level3">
+<h3>Client-server</h3>
+<aside class="notes">
+<ul>
+<li>The c-s arch separates c from suniform interface separates clients from servers. This separation of concerns means that, for example, clients are not concerned with data storage, which remains internal to each server, so that the portability of client code is improved. Servers are not concerned with the user interface or user state, so that servers can be simpler and more scalable. Servers and clients may also be replaced and developed independently, as long as the interface is not altered.
+</aside></li>
+</ul>
+</section><section id="stateless" class="slide level3">
+<h3>Stateless</h3>
+<aside class="notes">
+<ul>
+<li>The concept of stateless means that it’s up to the client to ensure that all the required information is provided to the server. This is required so that server can process the response appropriately. The server should not maintain any sort of information between requests from the client. It’s a very simple independent question-answer sequence. The client asks a question, the server answers it appropriately. The client will ask another question. The server will not remember the previous question-answer scenario and will need to answer the new question independently.
+</aside></li>
+</ul>
+</section><section id="cacheable" class="slide level3">
+<h3>Cacheable</h3>
+<aside class="notes">
+<ul>
+<li>As on the World Wide Web, clients can cache responses. Responses must therefore, implicitly or explicitly, define themselves as cacheable, or not, to prevent clients reusing stale or inappropriate data in response to further requests. Well-managed caching partially or completely eliminates some client–server interactions, further improving scalability and performance.</li>
+</ul>
+</aside>
+</section><section id="layered-system" class="slide level3">
+<h3>Layered System</h3>
+<aside class="notes">
+<ul>
+<li>A client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way. Intermediary servers may improve system scalability by enabling load-balancing and by providing shared caches. Layers may also enforce security policies.
+</aside></li>
+</ul>
+</section><section id="code-on-demand-optional" class="slide level3">
+<h3>Code on Demand (optional)</h3>
+<aside class="notes">
+<ul>
+<li>Servers are able to temporarily extend or customize the functionality of a client by transferring logic to it that it can execute. Examples</li>
+</ul>
+</aside>
+</section><section id="uniform-interface-contract" class="slide level3">
+<h3>Uniform Interface Contract</h3>
+<aside class="notes">
+The client-server architecture enables a uniform interface and separates clients from the servers. This enhances the portability across multiple platforms as well as the scalability of the server components.
+</aside>
+</section><section id="uniform-interface-contract-principles" class="title-slide slide level2"><h2>Uniform Interface Contract Principles</h2><ul>
+<li>Resource-Based</li>
+<li>Manipulation of Resources Through Representations</li>
+<li>Self-descriptive Messages</li>
+<li>HATEOAS (Hypermedia as the Engine of Application State)</li>
+</ul>
+<aside class="notes">
+https://www.restapitutorial.com/lessons/whatisrest.html https://stackoverflow.com/questions/25172600/rest-what-exactly-is-meant-by-uniform-interface
+</aside></section><section id="resource-based" class="slide level3">
+<h3>Resource-Based</h3>
+<aside class="notes">
+Individual resources are identified in requests using URIs as resource identifiers. The resources themselves are conceptually separate from the representations that are returned to the client. For example, the server does not send its database, but rather, some HTML, XML or JSON that represents some database records expressed, for instance, in Finnish and encoded in UTF-8, depending on the details of the request and the server implementation.
+</aside>
+</section><section id="manipulation-of-resources-through-representations" class="slide level3">
+<h3>Manipulation of Resources Through Representations</h3>
+<aside class="notes">
+When a client holds a representation of a resource, including any metadata attached, it has enough information to modify or delete the resource on the server, provided it has permission to do so.
+</aside>
+</section><section id="self-descriptive-messages" class="slide level3">
+<h3>Self-descriptive Messages</h3>
+<aside class="notes">
+Each message includes enough information to describe how to process the message. For example, which parser to invoke may be specified by an Internet media type (previously known as a MIME type). Responses also explicitly indicate their cache-ability.
+</aside>
+</section><section id="hateoas-hypermedia-as-the-engine-of-application-state" class="slide level3">
+<h3>HATEOAS (Hypermedia as the Engine of Application State)</h3>
+<aside class="notes">
+<ul>
+<li>You use hyperlinks and possibly URI templates to decouple the client from the application specific URI structure. You can annotate these hyperlinks with semantics e.g. IANA link relations, so the client will understand what they mean.</li>
+<li>While services are still useful without them, APIs become more self-descriptive and discoverable when links are returned in the response. At</li>
+</ul>
+</aside>
+</section><section id="implementation" class="title-slide slide level2"><h2>Implementation</h2><p>RESTful works on the HTTP web layer and uses the HTTP methods to work with resources on the server:</p>
+<ul>
+<li><code>GET</code> - to <strong>retrieve</strong> a resource from the server</li>
+<li><code>POST</code> - to <strong>create</strong> a resource on the server</li>
+<li><code>PUT</code> - to complete <strong>replacement</strong> of a document</li>
+<li><code>PATCH</code> - to <strong>modify</strong> (also <strong>partially</strong>) an existing HTTP resource.</li>
+<li><code>DELETE</code> - to <strong>remove</strong> or delete a resource from the server</li>
+</ul></section><section id="rest---recommended-concepts" class="title-slide slide level2"><h2>REST - recommended concepts</h2><ul>
+<li><p>Use HTTP Verbs to Make Your Requests Mean Something</p></li>
+<li><p>Provide Sensible Resource Names</p></li>
+<li><p>Use HTTP Response Codes to Indicate Status</p></li>
+<li><p>Offer Both JSON and XML</p></li>
+<li><p>Consider Connectedness</p></li>
+</ul></section><section id="resource-names-conventions-1" class="title-slide slide level2"><h2>Resource names conventions (1)</h2><ul>
+<li><p>in URLs identifiers instead of in the query-string, e.g. <code>/users/12345</code> (query string keep for filtering (e.g. <code>/api?type=user&amp;id=23</code>)</p></li>
+<li><p>Leverage the hierarchical nature of the URL to imply structure, e.g. <code>/posts/123/comments/456</code></p></li>
+<li><p>Design for your clients, not for your data.</p></li>
+<li><p>Use lower-case in URL segments, separating words with <code>_</code> or <code>-</code>. Some servers ignore case so it’s best to be clear.</p></li>
+<li><p>Keep URLs as short as possible, with as few segments as makes sense.</p></li>
+</ul></section><section id="resource-names-conventions-2" class="title-slide slide level2"><h2>Resource names conventions (2)</h2><ul>
+<li><p>Resource names should be <strong>nouns</strong>. Avoid verbs as resource names, to improve clarity. Use the HTTP methods to specify the verb portion of the request.</p></li>
+<li><p>Use <strong>plurals</strong> in URL segments to keep your API URIs consistent across all HTTP methods, using the collection metaphor.</p>
+<ul>
+<li>Recommended: /customers/33245/orders/8769/lineitems/1</li>
+<li>Not: /customer/33245/order/8769/lineitem/1</li>
+</ul></li>
+<li><p>Avoid using collection verbiage in URLs, e.g. instead of <del><code>customer_list</code></del> use pluralization to indicate the collection metaphor <code>customers</code></p></li>
+</ul></section></section>
+<section><section id="data-formats-in-rest" class="title-slide slide level1"><h1>Data formats in REST</h1></section><section id="xml" class="title-slide slide level2"><h2>XML</h2><p><strong>XML (Extensible Markup Language)</strong> - is a markup language similar to HTML, but without predefined tags to use.</p>
+<p>Declaration:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></pre>
+<p>Example:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;message&gt;
+    &lt;warning&gt;
+         Hello World
+    &lt;/warning&gt;
+&lt;/message&gt;</code></pre>
+<p>XSD and DTD for declaring XML schema.</p></section><section id="json" class="title-slide slide level2"><h2>JSON</h2><p><strong>JavaScript Object Notation (JSON)</strong> - is a syntax for serializing objects, arrays, numbers, strings, booleans, and null. It is based upon JavaScript syntax but is distinct from it (JSON can be JS, but some JavaScript is not JSON).</p>
+<p>Example:</p>
+<pre><code>{
+  &quot;message&quot;: {
+    &quot;warning&quot;: &quot;Hello World&quot;
+  }
+}</code></pre></section><section id="task" class="title-slide slide level2"><h2>Task</h2><p>Let’s use <a href="https://www.getpostman.com/" target="_blank">Postman</a> to query some of public REST APIs.</p>
+<p><a href="https://github.com/public-apis/public-apis" target="_blank">https://github.com/public-apis/public-apis</a></p>
+<!--
+levells
+
+http://www.cellbiol.com/bioinformatics_web_development/chapter-1-internet-networks-and-tcp-ip/the-tcpip-family-of-internet-protocols/
+
+https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+--></section></section>
+<section id="to-be-continued" class="title-slide slide level1"><h1>To be continued</h1></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

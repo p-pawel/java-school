@@ -55,8 +55,9 @@ Properties props = new Properties();
 props.setProperty(&quot;user&quot;,&quot;user-name&quot;);
 props.setProperty(&quot;password&quot;,&quot;secret&quot;);
 
-Connection c = DriverManager.getConnection(url, props);</code></pre></section><section id="connecting---task" class="title-slide slide level2"><h2>Connecting - Task</h2><p>Utwórz projekt typu Maven, dodaj zależność do sterownika do bazy danych Postgres na podstawie danych <a href="https://mvnrepository.com/artifact/org.postgresql/postgresql">stąd</a></p>
-<p>W programie utwórz obiekt typu <code>java.sql.Connection</code>, który połączy się z Twoją lokalną bazą danych PostgreSQL.</p></section></section>
+Connection c = DriverManager.getConnection(url, props);</code></pre></section><section id="connecting---task" class="title-slide slide level2"><h2>Connecting - Task</h2><ul>
+<li><a href="databases-3-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
+</ul></section></section>
 <section><section id="querying" class="title-slide slide level1"><h1>Querying</h1></section><section id="executing-statements" class="title-slide slide level2"><h2>Executing statements</h2><ul>
 <li>Update statements</li>
 </ul>
@@ -65,7 +66,9 @@ int result = statement.executeUpdate(&quot;delete * from log&quot;);</code></pre
 <ul>
 <li>Query statements</li>
 </ul>
-<pre><code>ResultSet resultSet = statement.executeQuery(&quot;select * from product&quot;);</code></pre></section><section id="prepared-statements" class="title-slide slide level2"><h2>Prepared statements</h2><p>SQL-injection vulnerable:</p>
+<pre><code>ResultSet resultSet = statement.executeQuery(&quot;select * from product&quot;);</code></pre></section><section id="execute-statements---task" class="title-slide slide level2"><h2>Execute statements - task</h2><ul>
+<li><a href="databases-3-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
+</ul></section><section id="prepared-statements" class="title-slide slide level2"><h2>Prepared statements</h2><p>SQL-injection vulnerable:</p>
 <pre><code>Statement statement = conn.createStatement();
 String sql = &quot;delete * product where name = &#39;&quot; + name + &quot;&#39;&quot;;
 System.out.println(sql);
@@ -73,7 +76,9 @@ statement.executeUpdate(sql);</code></pre>
 <p>With prepared statement:</p>
 <pre><code>PreparedStatement statement = conn.prepareStatement(&quot;delete from product where name = ?&quot;);
 statement.setString(1, name);
-statement.execute();</code></pre></section><section id="reading-resultset" class="title-slide slide level2"><h2>Reading ResultSet</h2><ul>
+statement.execute();</code></pre></section><section id="prepared-statements---task" class="title-slide slide level2"><h2>Prepared statements - task</h2><ul>
+<li><a href="databases-3-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section><section id="reading-resultset" class="title-slide slide level2"><h2>Reading ResultSet</h2><ul>
 <li><code>ResultSet.get...(int)</code> - by index (from 1)</li>
 <li><code>ResultSet.get...(String)</code> - by name</li>
 </ul>
@@ -93,12 +98,20 @@ statement.execute();</code></pre></section><section id="reading-resultset" class
 <li><code>String getObject(...)</code></li>
 </ul></section><section id="null-treatment" class="title-slide slide level2"><h2>Null treatment</h2><p>Note: <code>getInt</code> for <code>NULL</code> values returns <code>0</code></p>
 <pre><code>int nValue = rs.getInt(strColName);
-return rs.wasNull() ? null : nValue;</code></pre></section><section id="reading-dates" class="title-slide slide level2"><h2>Reading dates</h2><ul>
+return rs.wasNull() ? null : nValue;</code></pre></section><section id="reading---task" class="title-slide slide level2"><h2>Reading - task</h2><ul>
+<li><a href="databases-3-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+</ul></section><section id="reading-dates" class="title-slide slide level2"><h2>Reading dates</h2><ul>
 <li><code>java.sql.Time getTime(...)</code></li>
 <li><code>java.sql.Time getTimeStamp(...)</code></li>
 <li><code>java.sql.Time getDate(...)</code></li>
 </ul>
-<p>Then: * <code>LocalTime localTime = sqlTime.toLocalTime();</code> * <code>LocalDateTime localTime = sqlTime.toLocalDateTime();</code></p></section><section id="result-set-cursor" class="title-slide slide level2"><h2>Result Set cursor</h2><ul>
+<p>Then:</p>
+<ul>
+<li><code>LocalTime localTime = sqlTime.toLocalTime();</code></li>
+<li><code>LocalDateTime localTime = sqlTime.toLocalDateTime();</code></li>
+</ul></section><section id="reading-dates---task" class="title-slide slide level2"><h2>Reading dates - task</h2><ul>
+<li><a href="databases-3-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+</ul></section><section id="result-set-cursor" class="title-slide slide level2"><h2>Result Set cursor</h2><ul>
 <li><code>connection.createStatement();</code></li>
 <li><code>connection.createStatement(int type, int concurrency);</code></li>
 <li><code>connection.createStatement(int type, int concurrency, int holdability);</code></li>
@@ -113,12 +126,26 @@ return rs.wasNull() ? null : nValue;</code></pre></section><section id="reading-
 <li><code>resulsSet.afterLast()</code></li>
 </ul>
 </section></section>
-<section><section id="final" class="title-slide slide level1"><h1>Final</h1></section><section id="closing-connection" class="title-slide slide level2"><h2>Closing connection</h2><pre><code>try (Connection c = DriverManager.getConnection(&quot;jdbc:postgresql://localhost:5432/postgres&quot;)) {
-
+<section><section id="final" class="title-slide slide level1"><h1>Final</h1></section><section id="closing-connection" class="title-slide slide level2"><h2>Closing connection</h2><ul>
+<li>try-with-resources</li>
+</ul>
+<pre><code>try (Connection c = DriverManager.getConnection(&quot;jdbc:postgresql://localhost:5432/postgres&quot;)) {
    ...
-
-}
-</code></pre></section><section id="exceptions" class="title-slide slide level2"><h2>Exceptions</h2></section></section>
+}</code></pre>
+<ul>
+<li>closing a resource cause close of any resources it created, e.g. <code>Connection</code> -&gt; <code>Statement</code> -&gt; <code>ResultSet</code></li>
+</ul></section><section id="exceptions" class="title-slide slide level2"><h2>Exceptions</h2><p>A checked <code>SQLException</code> can be thrown by JDBC-methods. The exception provides few useful methods:</p>
+<ul>
+<li><code>getMessage()</code> - returns a human-readable message as to what went wrong</li>
+<li><code>getSQLState()</code> - returns a code as to what went wrong</li>
+<li><code>getErrorCode()</code> - retrieves the vendor-specific exception code</li>
+<li><code>getNextException()</code> - retrieves the exception chained to this exception</li>
+</ul></section><section id="exceptions---task" class="title-slide slide level2"><h2>Exceptions - task</h2><ul>
+<li><a href="databases-3-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+</ul></section></section>
+<section id="the-end" class="title-slide slide level1"><h1>The End</h1><ul>
+<li><a href="databases-3-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+</ul></section>
     </div>
   </div>
     <script src="reveal.js/js/reveal.js"></script>

@@ -43,9 +43,8 @@ Connection c = DriverManager.getConnection(url, props);
 ```
 ## Connecting - Task
 
-Utwórz projekt typu Maven, dodaj zależność do sterownika do bazy danych Postgres na podstawie danych [stąd](https://mvnrepository.com/artifact/org.postgresql/postgresql) 
+* <a href="databases-3-tasks.html#/zadanie-1" target="_blank">[Task 1]</a>
 
-W programie utwórz obiekt typu `java.sql.Connection`, który połączy się z Twoją lokalną bazą danych PostgreSQL. 
 
 # Querying
 
@@ -63,6 +62,11 @@ int result = statement.executeUpdate("delete * from log");
 ResultSet resultSet = statement.executeQuery("select * from product");
 ```
 
+## Execute statements - task 
+
+* <a href="databases-3-tasks.html#/zadanie-2" target="_blank">[Task 2]</a>
+
+
 ## Prepared statements
 
 SQL-injection vulnerable:
@@ -79,6 +83,11 @@ PreparedStatement statement = conn.prepareStatement("delete from product where n
 statement.setString(1, name);
 statement.execute();
 ```
+
+## Prepared statements - task
+
+* <a href="databases-3-tasks.html#/zadanie-3" target="_blank">[Task 3]</a>
+
 
 ## Reading ResultSet
 
@@ -114,6 +123,12 @@ int nValue = rs.getInt(strColName);
 return rs.wasNull() ? null : nValue;
 ```
 
+## Reading - task
+
+
+* <a href="databases-3-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
+
+
 ## Reading dates
 
 * `java.sql.Time getTime(...)`
@@ -121,8 +136,14 @@ return rs.wasNull() ? null : nValue;
 * `java.sql.Time getDate(...)`
 
 Then:
+
 * `LocalTime localTime = sqlTime.toLocalTime();`
 * `LocalDateTime localTime = sqlTime.toLocalDateTime();`
+
+## Reading dates - task
+
+
+* <a href="databases-3-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 
 
 ## Result Set cursor
@@ -147,13 +168,29 @@ conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ON
 
 ## Closing connection
 
+* try-with-resources
 ```
 try (Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres")) {
-
    ...
-
 }
-
 ```
 
+* closing a resource cause close of any resources it created, e.g. `Connection` -> `Statement` -> `ResultSet`
+
 ## Exceptions
+
+A checked `SQLException` can be thrown by JDBC-methods. The exception provides few useful methods:
+
+* `getMessage()` - returns a human-readable message as to what went wrong
+* `getSQLState()` - returns a code as to what went wrong
+* `getErrorCode()` - retrieves the vendor-specific exception code
+* `getNextException()` - retrieves the exception chained to this exception
+
+## Exceptions - task
+
+* <a href="databases-3-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
+
+
+# The End
+
+* <a href="databases-3-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>

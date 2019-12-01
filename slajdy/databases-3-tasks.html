@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Databases - JDBC - zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Databases - JDBC - zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p>Utwórz projekt typu Maven, dodaj zależność do sterownika do bazy danych Postgres na podstawie danych <a href="https://mvnrepository.com/artifact/org.postgresql/postgresql">stąd</a></p>
+<p>W programie utwórz obiekt typu <code>java.sql.Connection</code>, który połączy się z Twoją lokalną bazą danych PostgreSQL.</p></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Napisz aplikację, zbierającą szczegóły zamówienia:</p>
+<ul>
+<li>id zamawianego produktu</li>
+<li>id klienta</li>
+<li>liczbę sztuk</li>
+</ul>
+<p><strong>Kryteria akceptacji (Acceptance Criteria):</strong></p>
+<p>Jako Użytkownik mogę złożyć zamówienia (wprowadzając 3 powyższe parametry). Wprowadzone zamówienie jest widoczne w tabeli zamówień w bazie danych.</p></section>
+<section id="zadanie-2-1" class="title-slide slide level2"><h2>Zadanie 2*</h2><p><em>Separation of concerns</em></p>
+Zrefaktorujemy aplikację.
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<p>DTO, Repo</p>
+</div></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>Zabezpiecz poprzednią aplikację przed podatnością na wstrzykiwanie kodu SQL.</p></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Zmodyfikuj poprzednią aplikację tak, aby po uruchomieniu (przed rozpoczęciem interakcji z użytkownikiem), wypisała 3 ostatnie zamówienia.</p></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><ul>
+<li><p>Zmodyfikuj strukturę tabeli z zamówieniami, tak aby zawierała również datę i godzinę złożenia zamówienia <code>placed_at</code>.</p></li>
+<li><p>Dodaj kilka nowych wierszy w tabeli zamówień.</p></li>
+<li><p>Z poziomu aplikacji Java pobierz zamówienia złożone w ciągu ostatnich 24 godzin.</p></li>
+<li><p>*Zaprojektuj tabelę tak, aby kolumna <code>placed_at</code> domyślnie zawierała datę i godzinę utworzenia wiersza tego zamówienia w bazie (bez potrzeby wskazywania tej daty i godziny ręcznie)</p>
+<div class="clicker" tabindex="1" onclick="window.dispatchEvent(new Event(&#39;resize&#39;))">
+
+</div>
+<div class="hiddendiv">
+<p><code>created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP</code></p>
+</div></li>
+</ul></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Napisz fragment kodu, który wywoła wyjątek <code>SQLException</code>. Przeanalizuj jakie wyniki zwrócą metody z tego wyjątku: ie * <code>getMessage()</code> * <code>getSQLState()</code> * <code>getErrorCode()</code> * <code>getNextException()</code></p></section>
+<section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7</h2><ul>
+<li><p>W bazie danych utwórz widok, który zagreguje w jednym miejscu: nr zamówienia, czas złożenia zamówienia, nazwę klienta, nazwę produktu, liczbę sztuk.</p></li>
+<li><p>Zmodyfikuj aplikację tak, aby do wypisania zamówień z ostatnich 24h skorzystała z danych dostarczanych przez ten widok.</p></li>
+</ul></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
