@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>$title$</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  $if(theme)$
+  <link rel="stylesheet" href="reveal.js/css/theme/$theme$.css" id="theme">
+  $else$
+  <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+  $endif$
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+$for(include-before)$
+$include-before$
+$endfor$
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>$title$</h1>
+    $for(author)$<h3>$author$</h3>$endfor$
+    <p>
+    <h4>$date$</h4>
+    </p>
+  </section>
+
+$if(toc)$
+<section>
+    <h2>Outline</h2>
+    <nav id="$idprefix$TOC">
+        $toc$
+    </nav>
+</section>
+$endif$
+
+$body$
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

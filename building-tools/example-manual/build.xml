@@ -1,0 +1,25 @@
+<project>
+
+    <target name="clean">
+        <delete dir="ant-build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="ant-build/classes"/>
+        <javac srcdir="src" destdir="ant-build/classes"/>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="ant-build/jar"/>
+        <jar destfile="ant-build/jar/HelloWorld.jar" basedir="ant-build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="com.company.Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="ant-build/jar/HelloWorld.jar" fork="true"/>
+    </target>
+
+</project>
