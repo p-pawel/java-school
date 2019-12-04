@@ -225,7 +225,7 @@ Fixed size, so:
 | create | `new String[4];` | `new ArrayList<String>` |
 | read | `String x = myArray[2]` | `String x = myArrayList.get(2)` |
 | set | `myArray[2] = "Hello"` | `myArrayList.set(2, "Hello")` |
-| append | - | `myArrayList.add("Hi")` |
+| append | - | `myArrayList.put("Hi")` |
 | length | `myArray.length` | `myArrayList.size()` |
 </div>
 
@@ -394,6 +394,7 @@ The map is sorted according to the natural ordering of its keys, or by a `Compar
 <a href="collections-exercises.html#/zadanie-10" target="_blank">[Task 10]</a>
 
 
+  
 # Tasks
 
 * <a href="collections-exercises.html#/zadanie-11" target="_blank">[Task 11]</a>
@@ -407,6 +408,9 @@ The map is sorted according to the natural ordering of its keys, or by a `Compar
 <a href="collections-exercises.html#/zadanie-18" target="_blank">[Task 18]</a>
 
 # others
+
+
+
 
 ## interface Queue
 A collection designed for holding elements prior to processing.
@@ -583,12 +587,3 @@ text-align:center;
     }
 </style>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-41987357-2');
-</script>

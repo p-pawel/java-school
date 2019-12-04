@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Paweł Puślecki">
   <title>The Collection Framework</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,8 +15,8 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
-  <!-- Printing and PDF exports -->
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
     link.rel = 'stylesheet';
@@ -28,23 +27,23 @@
   <!--[if lt IE 9]>
   <script src="reveal.js/lib/js/html5shiv.js"></script>
   <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">The Collection Framework</h1>
-  <p class="author">Paweł Puślecki</p>
-</section>
+  <h1>The Collection Framework</h1>
+    <h3>Paweł Puślecki</h3>
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
 
 <section id="intro" class="title-slide slide level1"><h1>Intro</h1></section>
-<section><section id="generic-types" class="title-slide slide level1"><h1>Generic types</h1><p>~ parameterized types</p></section><section id="problem" class="slide level2">
-<h2>Problem?</h2>
-<p>Example: Lion/Tiger container</p>
-</section><section id="generic-classes" class="slide level2">
-<h2>Generic classes</h2>
-<pre><code>class Container&lt;T&gt; {
+<section><section id="generic-types" class="title-slide slide level1"><h1>Generic types</h1><p>~ parameterized types</p></section><section id="problem" class="title-slide slide level2"><h2>Problem?</h2><p>Example: Lion/Tiger container</p></section><section id="generic-classes" class="title-slide slide level2"><h2>Generic classes</h2><pre><code>class Container&lt;T&gt; {
  private T tenant;
 
  public T getTenant() {
@@ -55,21 +54,12 @@
   this.tenant = tenant;
   return this;
  }
-}</code></pre>
-</section><section id="generic-interfaces" class="slide level2">
-<h2>Generic interfaces</h2>
-<pre><code>public interface Containable&lt;T&gt; {
+}</code></pre></section><section id="generic-interfaces" class="title-slide slide level2"><h2>Generic interfaces</h2><pre><code>public interface Containable&lt;T&gt; {
   T gut();
   void put(T t);
-}</code></pre>
-</section><section id="generic-methods" class="slide level2">
-<h2>Generic methods</h2>
-<pre><code>public static &lt;T&gt; T getThat(T t) {
+}</code></pre></section><section id="generic-methods" class="title-slide slide level2"><h2>Generic methods</h2><pre><code>public static &lt;T&gt; T getThat(T t) {
   return t;
-}</code></pre>
-</section><section id="type-erasure" class="slide level2">
-<h2>Type erasure</h2>
-<table>
+}</code></pre></section><section id="type-erasure" class="title-slide slide level2"><h2>Type erasure</h2><table>
 <tr>
 <td>
 <pre><code>class Container&lt;T&gt; {
@@ -100,10 +90,7 @@
 }</code></pre>
 </td>
 </tr>
-</table>
-</section><section id="generics---limitations-12" class="slide level2">
-<h2>Generics - Limitations 1/2</h2>
-<ul>
+</table></section><section id="generics---limitations-12" class="title-slide slide level2"><h2>Generics - Limitations 1/2</h2><ul>
 <li>cannot instantiate with primitive types</li>
 </ul>
 <pre><code>Pair&lt;int, char&gt; p = new Pair&lt;&gt;(8, &#39;a&#39;);  // compile error</code></pre>
@@ -117,8 +104,7 @@
 <li>cannot cast or instanceof with parameterized types</li>
 </ul>
 <pre><code>x instanceof ArrayList&lt;Integer&gt; // compile-time error
-x instanceof ArrayList          // OK</code></pre>
-</section><section class="slide level2">
+x instanceof ArrayList          // OK</code></pre></section><section class="slide level3">
 
 <ul>
 <li>cannot create arrays of parameterized types</li>
@@ -139,9 +125,7 @@ public void print(Set&lt;Integer&gt; intSet) { }</code></pre>
 </ul>
 <pre><code>class MyClass&lt;T&gt; {static T staticField;}    // compile error</code></pre>
 <p><a href="https://docs.oracle.com/javase/tutorial/java/generics/restrictions.html" target="_blank">[reference]</a></p>
-</section><section id="recap-autoboxingunboxing" class="slide level2">
-<h2>Recap: autoboxing/unboxing</h2>
-<table>
+</section><section id="recap-autoboxingunboxing" class="title-slide slide level2"><h2>Recap: autoboxing/unboxing</h2><table>
 <tbody>
 <tr class="odd">
 <td><code>boolean</code></td>
@@ -176,10 +160,7 @@ public void print(Set&lt;Integer&gt; intSet) { }</code></pre>
 <td><code>Double</code></td>
 </tr>
 </tbody>
-</table>
-</section><section id="diamond-operator" class="slide level2">
-<h2>Diamond operator</h2>
-<p>Type Inference for Generic Instance Creation</p>
+</table></section><section id="diamond-operator" class="title-slide slide level2"><h2>Diamond operator</h2><p>Type Inference for Generic Instance Creation</p>
 <pre><code>// before Java 7:
 
 Container&lt;Lion&gt; container = new Container&lt;Lion&gt;(); 
@@ -193,11 +174,8 @@ Container&lt;Lion&gt; container = new Container&lt;&gt;();
 // unchecked conversion warning:
 
 Container&lt;Lion&gt; container = new Container();          </code></pre>
-<p><a href="https://docs.oracle.com/javase/7/docs/technotes/guides/language/type-inference-generic-instance-creation.html" target="_blank">[reference]</a></p>
-</section></section>
-<section><section id="one-array-type-to-rule-them-all" class="title-slide slide level1"><h1>One array-type to rule them all?</h1><p>Nope. Arrays are not enough…</p></section><section id="recap-arrays" class="slide level2">
-<h2>Recap: Arrays</h2>
-<pre><code>        int[] myArray1 = {1, 2, 3, 4, 5};
+<p><a href="https://docs.oracle.com/javase/7/docs/technotes/guides/language/type-inference-generic-instance-creation.html" target="_blank">[reference]</a></p></section></section>
+<section><section id="one-array-type-to-rule-them-all" class="title-slide slide level1"><h1>One array-type to rule them all?</h1><p>Nope. Arrays are not enough…</p></section><section id="recap-arrays" class="title-slide slide level2"><h2>Recap: Arrays</h2><pre><code>        int[] myArray1 = {1, 2, 3, 4, 5};
         int x = myArray1[0];
 
         String[] myArray2 = new String[2];
@@ -208,10 +186,8 @@ Container&lt;Lion&gt; container = new Container();          </code></pre>
 <li>special syntax for declare, initialize and element access</li>
 <li>can store primitive and object values</li>
 <li>length property</li>
-</ul>
-</section><section id="recap-arrays-1" class="slide level2">
-<h2>Recap: Arrays</h2>
-<h3 id="warm-up">Warm up</h3>
+</ul></section><section id="recap-arrays-1" class="title-slide slide level2"><h2>Recap: Arrays</h2></section><section id="warm-up" class="slide level3">
+<h3>Warm up</h3>
 <pre><code>public class Exercise1 {
 
     ...
@@ -219,17 +195,12 @@ Container&lt;Lion&gt; container = new Container();          </code></pre>
 }</code></pre>
 <p><a href="collections-exercises.html#/zadanie-1" target="_blank">[Task 1]</a></p>
 <pre><code>Number 1 is 20</code></pre>
-</section><section id="arrays-challenges" class="slide level2">
-<h2>Arrays challenges</h2>
-<p>Fixed size, so:</p>
+</section><section id="arrays-challenges" class="title-slide slide level2"><h2>Arrays challenges</h2><p>Fixed size, so:</p>
 <ul>
 <li><p>cannot append new elements <a href="https://stackoverflow.com/questions/2843366/how-to-add-new-elements-to-an-array" target="_blank">[more]</a></p></li>
 <li><p>cannot remove array elements</p></li>
 <li><p>cannot easy concatenate arrays <a href="https://stackoverflow.com/questions/80476/how-can-i-concatenate-two-arrays-in-java" target="_blank">[more]</a></p></li>
-</ul>
-</section><section id="array-vs-arraylist" class="slide level2">
-<h2>Array vs ArrayList</h2>
-<div style="font-size: 60%">
+</ul></section><section id="array-vs-arraylist" class="title-slide slide level2"><h2>Array vs ArrayList</h2><div style="font-size: 60%">
 <table>
 <thead>
 <tr class="header">
@@ -257,7 +228,7 @@ Container&lt;Lion&gt; container = new Container();          </code></pre>
 <tr class="even">
 <td>append</td>
 <td>-</td>
-<td><code>myArrayList.add("Hi")</code></td>
+<td><code>myArrayList.put("Hi")</code></td>
 </tr>
 <tr class="odd">
 <td>length</td>
@@ -266,32 +237,13 @@ Container&lt;Lion&gt; container = new Container();          </code></pre>
 </tr>
 </tbody>
 </table>
-</div>
-</section><section id="array-vs-arraylist-1" class="slide level2">
-<h2>Array vs ArrayList</h2>
-<p><a href="collections-exercises.html#/zadanie-2" target="_blank">[Task 2]</a></p>
-</section></section>
-<section><section id="the-collection-framework" class="title-slide slide level1"><h1>The Collection Framework</h1></section><section id="section" class="slide level2">
-<h2></h2>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Java.util.Collection_hierarchy.svg" width="48%" /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Java.util.Map_hierarchy.svg/1280px-Java.util.Map_hierarchy.svg.png" width="48%" /></p>
-</section></section>
-<section><section id="interface-list" class="title-slide slide level1"><h1>interface List</h1><p>An ordered collection (also known as a sequence).</p></section><section id="class-arraylist" class="slide level2">
-<h2>class ArrayList</h2>
-<ul>
+</div></section><section id="array-vs-arraylist-1" class="title-slide slide level2"><h2>Array vs ArrayList</h2><p><a href="collections-exercises.html#/zadanie-2" target="_blank">[Task 2]</a></p></section></section>
+<section><section id="the-collection-framework" class="title-slide slide level1"><h1>The Collection Framework</h1></section><section id="section" class="title-slide slide level2"><h2></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Java.util.Collection_hierarchy.svg" width="48%" /> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Java.util.Map_hierarchy.svg/1280px-Java.util.Map_hierarchy.svg.png" width="48%" /></p></section></section>
+<section><section id="interface-list" class="title-slide slide level1"><h1>interface List</h1><p>An ordered collection (also known as a sequence).</p></section><section id="class-arraylist" class="title-slide slide level2"><h2>class ArrayList</h2><ul>
 <li>object that contains other objects</li>
 <li>cannot contain primitives</li>
 <li>preferred when more random read is expected than add/remove</li>
-</ul>
-</section><section id="arraylist---example" class="slide level2">
-<h2>ArrayList - example</h2>
-<p><a href="collections-exercises.html#/zadanie-3" target="_blank">[Task 3]</a></p>
-</section><section id="class-linkedlist" class="slide level2">
-<h2>class LinkedList</h2>
-<p><a href="https://dzone.com/articles/arraylist-vs-linkedlist-vs" target="_blank">[more]</a></p>
-</section><section id="linkedlist---example" class="slide level2">
-<h2>LinkedList - example</h2>
-<p><a href="collections-exercises.html#/zadanie-4" target="_blank">[Task 4]</a></p>
-</section></section>
+</ul></section><section id="arraylist---example" class="title-slide slide level2"><h2>ArrayList - example</h2><p><a href="collections-exercises.html#/zadanie-3" target="_blank">[Task 3]</a></p></section><section id="class-linkedlist" class="title-slide slide level2"><h2>class LinkedList</h2><p><a href="https://dzone.com/articles/arraylist-vs-linkedlist-vs" target="_blank">[more]</a></p></section><section id="linkedlist---example" class="title-slide slide level2"><h2>LinkedList - example</h2><p><a href="collections-exercises.html#/zadanie-4" target="_blank">[Task 4]</a></p></section></section>
 <section><section id="interface-set" class="title-slide slide level1"><h1>interface Set</h1><p>A collection that contains no duplicate elements.</p>
 <pre><code>set.add(element)
 
@@ -301,48 +253,19 @@ set.size()
 
 set.remove(element)
 
-set.contains(element)</code></pre></section><section id="class-hashset" class="slide level2">
-<h2>class HashSet&lt;&gt;</h2>
-<ul>
+set.contains(element)</code></pre></section><section id="class-hashset" class="title-slide slide level2"><h2>class HashSet&lt;&gt;</h2><ul>
 <li>This class implements the Set interface, backed by a hash table.</li>
 <li>It makes no guarantees as to the iteration order of the set;</li>
 <li>in particular, it does not guarantee that the order will remain constant over time.</li>
 <li>This class permits the null element.</li>
 </ul>
-<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html" target="_blank">[reference]</a></p>
-</section><section id="recap-equals-hashcode-contract" class="slide level2">
-<h2>Recap: equals &amp; hashCode contract</h2>
-</section><section id="hashset---example" class="slide level2">
-<h2>HashSet - example</h2>
-<p><a href="collections-exercises.html#/zadanie-4" target="_blank">[Task 4]</a></p>
-</section><section id="class-linkedhashset" class="slide level2">
-<h2>class LinkedHashSet</h2>
-<p>Defines the iteration ordering, which is the order in which elements were inserted into the set (insertion-order).</p>
-<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashSet.html" target="_blank">[reference]</a></p>
-</section><section id="linkedhashset---example" class="slide level2">
-<h2>LinkedHashSet - example</h2>
-<p><a href="collections-exercises.html#/zadanie-5" target="_blank">[Task 5]</a></p>
-</section><section id="treeset" class="slide level2">
-<h2>TreeSet</h2>
-<p>The elements are ordered using their natural ordering, or by a Comparator provided at set creation time, depending on which constructor is used.</p>
-</section><section id="treeset---example" class="slide level2">
-<h2>TreeSet - example</h2>
-<p><a href="collections-exercises.html#/zadanie-6" target="_blank">[Task 6]</a></p>
-</section></section>
-<section><section id="comparable-comparator" class="title-slide slide level1"><h1>Comparable, Comparator</h1></section><section id="interface-comparable" class="slide level2">
-<h2>interface Comparable</h2>
-<pre><code>public interface Comparable&lt;T&gt; {
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html" target="_blank">[reference]</a></p></section><section id="recap-equals-hashcode-contract" class="title-slide slide level2"><h2>Recap: equals &amp; hashCode contract</h2></section><section id="hashset---example" class="title-slide slide level2"><h2>HashSet - example</h2><p><a href="collections-exercises.html#/zadanie-4" target="_blank">[Task 4]</a></p></section><section id="class-linkedhashset" class="title-slide slide level2"><h2>class LinkedHashSet</h2><p>Defines the iteration ordering, which is the order in which elements were inserted into the set (insertion-order).</p>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashSet.html" target="_blank">[reference]</a></p></section><section id="linkedhashset---example" class="title-slide slide level2"><h2>LinkedHashSet - example</h2><p><a href="collections-exercises.html#/zadanie-5" target="_blank">[Task 5]</a></p></section><section id="treeset" class="title-slide slide level2"><h2>TreeSet</h2><p>The elements are ordered using their natural ordering, or by a Comparator provided at set creation time, depending on which constructor is used.</p></section><section id="treeset---example" class="title-slide slide level2"><h2>TreeSet - example</h2><p><a href="collections-exercises.html#/zadanie-6" target="_blank">[Task 6]</a></p></section></section>
+<section><section id="comparable-comparator" class="title-slide slide level1"><h1>Comparable, Comparator</h1></section><section id="interface-comparable" class="title-slide slide level2"><h2>interface Comparable</h2><pre><code>public interface Comparable&lt;T&gt; {
   public int compareTo(T o);
-}</code></pre>
-</section><section id="comparator" class="slide level2">
-<h2>Comparator</h2>
-<pre><code>public interface Comparator&lt;T&gt; {
+}</code></pre></section><section id="comparator" class="title-slide slide level2"><h2>Comparator</h2><pre><code>public interface Comparator&lt;T&gt; {
   int compare(T o1, T o2);
-}</code></pre>
-</section><section id="comparator---task" class="slide level2">
-<h2>Comparator - task</h2>
-<p><a href="collections-exercises.html#/zadanie-7" target="_blank">[Task 7]</a></p>
-</section></section>
+}</code></pre></section><section id="comparator---task" class="title-slide slide level2"><h2>Comparator - task</h2><p><a href="collections-exercises.html#/zadanie-7" target="_blank">[Task 7]</a></p></section></section>
 <section><section id="interface-map" class="title-slide slide level1"><h1>interface Map</h1><ul>
 <li>An object that maps keys to values.</li>
 <li>In another languages known as “dictionary” type</li>
@@ -353,88 +276,50 @@ value = map.get(key)
 
 map.putIfAbsent(key, value);
 
-map.getOrDefault(key, defaultValue);</code></pre></section><section id="hashmap" class="slide level2">
-<h2>HashMap</h2>
-<ul>
+map.getOrDefault(key, defaultValue);</code></pre></section><section id="hashmap" class="title-slide slide level2"><h2>HashMap</h2><ul>
 <li>Hash table based implementation of the Map interface.</li>
 <li>This implementation provides all of the optional map operations, and permits null values and the null key.</li>
 <li>makes no guarantees as to the order of the map</li>
 <li>it does not guarantee that the order will remain constant over time</li>
-</ul>
-</section><section id="hashmap---example" class="slide level2">
-<h2>HashMap - example</h2>
-<p><a href="collections-exercises.html#/zadanie-8" target="_blank">[Task 8]</a></p>
-</section><section id="linkedhashmap" class="slide level2">
-<h2>LinkedHashMap</h2>
-<p>Map with predictable iteration order, which is normally the order in which keys were inserted into the map (insertion-order).</p>
-<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html" target="_blank">[reference]</a></p>
-</section><section id="hashmap---example-1" class="slide level2">
-<h2>HashMap - example</h2>
-<p><a href="collections-exercises.html#/zadanie-9" target="_blank">[Task 9]</a></p>
-</section><section id="treemap" class="slide level2">
-<h2>TreeMap</h2>
-<p>The map is sorted according to the natural ordering of its keys, or by a <code>Comparator</code> provided at map creation time, depending on which constructor is used.</p>
-<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html" target="_blank">[reference]</a></p>
-</section><section id="hashmap---example-2" class="slide level2">
-<h2>HashMap - example</h2>
-<p><a href="collections-exercises.html#/zadanie-10" target="_blank">[Task 10]</a></p>
-</section></section>
+</ul></section><section id="hashmap---example" class="title-slide slide level2"><h2>HashMap - example</h2><p><a href="collections-exercises.html#/zadanie-8" target="_blank">[Task 8]</a></p></section><section id="linkedhashmap" class="title-slide slide level2"><h2>LinkedHashMap</h2><p>Map with predictable iteration order, which is normally the order in which keys were inserted into the map (insertion-order).</p>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html" target="_blank">[reference]</a></p></section><section id="hashmap---example-1" class="title-slide slide level2"><h2>HashMap - example</h2><p><a href="collections-exercises.html#/zadanie-9" target="_blank">[Task 9]</a></p></section><section id="treemap" class="title-slide slide level2"><h2>TreeMap</h2><p>The map is sorted according to the natural ordering of its keys, or by a <code>Comparator</code> provided at map creation time, depending on which constructor is used.</p>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html" target="_blank">[reference]</a></p></section><section id="hashmap---example-2" class="title-slide slide level2"><h2>HashMap - example</h2><p><a href="collections-exercises.html#/zadanie-10" target="_blank">[Task 10]</a></p></section></section>
 <section id="tasks" class="title-slide slide level1"><h1>Tasks</h1><ul>
 <li><p><a href="collections-exercises.html#/zadanie-11" target="_blank">[Task 11]</a> <a href="collections-exercises.html#/zadanie-12" target="_blank">[Task 12]</a></p></li>
 <li><p><a href="collections-exercises.html#/zadanie-13" target="_blank">[Task 13]</a> <a href="collections-exercises.html#/zadanie-14" target="_blank">[Task 14]</a> <a href="collections-exercises.html#/zadanie-15" target="_blank">[Task 15]</a></p></li>
 <li><p><a href="collections-exercises.html#/zadanie-16" target="_blank">[Task 16]</a> <a href="collections-exercises.html#/zadanie-17" target="_blank">[Task 17]</a> <a href="collections-exercises.html#/zadanie-18" target="_blank">[Task 18]</a></p></li>
 </ul></section>
-<section><section id="others" class="title-slide slide level1"><h1>others</h1></section><section id="interface-queue" class="slide level2">
-<h2>interface Queue</h2>
-<p>A collection designed for holding elements prior to processing.</p>
+<section><section id="others" class="title-slide slide level1"><h1>others</h1></section><section id="interface-queue" class="title-slide slide level2"><h2>interface Queue</h2><p>A collection designed for holding elements prior to processing.</p>
 <ul>
 <li>insert: <code>offer(e)</code></li>
 <li>remove: <code>poll()</code></li>
 <li>examine: <code>peek()</code></li>
 </ul>
-<!-- ![](https://images.pexels.com/photos/761295/pexels-photo-761295.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) -->
-</section><section id="interface-deque" class="slide level2">
-<h2>interface Deque</h2>
-<p>A linear collection that supports element insertion and removal at both ends.</p>
+<!-- ![](https://images.pexels.com/photos/761295/pexels-photo-761295.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) --></section><section id="interface-deque" class="title-slide slide level2"><h2>interface Deque</h2><p>A linear collection that supports element insertion and removal at both ends.</p>
 <ul>
 <li>insert: <code>offerFirst(e)</code>, <code>offerLast(e)</code></li>
 <li>remove: <code>pollFirst()</code>, <code>pollLast()</code><br />
 </li>
 <li>examine: <code>peekFirst()</code>, <code>peekLast()</code></li>
-</ul>
-</section><section id="vector" class="slide level2">
-<h2><del>Vector</del></h2>
-<ul>
+</ul></section><section id="vector" class="title-slide slide level2"><h2><del>Vector</del></h2><ul>
 <li>in Java since 1.0</li>
 <li>considered obsolete (however not deprecated)</li>
 <li>slow - synchronized on every get/set operation</li>
 <li>mixture of concerns:</li>
 <li>for thread-safe list use decorator <code>Collections.synchronizedCollection(myList)</code></li>
 </ul>
-<p><a href="https://stackoverflow.com/questions/1386275/why-is-java-vector-and-stack-class-considered-obsolete-or-deprecated">1</a> <a href="https://javaconceptoftheday.com/not-use-vector-class-code/">2</a></p>
-</section><section id="stack" class="slide level2">
-<h2><del>Stack</del></h2>
-<ul>
+<p><a href="https://stackoverflow.com/questions/1386275/why-is-java-vector-and-stack-class-considered-obsolete-or-deprecated">1</a> <a href="https://javaconceptoftheday.com/not-use-vector-class-code/">2</a></p></section><section id="stack" class="title-slide slide level2"><h2><del>Stack</del></h2><ul>
 <li><code>class Stack&lt;E&gt; extends Vector&lt;E&gt;</code></li>
 <li>use Queue or Deque instead</li>
 </ul>
-<p><a href="https://keithwilliamstechblog.wordpress.com/2016/02/13/why-the-java-stack-class-is-bad/"></a></p>
-</section></section>
-<section><section id="stream-api" class="title-slide slide level1"><h1>Stream API</h1></section><section id="stream-operations" class="slide level2">
-<h2>Stream operations</h2>
-<p><img src="stream-operations.svg" alt="" style="border: none; background: none;"/></p>
-</section><section id="stream-source" class="slide level2">
-<h2>Stream: source</h2>
-<pre><code>Stream.empty();
+<p><a href="https://keithwilliamstechblog.wordpress.com/2016/02/13/why-the-java-stack-class-is-bad/"></a></p></section></section>
+<section><section id="stream-api" class="title-slide slide level1"><h1>Stream API</h1></section><section id="stream-operations" class="title-slide slide level2"><h2>Stream operations</h2><p><img src="stream-operations.svg" alt="" style="border: none; background: none;"/></p></section><section id="stream-source" class="title-slide slide level2"><h2>Stream: source</h2><pre><code>Stream.empty();
 
 Stream.of(1);
 
 Stream.of(1, 2, 3);
 
-collection.stream();</code></pre>
-</section><section id="stream-intermediate-operation" class="slide level2">
-<h2>Stream: intermediate operation</h2>
-<pre><code>filter()
+collection.stream();</code></pre></section><section id="stream-intermediate-operation" class="title-slide slide level2"><h2>Stream: intermediate operation</h2><pre><code>filter()
 
 distinct()
 
@@ -449,10 +334,7 @@ sorted()
 peek()
 
 boxed()
-</code></pre>
-</section><section id="stream-terminal-operation" class="slide level2">
-<h2>Stream: terminal operation</h2>
-<pre><code>count()
+</code></pre></section><section id="stream-terminal-operation" class="title-slide slide level2"><h2>Stream: terminal operation</h2><pre><code>count()
 
 min(), max()
 
@@ -465,17 +347,11 @@ foreach()
 reduce()
 
 collect()
-</code></pre>
-</section><section id="stream-example" class="slide level2">
-<h2>Stream example</h2>
-<pre><code>List&lt;Integer&gt; list = IntStream.range(1, 31)
+</code></pre></section><section id="stream-example" class="title-slide slide level2"><h2>Stream example</h2><pre><code>List&lt;Integer&gt; list = IntStream.range(1, 31)
     .filter(i -&gt; i % 3 == 0)
     .map(e -&gt; e % 7)
     .boxed()
-    .collect(Collectors.toList());</code></pre>
-</section><section id="stream-tasks" class="slide level2">
-<h2>Stream tasks</h2>
-<p>Resolve these tasks with Stream API:</p>
+    .collect(Collectors.toList());</code></pre></section><section id="stream-tasks" class="title-slide slide level2"><h2>Stream tasks</h2><p>Resolve these tasks with Stream API:</p>
 <ul>
 <li><p><a href="collections-exercises.html#/zadanie-2" target="_blank">[Task 2]</a> <a href="collections-exercises.html#/zadanie-3" target="_blank">[Task 3]</a></p></li>
 <li><p><a href="collections-exercises.html#/zadanie-4" target="_blank">[Task 4]</a> <a href="collections-exercises.html#/zadanie-5" target="_blank">[Task 5]</a> <a href="collections-exercises.html#/zadanie-6" target="_blank">[Task 6]</a></p></li>
@@ -483,8 +359,7 @@ collect()
 <li><p><a href="collections-exercises.html#/zadanie-11" target="_blank">[Task 11]</a> <a href="collections-exercises.html#/zadanie-12" target="_blank">[Task 12]</a></p></li>
 <li><p><a href="collections-exercises.html#/zadanie-13" target="_blank">[Task 13]</a> <a href="collections-exercises.html#/zadanie-14" target="_blank">[Task 14]</a> <a href="collections-exercises.html#/zadanie-15" target="_blank">[Task 15]</a></p></li>
 <li><p><a href="collections-exercises.html#/zadanie-16" target="_blank">[Task 16]</a> <a href="collections-exercises.html#/zadanie-17" target="_blank">[Task 17]</a> <a href="collections-exercises.html#/zadanie-18" target="_blank">[Task 18]</a></p></li>
-</ul>
-</section></section>
+</ul></section></section>
 <section id="the-end" class="title-slide slide level1"><h1>THE END</h1><style>
 .reveal code {
     font-family: monospace;
@@ -521,35 +396,35 @@ text-align:center;
         margin-left: 0.3em;
         font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f35d";
     }
-</style>
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" /></p>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-41987357-2');
-</script></section>
+</style></section>
     </div>
   </div>
+    <script src="reveal.js/js/reveal.js"></script>
 
-  <script src="reveal.js/js/reveal.js"></script>
+      <script>
 
-  <script>
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
 
-      // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        // Push each slide change to the browser history
-        history: true,
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'reveal.js/plugin/notes/notes.js', async: true }
-        ]
-      });
-    </script>
-    </body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
 </html>

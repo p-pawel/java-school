@@ -9,11 +9,13 @@ W programie utwórz obiekt typu `java.sql.Connection`, który połączy się z T
 
 ## Zadanie 2
 
-Napisz aplikację, zbierającą szczegóły zamówienia:
+Napisz aplikację, pytającą użytkownika o szczegóły zamówienia (`new Scanner(System.in).readLine()`):
 
 - id zamawianego produktu
 - id klienta
 - liczbę sztuk
+
+i wpisującą te dane do bazy danych. 
 
 **Kryteria akceptacji (Acceptance Criteria):**
 

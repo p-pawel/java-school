@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -15,8 +15,8 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
-  <!-- Printing and PDF exports -->
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
     link.rel = 'stylesheet';
@@ -27,18 +27,22 @@
   <!--[if lt IE 9]>
   <script src="reveal.js/lib/js/html5shiv.js"></script>
   <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Zadania</h1>
-</section>
+  <h1>Zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
 
-<section id="zadanie-1" class="slide level2">
-<h2>Zadanie 1</h2>
-<p><em>Przypomnienie tablic</em></p>
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p><em>Przypomnienie tablic</em></p>
 <p>Napisz program, który utworzy tablicę o długości 20 i wypełni ją liczbami całkowitymi od 1 do 20, a następnie wypisze zawartość tablicy.</p>
 <pre><code>public class Exercise1 {
 
@@ -46,11 +50,8 @@
 
 }</code></pre>
 <p>Efektem działania programu powinno być wypisanie ciągu znaków:</p>
-<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</code></pre>
-</section>
-<section id="zadanie-2" class="slide level2">
-<h2>Zadanie 2</h2>
-<p><em>Wprowadzenie do list</em></p>
+<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</code></pre></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p><em>Wprowadzenie do list</em></p>
 <p>Napisz program, który utworzy listę (ArrayList) wypełnioną liczbami całkowitymi od 1 do 20, a następnie wypisze zawartość listy.</p>
 <pre><code>public class Exercise1 {
 
@@ -58,82 +59,42 @@
 
 }</code></pre>
 <p>Efektem działania programu powinno być wypisanie ciągu znaków:</p>
-<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</code></pre>
-</section>
-<section id="zadanie-3" class="slide level2">
-<h2>Zadanie 3</h2>
-<p><em>Nieznana długość kolekcji</em></p>
+<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</code></pre></section>
+<section><section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p><em>Nieznana długość kolekcji</em></p>
+<p>Stwórz kolekcję składającą się z liczb odpowiadających reszcie z dzielenia przez <code>7</code> tych liczb z przedziału <code>[1, 30]</code> które są podzielne przez <code>3</code>.</p></section><section class="slide level3">
+
+<p><code>[3, 6, 2, 5, 1, 4, 0, 3, 6]</code></p>
+</section><section class="slide level3">
+
+</section></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p><em>Liczby bez duplikatów</em></p>
 <p>Stwórz kolekcję składającą się z liczb odpowiadających reszcie z dzielenia przez <code>7</code> tych liczb z przedziału <code>[1, 30]</code> które są podzielne przez <code>3</code>.</p>
-</section>
-<section id="zadanie-4" class="slide level2">
-<h2>Zadanie 4</h2>
-<p><em>Liczby bez duplikatów</em></p>
+<p>Zapewnij żeby liczby nie powtarzały się.</p></section>
+<section id="zadanie-4---wynik" class="title-slide slide level2"><h2>Zadanie 4 - wynik</h2><p><code>[0, 1, 2, 3, 4, 5, 6]</code></p></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p><em>Liczby bez duplikatów z zachowaniem kolejności</em></p>
 <p>Stwórz kolekcję składającą się z liczb odpowiadających reszcie z dzielenia przez <code>7</code> tych liczb z przedziału <code>[1, 30]</code> które są podzielne przez <code>3</code>.</p>
-<p>Zapewnij żeby liczby nie powtarzały się.</p>
-</section>
-<section id="zadanie-4---wynik" class="slide level2">
-<h2>Zadanie 4 - wynik</h2>
-<p><code>[0, 1, 2, 3, 4, 5, 6]</code></p>
-</section>
-<section id="zadanie-5" class="slide level2">
-<h2>Zadanie 5</h2>
-<p><em>Liczby bez duplikatów z zachowaniem kolejności</em></p>
+<p>Zapewnij żeby liczby nie powtarzały się i pojawiły się w takiej kolejności, w jakiej były obliczane.</p></section>
+<section id="zadanie-5---wynik" class="title-slide slide level2"><h2>Zadanie 5 - wynik</h2><p><code>[3, 6, 2, 5, 1, 4, 0]</code></p></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p><em>Liczby bez duplikatów w kolejności malejącej</em></p>
 <p>Stwórz kolekcję składającą się z liczb odpowiadających reszcie z dzielenia przez <code>7</code> tych liczb z przedziału <code>[1, 30]</code> które są podzielne przez <code>3</code>.</p>
-<p>Zapewnij żeby liczby nie powtarzały się i pojawiły się w takiej kolejności, w jakiej były obliczane.</p>
-</section>
-<section id="zadanie-5---wynik" class="slide level2">
-<h2>Zadanie 5 - wynik</h2>
-<p><code>[3, 6, 2, 5, 1, 4, 0]</code></p>
-</section>
-<section id="zadanie-6" class="slide level2">
-<h2>Zadanie 6</h2>
-<p><em>Liczby bez duplikatów w kolejności malejącej</em></p>
-<p>Stwórz kolekcję składającą się z liczb odpowiadających reszcie z dzielenia przez <code>7</code> tych liczb z przedziału <code>[1, 30]</code> które są podzielne przez <code>3</code>.</p>
-<p>Zapewnij żeby liczby nie powtarzały się i pojawiły się w kolejności malejącej.</p>
-</section>
-<section id="zadanie-6---wynik" class="slide level2">
-<h2>Zadanie 6 - wynik</h2>
-<p><code>[6, 5, 4, 3, 2, 1, 0]</code></p>
-</section>
-<section id="zadanie-7" class="slide level2">
-<h2>Zadanie 7</h2>
-<p>Napisz klasę, która będzie mogła służyć jako <code>Comparator</code> do porównywnia długości napisów.</p>
-</section>
-<section id="zadanie-8" class="slide level2">
-<h2>Zadanie 8</h2>
-<p><em>Mapa klucz-wartość</em></p>
-<p>Napisz program, który utworzy mapę zawierającą liczbę wystąpień poszczególnych znaków w łańcuchu tekstowym <code>HashMap</code>, ignorując przy tym wielkość liter (tzn. <code>H</code> i <code>h</code> będą liczone jako 2x <code>H</code>)</p>
-</section>
-<section id="zadanie-8---wynik" class="slide level2">
-<h2>Zadanie 8 - wynik</h2>
-<pre><code>{P=1, A=2, S=1, H=2, M=1}</code></pre>
-</section>
-<section id="zadanie-9" class="slide level2">
-<h2>Zadanie 9</h2>
-<p><em>Mapa klucz-wartość w kolejności wstawiania</em></p>
+<p>Zapewnij żeby liczby nie powtarzały się i pojawiły się w kolejności malejącej.</p></section>
+<section id="zadanie-6---wynik" class="title-slide slide level2"><h2>Zadanie 6 - wynik</h2><p><code>[6, 5, 4, 3, 2, 1, 0]</code></p></section>
+<section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7</h2><p>Napisz klasę, która będzie mogła służyć jako <code>Comparator</code> do porównywnia długości napisów.</p></section>
+<section id="zadanie-8" class="title-slide slide level2"><h2>Zadanie 8</h2><p><em>Mapa klucz-wartość</em></p>
+<p>Napisz program, który utworzy mapę zawierającą liczbę wystąpień poszczególnych znaków w łańcuchu tekstowym <code>HashMap</code>, ignorując przy tym wielkość liter (tzn. <code>H</code> i <code>h</code> będą liczone jako 2x <code>H</code>)</p></section>
+<section id="zadanie-8---wynik" class="title-slide slide level2"><h2>Zadanie 8 - wynik</h2><pre><code>{P=1, A=2, S=1, H=2, M=1}</code></pre></section>
+<section id="zadanie-9" class="title-slide slide level2"><h2>Zadanie 9</h2><p><em>Mapa klucz-wartość w kolejności wstawiania</em></p>
 <p>Napisz program, który utworzy mapę zawierającą liczbę wystąpień poszczególnych znaków w łańcuchu tekstowym <code>HashMap</code>, ignorując przy tym wielkość liter (tzn. <code>H</code> i <code>h</code> będą liczone jako 2x <code>H</code>).</p>
-<p>Klucze mapy powinny zachować kolejność znaków w jakiej te występowały w łańcuchu tekstowym.</p>
-</section>
-<section id="zadanie-9---wynik" class="slide level2">
-<h2>Zadanie 9 - wynik</h2>
-<pre><code>{H=2, A=2, S=1, M=1, P=1}</code></pre>
-</section>
-<section id="zadanie-10" class="slide level2">
-<h2>Zadanie 10</h2>
-<p><em>Mapa klucz-wartość w kolejności naturalnej</em></p>
+<p>Klucze mapy powinny zachować kolejność znaków w jakiej te występowały w łańcuchu tekstowym.</p></section>
+<section id="zadanie-9---wynik" class="title-slide slide level2"><h2>Zadanie 9 - wynik</h2><pre><code>{H=2, A=2, S=1, M=1, P=1}</code></pre></section>
+<section id="zadanie-10" class="title-slide slide level2"><h2>Zadanie 10</h2><p><em>Mapa klucz-wartość w kolejności naturalnej</em></p>
 <p>Napisz program, który utworzy mapę zawierającą liczbę wystąpień poszczególnych znaków w łańcuchu tekstowym <code>HashMap</code>, ignorując przy tym wielkość liter (tzn. <code>H</code> i <code>h</code> będą liczone jako 2x <code>H</code>).</p>
-<p>Klucze mapy powinny zachować kolejność alfabetyczną.</p>
-</section>
-<section id="zadanie-10---wynik" class="slide level2">
-<h2>Zadanie 10 - wynik</h2>
-<pre><code>{A=2, H=2, M=1, P=1, S=1}</code></pre>
-</section>
-<section id="zadanie-11" class="slide level2">
-<h2>Zadanie 11</h2>
-<p>Skopiuj do swojego projektu pliki:</p>
+<p>Klucze mapy powinny zachować kolejność alfabetyczną.</p></section>
+<section id="zadanie-10---wynik" class="title-slide slide level2"><h2>Zadanie 10 - wynik</h2><pre><code>{A=2, H=2, M=1, P=1, S=1}</code></pre></section>
+<section id="zadanie-11" class="title-slide slide level2"><h2>Zadanie 11</h2><p>Skopiuj do swojego projektu pliki:</p>
 <ul>
-<li><a href="Person.java" target="_blank"><code>Person.java</code></a></li>
-<li><a href="PersonArrayFactory.java" target="_blank"><code>PersonArrayFactory.java</code></a></li>
+<li><a href="files/Person.java" target="_blank"><code>Person.java</code></a></li>
+<li><a href="files/PersonArrayFactory.java" target="_blank"><code>PersonArrayFactory.java</code></a></li>
 </ul>
 <p>oraz utwórz klasę <code>Task11</code> o następującej zawartości:</p>
 <pre><code>public class Task11 {
@@ -148,61 +109,37 @@
     }
 }
 </code></pre>
-<p>c.d.n</p>
-</section>
-<section id="zadanie-11---c.d." class="slide level2">
-<h2>Zadanie 11 - c.d.</h2>
-<p><em>Kolekcje: wszystkie elementy, więcej odczytów niż modyfikacji</em></p>
+<p>c.d.n</p></section>
+<section id="zadanie-11---c.d." class="title-slide slide level2"><h2>Zadanie 11 - c.d.</h2><p><em>Kolekcje: wszystkie elementy, więcej odczytów niż modyfikacji</em></p>
 <p>Utwórz kolekcję obiektów typu <code>Person</code>, która będzie zawierała wszytkie elementy z tablicy <code>personArray</code>, tak aby były one w takiej samej kolejności w jakiej wystąpiły one w tablicy.</p>
 <p>Wypisz zawartość kolekcji oraz jej rozmiar.</p>
 <p><em>Z analizy biznesowej wynika, że kolekcja będzie później bardzo często odczytywana (elementy będą pobierane z różnych losowych miejsc), zaś dużo rzadziej będzie ona modyfikowana (przez dodawanie lub usuwanie elementów z kolekcji).</em></p>
-<p><em>Wybierz taki rodzaj kolekcji, który zapewni najlepszą wydajność w tym przypadku.</em></p>
-</section>
-<section id="zadanie-12" class="slide level2">
-<h2>Zadanie 12</h2>
-<p><em>Kolekcje: wszystkie elementy, więcej modyfikacji niż odczytów</em></p>
+<p><em>Wybierz taki rodzaj kolekcji, który zapewni najlepszą wydajność w tym przypadku.</em></p></section>
+<section id="zadanie-12" class="title-slide slide level2"><h2>Zadanie 12</h2><p><em>Kolekcje: wszystkie elementy, więcej modyfikacji niż odczytów</em></p>
 <p>Stwórz klasę <code>Task12</code> na wzór tej z poprzedniego zadania.</p>
 <p>Utwórz kolekcję obiektów typu <code>Person</code>, która będzie zawierała wszytkie elementy z tablicy <code>personArray</code>, tak aby były one w takiej samej kolejności w jakiej wystąpiły one w tablicy.</p>
 <p>Wypisz zawartość kolekcji oraz jej rozmiar.</p>
 <p><em>Z analizy biznesowej wynika, że kolekcja ta będzie później bardzo często modyfikowana (do kolekcji będą często dodawane lub usuwane elementy), zaś dużo rzadziej będzie ona odczytywana (poprzez pobieranie elementów z różnych losowych miejsc z kolekcji.)</em></p>
-<p><em>Wybierz taki rodzaj kolekcji, który zapewni najlepszą wydajność w tym przypadku.</em></p>
-</section>
-<section id="zadanie-13" class="slide level2">
-<h2>Zadanie 13</h2>
-<p><em>Kolekcje: wszystkie bez duplikatów</em></p>
+<p><em>Wybierz taki rodzaj kolekcji, który zapewni najlepszą wydajność w tym przypadku.</em></p></section>
+<section id="zadanie-13" class="title-slide slide level2"><h2>Zadanie 13</h2><p><em>Kolekcje: wszystkie bez duplikatów</em></p>
 <p>Stwórz klasę <code>Task13</code> na wzór tej z poprzedniego zadania.</p>
 <p>Utwórz kolekcję obiektów typu <code>Person</code>, która będzie zawierała wszytkie elementy z tablicy <code>personArray</code>, zapewnij jednak żeby ta sama osoba nie pojawiła się więcej niż jeden raz.</p>
 <p>Wypisz zawartość kolekcji oraz jej rozmiar.</p>
-<p><em>Z analizy biznesowej wynika, że kolejność elementów nie ma znaczenia.</em></p>
-</section>
-<section id="zadanie-14" class="slide level2">
-<h2>Zadanie 14</h2>
-<p><em>Kolekcje: wszystkie bez duplikatów, w kolejności wstawiania</em></p>
+<p><em>Z analizy biznesowej wynika, że kolejność elementów nie ma znaczenia.</em></p></section>
+<section id="zadanie-14" class="title-slide slide level2"><h2>Zadanie 14</h2><p><em>Kolekcje: wszystkie bez duplikatów, w kolejności wstawiania</em></p>
 <p>Stwórz klasę <code>Task13</code> na wzór tej z poprzedniego zadania.</p>
 <p>Utwórz kolekcję obiektów typu <code>Person</code>, która będzie zawierała wszytkie elementy z tablicy <code>personArray</code>, zapewnij jednak żeby ta sama osoba nie pojawiła się więcej niż jeden raz.</p>
 <p>Wypisz zawartość kolekcji oraz jej rozmiar.</p>
-<p><em>Z analizy biznesowej wynika, że kolejność występowania elementów powinna zostać zachowana.</em></p>
-</section>
-<section id="zadanie-15" class="slide level2">
-<h2>Zadanie 15</h2>
-<p><em>Kolekcje: wszystkie bez duplikatów, w kolejności lat urodzenia</em></p>
+<p><em>Z analizy biznesowej wynika, że kolejność występowania elementów powinna zostać zachowana.</em></p></section>
+<section id="zadanie-15" class="title-slide slide level2"><h2>Zadanie 15</h2><p><em>Kolekcje: wszystkie bez duplikatów, w kolejności lat urodzenia</em></p>
 <p>Stwórz klasę <code>Task13</code> na wzór tej z poprzedniego zadania.</p>
 <p>Utwórz kolekcję obiektów typu <code>Person</code>, która będzie zawierała wszytkie elementy z tablicy <code>personArray</code>, zapewnij jednak żeby ta sama osoba nie pojawiła się więcej niż jeden raz.</p>
 <p>Wypisz zawartość kolekcji oraz jej rozmiar.</p>
-<p>_Z analizy biznesowej wynika, że elementy powinny być posortowane rosnąco wg lat urodzenia.</p>
-</section>
-<section id="zadanie-16" class="slide level2">
-<h2>Zadanie 16</h2>
-<p><em>Kolekcje: grupowanie wg miast</em></p>
-<p><em>Z analizy biznesowej wynika, że kolejność elementów nie ma znaczenia.</em></p>
-</section>
-<section id="zadanie-17" class="slide level2">
-<h2>Zadanie 17</h2>
-<p><em>Kolekcje: grupowanie wg miast w kolejności występowania</em></p>
-</section>
-<section id="zadanie-18" class="slide level2">
-<h2>Zadanie 18</h2>
-<p><em>Kolekcje: grupowanie wg miast w kolejności alfabetycznej</em></p>
+<p>_Z analizy biznesowej wynika, że elementy powinny być posortowane rosnąco wg lat urodzenia.</p></section>
+<section id="zadanie-16" class="title-slide slide level2"><h2>Zadanie 16</h2><p><em>Kolekcje: grupowanie wg miast</em></p>
+<p><em>Z analizy biznesowej wynika, że kolejność elementów nie ma znaczenia.</em></p></section>
+<section id="zadanie-17" class="title-slide slide level2"><h2>Zadanie 17</h2><p><em>Kolekcje: grupowanie wg miast w kolejności występowania</em></p></section>
+<section id="zadanie-18" class="title-slide slide level2"><h2>Zadanie 18</h2><p><em>Kolekcje: grupowanie wg miast w kolejności alfabetycznej</em></p>
 <style>
 .slide{text-align: left}.slide *{font-size: 90%;}
 .reveal code {
@@ -252,28 +189,35 @@ h2.addEventListener('click', function (e) {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'UA-41987357-2');
-</script>
-</section>
+</script></section>
     </div>
   </div>
+    <script src="reveal.js/js/reveal.js"></script>
 
-  <script src="reveal.js/js/reveal.js"></script>
+      <script>
 
-  <script>
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
 
-      // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        // Push each slide change to the browser history
-        history: true,
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'reveal.js/plugin/notes/notes.js', async: true }
-        ]
-      });
-    </script>
-    </body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
 </html>

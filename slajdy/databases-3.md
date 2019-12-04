@@ -82,7 +82,7 @@ With prepared statement:
 ```
 PreparedStatement statement = conn.prepareStatement("delete from product where name = ?");
 statement.setString(1, name);
-statement.execute();
+statement.executeUpdate();
 ```
 
 ## Prepared statements - task

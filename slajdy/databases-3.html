@@ -77,7 +77,7 @@ statement.executeUpdate(sql);</code></pre>
 <p>With prepared statement:</p>
 <pre><code>PreparedStatement statement = conn.prepareStatement(&quot;delete from product where name = ?&quot;);
 statement.setString(1, name);
-statement.execute();</code></pre></section><section id="prepared-statements---task" class="title-slide slide level2"><h2>Prepared statements - task</h2><ul>
+statement.executeUpdate();</code></pre></section><section id="prepared-statements---task" class="title-slide slide level2"><h2>Prepared statements - task</h2><ul>
 <li><a href="databases-3-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
 </ul></section><section id="reading-resultset" class="title-slide slide level2"><h2>Reading ResultSet</h2><ul>
 <li><code>ResultSet.get...(int)</code> - by index (from 1)</li>

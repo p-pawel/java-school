@@ -51,7 +51,9 @@ _Nieznana długość kolekcji_
 Stwórz kolekcję składającą się z liczb odpowiadających reszcie z dzielenia przez `7` tych liczb z przedziału `[1, 30]` które są podzielne przez `3`. 
 
 ---
+
 `[3, 6, 2, 5, 1, 4, 0, 3, 6]`
+
 ---
 
 
@@ -160,8 +162,8 @@ Klucze mapy powinny zachować kolejność alfabetyczną.
 ## Zadanie 11
 Skopiuj do swojego projektu pliki:
 
-*  <a href="Person.java" target="_blank"><code>Person.java</code></a>
-*  <a href="PersonArrayFactory.java" target="_blank"><code>PersonArrayFactory.java</code></a>
+*  <a href="files/Person.java" target="_blank"><code>Person.java</code></a>
+*  <a href="files/PersonArrayFactory.java" target="_blank"><code>PersonArrayFactory.java</code></a>
 
 oraz utwórz klasę `Task11` o następującej zawartości:
 
