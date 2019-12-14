@@ -42,7 +42,14 @@
   </section>
 
 
-<section><section id="http" class="title-slide slide level1"><h1>HTTP</h1></section><section id="network-model" class="title-slide slide level2"><h2>Network model</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg" /></p></section><section id="http-1" class="title-slide slide level2"><h2>HTTP</h2><p>HTTP is an application layer protocol designed within the framework of the Internet protocol suite. Its definition presumes an underlying and reliable transport layer protocol,[8] and Transmission Control Protocol (TCP) is commonly used.</p></section><section id="uri-url" class="title-slide slide level2"><h2>URI &amp; URL</h2><p>HTTP resources are identified and located on the network by Uniform Resource Locators (URLs), using the Uniform Resource Identifiers (URI’s) schemes http and https. For example, including all optional components:</p>
+<section><section id="http" class="title-slide slide level1"><h1>HTTP</h1></section><section id="network-model" class="title-slide slide level2"><h2>Network model</h2><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg" /></p>
+<!--
+levells
+
+http://www.cellbiol.com/bioinformatics_web_development/chapter-1-internet-networks-and-tcp-ip/the-tcpip-family-of-internet-protocols/
+
+https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+--></section><section id="http-1" class="title-slide slide level2"><h2>HTTP</h2><p>HTTP is an application layer protocol designed within the framework of the Internet protocol suite. Its definition presumes an underlying and reliable transport layer protocol,[8] and Transmission Control Protocol (TCP) is commonly used.</p></section><section id="uri-url" class="title-slide slide level2"><h2>URI &amp; URL</h2><p>HTTP resources are identified and located on the network by Uniform Resource Locators (URLs), using the Uniform Resource Identifiers (URI’s) schemes http and https. For example, including all optional components:</p>
 <div style="font-size: 64%">
 <pre><code>            userinfo          host        port
         ┌───────┴───────┐ ┌────┴────────┐ ┌┴┐
@@ -240,16 +247,113 @@ Each message includes enough information to describe how to process the message.
   &quot;message&quot;: {
     &quot;warning&quot;: &quot;Hello World&quot;
   }
-}</code></pre></section><section id="task" class="title-slide slide level2"><h2>Task</h2><p>Let’s use <a href="https://www.getpostman.com/" target="_blank">Postman</a> to query some of public REST APIs.</p>
-<p><a href="https://github.com/public-apis/public-apis" target="_blank">https://github.com/public-apis/public-apis</a></p>
-<!--
-levells
+}</code></pre></section><section id="task" class="title-slide slide level2"><h2>Task</h2></section></section>
+<section><section id="rest-server" class="title-slide slide level1"><h1>REST server</h1></section><section id="ratpack-server-setup" class="title-slide slide level2"><h2>Ratpack server setup</h2><p>Maven:</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;io.ratpack&lt;/groupId&gt;
+  &lt;artifactId&gt;ratpack-core&lt;/artifactId&gt;
+  &lt;version&gt;1.7.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></section><section id="simple-handle" class="title-slide slide level2"><h2>Simple handle</h2><p>Java code:</p>
+<pre><code>RatpackServer.start(server -&gt; server
+  .handlers(
+    chain -&gt; chain
+      .get(ctx -&gt; ctx.render(&quot;Hello World!&quot;))
+  )
+);</code></pre></section><section id="url-dependent-handle" class="title-slide slide level2"><h2>URL dependent handle</h2><pre><code>RatpackServer.start(server -&gt; server
+  .handlers(
+    chain -&gt; chain
+      .get(&quot;/hello&quot;, ctx -&gt; ctx.render(&quot;Hello Ratpack&quot;))
+  )
+);</code></pre></section><section id="return-json" class="title-slide slide level2"><h2>Return JSON</h2><pre><code>RatpackServer.start(server -&gt; server
+  handlers(
+    chain -&gt; chain
+      .get(ctx -&gt; ctx.render(Jackson.json(new Car())))
+  )
+);</code></pre></section><section id="handle-response---task" class="title-slide slide level2"><h2>Handle response - task</h2><ul>
+<li><a href="http-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
+<li><a href="http-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section><section id="parameterized-url" class="title-slide slide level2"><h2>Parameterized URL</h2><pre><code>.get(&quot;orders/:id&quot;, ctx -&gt; {
+  String id = ctx.getPathBinding().getAllTokens().get(&quot;id&quot;);
+  ctx.render(Jackson.json(new Product(id)));
+})</code></pre></section><section id="parameterized-url---task" class="title-slide slide level2"><h2>Parameterized URL - task</h2><ul>
+<li><a href="http-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+</ul></section><section id="connect-to-database" class="title-slide slide level2"><h2>Connect to database</h2><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;io.ratpack&lt;/groupId&gt;
+  &lt;artifactId&gt;ratpack-guice&lt;/artifactId&gt;
+  &lt;version&gt;1.7.5&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;io.ratpack&lt;/groupId&gt;
+  &lt;artifactId&gt;ratpack-hikari&lt;/artifactId&gt;
+  &lt;version&gt;1.7.5&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<pre><code>.registry(Guice.registry(bindings -&gt;
+  bindings.module(HikariModule.class, config -&gt; {
+    config.setDataSourceClassName(&quot;org.postgresql.ds.PGSimpleDataSource&quot;);
+    config.setUsername(&quot;postgres&quot;);
+    config.setPassword(&quot;postgres&quot;);
+    config.addDataSourceProperty(&quot;URL&quot;, &quot;jdbc:...&quot;);
+   })
+))</code></pre></section><section id="handle-database-connection" class="title-slide slide level2"><h2>Handle database connection</h2><pre><code>.get(&quot;products&quot;, ctx -&gt; Blocking
+  .get(() -&gt; {
+    try (Connection connection = ctx.get(DataSource.class).getConnection()) {
+      connection.createStatement(&quot;SELECT * FROM product&quot;);
+      ResultSet resultSet = statement.executeQuery();
+      resultSet.next();
+      return resultSet.getString(1);
+    }
+  })
+  .then(e -&gt; ctx.render(Jackson.json(e)))
+)</code></pre></section><section id="aside-dependency-injection" class="title-slide slide level2"><h2>Aside: Dependency Injection</h2><p>The core principle is to <em>separate behaviour from dependency resolution</em>.</p></section><section id="handle-database-connection---tasks" class="title-slide slide level2"><h2>Handle database connection - tasks</h2><ul>
+<li><a href="http-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+<li><a href="http-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+<li><a href="http-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+</ul></section><section id="handle-rest-operations---tasks" class="title-slide slide level2"><h2>Handle REST operations - tasks</h2><ul>
+<li><a href="http-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+<li><a href="http-tasks.html#/zadanie-8" target="_blank">[Task 8]</a></li>
+<li><a href="http-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+<li><a href="http-tasks.html#/zadanie-10" target="_blank">[Task 10]</a></li>
+<li><a href="http-tasks.html#/zadanie-11" target="_blank">[Task 11]</a></li>
+</ul></section></section>
+<section><section id="testing-rest-server" class="title-slide slide level1"><h1>Testing REST server</h1></section><section id="setup-tests" class="title-slide slide level2"><h2>Setup tests</h2><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;io.ratpack&lt;/groupId&gt;
+  &lt;artifactId&gt;ratpack-test&lt;/artifactId&gt;
+  &lt;version&gt;1.7.5&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre></section><section id="tests" class="title-slide slide level2"><h2>Tests</h2><pre><code>public class ApplicationTest {
+    static MainClassApplicationUnderTest mainClassApplicationUnderTest;
 
-http://www.cellbiol.com/bioinformatics_web_development/chapter-1-internet-networks-and-tcp-ip/the-tcpip-family-of-internet-protocols/
+    @BeforeClass
+    public static void setup() {
+        mainClassApplicationUnderTest = new MainClassApplicationUnderTest(Application.class);
+    }
 
-https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
---></section></section>
-<section id="to-be-continued" class="title-slide slide level1"><h1>To be continued</h1></section>
+    @AfterClass
+    public static void cleanup() {
+        mainClassApplicationUnderTest.close();
+    }
+
+    @Test
+    public void testHelloWorld() throws Exception {
+        mainClassApplicationUnderTest.test(
+                httpClient -&gt; assertEquals(&quot;Hello world!&quot;, httpClient.get(&quot;/api/orders&quot;).getBody().getText())
+        );
+    }
+}</code></pre></section><section id="testing-api---tasks" class="title-slide slide level2"><h2>Testing API - tasks</h2><ul>
+<li><a href="http-tasks.html#/zadanie-12" target="_blank">[Task 12]</a></li>
+</ul></section></section>
+<section><section id="advanced-handling" class="title-slide slide level1"><h1>Advanced handling</h1></section><section id="query-with-joins---tasks" class="title-slide slide level2"><h2>Query with JOINs - tasks</h2><ul>
+<li><a href="http-tasks.html#/zadanie-13" target="_blank">[Task 13]</a></li>
+<li><a href="http-tasks.html#/zadanie-14" target="_blank">[Task 14]</a></li>
+<li><a href="http-tasks.html#/zadanie-15" target="_blank">[Task 15]</a></li>
+<li><a href="http-tasks.html#/zadanie-16" target="_blank">[Task 16]</a></li>
+<li><a href="http-tasks.html#/zadanie-17" target="_blank">[Task 17]</a></li>
+</ul></section><section id="filter-by-query-parameters" class="title-slide slide level2"><h2>Filter by query parameters</h2></section><section id="filter-by-query-parameters---task" class="title-slide slide level2"><h2>Filter by query parameters - task</h2><ul>
+<li><a href="http-tasks.html#/zadanie-18" target="_blank">[Task 18]</a></li>
+</ul></section><section id="hateoas-compliance" class="title-slide slide level2"><h2>HATEOAS compliance</h2></section><section id="hateoas-compliance---task" class="title-slide slide level2"><h2>HATEOAS compliance - task</h2><ul>
+<li><a href="http-tasks.html#/zadanie-19" target="_blank">[Task 19]</a></li>
+</ul></section></section>
+<section id="the-end" class="title-slide slide level1"><h1>The end</h1></section>
     </div>
   </div>
     <script src="reveal.js/js/reveal.js"></script>

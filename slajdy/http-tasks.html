@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Web application fundamentals</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Web application fundamentals</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="http---zadania" class="title-slide slide level1"><h1>HTTP - Zadania</h1></section><section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p>Pobierz i zainstaluj aplikację <a href="https://www.getpostman.com/" target="_blank">Postman</a>.</p>
+<p><a href="https://github.com/public-apis/public-apis" target="_blank">https://github.com/public-apis/public-apis</a></p></section><section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Utwórz serwer, który na żądanie adresu <code>/hello</code> odpowie <code>hi</code>.</p>
+<p>Sprawdź zachowanie w przeglądarce internetowej.</p>
+<p>Korzystając z aplikacji Postman wyślij żądanie <code>GET</code> do uruchomionego serwera REST.</p></section><section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>Zmodyfikuj serwer tak, aby obsługiwał również adres <code>cars</code>, pod którym zwróci kolekcję obiektów typu <code>Car</code> w formacie JSON.</p>
+<p>Klasa <code>Car</code> może zawierać np. dwa pola: <code>long id</code> i <code>String name</code>.</p></section><section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Zmodyfikuj serwer tak, aby obsługiwał również adres <code>cars/:id</code>, pod którym zwróci pojedynczy obiekt typu <code>Car</code> w formacie JSON, który będzie zawierać <code>id</code> zgodny z żądaniem.</p>
+<p>Klasa <code>Car</code> może zawierać np. dwa pola: <code>long id</code> i <code>String name</code>.</p></section><section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>Zmodyfikuj serwer tak, aby nawiązywał połączenie z Twoją bazą danych.</p>
+<p>Serwer powinien nadać bez problemu obsługiwać poprzednie żądania.</p></section><section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Zmodyfikuj serwer tak, aby pod adresem <code>orders</code> zwracał wszystkie zamówienia dostępne w bazie danych.</p>
+<p>Skorzystaj z napisanych wcześniej klas <code>OrderRepository</code>, <code>OrderTO</code>.</p></section><section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7</h2><p>Zmodyfikuj serwer tak, aby pod adresem <code>orders/:number</code> (np. <code>orders/1</code>) zwracał szczegóły zamówienia o odpowiednim <code>id</code>.</p></section><section id="zadanie-8" class="title-slide slide level2"><h2>Zadanie 8</h2><p>Zmodyfikuj serwer tak, aby pod adres <code>orders</code> możliwe było przesłanie zapytania typu <code>POST</code> zawierającego obiekt typu <code>OrderTO</code> w formacie JSON i zapisanie tego zamówienia w bazie danych.</p></section><section id="zadanie-9" class="title-slide slide level2"><h2>Zadanie 9</h2><ol start="4" type="1">
+<li>update existing fully</li>
+</ol></section><section id="zadanie-10" class="title-slide slide level2"><h2>Zadanie 10</h2><ol start="5" type="1">
+<li>update existing partially</li>
+</ol></section><section id="zadanie-11" class="title-slide slide level2"><h2>Zadanie 11</h2><ol start="6" type="1">
+<li>delete</li>
+</ol></section><section id="zadanie-12" class="title-slide slide level2"><h2>Zadanie 12</h2><p>Skonfiguruj aplikację tak, aby umożliwiała testowanie serwera.</p>
+<p>Za pomocą testów sprawdź czy aplikacja zwraca poprawne statusy HTTP dla żądań <code>GET</code> do zasobu <code>orders</code>: <code>200</code> <code>OK</code> - dla istniejącego zamówienia, <code>404</code> <code>Not Found</code> dla zamówienia o nieistniejącym id.</p></section><section id="zadanie-13" class="title-slide slide level2"><h2>Zadanie 13</h2><p>GET all joint</p></section><section id="zadanie-14" class="title-slide slide level2"><h2>Zadanie 14</h2><p>GET one joint</p></section><section id="zadanie-15" class="title-slide slide level2"><h2>Zadanie 15</h2><p>POST joint</p></section><section id="zadanie-16" class="title-slide slide level2"><h2>Zadanie 16</h2><p>PUT joint</p></section><section id="zadanie-17" class="title-slide slide level2"><h2>Zadanie 17</h2><p>PATCH joint</p></section><section id="zadanie-18" class="title-slide slide level2"><h2>Zadanie 18</h2><p>Filtrowanie</p></section><section id="zadanie-19" class="title-slide slide level2"><h2>Zadanie 19</h2><p>HETEOAS</p>
+<ol start="7" type="1">
+<li>extend 1+2 with joins</li>
+</ol></section></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
