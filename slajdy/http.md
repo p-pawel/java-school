@@ -6,6 +6,16 @@
 
 ![](https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg)
 
+
+<!--
+levells
+
+http://www.cellbiol.com/bioinformatics_web_development/chapter-1-internet-networks-and-tcp-ip/the-tcpip-family-of-internet-protocols/
+
+https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+-->
+
+
 ## HTTP
 
 HTTP is an application layer protocol designed within the framework of the Internet protocol suite. Its definition presumes an underlying and reliable transport layer protocol,[8] and Transmission Control Protocol (TCP) is commonly used. 
@@ -284,17 +294,198 @@ Example:
 ```
 
 ## Task
-Let's use <a href="https://www.getpostman.com/" target="_blank">Postman</a> to query some of public REST APIs.
- 
-<a href="https://github.com/public-apis/public-apis" target="_blank">https://github.com/public-apis/public-apis</a>
 
-<!--
-levells
+# REST server
 
-http://www.cellbiol.com/bioinformatics_web_development/chapter-1-internet-networks-and-tcp-ip/the-tcpip-family-of-internet-protocols/
+## Ratpack server setup
 
-https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
--->
+Maven:
+```
+<dependency>
+  <groupId>io.ratpack</groupId>
+  <artifactId>ratpack-core</artifactId>
+  <version>1.7.3</version>
+</dependency>
+```
 
 
-# To be continued
+
+## Simple handle 
+
+Java code:
+```
+RatpackServer.start(server -> server
+  .handlers(
+    chain -> chain
+      .get(ctx -> ctx.render("Hello World!"))
+  )
+);
+```
+
+## URL dependent handle
+
+```
+RatpackServer.start(server -> server
+  .handlers(
+    chain -> chain
+      .get("/hello", ctx -> ctx.render("Hello Ratpack"))
+  )
+);
+```
+
+## Return JSON
+
+```
+RatpackServer.start(server -> server
+  handlers(
+    chain -> chain
+      .get(ctx -> ctx.render(Jackson.json(new Car())))
+  )
+);
+```
+
+## Handle response - task
+
+* <a href="http-tasks.html#/zadanie-2" target="_blank">[Task 2]</a>
+* <a href="http-tasks.html#/zadanie-3" target="_blank">[Task 3]</a>
+
+## Parameterized URL
+
+```
+.get("orders/:id", ctx -> {
+  String id = ctx.getPathBinding().getAllTokens().get("id");
+  ctx.render(Jackson.json(new Product(id)));
+})
+```
+
+
+## Parameterized URL - task
+
+* <a href="http-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
+
+
+## Connect to database
+
+```
+<dependency>
+  <groupId>io.ratpack</groupId>
+  <artifactId>ratpack-guice</artifactId>
+  <version>1.7.5</version>
+</dependency>
+<dependency>
+  <groupId>io.ratpack</groupId>
+  <artifactId>ratpack-hikari</artifactId>
+  <version>1.7.5</version>
+</dependency>
+```
+
+```
+.registry(Guice.registry(bindings ->
+  bindings.module(HikariModule.class, config -> {
+    config.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
+    config.setUsername("postgres");
+    config.setPassword("postgres");
+    config.addDataSourceProperty("URL", "jdbc:...");
+   })
+))
+```
+
+## Handle database connection
+
+```
+.get("products", ctx -> Blocking
+  .get(() -> {
+    try (Connection connection = ctx.get(DataSource.class).getConnection()) {
+      connection.createStatement("SELECT * FROM product");
+	  ResultSet resultSet = statement.executeQuery();
+	  resultSet.next();
+	  return resultSet.getString(1);
+    }
+  })
+  .then(e -> ctx.render(Jackson.json(e)))
+)
+```
+
+## Aside: Dependency Injection
+
+The core principle is to _separate behaviour from dependency resolution_.
+
+## Handle database connection - tasks
+
+* <a href="http-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
+* <a href="http-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
+* <a href="http-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>
+
+
+## Handle REST operations - tasks
+
+* <a href="http-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>
+* <a href="http-tasks.html#/zadanie-8" target="_blank">[Task 8]</a>
+* <a href="http-tasks.html#/zadanie-9" target="_blank">[Task 9]</a>
+* <a href="http-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
+* <a href="http-tasks.html#/zadanie-11" target="_blank">[Task 11]</a>
+
+# Testing REST server
+
+## Setup tests
+
+```
+<dependency>
+  <groupId>io.ratpack</groupId>
+  <artifactId>ratpack-test</artifactId>
+  <version>1.7.5</version>
+  <scope>test</scope>
+</dependency>
+``` 
+
+
+## Tests
+```
+public class ApplicationTest {
+	static MainClassApplicationUnderTest mainClassApplicationUnderTest;
+
+	@BeforeClass
+	public static void setup() {
+		mainClassApplicationUnderTest = new MainClassApplicationUnderTest(Application.class);
+	}
+
+	@AfterClass
+	public static void cleanup() {
+		mainClassApplicationUnderTest.close();
+	}
+
+	@Test
+	public void testHelloWorld() throws Exception {
+		mainClassApplicationUnderTest.test(
+				httpClient -> assertEquals("Hello world!", httpClient.get("/api/orders").getBody().getText())
+		);
+	}
+}
+```
+
+
+## Testing API - tasks
+* <a href="http-tasks.html#/zadanie-12" target="_blank">[Task 12]</a>
+
+# Advanced handling
+
+## Query with JOINs - tasks
+* <a href="http-tasks.html#/zadanie-13" target="_blank">[Task 13]</a>
+* <a href="http-tasks.html#/zadanie-14" target="_blank">[Task 14]</a>
+* <a href="http-tasks.html#/zadanie-15" target="_blank">[Task 15]</a>
+* <a href="http-tasks.html#/zadanie-16" target="_blank">[Task 16]</a>
+* <a href="http-tasks.html#/zadanie-17" target="_blank">[Task 17]</a>
+
+## Filter by query parameters
+
+## Filter by query parameters - task
+
+* <a href="http-tasks.html#/zadanie-18" target="_blank">[Task 18]</a>
+
+## HATEOAS compliance
+
+## HATEOAS compliance - task
+
+* <a href="http-tasks.html#/zadanie-19" target="_blank">[Task 19]</a>
+
+# The end
