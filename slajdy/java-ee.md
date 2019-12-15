@@ -20,11 +20,13 @@ Known as:
 ## Application servers
 
 Application servers:
+
 * Glassfish
 * JBoss AS / JBoss Wildfly
 * Apache TomEE
 
 Application containers:
+
 * Apache Tomcat
 * Eclipse Jetty
 
@@ -102,6 +104,19 @@ https://docs.wildfly.org/18/
 
 * <a href="java-ee-tasks.html#/zadanie-2" target="_blank">[Task 2]</a>
 
+## Deployment descriptor
+
+`src/main/webapp/WEB-INF/web.xml`
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+</web-app>
+```
+
+## Deployment process
+
 
 # Chosen specifications
 
@@ -111,15 +126,29 @@ https://docs.wildfly.org/18/
 
 ## Servlet - declaration
 ```
+import javax.servlet.http.HttpServlet;
+
 public class MyServlet extends HttpServlet {
 }
 ```
 
+## Servlet - dependency
+
+```
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>javax.servlet-api</artifactId>
+  <version>4.0.0</version>
+  <scope>provided</scope>
+</dependency>
+```
 ## Servlet - configuration
 
 * Annotated by `@WebServlet`
 
 * `web.xml`
+
+
 
  
 
@@ -149,11 +178,11 @@ Wiring everything together is a tedious part of application development. There a
 ## CDI - Maven
 
 ```
-    <dependency>
-      <groupId>jakarta.inject</groupId>
-      <artifactId>jakarta.inject-api</artifactId>
-      <version>1.0</version>
-    </dependency>
+<dependency>
+  <groupId>jakarta.inject</groupId>
+  <artifactId>jakarta.inject-api</artifactId>
+  <version>1.0</version>
+</dependency>
 ```
 
 ## CDI - `beans.xml`
@@ -173,8 +202,13 @@ Wiring everything together is a tedious part of application development. There a
 
 * <a href="java-ee-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 
+
 ## JAX-RS
 
+
+## JAX-RS - task
+
+* <a href="java-ee-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
 
 
 # Other
@@ -190,3 +224,8 @@ Wiring everything together is a tedious part of application development. There a
 ## EJB
  
 
+## More examples
+
+* <a target="_blank" href="https://github.com/eclipse-ee4j/jakartaee-tutorial-examples">https://github.com/eclipse-ee4j/jakartaee-tutorial-examples</a>
+
+* <a target="_blank" href="https://github.com/wildfly/quickstart/tree/18.0.1.Final">https://github.com/wildfly/quickstart/tree/18.0.1.Final</a>

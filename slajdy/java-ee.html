@@ -48,8 +48,17 @@
 <li>J2EE (1999)</li>
 <li>Java EE (2006)</li>
 <li>Jakarta EE (2019)</li>
-</ul></section><section id="application-servers" class="title-slide slide level2"><h2>Application servers</h2><p>Application servers: * Glassfish * JBoss AS / JBoss Wildfly * Apache TomEE</p>
-<p>Application containers: * Apache Tomcat * Eclipse Jetty</p></section><section id="specifications" class="title-slide slide level2"><h2>Specifications</h2><p><img data-src="java-ee-platform-spec-8.png" /></p>
+</ul></section><section id="application-servers" class="title-slide slide level2"><h2>Application servers</h2><p>Application servers:</p>
+<ul>
+<li>Glassfish</li>
+<li>JBoss AS / JBoss Wildfly</li>
+<li>Apache TomEE</li>
+</ul>
+<p>Application containers:</p>
+<ul>
+<li>Apache Tomcat</li>
+<li>Eclipse Jetty</li>
+</ul></section><section id="specifications" class="title-slide slide level2"><h2>Specifications</h2><p><img data-src="java-ee-platform-spec-8.png" /></p>
 <!--
 Java SE 6 included a full Web Services stack for the convenience of Java developers.
 https://openjdk.java.net/jeps/320
@@ -112,20 +121,31 @@ https://docs.wildfly.org/18/
 <li><a href="java-ee-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
 </ul></section><section id="application-setup" class="title-slide slide level2"><h2>Application setup</h2><ul>
 <li><a href="java-ee-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
-</ul></section></section>
-<section><section id="chosen-specifications" class="title-slide slide level1"><h1>Chosen specifications</h1></section><section id="servlet" class="title-slide slide level2"><h2>Servlet</h2><p><strong>Java servlet</strong> - is a Java software component that extends the capabilities of a server.</p></section><section id="servlet---declaration" class="title-slide slide level2"><h2>Servlet - declaration</h2><pre><code>public class MyServlet extends HttpServlet {
-}</code></pre></section><section id="servlet---configuration" class="title-slide slide level2"><h2>Servlet - configuration</h2><ul>
+</ul></section><section id="deployment-descriptor" class="title-slide slide level2"><h2>Deployment descriptor</h2><p><code>src/main/webapp/WEB-INF/web.xml</code></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app&gt;
+    &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+&lt;/web-app&gt;</code></pre></section><section id="deployment-process" class="title-slide slide level2"><h2>Deployment process</h2></section></section>
+<section><section id="chosen-specifications" class="title-slide slide level1"><h1>Chosen specifications</h1></section><section id="servlet" class="title-slide slide level2"><h2>Servlet</h2><p><strong>Java servlet</strong> - is a Java software component that extends the capabilities of a server.</p></section><section id="servlet---declaration" class="title-slide slide level2"><h2>Servlet - declaration</h2><pre><code>import javax.servlet.http.HttpServlet;
+
+public class MyServlet extends HttpServlet {
+}</code></pre></section><section id="servlet---dependency" class="title-slide slide level2"><h2>Servlet - dependency</h2><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+  &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+  &lt;version&gt;4.0.0&lt;/version&gt;
+  &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre></section><section id="servlet---configuration" class="title-slide slide level2"><h2>Servlet - configuration</h2><ul>
 <li><p>Annotated by <code>@WebServlet</code></p></li>
 <li><p><code>web.xml</code></p></li>
 </ul></section><section id="servlet---tasks" class="title-slide slide level2"><h2>Servlet - tasks</h2><ul>
 <li><a href="java-ee-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
 </ul></section><section id="servlet---request-parameters" class="title-slide slide level2"><h2>Servlet - request parameters</h2><pre><code>request.getParameter(String)</code></pre></section><section id="servlet---request-parameters---task" class="title-slide slide level2"><h2>Servlet - request parameters - task</h2><ul>
 <li><a href="java-ee-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
-</ul></section><section id="cdi" class="title-slide slide level2"><h2>CDI</h2><p><strong>CDI (Contexts and Dependency Injection)</strong> - is a standard dependency injection framework included in Java EE 6 and higher.</p></section><section id="cdi---dependency-injection-motivation" class="title-slide slide level2"><h2>CDI - Dependency Injection motivation</h2><p>Wiring everything together is a tedious part of application development. There are several approaches to connect data, service, and presentation classes to one another.</p></section><section id="cdi---maven" class="title-slide slide level2"><h2>CDI - Maven</h2><pre><code>    &lt;dependency&gt;
-      &lt;groupId&gt;jakarta.inject&lt;/groupId&gt;
-      &lt;artifactId&gt;jakarta.inject-api&lt;/artifactId&gt;
-      &lt;version&gt;1.0&lt;/version&gt;
-    &lt;/dependency&gt;</code></pre></section><section id="cdi---beans.xml" class="title-slide slide level2"><h2>CDI - <code>beans.xml</code></h2><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+</ul></section><section id="cdi" class="title-slide slide level2"><h2>CDI</h2><p><strong>CDI (Contexts and Dependency Injection)</strong> - is a standard dependency injection framework included in Java EE 6 and higher.</p></section><section id="cdi---dependency-injection-motivation" class="title-slide slide level2"><h2>CDI - Dependency Injection motivation</h2><p>Wiring everything together is a tedious part of application development. There are several approaches to connect data, service, and presentation classes to one another.</p></section><section id="cdi---maven" class="title-slide slide level2"><h2>CDI - Maven</h2><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;jakarta.inject&lt;/groupId&gt;
+  &lt;artifactId&gt;jakarta.inject-api&lt;/artifactId&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></section><section id="cdi---beans.xml" class="title-slide slide level2"><h2>CDI - <code>beans.xml</code></h2><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;beans xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
     xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd&quot;
     bean-discovery-mode=&quot;all&quot;&gt;
@@ -133,8 +153,13 @@ https://docs.wildfly.org/18/
 <li><code>@Inject</code></li>
 </ul></section><section id="cdi---tasks" class="title-slide slide level2"><h2>CDI - tasks</h2><ul>
 <li><a href="java-ee-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
-</ul></section><section id="jax-rs" class="title-slide slide level2"><h2>JAX-RS</h2></section></section>
-<section><section id="other" class="title-slide slide level1"><h1>Other</h1></section><section id="jax-ws" class="title-slide slide level2"><h2>JAX-WS</h2></section><section id="jsp" class="title-slide slide level2"><h2>JSP</h2></section><section id="jsf" class="title-slide slide level2"><h2>JSF</h2></section><section id="jpa" class="title-slide slide level2"><h2>JPA</h2></section><section id="ejb" class="title-slide slide level2"><h2>EJB</h2></section></section>
+</ul></section><section id="jax-rs" class="title-slide slide level2"><h2>JAX-RS</h2></section><section id="jax-rs---task" class="title-slide slide level2"><h2>JAX-RS - task</h2><ul>
+<li><a href="java-ee-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+</ul></section></section>
+<section><section id="other" class="title-slide slide level1"><h1>Other</h1></section><section id="jax-ws" class="title-slide slide level2"><h2>JAX-WS</h2></section><section id="jsp" class="title-slide slide level2"><h2>JSP</h2></section><section id="jsf" class="title-slide slide level2"><h2>JSF</h2></section><section id="jpa" class="title-slide slide level2"><h2>JPA</h2></section><section id="ejb" class="title-slide slide level2"><h2>EJB</h2></section><section id="more-examples" class="title-slide slide level2"><h2>More examples</h2><ul>
+<li><p><a target="_blank" href="https://github.com/eclipse-ee4j/jakartaee-tutorial-examples">https://github.com/eclipse-ee4j/jakartaee-tutorial-examples</a></p></li>
+<li><p><a target="_blank" href="https://github.com/wildfly/quickstart/tree/18.0.1.Final">https://github.com/wildfly/quickstart/tree/18.0.1.Final</a></p></li>
+</ul></section></section>
     </div>
   </div>
     <script src="reveal.js/js/reveal.js"></script>

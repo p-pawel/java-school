@@ -23,8 +23,8 @@ Dostosuj servlet tak, aby dla żądania `POST` z parametrem `name` odpowiedział
 
 ## Zadanie 5
 
-Dostosuje aplikację tak, aby tekst pozdrowienia z poprzedniego zadania generowany był w metodzie
-z odrębnej klasy serwisowej, która zostanie wstrzyknięta do klasy servletu.
+Dostosuj aplikację tak, aby cały tekst pozdrowienia z poprzedniego zadania (dla imienia przychodzącego w zapytaniu `POST`) 
+generowany był w metodzie z odrębnej klasy serwisowej, która za pomocą CDI zostanie wstrzyknięta do klasy servletu.
 
 
 ## Zadanie 6
