@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Java EE - zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Java EE - zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><p>Pobierz i rozpakuj serwer aplikacji “WildFly” w wersji “Java EE Full &amp; Web Distribution” <a href="https://wildfly.org/downloads/" target="_blank">https://wildfly.org/downloads/</a></p></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Korzystając z Mavena wygeneruj nowy projekt z <code>&lt;packaging&gt;war&lt;/packaging&gt;</code></p></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>Dostosuj servlet tak, aby zwrócił tekst <code>Hello World!</code>.</p></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Dostosuj servlet tak, aby dla żądania <code>POST</code> z parametrem <code>name</code> odpowiedział tekstem <code>Hello {name}</code>.</p></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>Dostosuje aplikację tak, aby tekst pozdrowienia z poprzedniego zadania generowany był w metodzie z odrębnej klasy serwisowej, która zostanie wstrzyknięta do klasy servletu.</p></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Dostosuj usługę REST tak, aby dla żądania <code>GET</code> została zwrócona lista klientów.</p>
+<p>Na potrzeby tego zadania nie potrzebujemy łączyć się z bazą danych, wystarczy lokalna lista.</p>
+<pre><code>class Customer {
+  private long id;
+  private String name;  
+}</code></pre>
+<p>*Wydziel operacje związane z obsługą listy do odrębnej klasy serwisowej typu “repozytorium”, które będzie enkapsulować listę.</p></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
