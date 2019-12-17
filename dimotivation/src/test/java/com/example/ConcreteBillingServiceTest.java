@@ -1,23 +1,21 @@
 package com.example;
 
 
-import com.example.di.DependenciesContainer;
+import com.example.billing.ConcreteBillingService;
 import com.example.di.DependenciesContainerFake;
 import com.example.di.DependencyConfig;
 import com.example.dto.Bill;
 import com.example.dto.CreditCard;
 import com.example.dto.Order;
-import com.example.payment.MockProviderService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-class DefaultBillingServiceTest {
+class ConcreteBillingServiceTest {
 
-	private DefaultBillingService defaultBillingService = new DefaultBillingService();
+	private ConcreteBillingService concreteBillingService = new ConcreteBillingService();
 
 	@BeforeAll
 	static void setUp() {
@@ -35,7 +33,7 @@ class DefaultBillingServiceTest {
 		CreditCard creditCard = new CreditCard("4111111111111111");
 
 		// when
-		Bill bill = defaultBillingService.chargeOrder(order, creditCard);
+		Bill bill = concreteBillingService.chargeOrder(order, creditCard);
 
 		// then
 		Assertions.assertEquals(BigDecimal.ZERO, bill.getDue());
