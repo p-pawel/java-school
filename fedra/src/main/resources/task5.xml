@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <bean id="car1" class="org.example.task5.Car">
+        <constructor-arg ref="beanYear" type="int" />
+        <constructor-arg ref="beanName" />
+    </bean>
+    <bean id="beanYear" class="java.lang.Integer" >
+        <constructor-arg type="java.lang.String" value="2016"/>
+    </bean>
+    <bean id="beanName" class="java.lang.String">
+        <constructor-arg value="Trabant" />
+    </bean>
+
+
+    <bean id="car2" class="org.example.task5.Car">
+        <constructor-arg type="int" value="1920"  />
+        <constructor-arg type="java.lang.String" value="Tesla" />
+    </bean>
+
+    <bean id="car3" class="org.example.task5.Car">
+        <constructor-arg index="0" value="2015"  />
+        <constructor-arg index="1" value="DeLorean" />
+    </bean>
+
+    <bean id="car4" class="org.example.task5.Car">
+        <constructor-arg name="year" value="1992"  />
+        <constructor-arg name="name" value="Opel Kadett" />
+    </bean>
+
+</beans>

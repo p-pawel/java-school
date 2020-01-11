@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!-- Constructor-based DI -->
+    <bean id="defaultProductRepository" class="org.example.DefaultProductRepository">
+    </bean>
+
+    <bean id="defaultPriceService" class="org.example.DefaultPriceService">
+    </bean>
+
+    <bean class="org.example.DefaultCartService" name="defaultCartService" >
+        <constructor-arg ref="defaultPriceService" />
+        <constructor-arg ref="defaultProductRepository" />
+    </bean>
+    <alias name="defaultCartService" alias="cartService" />
+
+    <bean class="org.example.OneItemCartService" id="oneItemCartService" />
+    <alias name="oneItemCartService" alias="cartService" />
+
+
+    <bean id="dwaStringi1" class="org.example.DwaStringi">
+        <constructor-arg type="java.lang.String" value="defaultProductRepository" />
+        <constructor-arg type="java.lang.String" value="defaultPriceService" />
+    </bean>
+
+    <bean id="dwaStringi2" class="org.example.DwaStringi">
+        <constructor-arg value="defaultProductRepository" />
+        <constructor-arg value="defaultPriceService" />
+    </bean>
+
+    <bean id="dwaStringi3" class="org.example.DwaStringi">
+        <constructor-arg index="1" value="defaultProductRepository" />
+        <constructor-arg index="0" value="defaultPriceService" />
+    </bean>
+
+    <bean id="dwaStringi4" class="org.example.DwaStringi">
+        <constructor-arg name="b" value="defaultProductRepository" />
+        <constructor-arg index="0" value="defaultPriceService" />
+    </bean>
+
+
+    <!-- Setter-based DI: -->
+    <bean name="size" class="java.lang.Integer">
+        <constructor-arg type="java.lang.String" value="456"/>
+    </bean>
+
+    <bean class="org.example.DefaultCartService" name="anotherCartService" >
+        <property name="priceService" ref="defaultPriceService" />
+        <property name="productRepository" ref="defaultProductRepository" />
+        <property name="size" ref="size" />
+    </bean>
+
+</beans>

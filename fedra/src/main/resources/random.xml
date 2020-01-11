@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!-- Task 3 -->
+    <bean class="org.example.MyRandom" id="myRandom1" factory-method="createRandom"/>
+
+    <!-- Task 4 -->
+    <bean class="org.example.MyRandom" name="myRandom2" />
+    <bean class="org.example.MyRandom" id="myRandom3" />
+    <bean class="org.example.MyRandom" name="myRandom4" />
+
+    <!--     stara nazwa      nowa nazwa -->
+    <alias name="myRandom1" alias="myRandom2" />
+    <alias name="myRandom1" alias="myRandom3" />
+    <alias name="myRandom1" alias="myRandom4" />
+
+    <bean class="java.time.LocalDateTime" id="now" factory-method="now"/>
+
+</beans>

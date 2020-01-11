@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
+        xmlns:p="http://www.springframework.org/schema/p"
+>
+
+    <context:annotation-config/>
+    <context:component-scan base-package="org.example"/>
+
+    <bean id="collApp1" class="org.example.collections.CollApp" init-method="init">
+        <property name="items">
+            <list>
+                <value>Hello</value>
+                <ref bean="beanName" />
+                <value>Hello2</value>
+            </list>
+        </property>
+        <property name="assessService" ref="assessService" />
+        <lookup-method name="getService" bean="assessExamService" />
+    </bean>
+
+    <bean name="collApp1Child" parent="collApp1" ></bean>
+
+    <bean name="collApp1Child2" class="org.example.collections.CollApp2" parent="collApp1" />
+
+
+    <bean id="collApp2" class="org.example.collections.CollApp">
+        <property name="items">
+            <set>
+                <ref bean="beanName" />
+                <value>Hello</value>
+                <value>Hello2</value>
+            </set>
+        </property>
+    </bean>
+
+
+    <bean id="beanName" class="java.lang.String">
+        <constructor-arg value="Trabant" />
+    </bean>
+
+    <bean id="collApp3" class="org.example.collections.CollApp">
+        <property name="namesByIds">
+            <map>
+                <entry key="0" value="Pies" />
+                <entry key="1" value="Kot" />
+            </map>
+        </property>
+    </bean>
+
+
+
+
+
+
+
+
+    <bean class="org.example.collections.MildAssessStrategy" id="mildAssessStrategy" />
+    <bean class="org.example.collections.StrictAssessStrategy" id="strictAssessStrategy" />
+
+    <bean id="assessService" class="org.example.collections.AssessService">
+        <constructor-arg>
+            <map>
+                <entry key="STRICT" value-ref="strictAssessStrategy" />
+                <entry key="MILD" value-ref="mildAssessStrategy" />
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="assessExamService" class="org.example.collections.AssessExamService" scope="prototype">
+        <constructor-arg>
+            <map>
+                <entry key="STRICT" value-ref="strictAssessStrategy" />
+                <entry key="MILD" value-ref="mildAssessStrategy" />
+            </map>
+        </constructor-arg>
+        <constructor-arg name="exam"><null></null></constructor-arg>
+    </bean>
+
+</beans>

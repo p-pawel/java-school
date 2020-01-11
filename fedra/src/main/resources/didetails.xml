@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+        xmlns:p="http://www.springframework.org/schema/p"
+>
+    <bean id="defaultProductRepository" class="org.example.DefaultProductRepository">
+    </bean>
+
+    <bean id="defaultPriceService" class="org.example.DefaultPriceService">
+    </bean>
+
+    <bean class="org.example.DefaultCartService" name="cartService1" >
+        <property name="priceService" ref="defaultPriceService" />
+        <property name="productRepository" ref="defaultProductRepository" />
+        <property name="size" value="789" />
+    </bean>
+
+    <alias name="cartService1" alias="cartService" />
+
+    <bean class="org.example.DefaultCartService" name="cartService2"
+          p:priceService-ref="defaultPriceService"
+          p:productRepository-ref="defaultProductRepository"
+          p:size="123"
+    />
+
+
+    <bean class="org.example.didetails.TheBean" name="theBean1" >
+        <property name="name">
+            <idref bean="cartService" />
+        </property>
+    </bean>
+
+
+    <bean class="org.example.didetails.TheBean" name="theBean2" >
+        <property name="name">
+            <value>Hello</value>
+        </property>
+    </bean>
+
+
+    <bean id="beanName" class="java.lang.String">
+        <constructor-arg value="Trabant" />
+    </bean>
+
+
+    <bean class="org.example.didetails.TheBean" name="theBean3" >
+        <property name="name">
+            <ref bean="beanName"/>
+        </property>
+    </bean>
+
+
+
+
+    <bean id="name" class="java.lang.String">
+        <constructor-arg value="Paweł" />
+    </bean>
+
+
+
+</beans>
