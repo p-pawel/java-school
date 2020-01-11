@@ -1,0 +1,439 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Spring Framework (Core)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Spring Framework (Core)</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="introduction" class="title-slide slide level1"><h1>Introduction</h1></section><section id="spring-framework-overview" class="title-slide slide level2"><h2>Spring Framework Overview</h2><ul>
+<li><p>Aims to create Java enterprise applications easily.</p></li>
+<li><p>Leave the flexibility to create architectures depending on an application’s needs.</p></li>
+<li><p>Spring supports a wide range of application scenarios: server, cloud, standalone etc.</p></li>
+<li><p>Spring is open source with large active community</p></li>
+<li><p>Provides out-of-the-box support for modern JDK (as of Spring 5.1, it requires JDK 8+ and supports JDK up to 11 LTS)</p></li>
+<li><p>Supports Groovy and Kotlin as alternative languages on the JVM.</p></li>
+</ul>
+<aside class="notes">
+<ol type="1">
+<li><p>Focuses on enterprise application. Technically it provides everything we need to encircle an enterprise environment with the Java language.</p></li>
+<li><p>Provides flexibility to create many kinds of architectures depending on an application’s needs: server, cloud, standalone etc.</p></li>
+<li><p>In a large enterprise, applications often exist for a long time and have to run on a JDK and application server whose upgrade cycle is beyond developer control. Others may run as a single jar with the server embedded, possibly in a cloud environment. Yet others may be standalone applications (such as batch or integration workloads) that do not need a server.</p></li>
+<li><p>that provides continuous feedback based on a diverse range of real-world use cases. This has helped Spring to successfully evolve over a very long time.</p></li>
+<li><p>As of Spring Framework 5.1, Spring requires JDK 8+ (Java SE 8+) and provides out-of-the-box support for JDK 11 LTS. Java SE 8 update 60 is suggested as the minimum patch release for Java 8, but it is generally recommended to use a recent patch release.</p></li>
+<li><p>languages can vary within single project</p></li>
+</ol>
+</aside></section><section id="what-spring-means" class="title-slide slide level2"><h2>What <code>Spring</code> means?</h2><p>The term <code>Spring</code> means different things in various contexts:</p>
+<ul>
+<li><p>It can be used to refer to the Spring Framework project itself, which is where it all started.</p></li>
+<li><p>Most often, when people say “Spring”, they mean the entire family of projects built on top of the Spring Framework over time.</p></li>
+</ul></section><section id="what-core-means" class="title-slide slide level2"><h2>What <code>Core</code> means?</h2><p>The Spring Framework is divided into modules. Applications can choose which modules they need.</p>
+<ul>
+<li><p>At the heart are the modules of the <code>core</code> container - including a configuration model and a dependency injection mechanism.</p></li>
+<li><p>Beyond <code>core</code> the Spring Framework modules provide support for: different architectures, messaging, persistence, transactional, web (Servlet-based Spring MVC web framework, and the Spring WebFlux reactive web framework).</p></li>
+</ul></section><section id="spring-modules-and-jdk-9" class="title-slide slide level2"><h2>Spring modules and JDK 9</h2><p>Spring’s modules allow for deployment to JDK 9’s module path (<code>Jigsaw</code>) with stable language-level module names (e.g. <code>spring.core</code>, <code>spring.context</code> etc) independent from jar artifact names (e.g. <code>spring-core</code> and <code>spring-context</code>).</p>
+<p>Of course, Spring’s framework jars keep working fine on the classpath on both JDK 8 and 9+.</p></section><section id="spring-history" class="title-slide slide level2"><h2>Spring history</h2><p><img src="spring-core-expertoneonone.jpg" style="width: 20%; float: right"/></p>
+<p>The first version of the Spring framework was written by Rod Johnson in 2002 along with a book <em>“Expert One-on-One J2EE Design and Development”</em></p>
+<p>Spring came into being in 2003 as a response to the complexity of the early J2EE specifications.</p></section><section id="spring-vs-java-ee" class="title-slide slide level2"><h2>Spring vs Java EE</h2><ul>
+<li><p><del>competition</del> -&gt; complementary to Java EE</p></li>
+<li><p>The Spring programming model integrates with carefully selected individual specifications from Java EE:</p></li>
+</ul>
+<p><small> * Servlet API (JSR 340) * WebSocket API (JSR 356) * Concurrency Utilities (JSR 236) * JSON Binding API (JSR 367) * Bean Validation (JSR 303) * JPA (JSR 338) * JMS (JSR 914) * JTA/JCA, * Dependency Injection (JSR 330) * Common Annotations (JSR 250) </small></p>
+<p>Spring bv5 bases on Java EE 7 specifications (e.g. Servlet 3.1+, JPA 2.1+) and provides integration with new APIs from Java EE 8 (e.g. Servlet 4.0, JSON Binding API).</p>
+<p>Spring is fully compatible with e.g. Tomcat 8 and 9, WebSphere 9, and JBoss EAP 7.</p>
+<aside class="notes">
+<p>While usually considered to be in competition, Spring is, in fact, complementary to Java EE.</p>
+<p>The Spring programming model does not embrace the Java EE platform specification; rather, it integrates with carefully selected individual specifications from the EE umbrella:</p>
+EE = to przede wszystkim “specyfikacja” -&gt; inspiracja dla “alternatyw”, więc w pewnym sensie podwaliny dla wszystkich innych frameworków jak Spring
+</aside></section><section id="role-of-java-ee-and-spring" class="title-slide slide level2"><h2>Role of Java EE and Spring</h2><p>The role of JavaEE in application development evolved over time:</p>
+<ul>
+<li><p>In the early days of Java EE and Spring, applications were created to be deployed to an application server.</p></li>
+<li><p>Today, with the help of Spring Boot, applications are created in a devops- and cloud-friendly way, with the Servlet container embedded and trivial to change.</p></li>
+<li><p>As of Spring Framework 5, a WebFlux application does not even use the Servlet API directly and can run on servers (such as Netty) that are not Servlet containers.</p></li>
+</ul></section></section>
+<section><section id="spring-ioc-container" class="title-slide slide level1"><h1>Spring IoC Container</h1></section><section id="inversion-of-control-principle" class="title-slide slide level2"><h2>Inversion of Control principle</h2><p>Spring Framework implements the Inversion of Control (IoC) principle. IoC is also known as dependency injection (DI).</p>
+<p>Dependencies = other objects our object work with</p>
+<p>In plain OOP we can define dependencies by instantiating them when needed.</p></section><section id="injection-of-dependencies" class="title-slide slide level2"><h2>Injection of dependencies</h2><p>In DI process, objects do not instantiate dependencies itself, but they define their dependencies only through:</p>
+<ul>
+<li>constructor arguments,</li>
+<li>arguments to a factory method, or</li>
+<li>properties that are set on the object instance (after it is constructed or returned from a factory method).</li>
+</ul>
+<p>The container then injects those dependencies when it creates the bean.</p>
+<p>This process is the inverse of the bean itself controlling the instantiation and location of its dependencies.</p></section><section id="ioc-container" class="title-slide slide level2"><h2>IoC container</h2><p>The basis for Spring Framework’s IoC container:</p>
+<ul>
+<li><p><code>BeanFactory</code> - provides an advanced configuration mechanism capable of managing any type of object (provides the configuration framework and basic functionality)</p></li>
+<li><p><code>ApplicationContext</code> - extends <code>BeanFactory</code> with more enterprise-specific functionality</p></li>
+</ul>
+<p>Note: <code>BeanFactory</code> should be treated as framework</p></section><section id="container-magic" class="title-slide slide level2"><h2>Container magic</h2><p><img data-src="https://docs.spring.io/spring/docs/current/spring-framework-reference/images/container-magic.png" /></p></section><section id="application-context-implementations" class="title-slide slide level2"><h2>Application context implementations</h2><p>Several implementations of the <code>ApplicationContext</code> interface are supplied with Spring:</p>
+<ul>
+<li><p>In stand-alone applications, it is common to create an instance of <code>ClassPathXmlApplicationContext</code> or <code>FileSystemXmlApplicationContext</code>. Also for annotation- or Java-based configuration</p></li>
+<li><p>Sometimes we are not required to instantiate a Spring IoC container manually, e.g in web applications it is enough to config listener in <code>web.xml</code> file.</p></li>
+</ul>
+<aside class="notes">
+<ol type="1">
+<li><p>While XML has been the traditional format for defining configuration metadata, you can instruct the container to use Java annotations or code as the metadata format by providing a small amount of XML configuration to declaratively enable support for these additional metadata formats.</p></li>
+<li><p>jutro przy webówce więcej</p></li>
+</ol>
+</aside></section><section id="application-context-implementations---task" class="title-slide slide level2"><h2>Application context implementations - task</h2><ul>
+<li><a href="spring-core-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
+</ul></section><section id="metadata-configuration" class="title-slide slide level2"><h2>Metadata configuration</h2><ul>
+<li><p>Traditional XML format configuration</p></li>
+<li><p>Annotation-based configuration</p></li>
+<li><p>Java-based configuration</p></li>
+</ul>
+<aside class="notes">
+<ol type="1">
+<li>Configuration metadata is traditionally supplied in a simple and intuitive XML format, which is what most of this chapter uses to convey key concepts and features of the Spring IoC container.</li>
+</ol>
+</aside></section><section id="xml-based-configuration" class="title-slide slide level2"><h2>XML-based configuration</h2><div style="font-size: 80%">
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans 
+    xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;
+&gt;
+
+    &lt;bean id=&quot;...&quot; class=&quot;...&quot;&gt;
+  
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+</div>
+<aside class="notes">
+<ol type="1">
+<li><p>more bean definitions go here</p>
+<ol start="2" type="1">
+<li>collaborators and configuration for this bean go here</li>
+</ol></li>
+</ol>
+</aside></section><section id="instantiating-containers" class="title-slide slide level2"><h2>Instantiating containers</h2><pre><code>ApplicationContext context = new ClassPathXmlApplicationContext(&quot;services.xml&quot;, &quot;daos.xml&quot;);</code></pre></section><section id="application-context-implementations---task-1" class="title-slide slide level2"><h2>Application context implementations - task</h2><ul>
+<li><a href="spring-core-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
+</ul></section></section>
+<section><section id="beans" class="title-slide slide level1"><h1>Beans</h1></section><section id="bean-overview" class="title-slide slide level2"><h2>1.3. Bean Overview</h2><pre><code>&lt;bean id=&quot;...&quot; class=&quot;...&quot;&gt;  
+  &lt;!-- collaborators and configuration for this bean --&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;...&quot; class=&quot;...&quot;&gt;
+  &lt;!-- collaborators and configuration for this bean --&gt;
+&lt;/bean&gt;</code></pre></section><section id="bean-naming-conventions" class="title-slide slide level2"><h2>Bean Naming Conventions</h2><p>The convention is to use the standard Java convention for instance field names when naming beans. That is, bean names start with a lowercase letter and are camel-cased from there.</p>
+<p>Examples of such names include <code>accountManager</code>, <code>accountService</code>, <code>userDao</code>, <code>loginController</code>, and so forth.</p></section><section id="bean-name-and-id" class="title-slide slide level2"><h2>Bean <code>name</code> and <code>id</code></h2><ul>
+<li>In simple scenarios mutually replaceable
+<ul>
+<li>ids correlate directly to the XML element</li>
+</ul></li>
+<li>One id, more names</li>
+</ul>
+<pre><code>&lt;bean id=&quot;foo&quot; name = &quot;myFoo,kingBean,notBar&quot; class=&quot;com.intertech.Foo&quot; /&gt;</code></pre>
+<ul>
+<li><p>Names Still Must Uniquely Identify</p></li>
+<li><p>Non-unique Bean Id or Name Across Bean Files</p></li>
+</ul>
+<aside class="notes">
+https://www.intertech.com/Blog/clarifying-spring-framework-ids-and-names/
+</aside></section><section id="aliasing-a-bean" class="title-slide slide level2"><h2>Aliasing a Bean</h2><p>Aliasing a Bean outside the Bean Definition:</p>
+<pre><code>&lt;alias name=&quot;fromName&quot; alias=&quot;toName&quot;/&gt;</code></pre></section><section id="beans---tasks" class="title-slide slide level2"><h2>Beans - tasks</h2><ul>
+<li><p><a href="spring-core-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></p></li>
+<li><p><a href="spring-core-tasks.html#/zadanie-4" target="_blank">[Task 4]*</a></p></li>
+</ul></section></section>
+<section><section id="dependencies" class="title-slide slide level1"><h1>Dependencies</h1><ul>
+<li><p>A typical enterprise application does not consist of a single object.</p></li>
+<li><p>Even the simplest application has a few objects that work together to present what the end-user sees as a coherent application.</p></li>
+</ul></section><section id="dependency-injection---recap" class="title-slide slide level2"><h2>Dependency injection - recap</h2><p>In DI process, objects do not instantiate dependencies itself.</p></section><section id="dependency-injection---profits" class="title-slide slide level2"><h2>Dependency injection - profits</h2><p>Code is cleaner with the DI principle, and decoupling is more effective when objects are provided with their dependencies.</p>
+<p>The object does not look up its dependencies and does not know the location or class of the dependencies.</p>
+<p>As a result, your classes become easier to test, particularly when the dependencies are on interfaces or abstract base classes, which allow for stub or mock implementations to be used in unit tests.</p></section><section id="di-variants-in-spring" class="title-slide slide level2"><h2>DI variants in Spring</h2><p>DI exists in two major variants:</p>
+<ul>
+<li>Constructor-based dependency injection</li>
+<li>Setter-based dependency injection.</li>
+</ul></section><section id="constructor-based-dependency-injection" class="title-slide slide level2"><h2>Constructor-based dependency injection</h2><pre><code>public class CartService {
+
+    private ProductRepository productRepository;
+
+    public CartService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    // ...
+}</code></pre>
+<aside class="notes">
+<a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-constructor-injection">Examples in docs</a>
+</aside></section><section class="slide level3">
+
+<ul>
+<li>Constructor Argument Resolution</li>
+</ul>
+<pre><code>&lt;beans&gt;
+    &lt;bean id=&quot;beanOne&quot; class=&quot;x.y.ThingOne&quot;&gt;
+        &lt;constructor-arg ref=&quot;beanTwo&quot;/&gt;
+        &lt;constructor-arg ref=&quot;beanThree&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;bean id=&quot;beanTwo&quot; class=&quot;x.y.ThingTwo&quot;/&gt;
+
+    &lt;bean id=&quot;beanThree&quot; class=&quot;x.y.ThingThree&quot;/&gt;
+&lt;/beans&gt;</code></pre>
+</section><section class="slide level3">
+
+<ul>
+<li>Constructor argument type matching</li>
+</ul>
+<pre><code>&lt;bean id=&quot;exampleBean&quot; class=&quot;examples.ExampleBean&quot;&gt;
+    &lt;constructor-arg type=&quot;int&quot; value=&quot;7500000&quot;/&gt;
+    &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;42&quot;/&gt;
+&lt;/bean&gt;</code></pre>
+</section><section class="slide level3">
+
+<ul>
+<li>Constructor argument index</li>
+</ul>
+<pre><code>&lt;bean id=&quot;exampleBean&quot; class=&quot;examples.ExampleBean&quot;&gt;
+    &lt;constructor-arg index=&quot;0&quot; value=&quot;7500000&quot;/&gt;
+    &lt;constructor-arg index=&quot;1&quot; value=&quot;42&quot;/&gt;
+&lt;/bean&gt;</code></pre>
+</section><section class="slide level3">
+
+<ul>
+<li>Constructor argument name</li>
+</ul>
+<pre><code>&lt;bean id=&quot;exampleBean&quot; class=&quot;examples.ExampleBean&quot;&gt;
+    &lt;constructor-arg name=&quot;years&quot; value=&quot;7500000&quot;/&gt;
+    &lt;constructor-arg name=&quot;ultimateAnswer&quot; value=&quot;42&quot;/&gt;
+&lt;/bean&gt;</code></pre>
+</section><section id="setter-based-dependency-injection." class="title-slide slide level2"><h2>Setter-based dependency injection.</h2><pre><code>public class CartService {
+
+    private ProductRepository productRepository;
+
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    // ...
+}</code></pre></section><section class="slide level3">
+
+<pre><code>
+
+&lt;bean id=&quot;exampleBean&quot; class=&quot;examples.ExampleBean&quot;&gt;
+    &lt;!-- setter injection using the nested ref element --&gt;
+    &lt;property name=&quot;beanOne&quot;&gt;
+        &lt;ref bean=&quot;anotherExampleBean&quot;/&gt;
+    &lt;/property&gt;
+
+    &lt;!-- setter injection using the neater ref attribute --&gt;
+    &lt;property name=&quot;beanTwo&quot; ref=&quot;yetAnotherBean&quot;/&gt;
+    &lt;property name=&quot;integerProperty&quot; value=&quot;1&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;anotherExampleBean&quot; class=&quot;examples.AnotherBean&quot;/&gt;
+&lt;bean id=&quot;yetAnotherBean&quot; class=&quot;examples.YetAnotherBean&quot;/&gt;
+</code></pre>
+</section><section id="constructor-based-vs-setter-based-di" class="title-slide slide level2"><h2>Constructor-based vs setter-based DI?</h2><p>The Spring team generally advocates constructor injection:</p>
+<ul>
+<li>it lets you implement application components as immutable objects</li>
+<li>ensures that required dependencies are not null.</li>
+<li>constructor-injected components are always returned to the client (calling) code in a fully initialized state</li>
+<li>a large number of constructor arguments is a bad code smell, implying that the class likely has too many responsibilities and should be refactored</li>
+</ul></section><section class="slide level3">
+
+<p>Setter injection:</p>
+<ul>
+<li>should primarily only be used for optional dependencies that can be assigned reasonable default values within the class. Otherwise, not-null checks must be performed everywhere the code uses the dependency.</li>
+<li>setter methods make objects of that class amenable to reconfiguration or re-injection later</li>
+</ul>
+</section><section id="di-variants---tasks" class="title-slide slide level2"><h2>DI variants - tasks</h2><ul>
+<li><a href="spring-core-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+<li><a href="spring-core-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+</ul></section></section>
+<section><section id="di-configuration-details" class="title-slide slide level1"><h1>DI configuration details</h1></section><section id="straight-values-primitives-strings-and-so-on" class="title-slide slide level2"><h2>Straight Values (Primitives, Strings, and so on)</h2><pre><code>&lt;bean id=&quot;myDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot; destroy-method=&quot;close&quot;&gt;
+    &lt;!-- results in a setDriverClassName(String) call --&gt;
+    &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+    &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mydb&quot;/&gt;
+    &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+    &lt;property name=&quot;password&quot; value=&quot;masterkaoli&quot;/&gt;
+&lt;/bean&gt;</code></pre></section><section id="straight-values-using-p-namespace" class="title-slide slide level2"><h2>Straight Values using <code>p-namespace</code></h2><pre><code>xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</code></pre>
+<pre><code>&lt;bean id=&quot;myDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;
+    destroy-method=&quot;close&quot;
+    p:driverClassName=&quot;com.mysql.jdbc.Driver&quot;
+    p:url=&quot;jdbc:mysql://localhost:3306/mydb&quot;
+    p:username=&quot;root&quot;
+    p:password=&quot;masterkaoli&quot;/&gt;</code></pre></section><section id="the-idref-element" class="title-slide slide level2"><h2>The <code>idref</code> element</h2><pre><code>&lt;bean id=&quot;theTargetBean&quot; class=&quot;...&quot;/&gt;
+
+&lt;bean id=&quot;theClientBean&quot; class=&quot;...&quot;&gt;
+    &lt;property name=&quot;targetName&quot;&gt;
+        &lt;idref bean=&quot;theTargetBean&quot;/&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;</code></pre></section><section id="references-to-other-beans-collaborators" class="title-slide slide level2"><h2>References to Other Beans (Collaborators)</h2><pre><code>&lt;ref bean=&quot;someBean&quot;/&gt;</code></pre>
+<p>E.g.</p>
+<pre><code>&lt;bean id=&quot;theTargetBean&quot; class=&quot;...&quot;/&gt;
+
+&lt;bean id=&quot;theClientBean&quot; class=&quot;...&quot;&gt;
+    &lt;property name=&quot;target&quot;&gt;
+        &lt;ref bean=&quot;theTargetBean&quot;/&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;</code></pre></section><section id="ref-vs-idref" class="title-slide slide level2"><h2><code>ref</code> vs <code>idref</code></h2><ul>
+<li><code>ref</code> is used to pass the bean that the ref refers to.</li>
+<li><code>idref</code> is used to pass the name of the bean (as a String) that is referred to.</li>
+</ul></section><section id="di-configuration---tasks" class="title-slide slide level2"><h2>DI configuration - tasks</h2><ul>
+<li><a href="spring-core-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+<li><a href="spring-core-tasks.html#/zadanie-8" target="_blank">[Task 8]</a></li>
+<li><a href="spring-core-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+</ul></section></section>
+<section><section id="beans-in-detail" class="title-slide slide level1"><h1>Beans in detail</h1></section><section id="bean-scopes" class="title-slide slide level2"><h2>1.5. Bean Scopes</h2><p>Basic scopes:</p>
+<ul>
+<li><code>singleton</code> (default) - scopes a single bean definition to a single object instance for each Spring IoC container.</li>
+<li><code>prototype</code> - scopes a single bean definition to any number of object instances.</li>
+</ul>
+<p>In a web-aware context:</p>
+<ul>
+<li><code>request</code></li>
+<li><code>session</code></li>
+<li><code>application</code></li>
+<li><code>websocket</code></li>
+</ul>
+<aside class="notes">
+<p>When you create a bean definition, you create a recipe for creating actual instances of the class defined by that bean definition. The idea that a bean definition is a recipe is important, because it means that, as with a class, you can create many object instances from a single recipe.</p>
+You can control not only the various dependencies and configuration values that are to be plugged into an object that is created from a particular bean definition but also control the scope of the objects created from a particular bean definition. This approach is powerful and flexible, because you can choose the scope of the objects you create through configuration instead of having to bake in the scope of an object at the Java class level.
+</aside></section><section id="scope-singleton" class="title-slide slide level2"><h2>Scope: singleton</h2><p>You can define a bean as shown in the following example:</p>
+<pre><code>&lt;bean id=&quot;accountService&quot; class=&quot;com.ex.DefaultAccountService&quot;/&gt;</code></pre>
+<p>The following is equivalent, though redundant (singleton scope is the default):</p>
+<pre><code>&lt;bean id=&quot;accountService&quot; class=&quot;com.ex.DefaultAccountService&quot; scope=&quot;singleton&quot;/&gt;</code></pre></section><section id="scope-prototype" class="title-slide slide level2"><h2>Scope: prototype</h2><p><img data-src="https://docs.spring.io/spring/docs/current/spring-framework-reference/images/prototype.png" /></p>
+<pre><code>&lt;bean id=&quot;accountService&quot; class=&quot;c.e.DefaultAccountService&quot; scope=&quot;prototype&quot;/&gt;</code></pre>
+<p>Note: dependencies are resolved at instantiation time.</p>
+<aside class="notes">
+<p>When you use singleton-scoped beans with dependencies on prototype beans, be aware that dependencies are resolved at instantiation time. Thus, if you dependency-inject a prototype-scoped bean into a singleton-scoped bean, a new prototype bean is instantiated and then dependency-injected into the singleton bean. The prototype instance is the sole instance that is ever supplied to the singleton-scoped bean.</p>
+<p>However, suppose you want the singleton-scoped bean to acquire a new instance of the prototype-scoped bean repeatedly at runtime. You cannot dependency-inject a prototype-scoped bean into your singleton bean, because that injection occurs only once, when the Spring container instantiates the singleton bean and resolves and injects its dependencies. If you need a new instance of a prototype bean at runtime more than once, see Method Injection</p>
+</aside></section><section id="method-injection" class="title-slide slide level2"><h2>Method injection</h2><p>We can inject <code>ApplicationContext</code> and try to instantiate prototype bean.</p>
+<aside class="notes">
+<a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-factory-method-injection">docs</a>
+</aside></section><section id="lookup-method" class="title-slide slide level2"><h2>Lookup method</h2><pre><code>&lt;!-- a stateful bean deployed as a prototype (non-singleton) --&gt;
+&lt;bean id=&quot;myCommand&quot; class=&quot;fiona.apple.AsyncCommand&quot; scope=&quot;prototype&quot;&gt;
+    &lt;!-- inject dependencies here as required --&gt;
+&lt;/bean&gt;
+
+&lt;!-- commandProcessor uses statefulCommandHelper --&gt;
+&lt;bean id=&quot;commandManager&quot; class=&quot;fiona.apple.CommandManager&quot;&gt;
+    &lt;lookup-method name=&quot;createCommand&quot; bean=&quot;myCommand&quot;/&gt;
+&lt;/bean&gt;
+</code></pre></section><section id="arbitrary-method-replacement" class="title-slide slide level2"><h2>Arbitrary Method Replacement</h2><p>Possible, but not really useful:</p>
+<pre><code>&lt;bean id=&quot;myValueCalculator&quot; class=&quot;x.y.z.MyValueCalculator&quot;&gt;
+    &lt;!-- arbitrary method replacement --&gt;
+    &lt;replaced-method name=&quot;computeValue&quot; replacer=&quot;replacementComputeValue&quot;&gt;
+        &lt;arg-type&gt;String&lt;/arg-type&gt;
+    &lt;/replaced-method&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;replacementComputeValue&quot; class=&quot;a.b.c.ReplacementComputeValue&quot;/&gt;</code></pre></section><section id="bean-scopes---tasks" class="title-slide slide level2"><h2>Bean scopes - tasks</h2><ul>
+<li><a href="spring-core-tasks.html#/zadanie-10" target="_blank">[Task 10]</a></li>
+</ul></section><section id="lifecycle-callbacks" class="title-slide slide level2"><h2>Lifecycle Callbacks</h2><ul>
+<li><p>implement the Spring <code>InitializingBean</code> and <code>DisposableBean</code> interfaces with methods <code>afterPropertiesSet()</code> or <code>destroy()</code> respectively</p></li>
+<li><p>use JSR-250 <code>@PostConstruct</code> and <code>@PreDestroy</code> annotations</p></li>
+<li><p>use <code>init-method</code> and <code>destroy-method</code> in XML bean definition metadata</p></li>
+</ul></section><section id="bean-definition-inheritance" class="title-slide slide level2"><h2>Bean Definition Inheritance</h2><pre><code>
+
+&lt;bean id=&quot;inheritedTestBean&quot; abstract=&quot;true&quot;
+        class=&quot;org.springframework.beans.TestBean&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;parent&quot;/&gt;
+    &lt;property name=&quot;age&quot; value=&quot;1&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;inheritsWithDifferentClass&quot;
+        class=&quot;org.springframework.beans.DerivedTestBean&quot;
+        parent=&quot;inheritedTestBean&quot; &gt;  
+    &lt;property name=&quot;name&quot; value=&quot;override&quot;/&gt;
+    &lt;!-- the age property value of 1 will be inherited from parent --&gt;
+&lt;/bean&gt;
+</code></pre></section><section id="container-extension-points" class="title-slide slide level2"><h2>Container Extension Points</h2><ul>
+<li>Customizing Beans by Using a <code>BeanPostProcessor</code> - <a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-factory-extension-bpp">docs</a></li>
+<li>Customizing Configuration Metadata with a <code>BeanFactoryPostProcessor</code> - <a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-factory-extension-factory-postprocessors">docs</a></li>
+<li>Customizing Instantiation Logic with a <code>FactoryBean</code> - <a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-factory-extension-factorybean">docs</a></li>
+</ul></section></section>
+<section><section id="configuration" class="title-slide slide level1"><h1>Configuration</h1></section><section id="annotation-based-container-configuration" class="title-slide slide level2"><h2>Annotation-based Container Configuration</h2><p>Enabled by <code>&lt;context:annotation-config/&gt;</code></p>
+<ul>
+<li><code>@Required</code></li>
+<li><code>@Autowired</code> or JSR 330’s <code>@Inject</code></li>
+<li><code>@Resource(name="...")</code></li>
+</ul>
+<aside class="notes">
+<a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-annotation-config">docs</a>
+</aside></section><section id="classpath-scanning-and-managed-components" class="title-slide slide level2"><h2>Classpath Scanning and Managed Components</h2><p><code>&lt;context:component-scan base-package="org.example"/&gt;</code></p>
+<ul>
+<li><code>@Component</code> and Further Stereotype Annotations</li>
+</ul></section><section id="using-jsr-330-standard-annotations" class="title-slide slide level2"><h2>1.11. Using JSR 330 Standard Annotations</h2><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;javax.inject&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.inject&lt;/artifactId&gt;
+    &lt;version&gt;1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<ul>
+<li><code>@Inject</code> and <code>@Named</code></li>
+<li><code>@Named</code> and <code>@ManagedBean</code> - standard Equivalents to the <code>@Component</code> Annotation</li>
+</ul></section><section id="java-based-container-configuration" class="title-slide slide level2"><h2>1.12. Java-based Container Configuration</h2></section><section id="basic-concepts-bean-and-configuration" class="title-slide slide level2"><h2>Basic Concepts: <code>@Bean</code> and <code>@Configuration</code></h2></section><section id="instantiating-the-spring-container-by-using-annotationconfigapplicationcontext" class="title-slide slide level2"><h2>Instantiating the Spring Container by Using <code>AnnotationConfigApplicationContext</code></h2></section><section id="composing-java-based-configurations" class="title-slide slide level2"><h2>Composing Java-based Configurations</h2></section><section id="environment-abstraction-profiles" class="title-slide slide level2"><h2>1.13. Environment Abstraction = Profiles</h2></section></section>
+<section><section id="others" class="title-slide slide level1"><h1>Others</h1></section><section id="spring-expression-language-spel" class="title-slide slide level2"><h2>Spring Expression Language (SpEL)</h2></section><section id="registering-a-loadtimeweaver--" class="title-slide slide level2"><h2>1.14. Registering a LoadTimeWeaver :-/</h2></section><section id="additional-capabilities-of-the-applicationcontext" class="title-slide slide level2"><h2>1.15. Additional Capabilities of the ApplicationContext</h2></section><section id="beanfactory-vs-applicationcontext" class="title-slide slide level2"><h2>BeanFactory vs ApplicationContext</h2></section><section id="constructor-based-or-setter-based-di" class="title-slide slide level2"><h2>Constructor-based or setter-based DI?</h2><p>?</p></section></section>
+<section><section id="the-end" class="title-slide slide level1"><h1>The end</h1></section><section id="references" class="title-slide slide level2"><h2>References</h2><p>https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html</p></section></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Spring Framework (Core) - zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Spring Framework (Core) - zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><div style="font-size: 0.75em;">
+<p>Utwórz nowy projekt Maven (bez archetypu) z zależnością:</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;
+    &lt;version&gt;5.2.2.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<p>Zweryfikuj poprawność konfiguracji deklarując w metodzie <code>main</code> zmienną typu <code>ApplicationContext</code>.</p>
+<p>PS.</p>
+<pre><code>&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.8.0&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;release&gt;8&lt;/release&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;</code></pre>
+</div></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>W zasobach projektu (w podkatalogu <code>src\main\resources</code>) utwórz plik <code>beans.xml</code> o treści:</p>
+<div style="font-size: 0.8em;">
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans 
+    xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot; &gt;
+&lt;/beans&gt;</code></pre>
+</div>
+<p>a następnie zainicjalizuj kontekst aplikacji oparty na tej konfiguracji XML.</p></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><ul>
+<li><p>W projekcie utwórz klasę <code>MyRandom</code> zawierającą pole <code>value</code>, którego losowa wartość będzie ustalana w konstruktorze (bezparametrowym). Klasa powinna być zgodna z konwencją JavaBeans.</p></li>
+<li><p>Do utworzonego (pustego) kontekstu dodaj bean tego typu.</p></li>
+<li><p>W głównej metodzie aplikacji użyj tgeo beana wypisując zawartość pola <code>value</code>.</p></li>
+</ul></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Rozszerzenie poprzedniego zadania:</p>
+<ul>
+<li><p>Utwórz kilka beanów tego typu (różniących się tylko nazwami/id) i użyj ich w kodzie Java wypisując zawartość każdego z nich.</p></li>
+<li><p>Sprawdź co się stanie jeśli spróbujesz użyć tego samego beana kilka razy - czy zwracana wartość będzie taka sama?</p></li>
+<li><p>Sprawdź jak zmieni się zachowanie jeżeli któryś z beanów będzie aliasowany.</p></li>
+</ul></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>Uwtórz klase <code>Car</code> o parametrach <code>int year</code> i <code>String name</code>, z konstruktorem wymagającym podania tych wartości.</p>
+<p>W konfiguracji XML utwórz bean tego typu oraz sparametryzuj jego tworzenie wybranymi wartościami.</p>
+<p>Skorzystaj z następujących sposobów parametryzowania beana:</p>
+<ol type="a">
+<li><p>Constructor Argument Resolution</p></li>
+<li><p>Constructor argument type matching</p></li>
+<li><p>Constructor argument index</p></li>
+<li><p>Constructor argument name</p></li>
+</ol></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Rozszerzenie poprzedniego zadania:</p>
+<p>W klasie <code>Car</code> dodaj konstruktor bezparametrowy oraz settery.</p>
+<p>W konfiguracji XML utwórz bean tego typu i sparametryzuj jego pola wybranymi wartościami (wykorzystując wstrzykiwanie zależności przez settery).</p></section>
+<section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7</h2><p>Utwórz w XML bean typu <code>String</code> o nazwie <code>name</code> zawierający Twoje imię, a następnie w kodzie Java pobierz i wypisz wartość tego beana.</p></section>
+<section id="zadanie-8" class="title-slide slide level2"><h2>Zadanie 8</h2><p>Rozszerzenie poprzedniego zadania:</p>
+<ul>
+<li><p>Utwórz interfejs <code>HelloService</code> z metodą <code>String hello(String name)</code> i utwórz jego implementację która będzie zwracała przywitanie wskazanego użytkownika.</p></li>
+<li><p>Utwórz w XML bean z tą klasą, i w kodzie Java użyj go do wygenerowania pozdrowienia.</p></li>
+</ul></section>
+<section id="zadanie-9" class="title-slide slide level2"><h2>Zadanie 9</h2><p>Rozszerzenie poprzedniego zadania:</p>
+<p>Dostosuj kod klasy tak, aby <code>name</code> stało się właściwością klasy i przekaż tą wartość bezpośrednio w konfiguracji XML.</p></section>
+<section id="zadanie-10" class="title-slide slide level2"><h2>Zadanie 10</h2><p>Zmodyfikuj konfigurację beana klasy <code>MyRandom</code> (bez modyfikowania samej klasy) tak, aby za każdym użyciem był to inny obiekt (czyli będzie zwracał inną wartość).</p>
+<p>Wypisz kilka wartości w kodzie Java.</p></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
