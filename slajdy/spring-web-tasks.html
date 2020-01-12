@@ -46,10 +46,17 @@
 <p>Sprawdź czy serwer uruchamia się wywołując skrypt <code>startup</code> (<code>bat</code> lub <code>sh</code>) z podkatalogu <code>bin</code> serwera, i czy jest dostępny, np. przy domyślnym porcie 8080 pod adresem <a target="_blank" href="http://localhost:8080">http://localhost:8080</a>.</p></section>
 <section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Wyłącz uruchomiony serwer skryptem <code>shutdown</code>.</p>
 <p>Sprawdź czy przestał odpowiadać na porcie 8080.</p></section>
-<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>Utwórz klasę <code>Car</code> o polach <code>id</code>, <code>year</code>, <code>name</code>.</p>
-<p>Utwórz klasę <code>CarRepository</code>, która będzie obsługiwała “bazę” samochodów - udostępniając metody: * <code>findAll</code> - zwracającą wszystkie samochody * <code>findOne(long)</code> - wyszukującą samochód wg <code>id</code> * <code>save(Car)</code> - zapisującą nowy samochód</p>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><div style="font-size: 0.9em">
+<p>Utwórz klasę <code>Car</code> o polach <code>id</code>, <code>year</code>, <code>name</code>.</p>
+<p>Utwórz klasę <code>CarRepository</code>, która będzie obsługiwała “bazę” samochodów - udostępniając metody:</p>
+<ul>
+<li><code>findAll</code> - zwracającą wszystkie samochody</li>
+<li><code>findOne(long)</code> - wyszukującą samochód wg <code>id</code></li>
+<li><code>save(Car)</code> - zapisującą nowy samochód</li>
+</ul>
 <p>“Bazę” zaimplementuj jako kolekcję, która będzie mogła przechowywać obiekty typu <code>Car</code>.</p>
-<p>Zaimplemenetuj kontroler, tak aby pod adresem <code>http://localhost:8080/api/cars</code> zwracana była lista wszystkich samochodów.</p></section>
+<p>Zaimplemenetuj kontroler, tak aby pod adresem <code>http://localhost:8080/api/cars</code> zwracana była lista wszystkich samochodów.</p>
+</div></section>
 <section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Rozszerz aplikację, tak aby pod adresem typu <code>http://localhost:8080/api/cars/123</code> zwracany był jeden samochód o odpowiednim <code>id</code>.</p>
 <p>*W razie żądania nieistniejącego samochodu powinien zostać zwrócony status 404.</p></section>
 <section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>Dostosuj API wystawiające listę samochodów o możliwość wyszukiwania samochodów według roku - poprzez użycie parametru żądania <code>year</code></p></section>

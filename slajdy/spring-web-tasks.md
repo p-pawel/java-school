@@ -21,10 +21,11 @@ Sprawdź czy przestał odpowiadać na porcie 8080.
 
 
 ## Zadanie 3
-
+<div style="font-size: 0.9em">
 Utwórz klasę `Car` o polach `id`, `year`, `name`.
 
 Utwórz klasę `CarRepository`, która będzie obsługiwała "bazę" samochodów - udostępniając metody:
+
 * `findAll` - zwracającą wszystkie samochody
 * `findOne(long)` - wyszukującą samochód wg `id`
 * `save(Car)` - zapisującą nowy samochód
@@ -33,6 +34,8 @@ Utwórz klasę `CarRepository`, która będzie obsługiwała "bazę" samochodów
 
 Zaimplemenetuj kontroler, tak aby pod adresem 
 `http://localhost:8080/api/cars` zwracana była lista wszystkich samochodów. 
+
+</div>
 
 ## Zadanie 4
 

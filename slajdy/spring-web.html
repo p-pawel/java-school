@@ -121,9 +121,9 @@ public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
     // ...
 }</code></pre></section><section id="uri-patterns---wildcards" class="title-slide slide level2"><h2>URI patterns - wildcards</h2><p>Wildcards:</p>
 <ul>
-<li><p><code>?</code> one character</p></li>
-<li><p><code>*</code> zero or more characters within a path segment</p></li>
-<li><p><code>**</code> zero or more path segments</p></li>
+<li><p><code>?</code> - one character</p></li>
+<li><p><code>*</code> - zero or more characters within a path segment</p></li>
+<li><p><code>**</code> - zero or more path segments</p></li>
 </ul>
 <pre><code>@GetMapping(&quot;/{name:[a-z-]+}-{version:\\d\\.\\d\\.\\d}{ext:\\.[a-z]+}&quot;)
 public void handle(@PathVariable String version, @PathVariable String ext) {
@@ -133,7 +133,7 @@ public void handle(@PathVariable String version, @PathVariable String ext) {
 <pre><code>@PostMapping(path = &quot;/pets&quot;, consumes = &quot;application/json&quot;) 
 public void addPet(@RequestBody Pet pet) {
     // ...
-}</code></pre></section><section id="producible-media-types" class="title-slide slide level2"><h2>Producible Media Types</h2><p>You can narrow the request mapping based on the Accept request header and the list of content types that a controller method produces, as the following example shows:</p>
+}</code></pre></section><section id="producible-media-types" class="title-slide slide level2"><h2>Producible Media Types</h2><p>You can narrow the request mapping based on the <code>Accept</code> request header and the list of content types that a controller method produces, as the following example shows:</p>
 <pre><code>@GetMapping(path = &quot;/pets/{petId}&quot;, produces = &quot;application/json&quot;) 
 @ResponseBody
 public Pet getPet(@PathVariable String petId) {
@@ -182,10 +182,52 @@ public void handle(@RequestBody Account account) {
 public Account handle() {
     // ...
 }</code></pre>
-<p>Note: <span class="citation" data-cites="ResponseBody">@ResponseBody</span> is also supported at the class level, in which case it is inherited by all controller methods. This is the effect of <span class="citation" data-cites="RestController">@RestController</span>, which is nothing more than a meta-annotation marked with <span class="citation" data-cites="Controller">@Controller</span> and <span class="citation" data-cites="ResponseBody">@ResponseBody</span>.</p></section><section id="handle-methods---tasks" class="title-slide slide level2"><h2>Handle methods - tasks</h2><ul>
+<p>Note: <span class="citation" data-cites="ResponseBody">@ResponseBody</span> is also supported at the class level, in which case it is inherited by all controller methods. This is the effect of <span class="citation" data-cites="RestController">@RestController</span>, which is nothing more than a meta-annotation marked with <span class="citation" data-cites="Controller">@Controller</span> and <span class="citation" data-cites="ResponseBody">@ResponseBody</span>.</p></section><section id="response-modification" class="title-slide slide level2"><h2>Response modification</h2><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+  &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+  &lt;version&gt;4.0.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<pre><code>@GetMapping
+public String withResponse(HttpServletResponse response) {
+    response.addHeader(&quot;Hello&quot;, &quot;World&quot;);
+    
+    response.setStatus(321);
+
+    return &quot;And here goes the response&quot;;
+}</code></pre></section><section id="handle-methods---tasks" class="title-slide slide level2"><h2>Handle methods - tasks</h2><ul>
 <li><a href="spring-web-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
 <li><a href="spring-web-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
 </ul></section></section>
+<section><section id="view-resolution" class="title-slide slide level1"><h1>View Resolution</h1></section><section id="view-handling" class="title-slide slide level2"><h2>View: Handling</h2></section><section id="view-redirecting" class="title-slide slide level2"><h2>View: Redirecting</h2><p>The special redirect: prefix in a view name lets you perform a redirect. The UrlBasedViewResolver (and its subclasses) recognize this as an instruction that a redirect is needed. The rest of the view name is the redirect URL.</p>
+<ul>
+<li>a logical view name, e.g. <code>redirect:/myapp/some/resource</code> redirects relative to the current Servlet context,</li>
+<li>full URL, e.g. <code>redirect:https://myhost.com/some/arbitrary/path</code> redirects to an absolute URL</li>
+</ul></section><section id="view-forwarding" class="title-slide slide level2"><h2>View: Forwarding</h2><p>I you want to force a forward of a resource to be handled by another engine prefix with <code>forward:</code>.</p></section><section id="view-view-technologies" class="title-slide slide level2"><h2>View: View Technologies</h2><div style="font-size: 0.8em">
+<ul>
+<li>JSP + JSTL</li>
+<li>Thymeleaf</li>
+<li>FreeMarker</li>
+<li>Groovy Markup</li>
+<li>Script Views
+<ul>
+<li>Handlebars, Mustache, React, EJS - Nashorn (JavaScript)</li>
+<li>ERB (JRuby), String templates (Jython), Kotlin Script Templating</li>
+</ul></li>
+<li>RSS Atom</li>
+<li>PDF, Excel</li>
+<li>Jackson, XML, XSLT</li>
+</ul>
+</div>
+<p><a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-view">docs</a></p>
+<!--
+# Others
+
+## Locale
+
+
+# CORS
+## 
+--></section></section>
     </div>
   </div>
     <script src="reveal.js/js/reveal.js"></script>

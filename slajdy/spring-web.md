@@ -166,11 +166,11 @@ public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
 
 Wildcards:
 
-* `?` one character
+* `?` - one character
 
-* `*` zero or more characters within a path segment
+* `*` - zero or more characters within a path segment
 
-* `**` zero or more path segments
+* `**` - zero or more path segments
 
 ```
 @GetMapping("/{name:[a-z-]+}-{version:\\d\\.\\d\\.\\d}{ext:\\.[a-z]+}")
@@ -200,7 +200,7 @@ public void addPet(@RequestBody Pet pet) {
 
 ## Producible Media Types
 
-You can narrow the request mapping based on the Accept request header and the list of content types that a controller method produces, as the following example shows:
+You can narrow the request mapping based on the `Accept` request header and the list of content types that a controller method produces, as the following example shows:
 
 ```
 @GetMapping(path = "/pets/{petId}", produces = "application/json") 
@@ -316,7 +316,76 @@ public Account handle() {
 
 Note: @ResponseBody is also supported at the class level, in which case it is inherited by all controller methods. This is the effect of @RestController, which is nothing more than a meta-annotation marked with @Controller and @ResponseBody.
 
+
+## Response modification
+
+```
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>javax.servlet-api</artifactId>
+  <version>4.0.1</version>
+</dependency>
+```
+
+```
+@GetMapping
+public String withResponse(HttpServletResponse response) {
+    response.addHeader("Hello", "World");
+    
+    response.setStatus(321);
+
+    return "And here goes the response";
+}
+```
+
 ## Handle methods - tasks
 
 * <a href="spring-web-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 * <a href="spring-web-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
+
+# View Resolution
+
+## View: Handling
+
+## View: Redirecting
+
+
+The special redirect: prefix in a view name lets you perform a redirect. The UrlBasedViewResolver (and its subclasses) recognize this as an instruction that a redirect is needed. The rest of the view name is the redirect URL.
+
+* a logical view name, e.g. `redirect:/myapp/some/resource` redirects relative to the current Servlet context,
+* full URL, e.g. `redirect:https://myhost.com/some/arbitrary/path` redirects to an absolute URL
+
+
+## View: Forwarding
+
+I you want to force a forward of a resource to be handled 
+by another engine prefix with `forward:`.
+
+## View: View Technologies
+
+<div style="font-size: 0.8em">
+
+* JSP + JSTL
+* Thymeleaf
+* FreeMarker
+* Groovy Markup
+* Script Views
+  * Handlebars, Mustache, React, EJS - Nashorn (JavaScript)
+  * ERB (JRuby), String templates (Jython), Kotlin Script Templating
+* RSS Atom
+* PDF, Excel
+* Jackson, XML, XSLT
+</div> 
+                
+<a target="_blank" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-view">docs</a>
+
+
+<!--
+# Others
+
+## Locale
+
+
+# CORS
+## 
+-->
