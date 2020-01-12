@@ -63,14 +63,14 @@ konstruktorze (bezparametrowym). Klasa powinna być zgodna z konwencją JavaBean
 
 * Do utworzonego (pustego) kontekstu dodaj bean tego typu.
 
-* W głównej metodzie aplikacji użyj tgeo beana wypisując zawartość pola `value`.
+* W głównej metodzie aplikacji użyj tego beana wypisując zawartość pola `value`.
 
 
 ## Zadanie 4
 
 Rozszerzenie poprzedniego zadania:
 
-* Utwórz kilka beanów tego typu (różniących się tylko nazwami/id) i użyj ich w kodzie Java wypisując zawartość każdego z nich. 
+* Utwórz kilka beanów klasy `MyRandom` (różniących się tylko nazwami/id) i użyj ich w kodzie Java wypisując zawartość każdego z nich. 
 
 * Sprawdź co się stanie jeśli spróbujesz użyć tego samego beana kilka razy - czy zwracana wartość będzie taka sama?
 
@@ -80,11 +80,10 @@ Rozszerzenie poprzedniego zadania:
 
 ## Zadanie 5
 
+<div style="font-size: 0.9em">
 Uwtórz klase `Car` o parametrach `int year` i `String name`, z konstruktorem wymagającym podania tych wartości.
 
-W konfiguracji XML utwórz bean tego typu oraz sparametryzuj jego tworzenie wybranymi wartościami.
-
-
+W konfiguracji XML utwórz beany tego typu oraz sparametryzuj jego tworzenie wybranymi wartościami.
 Skorzystaj z następujących sposobów parametryzowania beana:
 
 a) Constructor Argument Resolution
@@ -94,7 +93,7 @@ b) Constructor argument type matching
 c) Constructor argument index
 
 d) Constructor argument name
-
+</div>
 
 ## Zadanie 6
 

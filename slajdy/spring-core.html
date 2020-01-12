@@ -315,7 +315,55 @@ https://www.intertech.com/Blog/clarifying-spring-framework-ids-and-names/
 <li><a href="spring-core-tasks.html#/zadanie-8" target="_blank">[Task 8]</a></li>
 <li><a href="spring-core-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
 </ul></section></section>
-<section><section id="beans-in-detail" class="title-slide slide level1"><h1>Beans in detail</h1></section><section id="bean-scopes" class="title-slide slide level2"><h2>1.5. Bean Scopes</h2><p>Basic scopes:</p>
+<section><section id="collections-strings" class="title-slide slide level1"><h1>Collections, Strings</h1></section><section id="collection-beans" class="title-slide slide level2"><h2>Collection beans</h2><p><code>&lt;list/&gt;</code>, <code>&lt;set/&gt;</code>, <code>&lt;map/&gt;</code>, <code>&lt;props/&gt;</code></p></section><section id="lists-sets" class="title-slide slide level2"><h2>Lists, Sets</h2><pre><code>&lt;property name=&quot;someList&quot;&gt;
+    &lt;list&gt;
+        &lt;value&gt;a list element followed by a reference&lt;/value&gt;
+        &lt;ref bean=&quot;myDataSource&quot; /&gt;
+    &lt;/list&gt;
+&lt;/property&gt;</code></pre>
+<pre><code>&lt;property name=&quot;someSet&quot;&gt;
+    &lt;set&gt;
+        &lt;value&gt;just some string&lt;/value&gt;
+        &lt;ref bean=&quot;myDataSource&quot; /&gt;
+    &lt;/set&gt;
+&lt;/property&gt;</code></pre></section><section id="maps" class="title-slide slide level2"><h2>Maps</h2><pre><code>&lt;property name=&quot;someMap&quot;&gt;
+    &lt;map&gt;
+        &lt;entry key=&quot;an entry&quot; value=&quot;just some string&quot;/&gt;
+        &lt;entry key =&quot;a ref&quot; value-ref=&quot;myDataSource&quot;/&gt;
+    &lt;/map&gt;
+&lt;/property&gt;</code></pre></section><section id="collection-merging" class="title-slide slide level2"><h2>Collection Merging</h2><pre><code>&lt;bean id=&quot;parent&quot; abstract=&quot;true&quot; class=&quot;example.ComplexObject&quot;&gt;
+    &lt;property name=&quot;adminEmails&quot;&gt;
+        &lt;props&gt;
+            &lt;prop key=&quot;administrator&quot;&gt;administrator@example.com&lt;/prop&gt;
+            &lt;prop key=&quot;support&quot;&gt;support@example.com&lt;/prop&gt;
+        &lt;/props&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;child&quot; parent=&quot;parent&quot;&gt;
+    &lt;property name=&quot;adminEmails&quot;&gt;
+        &lt;!-- the merge is specified on the child collection definition --&gt;
+        &lt;props merge=&quot;true&quot;&gt;
+            &lt;prop key=&quot;sales&quot;&gt;sales@example.com&lt;/prop&gt;
+            &lt;prop key=&quot;support&quot;&gt;support@example.co.uk&lt;/prop&gt;
+        &lt;/props&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;</code></pre></section><section id="strongly-typed-collection" class="title-slide slide level2"><h2>Strongly-typed collection</h2><pre><code>&lt;bean id=&quot;something&quot; class=&quot;x.y.SomeClass&quot;&gt;
+    &lt;property name=&quot;accounts&quot;&gt;
+        &lt;map&gt;
+            &lt;entry key=&quot;one&quot; value=&quot;9.99&quot;/&gt;
+            &lt;entry key=&quot;two&quot; value=&quot;2.75&quot;/&gt;
+            &lt;entry key=&quot;six&quot; value=&quot;3.99&quot;/&gt;
+        &lt;/map&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;</code></pre></section><section id="null-and-empty-string-values" class="title-slide slide level2"><h2>Null and Empty String Values</h2><pre><code>&lt;bean class=&quot;ExampleBean&quot;&gt;
+    &lt;property name=&quot;email&quot; value=&quot;&quot;/&gt;
+&lt;/bean&gt;</code></pre>
+<pre><code>&lt;bean class=&quot;ExampleBean&quot;&gt;
+    &lt;property name=&quot;email&quot;&gt;
+        &lt;null/&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;</code></pre></section></section>
+<section><section id="beans-in-detail" class="title-slide slide level1"><h1>Beans in detail</h1></section><section id="bean-scopes" class="title-slide slide level2"><h2>Bean Scopes</h2><p>Basic scopes:</p>
 <ul>
 <li><code>singleton</code> (default) - scopes a single bean definition to a single object instance for each Spring IoC container.</li>
 <li><code>prototype</code> - scopes a single bean definition to any number of object instances.</li>
@@ -403,8 +451,20 @@ You can control not only the various dependencies and configuration values that 
 <ul>
 <li><code>@Inject</code> and <code>@Named</code></li>
 <li><code>@Named</code> and <code>@ManagedBean</code> - standard Equivalents to the <code>@Component</code> Annotation</li>
-</ul></section><section id="java-based-container-configuration" class="title-slide slide level2"><h2>1.12. Java-based Container Configuration</h2></section><section id="basic-concepts-bean-and-configuration" class="title-slide slide level2"><h2>Basic Concepts: <code>@Bean</code> and <code>@Configuration</code></h2></section><section id="instantiating-the-spring-container-by-using-annotationconfigapplicationcontext" class="title-slide slide level2"><h2>Instantiating the Spring Container by Using <code>AnnotationConfigApplicationContext</code></h2></section><section id="composing-java-based-configurations" class="title-slide slide level2"><h2>Composing Java-based Configurations</h2></section><section id="environment-abstraction-profiles" class="title-slide slide level2"><h2>1.13. Environment Abstraction = Profiles</h2></section></section>
-<section><section id="others" class="title-slide slide level1"><h1>Others</h1></section><section id="spring-expression-language-spel" class="title-slide slide level2"><h2>Spring Expression Language (SpEL)</h2></section><section id="registering-a-loadtimeweaver--" class="title-slide slide level2"><h2>1.14. Registering a LoadTimeWeaver :-/</h2></section><section id="additional-capabilities-of-the-applicationcontext" class="title-slide slide level2"><h2>1.15. Additional Capabilities of the ApplicationContext</h2></section><section id="beanfactory-vs-applicationcontext" class="title-slide slide level2"><h2>BeanFactory vs ApplicationContext</h2></section><section id="constructor-based-or-setter-based-di" class="title-slide slide level2"><h2>Constructor-based or setter-based DI?</h2><p>?</p></section></section>
+</ul></section><section id="java-based-container-configuration" class="title-slide slide level2"><h2>1.12. Java-based Container Configuration</h2></section><section id="basic-concepts-bean-and-configuration" class="title-slide slide level2"><h2>Basic Concepts: <code>@Bean</code> and <code>@Configuration</code></h2></section><section id="instantiating-the-spring-container-by-using-annotationconfigapplicationcontext" class="title-slide slide level2"><h2>Instantiating the Spring Container by Using <code>AnnotationConfigApplicationContext</code></h2></section><section id="composing-java-based-configurations" class="title-slide slide level2"><h2>Composing Java-based Configurations</h2></section><section id="environment-abstraction-profiles" class="title-slide slide level2"><h2>1.13. Environment Abstraction = Profiles</h2><!--
+# Others
+
+## Spring Expression Language (SpEL)
+
+## 1.14. Registering a LoadTimeWeaver :-/
+
+## 1.15. Additional Capabilities of the ApplicationContext
+
+
+## BeanFactory vs ApplicationContext
+
+## Constructor-based or setter-based DI?
+--></section></section>
 <section><section id="the-end" class="title-slide slide level1"><h1>The end</h1></section><section id="references" class="title-slide slide level2"><h2>References</h2><p>https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html</p></section></section>
     </div>
   </div>

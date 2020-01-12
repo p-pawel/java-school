@@ -529,6 +529,8 @@ E.g.
 * `ref` is used to pass the bean that the ref refers to.
 * `idref` is used to pass the name of the bean (as a String) that is referred to.
 
+
+
 ## DI configuration - tasks
 
 * <a href="spring-core-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>
@@ -537,11 +539,96 @@ E.g.
 
 
 
+# Collections, Strings
 
+## Collection beans 
+
+`<list/>`, `<set/>`, `<map/>`, `<props/>`
+
+## Lists, Sets
+```
+<property name="someList">
+    <list>
+        <value>a list element followed by a reference</value>
+        <ref bean="myDataSource" />
+    </list>
+</property>
+```
+
+```
+<property name="someSet">
+    <set>
+        <value>just some string</value>
+        <ref bean="myDataSource" />
+    </set>
+</property>
+```
+
+## Maps
+```
+<property name="someMap">
+    <map>
+        <entry key="an entry" value="just some string"/>
+        <entry key ="a ref" value-ref="myDataSource"/>
+    </map>
+</property>
+```
+
+## Collection Merging 
+
+```
+<bean id="parent" abstract="true" class="example.ComplexObject">
+    <property name="adminEmails">
+        <props>
+            <prop key="administrator">administrator@example.com</prop>
+            <prop key="support">support@example.com</prop>
+        </props>
+    </property>
+</bean>
+<bean id="child" parent="parent">
+    <property name="adminEmails">
+        <!-- the merge is specified on the child collection definition -->
+        <props merge="true">
+            <prop key="sales">sales@example.com</prop>
+            <prop key="support">support@example.co.uk</prop>
+        </props>
+    </property>
+</bean>
+```
+
+## Strongly-typed collection
+```
+<bean id="something" class="x.y.SomeClass">
+    <property name="accounts">
+        <map>
+            <entry key="one" value="9.99"/>
+            <entry key="two" value="2.75"/>
+            <entry key="six" value="3.99"/>
+        </map>
+    </property>
+</bean>
+```
+
+## Null and Empty String Values
+
+```
+<bean class="ExampleBean">
+    <property name="email" value=""/>
+</bean>
+```
+
+
+```
+<bean class="ExampleBean">
+    <property name="email">
+        <null/>
+    </property>
+</bean>
+```
 
 # Beans in detail
 
-## 1.5. Bean Scopes
+## Bean Scopes
 
 
 
@@ -727,7 +814,7 @@ Enabled by `<context:annotation-config/>`
 
 ## 1.13. Environment Abstraction = Profiles
 
-
+<!--
 # Others
 
 ## Spring Expression Language (SpEL)
@@ -736,11 +823,12 @@ Enabled by `<context:annotation-config/>`
 
 ## 1.15. Additional Capabilities of the ApplicationContext
 
+
 ## BeanFactory vs ApplicationContext
 
 ## Constructor-based or setter-based DI?
+-->
 
-?
 
 # The end
 

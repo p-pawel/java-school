@@ -78,23 +78,24 @@
 <section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><ul>
 <li><p>W projekcie utwórz klasę <code>MyRandom</code> zawierającą pole <code>value</code>, którego losowa wartość będzie ustalana w konstruktorze (bezparametrowym). Klasa powinna być zgodna z konwencją JavaBeans.</p></li>
 <li><p>Do utworzonego (pustego) kontekstu dodaj bean tego typu.</p></li>
-<li><p>W głównej metodzie aplikacji użyj tgeo beana wypisując zawartość pola <code>value</code>.</p></li>
+<li><p>W głównej metodzie aplikacji użyj tego beana wypisując zawartość pola <code>value</code>.</p></li>
 </ul></section>
 <section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>Rozszerzenie poprzedniego zadania:</p>
 <ul>
-<li><p>Utwórz kilka beanów tego typu (różniących się tylko nazwami/id) i użyj ich w kodzie Java wypisując zawartość każdego z nich.</p></li>
+<li><p>Utwórz kilka beanów klasy <code>MyRandom</code> (różniących się tylko nazwami/id) i użyj ich w kodzie Java wypisując zawartość każdego z nich.</p></li>
 <li><p>Sprawdź co się stanie jeśli spróbujesz użyć tego samego beana kilka razy - czy zwracana wartość będzie taka sama?</p></li>
 <li><p>Sprawdź jak zmieni się zachowanie jeżeli któryś z beanów będzie aliasowany.</p></li>
 </ul></section>
-<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>Uwtórz klase <code>Car</code> o parametrach <code>int year</code> i <code>String name</code>, z konstruktorem wymagającym podania tych wartości.</p>
-<p>W konfiguracji XML utwórz bean tego typu oraz sparametryzuj jego tworzenie wybranymi wartościami.</p>
-<p>Skorzystaj z następujących sposobów parametryzowania beana:</p>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><div style="font-size: 0.9em">
+<p>Uwtórz klase <code>Car</code> o parametrach <code>int year</code> i <code>String name</code>, z konstruktorem wymagającym podania tych wartości.</p>
+<p>W konfiguracji XML utwórz beany tego typu oraz sparametryzuj jego tworzenie wybranymi wartościami. Skorzystaj z następujących sposobów parametryzowania beana:</p>
 <ol type="a">
 <li><p>Constructor Argument Resolution</p></li>
 <li><p>Constructor argument type matching</p></li>
 <li><p>Constructor argument index</p></li>
 <li><p>Constructor argument name</p></li>
-</ol></section>
+</ol>
+</div></section>
 <section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>Rozszerzenie poprzedniego zadania:</p>
 <p>W klasie <code>Car</code> dodaj konstruktor bezparametrowy oraz settery.</p>
 <p>W konfiguracji XML utwórz bean tego typu i sparametryzuj jego pola wybranymi wartościami (wykorzystując wstrzykiwanie zależności przez settery).</p></section>

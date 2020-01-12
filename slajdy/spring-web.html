@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Web in Spring</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Web in Spring</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section><section id="recap-deployable-java-web-application" class="title-slide slide level2"><h2>Recap: deployable Java web-application</h2><p><code>WAR</code></p></section><section id="recap-deployment-descriptor" class="title-slide slide level2"><h2>Recap: deployment descriptor</h2><p><code>src/main/webapp/WEB-INF/web.xml</code></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app&gt;
+    &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+&lt;/web-app&gt;</code></pre></section><section id="recap-servlet" class="title-slide slide level2"><h2>Recap: servlet</h2><pre><code>&lt;servlet&gt;
+    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.example.MyServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/my-servlet&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre>
+<p>or</p>
+<pre><code>@WebServlet(urlPatterns = &quot;/my-servlet&quot;)
+public class MyServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        ...
+    }
+}</code></pre></section><section id="intro---tasks" class="title-slide slide level2"><h2>Intro - tasks</h2><ul>
+<li><p><a href="spring-web-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></p></li>
+<li><p><a href="spring-web-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></p></li>
+</ul></section></section>
+<section><section id="java-web-application-spring" class="title-slide slide level1"><h1>Java web-application + Spring</h1></section><section id="enabling-spring" class="title-slide slide level2"><h2>Enabling Spring</h2><pre><code>  &lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+  &lt;/listener&gt;</code></pre>
+<pre><code>/WEB-INF/applicationContext.xml</code></pre></section><section id="dispatcherservlet" class="title-slide slide level2"><h2>DispatcherServlet</h2><pre><code>  &lt;servlet&gt;
+    &lt;servlet-name&gt;app&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+      &lt;param-value&gt;&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;app&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;</code></pre>
+<aside class="notes">
+Spring MVC, as many other web frameworks, is designed around the front controller pattern where a central Servlet, the DispatcherServlet, provides a shared algorithm for request processing, while actual work is performed by configurable delegate components. This model is flexible and supports diverse workflows.
+</aside></section><section id="dispatcherservlet---details" class="title-slide slide level2"><h2>DispatcherServlet - details</h2><p><img data-src="https://docs.spring.io/spring/docs/current/spring-framework-reference/images/mvc-context-hierarchy.png" /></p>
+<!--
+1.15.4. Convenient ApplicationContext Instantiation for Web Applications
+
+
+```
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/daoContext.xml /WEB-INF/applicationContext.xml</param-value>
+</context-param>
+
+<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+```
+--></section></section>
+<section id="spring-mvc" class="title-slide slide level1"><h1>Spring MVC</h1><p>Model - View - Controller</p></section>
+<section><section id="controllers" class="title-slide slide level1"><h1>Controllers</h1></section><section id="example-controller" class="title-slide slide level2"><h2>Example controller</h2><pre><code>@RestController
+public class MyController {
+
+    @RequestMapping
+    public String hello() {
+        return &quot;hello&quot;;
+    }
+}</code></pre></section><section id="controller-and-restcontroller" class="title-slide slide level2"><h2><code>@Controller</code> and <code>@RestController</code></h2><p><span class="citation" data-cites="RestController">@RestController</span> is a composed annotation that is itself meta-annotated with <span class="citation" data-cites="Controller">@Controller</span> and <span class="citation" data-cites="ResponseBody">@ResponseBody</span> to indicate a controller whose every method inherits the type-level <span class="citation" data-cites="ResponseBody">@ResponseBody</span> annotation and, therefore, writes directly to the response body versus view resolution and rendering with an HTML template.</p></section><section id="request-mapping" class="title-slide slide level2"><h2>Request mapping</h2><ul>
+<li><p><code>@RequestMapping</code></p></li>
+<li><p><code>@GetMapping</code></p></li>
+<li><p><code>@PostMapping</code></p></li>
+<li><p><code>@PutMapping</code></p></li>
+<li><p><code>@DeleteMapping</code></p></li>
+<li><p><code>@PatchMapping</code></p></li>
+</ul></section><section id="uri-patterns" class="title-slide slide level2"><h2>URI patterns</h2><p><code>@PathVariable</code></p>
+<pre><code>@GetMapping(&quot;/owners/{ownerId}/pets/{petId}&quot;)
+public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
+    // ...
+}</code></pre></section><section id="uri-patterns---wildcards" class="title-slide slide level2"><h2>URI patterns - wildcards</h2><p>Wildcards:</p>
+<ul>
+<li><p><code>?</code> one character</p></li>
+<li><p><code>*</code> zero or more characters within a path segment</p></li>
+<li><p><code>**</code> zero or more path segments</p></li>
+</ul>
+<pre><code>@GetMapping(&quot;/{name:[a-z-]+}-{version:\\d\\.\\d\\.\\d}{ext:\\.[a-z]+}&quot;)
+public void handle(@PathVariable String version, @PathVariable String ext) {
+    // ...
+}</code></pre></section><section id="pattern-comparison" class="title-slide slide level2"><h2>Pattern Comparison</h2><p>When multiple patterns match a URL, they must be compared to find the best match. This is done by using AntPathMatcher.getPatternComparator(String path), which looks for patterns that are more specific.</p>
+<p>E.g The default mapping pattern <code>/**</code> is excluded from scoring and always sorted last.</p></section><section id="consumable-media-types" class="title-slide slide level2"><h2>Consumable Media Types</h2><p>You can narrow the request mapping based on the <code>Content-Type</code> of the request, as the following example shows:</p>
+<pre><code>@PostMapping(path = &quot;/pets&quot;, consumes = &quot;application/json&quot;) 
+public void addPet(@RequestBody Pet pet) {
+    // ...
+}</code></pre></section><section id="producible-media-types" class="title-slide slide level2"><h2>Producible Media Types</h2><p>You can narrow the request mapping based on the Accept request header and the list of content types that a controller method produces, as the following example shows:</p>
+<pre><code>@GetMapping(path = &quot;/pets/{petId}&quot;, produces = &quot;application/json&quot;) 
+@ResponseBody
+public Pet getPet(@PathVariable String petId) {
+    // ...
+}</code></pre></section><section id="parameters-headers-mapping" class="title-slide slide level2"><h2>Parameters, headers mapping</h2><p>You can narrow request mappings based on request parameter conditions. You can test for the presence of a request parameter (myParam), for the absence of one (!myParam), or for a specific value (myParam=myValue).</p>
+<pre><code>@GetMapping(path = &quot;/pets/{petId}&quot;, params = &quot;myParam=myValue&quot;) 
+public void findPet(@PathVariable String petId) {
+    // ...
+}</code></pre></section><section id="headers-mapping" class="title-slide slide level2"><h2>Headers mapping</h2><p>You can also use the same with request header conditions, as the following example shows:</p>
+<pre><code>@GetMapping(path = &quot;/pets&quot;, headers = &quot;myHeader=myValue&quot;) 
+public void findPet(@PathVariable String petId) {
+    // ...
+}</code></pre></section><section id="mappings---tasks" class="title-slide slide level2"><h2>Mappings - tasks</h2><ul>
+<li><a href="spring-web-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+<li><a href="spring-web-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+</ul></section></section>
+<section><section id="handle-methods" class="title-slide slide level1"><h1>Handle methods</h1></section><section id="requestparam" class="title-slide slide level2"><h2><code>@RequestParam</code></h2><p>You can use the <code>@RequestParam</code> annotation to bind Servlet request parameters (that is, query parameters or form data) to a method argument in a controller.</p>
+<pre><code>@Controller
+@RequestMapping(&quot;/pets&quot;)
+public class EditPetForm {
+
+    @GetMapping
+    public String setupForm(@RequestParam(&quot;petId&quot;) int petId, Model model) { 
+        Pet pet = this.clinic.loadPet(petId);
+        model.addAttribute(&quot;pet&quot;, pet);
+        return &quot;petForm&quot;;
+    }
+
+}</code></pre></section><section id="requestheader" class="title-slide slide level2"><h2><code>@RequestHeader</code></h2><p>You can use the <code>@RequestHeader</code> annotation to bind a request header to a method argument in a controller.</p>
+<pre><code>@GetMapping(&quot;/demo&quot;)
+public void handle(
+        @RequestHeader(&quot;Accept-Encoding&quot;) String encoding, 
+        @RequestHeader(&quot;Keep-Alive&quot;) long keepAlive) { 
+    //...
+}</code></pre></section><section id="cookievalue" class="title-slide slide level2"><h2><code>@CookieValue</code></h2><p>You can use the <code>@CookieValue</code> annotation to bind the value of an HTTP cookie to a method argument in a controller.</p>
+<pre><code>@GetMapping(&quot;/demo&quot;)
+public void handle(@CookieValue(&quot;JSESSIONID&quot;) String cookie) { 
+    //...
+}</code></pre></section><section id="requestbody" class="title-slide slide level2"><h2><code>@RequestBody</code></h2><p>You can use the <span class="citation" data-cites="RequestBody">@RequestBody</span> annotation to have the request body read and deserialized into an Object through an HttpMessageConverter.</p>
+<pre><code>@PostMapping(&quot;/accounts&quot;)
+public void handle(@RequestBody Account account) {
+    // ...
+}</code></pre></section><section id="responsebody" class="title-slide slide level2"><h2><code>@ResponseBody</code></h2><p>You can use the <span class="citation" data-cites="ResponseBody">@ResponseBody</span> annotation on a method to have the return serialized to the response body through an HttpMessageConverter.</p>
+<pre><code>@GetMapping(&quot;/accounts/{id}&quot;)
+@ResponseBody
+public Account handle() {
+    // ...
+}</code></pre>
+<p>Note: <span class="citation" data-cites="ResponseBody">@ResponseBody</span> is also supported at the class level, in which case it is inherited by all controller methods. This is the effect of <span class="citation" data-cites="RestController">@RestController</span>, which is nothing more than a meta-annotation marked with <span class="citation" data-cites="Controller">@Controller</span> and <span class="citation" data-cites="ResponseBody">@ResponseBody</span>.</p></section><section id="handle-methods---tasks" class="title-slide slide level2"><h2>Handle methods - tasks</h2><ul>
+<li><a href="spring-web-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+<li><a href="spring-web-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+</ul></section></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
