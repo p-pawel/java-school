@@ -38,7 +38,7 @@ Spróbuj dodać nowy wiersz do tabeli.
 
 ## Zadanie 4
 
-W klasie `Invoice` dodaj pole typu faktury o wartościach: `VAT` (faktura VAT), `PRO-FORMA`  (faktura pro-forma), `ADVANCE`  (faktura zaliczkowa).
+W klasie `Invoice` dodaj pole typu faktury o wartościach: `VAT` (faktura VAT), `PRO_FORMA`  (faktura pro-forma), `ADVANCE`  (faktura zaliczkowa).
 
 
 1) Zamodeluj encję korzystając domyślnego sposobu zapisu wartości (jako liczby porządkowe).
@@ -61,7 +61,9 @@ Jakie problemy wystąpiły?
 
 ## Zadanie 5
 
-W klasie `Invoice` dodaj metodę `isAccountable` która będzie zwracać `true` dla typów faktury innych niż pro-forma.
+W klasie `Invoice` dodaj pole logiczne `accountable` którego wartość 
+będzie ustawiana na `true` dla typów faktury innych niż pro-forma.
+
 Zapewnij aby to pole nie by mapowane przez JPA na kolumnę w bazie danych.
 
 * Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.

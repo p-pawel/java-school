@@ -168,13 +168,22 @@ https://wiki.eclipse.org/EclipseLink/Examples/JPA/OutsideContainer
 
 <p><img data-src="https://paczaizm.pl/content/wp-content/uploads/bije-bity-mozna-sie-przyzwyczaic-janek-koza.jpg" /></p>
 </section><section id="annotation-mappings" class="title-slide slide level2"><h2>Annotation Mappings</h2><pre><code>@Entity
+public class Employee {
+  // ...
+}</code></pre>
+<pre><code>@Entity
 @Table(name = &quot;EMPLOYEE&quot;)
 public class Employee {
-
   // ...
-
 }</code></pre></section></section>
-<section><section id="entity-members" class="title-slide slide level1"><h1>Entity members</h1></section><section id="persistable-members" class="title-slide slide level2"><h2>Persistable members</h2><p>By default all members are persistable:</p>
+<section><section id="entity-members" class="title-slide slide level1"><h1>Entity members</h1></section><section id="identifier" class="title-slide slide level2"><h2>Identifier</h2><pre><code>@Id
+private Long id;</code></pre>
+<pre><code>@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+private Long id;</code></pre>
+<p>Generation strategies: <code>AUTO</code>, <code>TABLE</code>, <code>SEQUENCE</code>, or <code>IDENTITY</code>.</p></section><section id="identifier---task" class="title-slide slide level2"><h2>Identifier - task</h2><ul>
+<li><a href="ee-jpa-tasks.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section><section id="persistable-members" class="title-slide slide level2"><h2>Persistable members</h2><p>By default all members are persistable:</p>
 <pre><code>private String name;</code></pre>
 <p>Attributes (optional):</p>
 <pre><code>@Column(name=&quot;USER_NAME&quot;) 
@@ -185,14 +194,7 @@ private String name;</code></pre>
 <pre><code>@Column(updatable=false)       // default: true </code></pre>
 <pre><code>@Column(length=32)             // default: 255 </code></pre>
 <pre><code>@Column(precision=7, scale=2)  // default: 0 </code></pre></section><section id="persistable-members---task" class="title-slide slide level2"><h2>Persistable members - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-2" target="_blank">[Task 2]</a></li>
-</ul></section><section id="identifier" class="title-slide slide level2"><h2>Identifier</h2><pre><code>@Id
-private Long id;</code></pre>
-<pre><code>@Id
-@GeneratedValue(strategy=GenerationType.AUTO)
-private Long id;</code></pre>
-<p>Generation strategies: <code>AUTO</code>, <code>TABLE</code>, <code>SEQUENCE</code>, or <code>IDENTITY</code>.</p></section><section id="identifier---task" class="title-slide slide level2"><h2>Identifier - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-2" target="_blank">[Task 2]</a></li>
 </ul></section><section id="enumeration-column" class="title-slide slide level2"><h2>Enumeration column</h2><ul>
 <li>using ordinal numbers:</li>
 </ul>
@@ -203,35 +205,35 @@ private Status status;</code></pre>
 </ul>
 <pre><code>@Enumerated(EnumType.STRING)
 private Status status;</code></pre></section><section id="enumeration-column---task" class="title-slide slide level2"><h2>Enumeration column - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-4" target="_blank">[Task 4]</a></li>
 </ul></section><section id="transient---not-persisted" class="title-slide slide level2"><h2>Transient - not persisted</h2><p><code>@Transient</code></p>
 <pre><code>@Transient 
 private String name;</code></pre></section><section id="transient-column---task" class="title-slide slide level2"><h2>Transient column - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-5" target="_blank">[Task 5]</a></li>
 </ul></section><section id="large-objects" class="title-slide slide level2"><h2>Large objects</h2><pre><code>@Lob
 private String  body; </code></pre>
 <pre><code>@Lob
 @Column(columnDefinition=&quot;BLOB NOT NULL&quot;)
 protected byte[] pic;</code></pre></section><section id="large-objects---task" class="title-slide slide level2"><h2>Large objects - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-6" target="_blank">[Task 6]</a></li>
 </ul></section></section>
 <section><section id="entity-manager---persisting" class="title-slide slide level1"><h1>Entity manager - persisting</h1></section><section id="create" class="title-slide slide level2"><h2>Create</h2><pre><code>Employee employee = new Employee( ); 
 employee.setId( 1201 );
 employee.setName( &quot;Gopal&quot; );
       
 entitymanager.persist( employee );</code></pre></section><section id="create---task" class="title-slide slide level2"><h2>Create - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-7" target="_blank">[Task 7]</a></li>
 </ul></section><section id="read" class="title-slide slide level2"><h2>Read</h2><pre><code>Employee employee = entitymanager.find( Employee.class, 1201 );</code></pre></section><section id="read---task" class="title-slide slide level2"><h2>Read - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-8" target="_blank">[Task 8]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-8" target="_blank">[Task 8]</a></li>
 </ul></section><section id="update" class="title-slide slide level2"><h2>Update</h2><pre><code>Employee employee = entitymanager.find( Employee.class, 1201 );
 
 employee.setName(&quot;John Smith&quot;);
 
 entitymanager.merge( employee );</code></pre></section><section id="update---task" class="title-slide slide level2"><h2>Update - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-9" target="_blank">[Task 9]</a></li>
 </ul></section><section id="delete" class="title-slide slide level2"><h2>Delete</h2><pre><code>Employee employee = entitymanager.find( Employee.class, 1201 );
 entitymanager.remove( employee );</code></pre></section><section id="delete---task" class="title-slide slide level2"><h2>Delete - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-10" target="_blank">[Task 10]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-10" target="_blank">[Task 10]</a></li>
 </ul></section><section id="entity-lifecycle" class="title-slide slide level2"><h2>Entity lifecycle</h2><p><img src="https://www.objectdb.com/files/images/manual/jpa-states.png" style="float: right" /> <small></p>
 <ul>
 <li><p><strong>New/Transient</strong> - unknown for EntityManager, does not exist in database</p></li>
@@ -316,7 +318,7 @@ class Head {
     @Id
     private Long id;
 }</code></pre></section><section id="one-to-one---task" class="title-slide slide level2"><h2>1:1 - one to one - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-11" target="_blank">[Task 11]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-11" target="_blank">[Task 11]</a></li>
 </ul></section><section id="n1---many-to-one" class="title-slide slide level2"><h2>n:1 - many to one</h2><p><code>@ManyToOne</code></p></section><section id="n1---many-to-one---example" class="title-slide slide level2"><h2>n:1 - many to one - example</h2><pre><code>@Entity
 class OrderEntry {
     @Id
@@ -331,7 +333,7 @@ class Product {
     @Id
     private Long id;
 }</code></pre></section><section id="n1---many-to-one---task" class="title-slide slide level2"><h2>n:1 - many to one - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-12" target="_blank">[Task 12]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-12" target="_blank">[Task 12]</a></li>
 </ul></section><section id="n---one-to-many" class="title-slide slide level2"><h2>1:n - one to many</h2><p><code>@OneToMany</code></p></section><section id="n1---one-to-many---example" class="title-slide slide level2"><h2>n:1 - one to many - example</h2><pre><code>@Entity
 class InvoiceEntry {
     @Id
@@ -349,7 +351,7 @@ class Invoice {
     @OneToMany(mappedBy=&quot;invoice&quot;)
     List&lt;InvoiceEntry&gt; entries;
 }</code></pre></section><section id="n1---one-to-many---task" class="title-slide slide level2"><h2>n:1 - one to many - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-13" target="_blank">[Task 13]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-13" target="_blank">[Task 13]</a></li>
 </ul></section><section id="nn---many-to-many" class="title-slide slide level2"><h2>n:n - many to many</h2><p><code>@ManyToMany</code></p></section><section id="nn---many-to-many---example" class="title-slide slide level2"><h2>n:n - many to many - example</h2><pre><code>@Entity
 class Post {
     @Id
@@ -371,7 +373,7 @@ class Tag {
     joinColumns = @JoinColumn(name = &quot;post_id&quot;),
     inverseJoinColumns = @JoinColumn(name = &quot;tag_id&quot;)
 )</code></pre></section><section id="nn---many-to-many---task" class="title-slide slide level2"><h2>n:n - many to many - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-14" target="_blank">[Task 14]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-14" target="_blank">[Task 14]</a></li>
 </ul></section><section id="column-names" class="title-slide slide level2"><h2>Column names</h2><ul>
 <li><p><code>@Column</code> - for a field</p></li>
 <li><p><code>@JoinColumn(name = "invoice_id")</code> - for relation</p></li>
@@ -391,9 +393,34 @@ List&lt;Employee&gt; list=(List&lt;Employee&gt;)query.getResultList( );</code></
 <pre><code>Query query = entitymanager.createQuery( &quot;Select e from Employee e where e.salary Between 30000 and 40000&quot; );
 
 List&lt;Employee&gt; list=(List&lt;Employee&gt;)query.getResultList( );</code></pre></section><section id="jpql---task" class="title-slide slide level2"><h2>JPQL - task</h2><ul>
-<li><a href="ee-jpa.html#/zadanie-15" target="_blank">[Task 15]</a></li>
+<li><a href="ee-jpa-tasks.html#/zadanie-15" target="_blank">[Task 15]</a></li>
 </ul></section></section>
-<section><section id="querying-criteria" class="title-slide slide level1"><h1>Querying: criteria</h1></section><section id="criteria---basics" class="title-slide slide level2"><h2>Criteria - basics</h2></section><section id="order" class="title-slide slide level2"><h2>Order</h2></section><section id="group" class="title-slide slide level2"><h2>Group</h2></section><section id="having" class="title-slide slide level2"><h2>Having</h2></section></section>
+<section><section id="querying-criteria" class="title-slide slide level1"><h1>Querying: criteria</h1></section><section id="criteria---basics" class="title-slide slide level2"><h2>Criteria - basics</h2><pre><code>CriteriaBuilder cb = em.getCriteriaBuilder();
+
+CriteriaQuery&lt;Employee&gt; query = cb.createQuery(Employee.class);
+Root&lt;Employee&gt; c = query.from(Employee.class);
+query.select(c);</code></pre></section><section id="criteria-where" class="title-slide slide level2"><h2>Criteria: where</h2><pre><code>CriteriaQuery&lt;Country&gt; q = cb.createQuery(Country.class);
+Root&lt;Country&gt; c = q.from(Country.class);
+q.select(c);
+ParameterExpression&lt;Integer&gt; p = cb.parameter(Integer.class);
+q.where(cb.gt(c.get(&quot;population&quot;), p));</code></pre>
+<pre><code>q.where(
+  cb.or(
+      cb.gt(c.get(&quot;population&quot;), p),
+      cb.lt(c.get(&quot;area&quot;), a)
+  )
+);</code></pre></section><section id="criteria-order" class="title-slide slide level2"><h2>Criteria: order</h2><pre><code>CriteriaQuery&lt;Country&gt; q = cb.createQuery(Country.class);
+Root&lt;Country&gt; c = q.from(Country.class);
+q.select(c);
+q.orderBy(cb.asc(c.get(&quot;currency&quot;)), cb.desc(c.get(&quot;population&quot;)));</code></pre></section><section id="criteria-group-having" class="title-slide slide level2"><h2>Criteria: group &amp; having</h2><pre><code>CriteriaQuery&lt;Country&gt; q = cb.createQuery(Country.class);
+Root&lt;Country&gt; c = q.from(Country.class);
+q.multiselect(c.get(&quot;currency&quot;), cb.sum(c.get(&quot;population&quot;)));
+q.where(cb.isMember(&quot;Europe&quot;, c.get(&quot;continents&quot;)));
+q.groupBy(c.get(&quot;currency&quot;));
+g.having(cb.gt(cb.count(c), 1));</code></pre></section><section id="join" class="title-slide slide level2"><h2>Join</h2><pre><code>CriteriaQuery&lt;Country&gt; q = cb.createQuery(Country.class);
+Root&lt;Country&gt; c1 = q.from(Country.class);
+Root&lt;Country&gt; c2 = q.from(Country.class);
+q.multiselect(c1, c2);</code></pre></section></section>
 <section><section id="entity-inheritance" class="title-slide slide level1"><h1>Entity inheritance</h1></section><section id="entity-inheritance-types" class="title-slide slide level2"><h2>Entity inheritance types</h2><ul>
 <li><p><code>SINGLE_TABLE</code></p></li>
 <li><p><code>JOINED</code></p></li>
@@ -466,7 +493,18 @@ public class SmallProject extends Project {
 }</code></pre>
 </div></section></section>
 <section id="transactions" class="title-slide slide level1"><h1>Transactions</h1></section>
-<section><section id="cache" class="title-slide slide level1"><h1>Cache</h1></section><section id="two-levels-of-cache" class="title-slide slide level2"><h2>Two levels of cache</h2></section><section id="cache-level-1" class="title-slide slide level2"><h2>Cache level 1</h2></section><section id="cache-level-2" class="title-slide slide level2"><h2>Cache level 2</h2></section></section>
+<section><section id="cache" class="title-slide slide level1"><h1>Cache</h1></section><section id="two-levels-of-cache" class="title-slide slide level2"><h2>Two levels of cache</h2></section><section id="cache-level-1" class="title-slide slide level2"><h2>Cache level 1</h2><p>The first level of caching is the persistence context.</p>
+<p>A managed entity with the same id and class as another in the same persistence context , will return the same instance.</p>
+<pre><code>OrderLine orderLine = new OrderLine(order, product);
+entityManager.persist(orderLine);   
+OrderLine orderLine2 =entityManager.find(OrderLine, orderLine.getId()));
+
+System.out.println(orderLine == orderLine2);</code></pre></section><section id="cache-level-2" class="title-slide slide level2"><h2>Cache level 2</h2><p>Second-level cache is SessionFactory-scoped, meaning it is shared by all sessions created with the same session factory.</p>
+<pre><code>@Cacheable</code></pre></section><section id="cache-precedence" class="title-slide slide level2"><h2>Cache precedence</h2><ul>
+<li><p>If an instance is already present in the first-level cache, it is returned from there</p></li>
+<li><p>If an instance is not found in the first-level cache, and the corresponding instance state is cached in the second-level cache, then the data is fetched from there and an instance is assembled and returned</p></li>
+<li><p>Otherwise, the necessary data are loaded from the database and an instance is assembled and returned</p></li>
+</ul></section></section>
 <section id="the-end" class="title-slide slide level1"><h1>The end</h1><!-- 
 
 Official: 

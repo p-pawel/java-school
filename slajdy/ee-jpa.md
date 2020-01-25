@@ -232,15 +232,40 @@ public class Employee {
 
 ```
 @Entity
+public class Employee {
+  // ...
+}
+```
+
+```
+@Entity
 @Table(name = "EMPLOYEE")
 public class Employee {
-
   // ...
-
 }
 ```
 
 # Entity members
+
+
+## Identifier
+
+```
+@Id
+private Long id;
+```  
+
+```
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+private Long id;
+```  
+
+Generation strategies:  `AUTO`, `TABLE`, `SEQUENCE`, or `IDENTITY`.
+
+## Identifier - task
+
+* <a href="ee-jpa-tasks.html#/zadanie-3" target="_blank">[Task 3]</a>
 
 ## Persistable members
 
@@ -282,26 +307,7 @@ private String name;
 
 ## Persistable members - task
 
-* <a href="ee-jpa.html#/zadanie-2" target="_blank">[Task 2]</a>
-
-## Identifier
-
-```
-@Id
-private Long id;
-```  
-
-```
-@Id
-@GeneratedValue(strategy=GenerationType.AUTO)
-private Long id;
-```  
-
-Generation strategies:  `AUTO`, `TABLE`, `SEQUENCE`, or `IDENTITY`.
-
-## Identifier - task
-
-* <a href="ee-jpa.html#/zadanie-3" target="_blank">[Task 3]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-2" target="_blank">[Task 2]</a>
 
 ## Enumeration column
 
@@ -319,7 +325,7 @@ private Status status;
 
 ## Enumeration column - task
 
-* <a href="ee-jpa.html#/zadanie-4" target="_blank">[Task 4]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-4" target="_blank">[Task 4]</a>
 
 
 ## Transient - not persisted
@@ -334,7 +340,7 @@ private String name;
 
 ## Transient column - task
 
-* <a href="ee-jpa.html#/zadanie-5" target="_blank">[Task 5]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-5" target="_blank">[Task 5]</a>
 
 ## Large objects
 
@@ -351,7 +357,7 @@ protected byte[] pic;
 
 ## Large objects - task
 
-* <a href="ee-jpa.html#/zadanie-6" target="_blank">[Task 6]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-6" target="_blank">[Task 6]</a>
 
 
 # Entity manager - persisting
@@ -368,7 +374,7 @@ entitymanager.persist( employee );
 
 ## Create - task
 
-* <a href="ee-jpa.html#/zadanie-7" target="_blank">[Task 7]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-7" target="_blank">[Task 7]</a>
 
 ## Read
 
@@ -377,7 +383,7 @@ Employee employee = entitymanager.find( Employee.class, 1201 );
 ```
 
 ## Read - task
-* <a href="ee-jpa.html#/zadanie-8" target="_blank">[Task 8]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-8" target="_blank">[Task 8]</a>
 
 
 ## Update
@@ -391,7 +397,7 @@ entitymanager.merge( employee );
 ```
 
 ## Update - task
-* <a href="ee-jpa.html#/zadanie-9" target="_blank">[Task 9]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-9" target="_blank">[Task 9]</a>
 
 
 ## Delete
@@ -404,7 +410,7 @@ entitymanager.remove( employee );
 
 ## Delete - task
 
-* <a href="ee-jpa.html#/zadanie-10" target="_blank">[Task 10]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-10" target="_blank">[Task 10]</a>
 
 ## Entity lifecycle
 
@@ -554,7 +560,7 @@ class Head {
 
 ## 1:1 - one to one - task
 
-* <a href="ee-jpa.html#/zadanie-11" target="_blank">[Task 11]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-11" target="_blank">[Task 11]</a>
 
 
 ## n:1 - many to one 
@@ -583,7 +589,7 @@ class Product {
 
 ## n:1 - many to one - task
 
-* <a href="ee-jpa.html#/zadanie-12" target="_blank">[Task 12]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-12" target="_blank">[Task 12]</a>
 
 
 ## 1:n - one to many
@@ -614,7 +620,7 @@ class Invoice {
 
 ## n:1 - one to many - task
 
-* <a href="ee-jpa.html#/zadanie-13" target="_blank">[Task 13]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-13" target="_blank">[Task 13]</a>
 
 ## n:n - many to many 
 
@@ -654,7 +660,7 @@ class Tag {
 
 ## n:n - many to many - task
 
-* <a href="ee-jpa.html#/zadanie-14" target="_blank">[Task 14]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-14" target="_blank">[Task 14]</a>
 
 
 ## Column names  
@@ -700,19 +706,68 @@ List<Employee> list=(List<Employee>)query.getResultList( );
 
 ## JPQL - task
 
-* <a href="ee-jpa.html#/zadanie-15" target="_blank">[Task 15]</a>
+* <a href="ee-jpa-tasks.html#/zadanie-15" target="_blank">[Task 15]</a>
 
 
 # Querying: criteria
 
 ## Criteria - basics
 
+```
+CriteriaBuilder cb = em.getCriteriaBuilder();
 
-## Order
+CriteriaQuery<Employee> query = cb.createQuery(Employee.class);
+Root<Employee> c = query.from(Employee.class);
+query.select(c);
+```
 
-## Group
+## Criteria: where
 
-## Having
+```
+CriteriaQuery<Country> q = cb.createQuery(Country.class);
+Root<Country> c = q.from(Country.class);
+q.select(c);
+ParameterExpression<Integer> p = cb.parameter(Integer.class);
+q.where(cb.gt(c.get("population"), p));
+```
+
+```
+q.where(
+  cb.or(
+      cb.gt(c.get("population"), p),
+      cb.lt(c.get("area"), a)
+  )
+);
+```
+
+## Criteria: order
+
+```
+CriteriaQuery<Country> q = cb.createQuery(Country.class);
+Root<Country> c = q.from(Country.class);
+q.select(c);
+q.orderBy(cb.asc(c.get("currency")), cb.desc(c.get("population")));
+```
+
+## Criteria: group & having
+
+```
+CriteriaQuery<Country> q = cb.createQuery(Country.class);
+Root<Country> c = q.from(Country.class);
+q.multiselect(c.get("currency"), cb.sum(c.get("population")));
+q.where(cb.isMember("Europe", c.get("continents")));
+q.groupBy(c.get("currency"));
+g.having(cb.gt(cb.count(c), 1));
+```
+
+## Join
+
+```
+CriteriaQuery<Country> q = cb.createQuery(Country.class);
+Root<Country> c1 = q.from(Country.class);
+Root<Country> c2 = q.from(Country.class);
+q.multiselect(c1, c2);
+```
 
 # Entity inheritance
 
@@ -824,7 +879,34 @@ public class SmallProject extends Project {
 
 ## Cache level 1
 
+The first level of caching is the persistence context. 
+
+A managed entity with the same id and class as another in the same persistence context , will return the same instance.
+ 
+```
+OrderLine orderLine = new OrderLine(order, product);
+entityManager.persist(orderLine);   
+OrderLine orderLine2 =entityManager.find(OrderLine, orderLine.getId()));
+
+System.out.println(orderLine == orderLine2);
+```
+
 ## Cache level 2
+
+Second-level cache is SessionFactory-scoped, meaning it is shared by all sessions created with the same session factory.
+
+```
+@Cacheable
+```
+
+## Cache precedence
+
+
+* If an instance is already present in the first-level cache, it is returned from there
+
+* If an instance is not found in the first-level cache, and the corresponding instance state is cached in the second-level cache, then the data is fetched from there and an instance is assembled and returned
+
+* Otherwise, the necessary data are loaded from the database and an instance is assembled and returned
 
 
 # The end

@@ -62,7 +62,7 @@
 <li><p>Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.</p></li>
 <li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona. Spróbuj dodać nowy wiersz do tabeli.</p></li>
 </ul></section>
-<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>W klasie <code>Invoice</code> dodaj pole typu faktury o wartościach: <code>VAT</code> (faktura VAT), <code>PRO-FORMA</code> (faktura pro-forma), <code>ADVANCE</code> (faktura zaliczkowa).</p>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>W klasie <code>Invoice</code> dodaj pole typu faktury o wartościach: <code>VAT</code> (faktura VAT), <code>PRO_FORMA</code> (faktura pro-forma), <code>ADVANCE</code> (faktura zaliczkowa).</p>
 <ol type="1">
 <li>Zamodeluj encję korzystając domyślnego sposobu zapisu wartości (jako liczby porządkowe).</li>
 </ol>
@@ -78,7 +78,8 @@
 <li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona.</p></li>
 </ul>
 <p>Jakie problemy wystąpiły?</p></section>
-<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>W klasie <code>Invoice</code> dodaj metodę <code>isAccountable</code> która będzie zwracać <code>true</code> dla typów faktury innych niż pro-forma. Zapewnij aby to pole nie by mapowane przez JPA na kolumnę w bazie danych.</p>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>W klasie <code>Invoice</code> dodaj pole logiczne <code>accountable</code> którego wartość będzie ustawiana na <code>true</code> dla typów faktury innych niż pro-forma.</p>
+<p>Zapewnij aby to pole nie by mapowane przez JPA na kolumnę w bazie danych.</p>
 <ul>
 <li><p>Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.</p></li>
 <li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona.</p></li>
