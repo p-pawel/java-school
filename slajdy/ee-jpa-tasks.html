@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>JPA - zadania</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>JPA - zadania</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="zadanie-1" class="title-slide slide level2"><h2>Zadanie 1</h2><ul>
+<li><p>Korzystając z innego narzędzia utwórz nową pustą bazę danych.</p></li>
+<li><p>Utwórz projekt w Mavenie (bez żadnego artefaktu) z następującymi zależnościami:</p>
+<ul>
+<li><code>javax.persistence:javax.persistence-api:2.2</code></li>
+<li><code>org.eclipse.persistence:eclipselink:2.7.5</code></li>
+<li>dodaj również zależność do sterownika do bazy danych</li>
+</ul></li>
+<li><p>Skonfiguruj połączenie ze swoją bazą danych tworząc odpowiedni plik <code>persistence.xml</code>.</p></li>
+<li><p>Sprawdź czy aplikacja uruchamia się poprawnie.</p></li>
+</ul></section>
+<section id="zadanie-2" class="title-slide slide level2"><h2>Zadanie 2</h2><p>Korzystając z JPA, zamodeluj klasę faktury (<code>Invoice</code>) tak aby użyta została tabela <code>INVOICE</code>.</p>
+<p>W klasie dodaj pole tekstowe <code>invoiceNumber</code>.</p>
+<p>Pozwól JPA na wygenerowanie schematu bazy danych.</p>
+<p>Uruchom program i korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy tabela została utworzona.</p></section>
+<section id="zadanie-3" class="title-slide slide level2"><h2>Zadanie 3</h2><p>W klasie <code>Invoice</code> dodaj pole identyfikatora faktury (<code>id</code>). Zapewnij aby wartość tego pola była automatycznie generowana.</p>
+<ul>
+<li><p>Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.</p></li>
+<li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona. Spróbuj dodać nowy wiersz do tabeli.</p></li>
+</ul></section>
+<section id="zadanie-4" class="title-slide slide level2"><h2>Zadanie 4</h2><p>W klasie <code>Invoice</code> dodaj pole typu faktury o wartościach: <code>VAT</code> (faktura VAT), <code>PRO-FORMA</code> (faktura pro-forma), <code>ADVANCE</code> (faktura zaliczkowa).</p>
+<ol type="1">
+<li>Zamodeluj encję korzystając domyślnego sposobu zapisu wartości (jako liczby porządkowe).</li>
+</ol>
+<ul>
+<li><p>Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.</p></li>
+<li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona.</p></li>
+</ul></section>
+<section id="zadanie-4.b" class="title-slide slide level2"><h2>Zadanie 4.b</h2><ol start="2" type="1">
+<li>Zmień sposób zapisu wartości typu wyliczeniowego na etykiety tekstowe.</li>
+</ol>
+<ul>
+<li><p>Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.</p></li>
+<li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona.</p></li>
+</ul>
+<p>Jakie problemy wystąpiły?</p></section>
+<section id="zadanie-5" class="title-slide slide level2"><h2>Zadanie 5</h2><p>W klasie <code>Invoice</code> dodaj metodę <code>isAccountable</code> która będzie zwracać <code>true</code> dla typów faktury innych niż pro-forma. Zapewnij aby to pole nie by mapowane przez JPA na kolumnę w bazie danych.</p>
+<ul>
+<li><p>Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.</p></li>
+<li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona.</p></li>
+</ul></section>
+<section id="zadanie-6" class="title-slide slide level2"><h2>Zadanie 6</h2><p>W klasie <code>Invoice</code> dodaj pole tesktowe z uwagami, które pozwoli na wpisywanie długich tekstów (które mogą być dłuższe niż 255 znaków).</p>
+<ul>
+<li><p>Uruchom program i pozwól JPA na zaktualizowanie schematu bazy danych.</p></li>
+<li><p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>struktura</strong> tabeli została zmieniona.</p></li>
+</ul></section>
+<section id="zadanie-7" class="title-slide slide level2"><h2>Zadanie 7</h2><p>W programie utwórz nowy obiekt klasy <code>Invoice</code> i zapisz go w bazie danych.</p>
+<p>Korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy <strong>zawartość</strong> tabeli została zmieniona.</p></section>
+<section id="zadanie-8" class="title-slide slide level2"><h2>Zadanie 8</h2><p>Zmodyfikuj program tak, aby pobrał fakturę o <code>id</code> równym <code>1</code> z bazy danych i wypisał jej numer.</p></section>
+<section id="zadanie-9" class="title-slide slide level2"><h2>Zadanie 9</h2><p>Zmodyfikuj program tak, aby dla faktury o <code>id</code> równym <code>1</code> ustawił jej numer na aktualny timestamp :)</p></section>
+<section id="zadanie-10" class="title-slide slide level2"><h2>Zadanie 10</h2><p>Zmodyfikuj program tak, aby usunął fakturę o <code>id</code> równym <code>2</code>.</p>
+<p>Sprawdź jak zmieni się zachowanie programu przy kolejnych uruchomieniach.</p></section>
+<section id="zadanie-11" class="title-slide slide level2"><h2>Zadanie 11</h2><p>Przyjmijmy, że na potrzeby sklepu internetowego chcemy przechowywać dane klientów i ich adresy w osobnych tabelach.</p>
+<ul>
+<li>Zamodeluj relację Klient - Adres typu 1:1 w postaci klas encji (JPA z adnotacjami),</li>
+<li>napisz kod, który po uruchomieniu programu utworzy obiekty obu typów połączone ze sobą i zapisze oba w bazie danych</li>
+<li>korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy obie instance zostały zapisane</li>
+</ul>
+<ol type="i">
+<li>jeszcze bez kaskad</li>
+</ol></section>
+<section id="zadanie-12" class="title-slide slide level2"><h2>Zadanie 12</h2><p>Przyjmijmy, że na potrzeby sklepu internetowego chcemy przechowywać dane produktów i pozycji zamówień odnoszących się do tych produktów.</p>
+<ul>
+<li>Zamodeluj relację Produkt - Pozycja Zamówienia typu n:1 w postaci klas encji (JPA z adnotacjami),</li>
+<li>napisz kod, który po uruchomieniu programu utworzy obiekty obu typów połączone ze sobą i zapisze oba w bazie danych</li>
+<li>korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy obie instance zostały zapisane</li>
+</ul>
+<ol type="i">
+<li>jeszcze bez kaskad</li>
+</ol></section>
+<section id="zadanie-13" class="title-slide slide level2"><h2>Zadanie 13</h2><p>Przyjmijmy, że na potrzeby sklepu internetowego chcemy przechowywać dane <strong>zamówień</strong> i <strong>pozycji zamówień</strong> będących składową tych zamówień.</p>
+<ul>
+<li>Zamodeluj relację <strong>Zamówienie</strong> - <strong>Pozycja Zamówienia</strong> typu <code>1:n</code> w postaci klas encji (JPA z adnotacjami),</li>
+<li>napisz kod, który po uruchomieniu programu utworzy obiekty obu typów połączone ze sobą i zapisze oba w bazie danych</li>
+<li>korzystając z narzędzia do przeglądania bazy danych (np. DBeaver) sprawdź czy obie instance zostały zapisane</li>
+</ul>
+<ol type="i">
+<li>jeszcze bez kaskad</li>
+</ol></section>
+<section><section id="zadanie-14" class="title-slide slide level1"><h1>Zadanie 14</h1></section><section id="zadanie-15" class="title-slide slide level2"><h2>Zadanie 15</h2><p>Zmodyfikuj program z zadań 2-10 tak, aby pobrał za pomocą zapytania JPQL wszystkie faktury i wypisał ich numery.</p></section></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>

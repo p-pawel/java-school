@@ -1,0 +1,520 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>JPA</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>JPA</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section><section id="recap-sql-jdbc" class="title-slide slide level2"><h2>Recap: SQL, JDBC</h2></section></section>
+<section><section id="persistence-deployment-descriptor" class="title-slide slide level1"><h1>Persistence deployment descriptor</h1><pre><code>META-INF/persistence.xml</code></pre>
+<!--
+https://wiki.eclipse.org/EclipseLink/Examples/JPA/Configure
+--></section><section id="minimal-persistence.xml-file" class="title-slide slide level2"><h2>Minimal <code>persistence.xml</code> file</h2><pre><code>&lt;persistence&gt;
+    &lt;persistence-unit name=&quot;[REQUIRED_PERSISTENCE_UNIT_NAME_GOES_HERE]&quot;&gt;
+        SOME_PROPERTIES
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</code></pre></section><section id="data-source-in-java-ee-by-jndi" class="title-slide slide level2"><h2>Data source in Java EE by JNDI</h2><div style="font-size: 80%">
+<pre><code>&lt;persistence&gt;
+    &lt;persistence-unit name=&quot;[REQUIRED_PERSISTENCE_UNIT_NAME_GOES_HERE]&quot;&gt;
+        &lt;!--GLOBAL_JNDI_GOES_HERE--&gt;
+        &lt;jta-data-source&gt;jdbc/myDS&lt;/jta-data-source&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</code></pre>
+</div>
+<div class="yagni">
+
+</div></section><section id="data-source-in-java-se" class="title-slide slide level2"><h2>Data source in Java SE</h2><div style="font-size: 80%">
+<pre><code>&lt;properties&gt;
+    &lt;property name=&quot;javax.persistence.jdbc.driver&quot; value=&quot;org.postgresql.Driver&quot; /&gt;
+    &lt;property name=&quot;javax.persistence.jdbc.url&quot; value=&quot;jdbc:postgresql://localhost:5432/my-schema&quot; /&gt;
+    &lt;property name=&quot;javax.persistence.jdbc.user&quot; value=&quot;postgres&quot; /&gt;
+    &lt;property name=&quot;javax.persistence.jdbc.password&quot; value=&quot;postgres&quot; /&gt;
+&lt;/properties&gt;</code></pre>
+</div>
+<aside class="notes">
+https://stackoverflow.com/questions/14131114/does-jpa-require-the-datasources-come-from-jndi
+</aside></section><section id="mapped-classes" class="title-slide slide level2"><h2>Mapped classes</h2><pre><code>&lt;class&gt;com.example.model.CarEntity&lt;/class&gt;
+&lt;class&gt;com.example.model.EngineEntity&lt;/class&gt;</code></pre>
+<pre><code>&lt;exclude-unlisted-classes&gt;false&lt;/exclude-unlisted-classes&gt;</code></pre></section><section id="jpa-properties" class="title-slide slide level2"><h2>JPA properties</h2><pre><code>&lt;persistence&gt;
+    &lt;persistence-unit name=&quot;my-perstistence&quot;&gt;
+
+        &lt;properties&gt;
+            
+            ...
+
+        &lt;/properties&gt;
+
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</code></pre></section><section id="property-map" class="title-slide slide level2"><h2>Property map</h2><pre><code>Map&lt;String, String&gt; properties = new HashMap&lt;&gt;();
+
+properties.put(&quot;javax.persistence.jdbc.driver&quot;, &quot;org.apache.derby.jdbc.EmbeddedDriver&quot;);
+
+properties.put(&quot;javax.persistence.jdbc.url&quot;, &quot;jdbc:derby:simpleDb;create=true&quot;);
+
+properties.put(&quot;javax.persistence.jdbc.user&quot;, &quot;test&quot;);
+
+properties.put(&quot;javax.persistence.jdbc.password&quot;, &quot;test&quot;);
+
+Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);</code></pre>
+<!--
+https://wiki.eclipse.org/EclipseLink/Examples/JPA/OutsideContainer
+--></section><section id="jpa-implementations" class="title-slide slide level2"><h2>JPA implementations</h2><ul>
+<li><code>Hibernate</code>: The most advanced and widely used (A lot of libraries are used, especially with JBoss)</li>
+<li><code>Toplink</code>: Only supports the basic JPA specs. (This was oracle’s free version of the JPA implementation)</li>
+<li><code>EclipseLink</code>: Is based on TopLink, and is the intended path forward for persistence for Oracle and TopLink</li>
+<li><code>Apache OpenJPA</code>: Best documentation but seems very buggy. Open source implementation for JPA</li>
+<li><code>DataNucleus</code>: Well documented, open source; also JDO</li>
+<li><code>ObjectDB</code>: well documented</li>
+<li><code>CMobileCom JPA</code>: light-weight implementation for both Java and Android.</li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/17883971/which-provider-should-be-used-for-the-java-persistence-api-jpa-implemenation" target="_blank">Discussions</a></p></section><section id="schema-generation" class="title-slide slide level2"><h2>Schema generation</h2><pre><code>javax.persistence.schema-generation.database.action</code></pre>
+<ul>
+<li><code>none</code> - no schema creation or deletion</li>
+<li><code>create</code> - creates the database schema on application deployment, and artifacts will remain unchanged after redeployment</li>
+<li><code>drop-and-create</code> - deletes any artifacts in the database, and re-creates the database on deployment</li>
+<li><code>drop</code> - schema deleted on application deployment</li>
+</ul>
+<p><small> E.g. <code>&lt;property name="javax.persistence.schema-generation.database.action" value="create"/&gt;</code> </small></p>
+<p><a href="https://docs.oracle.com/javaee/7/tutorial/persistence-intro005.htm" target="_blank">docs</a></p></section><section id="schema-generation---unified-properties" class="title-slide slide level2"><h2>Schema generation - unified properties</h2><p>Since JPA 2.1 (2013): <small></p>
+<pre><code>&lt;property name=&quot;javax.persistence.schema-generation.database.action&quot; value=&quot;drop-and-create&quot;/&gt;
+&lt;property name=&quot;javax.persistence.schema-generation.create-source&quot; value=&quot;script&quot;/&gt;
+&lt;property name=&quot;javax.persistence.schema-generation.create-script-source&quot; value=&quot;META-INF/sql/create.sql&quot; /&gt;
+&lt;property name=&quot;javax.persistence.sql-load-script-source&quot; value=&quot;META-INF/sql/data.sql&quot; /&gt;
+&lt;property name=&quot;javax.persistence.schema-generation.drop-source&quot; value=&quot;script&quot; /&gt;
+&lt;property name=&quot;javax.persistence.schema-generation.drop-script-source&quot; value=&quot;META-INF/sql/drop.sql&quot; /&gt;</code></pre>
+<p></small> It replaced earlier implementation specific properties: <small></p>
+<ul>
+<li><code>&lt;property name="eclipselink.ddl-generation" value="create-tables" /&gt;</code></li>
+<li><code>&lt;property name="hbm2ddl.auto"&gt;create-drop&lt;/property&gt;</code></li>
+</ul>
+<p></small></p></section><section id="getting-started---task" class="title-slide slide level2"><h2>Getting started - task</h2><ul>
+<li><a href="ee-jpa-tasks.html#/zadanie-1" target="_blank">[Task 1]</a></li>
+</ul></section></section>
+<section><section id="entity-mappings" class="title-slide slide level1"><h1>Entity mappings</h1></section><section id="object-relation-mapping-orm" class="title-slide slide level2"><h2>Object-Relation Mapping (ORM)</h2><p><em>a square peg in a round hole</em></p>
+<p><img src="https://m.wm.pl/2013/09/orig/dawid-podsiadlo-foto-lukasz-zietek-165769.jpg" width="70%" /></p></section><section id="entity-class" class="title-slide slide level2"><h2>Entity class</h2><pre><code>public class Employee {
+   private long id;
+   private String ename;
+
+   // getters setters
+}</code></pre>
+<ul>
+<li><p>like data transfer objects we used earlier</p></li>
+<li><p>must follow JavaBeans convention</p></li>
+</ul></section><section id="obsolete-xml-mappings" class="title-slide slide level2"><h2>Obsolete XML mappings</h2><div style="font-size: 60%">
+<pre><code>&lt;? xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+
+&lt;entity-mappings xmlns=&quot;http://java.sun.com/xml/ns/persistence/orm&quot;
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/persistence/orm    
+   http://java.sun.com/xml/ns/persistence/orm_1_0.xsd&quot;
+   version=&quot;1.0&quot;&gt;
+      
+   &lt;entity class=&quot;Employee&quot;&gt;        
+      &lt;table name=&quot;EMPLOYEETABLE&quot;/&gt;
+      &lt;attributes&gt;
+      
+         &lt;id name=&quot;eid&quot;&gt;
+            &lt;generated-value strategy=&quot;TABLE&quot;/&gt;
+         &lt;/id&gt;
+
+         &lt;basic name=&quot;ename&quot;&gt;
+            &lt;column name=&quot;EMP_NAME&quot; length=&quot;100&quot;/&gt;
+         &lt;/basic&gt;
+        
+      &lt;/attributes&gt;
+   &lt;/entity&gt;
+&lt;/entity-mappings&gt;</code></pre>
+</div>
+<div class="yagni">
+
+</div></section><section class="slide level3">
+
+<p><img data-src="https://paczaizm.pl/content/wp-content/uploads/bije-bity-mozna-sie-przyzwyczaic-janek-koza.jpg" /></p>
+</section><section id="annotation-mappings" class="title-slide slide level2"><h2>Annotation Mappings</h2><pre><code>@Entity
+@Table(name = &quot;EMPLOYEE&quot;)
+public class Employee {
+
+  // ...
+
+}</code></pre></section></section>
+<section><section id="entity-members" class="title-slide slide level1"><h1>Entity members</h1></section><section id="persistable-members" class="title-slide slide level2"><h2>Persistable members</h2><p>By default all members are persistable:</p>
+<pre><code>private String name;</code></pre>
+<p>Attributes (optional):</p>
+<pre><code>@Column(name=&quot;USER_NAME&quot;) 
+private String name;</code></pre>
+<pre><code>@Column(unique=true)           // default: false </code></pre>
+<pre><code>@Column(nullable=false)        // default: true </code></pre>
+<pre><code>@Column(insertable=false)      // default: true </code></pre>
+<pre><code>@Column(updatable=false)       // default: true </code></pre>
+<pre><code>@Column(length=32)             // default: 255 </code></pre>
+<pre><code>@Column(precision=7, scale=2)  // default: 0 </code></pre></section><section id="persistable-members---task" class="title-slide slide level2"><h2>Persistable members - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-2" target="_blank">[Task 2]</a></li>
+</ul></section><section id="identifier" class="title-slide slide level2"><h2>Identifier</h2><pre><code>@Id
+private Long id;</code></pre>
+<pre><code>@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+private Long id;</code></pre>
+<p>Generation strategies: <code>AUTO</code>, <code>TABLE</code>, <code>SEQUENCE</code>, or <code>IDENTITY</code>.</p></section><section id="identifier---task" class="title-slide slide level2"><h2>Identifier - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-3" target="_blank">[Task 3]</a></li>
+</ul></section><section id="enumeration-column" class="title-slide slide level2"><h2>Enumeration column</h2><ul>
+<li>using ordinal numbers:</li>
+</ul>
+<pre><code>@Enumerated
+private Status status;</code></pre>
+<ul>
+<li>using string labels:</li>
+</ul>
+<pre><code>@Enumerated(EnumType.STRING)
+private Status status;</code></pre></section><section id="enumeration-column---task" class="title-slide slide level2"><h2>Enumeration column - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-4" target="_blank">[Task 4]</a></li>
+</ul></section><section id="transient---not-persisted" class="title-slide slide level2"><h2>Transient - not persisted</h2><p><code>@Transient</code></p>
+<pre><code>@Transient 
+private String name;</code></pre></section><section id="transient-column---task" class="title-slide slide level2"><h2>Transient column - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-5" target="_blank">[Task 5]</a></li>
+</ul></section><section id="large-objects" class="title-slide slide level2"><h2>Large objects</h2><pre><code>@Lob
+private String  body; </code></pre>
+<pre><code>@Lob
+@Column(columnDefinition=&quot;BLOB NOT NULL&quot;)
+protected byte[] pic;</code></pre></section><section id="large-objects---task" class="title-slide slide level2"><h2>Large objects - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-6" target="_blank">[Task 6]</a></li>
+</ul></section></section>
+<section><section id="entity-manager---persisting" class="title-slide slide level1"><h1>Entity manager - persisting</h1></section><section id="create" class="title-slide slide level2"><h2>Create</h2><pre><code>Employee employee = new Employee( ); 
+employee.setId( 1201 );
+employee.setName( &quot;Gopal&quot; );
+      
+entitymanager.persist( employee );</code></pre></section><section id="create---task" class="title-slide slide level2"><h2>Create - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-7" target="_blank">[Task 7]</a></li>
+</ul></section><section id="read" class="title-slide slide level2"><h2>Read</h2><pre><code>Employee employee = entitymanager.find( Employee.class, 1201 );</code></pre></section><section id="read---task" class="title-slide slide level2"><h2>Read - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-8" target="_blank">[Task 8]</a></li>
+</ul></section><section id="update" class="title-slide slide level2"><h2>Update</h2><pre><code>Employee employee = entitymanager.find( Employee.class, 1201 );
+
+employee.setName(&quot;John Smith&quot;);
+
+entitymanager.merge( employee );</code></pre></section><section id="update---task" class="title-slide slide level2"><h2>Update - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-9" target="_blank">[Task 9]</a></li>
+</ul></section><section id="delete" class="title-slide slide level2"><h2>Delete</h2><pre><code>Employee employee = entitymanager.find( Employee.class, 1201 );
+entitymanager.remove( employee );</code></pre></section><section id="delete---task" class="title-slide slide level2"><h2>Delete - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-10" target="_blank">[Task 10]</a></li>
+</ul></section><section id="entity-lifecycle" class="title-slide slide level2"><h2>Entity lifecycle</h2><p><img src="https://www.objectdb.com/files/images/manual/jpa-states.png" style="float: right" /> <small></p>
+<ul>
+<li><p><strong>New/Transient</strong> - unknown for EntityManager, does not exist in database</p></li>
+<li><p><strong>Managed</strong> - object is persisted in database and managed by EntityManager</p></li>
+<li><p><strong>Detached</strong> - object is still persisted in database, but no longer managed by EntityManager</p></li>
+<li><p><strong>Removed</strong> - object is deleted from database, and no longer managed by EntityManager</p></li>
+</ul>
+<p></small></p>
+<aside class="notes">
+<ul>
+<li><p><a href="https://dzone.com/articles/jpa-entity-lifecycle">https://dzone.com/articles/jpa-entity-lifecycle</a></p></li>
+<li><p><a href="https://www.objectdb.com/java/jpa/persistence/managed">https://www.objectdb.com/java/jpa/persistence/managed</a></p></li>
+</ul>
+</aside></section><section id="merge-vs-persist-vs-save-vs-refresh" class="title-slide slide level2"><h2>Merge vs Persist vs Save vs Refresh</h2><p>Place in entity lifecycle:</p>
+<ul>
+<li><p>persisting can be used only for new entities.</p></li>
+<li><p>merging is required only for detached entities.</p></li>
+<li><p>saving is vendor specific method</p></li>
+<li><p>refreshing renews the state of the instance from the database, overwriting changes made to the entity, if any.</p></li>
+</ul>
+<!--
+Specification vs 
+
+JPA specification defines the persist method. 
+
+merge
+
+persist
+
+refresh
+-->
+<aside class="notes">
+https://thoughts-on-java.org/persist-save-merge-saveorupdate-whats-difference-one-use/
+</aside></section><section id="re-attach-entity" class="title-slide slide level2"><h2>Re-attach entity</h2><div style="font-size: 70%">
+<pre><code>Student student1 = entityManager.find(Student.class, 2L);// s1 is MANAGED
+entityManager.clear();                                   // everyhing is DETACHED
+            
+student.setLastName(&quot;Vincent&quot;);             
+Student student2 = entityManager.merge(student1);        // reattach
+
+System.out.println(entityManager.contains(student1));    // false: s1 is still DETACHED 
+System.out.println(entityManager.contains(student2));    // true: s2 is MANAGED </code></pre>
+</div>
+<p><a href="https://javabydeveloper.com/merge-re-attaching-detached-entities" target="_blank">Example</a></p></section><section id="callback-methods-on-jpa-entities" class="title-slide slide level2"><h2>Callback Methods on JPA Entities</h2><pre><code>@EntityListeners(UserListener.class)
+public class User {
+} 
+</code></pre>
+<p>Method annotated with <code>@PrePersist</code>, <code>@PostPersist</code>, <code>@PostLoad</code>, <code>@PreUpdate</code>, <code>@PostUpdate</code>, <code>@PreRemove</code>, <code>@PostRemove</code></p>
+<p>E.g.</p>
+<pre><code>public class UserListener {
+    @PrePersist
+    public void userPrePersist(User ob) {
+        System.out.println(&quot;Listening User Pre Persist : &quot; + ob.getName());
+    }</code></pre></section></section>
+<section><section id="relations" class="title-slide slide level1"><h1>Relations</h1></section><section id="recap-relations-in-db" class="title-slide slide level2"><h2>Recap: relations in DB</h2><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/ERD_Representation.svg/1200px-ERD_Representation.svg.png" style="width: 40%;float: right" />
+<div>
+<ul>
+<li>one-to-one - <code>1:1</code></li>
+<li>many-to-one - <code>n:1</code></li>
+<li>one-to-many - <code>1:n</code></li>
+<li>many-to-many - <code>n:n</code></li>
+</ul>
+</div></section><section id="recap-relations-in-oop" class="title-slide slide level2"><h2>Recap: relations in OOP</h2><img src="https://i.stack.imgur.com/bfBSY.png" style="width: 40%;float: right" />
+<div>
+<ul>
+<li><strong>Association</strong> - two classes know about each other, but they do not affect each others lifetime</li>
+<li><strong>Aggregation</strong> - classes refers to each other but both can live independently</li>
+<li><strong>Composition</strong> - class <code>B</code> is an integral part of class <code>A</code> (<code>A</code> can’t logically exist without having a class <code>B</code> object)</li>
+</ul>
+</div></section><section id="how-they-match" class="title-slide slide level2"><h2>How they match?</h2></section><section id="one-to-one" class="title-slide slide level2"><h2>1:1 - one to one</h2><p><img data-src="jpa-1to1.svg" /></p>
+<p><code>@OneToOne</code></p></section><section id="one-to-one---example" class="title-slide slide level2"><h2>1:1 - one to one - example</h2><pre><code>@Entity
+class Person {
+    @Id
+    private Long id;
+    
+    @OneToOne
+    private Head head;
+}
+
+@Entity
+class Head {
+    @Id
+    private Long id;
+}</code></pre></section><section id="one-to-one---task" class="title-slide slide level2"><h2>1:1 - one to one - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-11" target="_blank">[Task 11]</a></li>
+</ul></section><section id="n1---many-to-one" class="title-slide slide level2"><h2>n:1 - many to one</h2><p><code>@ManyToOne</code></p></section><section id="n1---many-to-one---example" class="title-slide slide level2"><h2>n:1 - many to one - example</h2><pre><code>@Entity
+class OrderEntry {
+    @Id
+    private Long id;
+    
+    @ManyToOne
+    private Product product;
+}
+
+@Entity
+class Product {
+    @Id
+    private Long id;
+}</code></pre></section><section id="n1---many-to-one---task" class="title-slide slide level2"><h2>n:1 - many to one - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-12" target="_blank">[Task 12]</a></li>
+</ul></section><section id="n---one-to-many" class="title-slide slide level2"><h2>1:n - one to many</h2><p><code>@OneToMany</code></p></section><section id="n1---one-to-many---example" class="title-slide slide level2"><h2>n:1 - one to many - example</h2><pre><code>@Entity
+class InvoiceEntry {
+    @Id
+    private Long id;
+    
+    @ManyToOne
+    private Invoice invoice;   &lt;---- mapped by
+}
+
+@Entity
+class Invoice {
+    @Id
+    private Long id;
+
+    @OneToMany(mappedBy=&quot;invoice&quot;)
+    List&lt;InvoiceEntry&gt; entries;
+}</code></pre></section><section id="n1---one-to-many---task" class="title-slide slide level2"><h2>n:1 - one to many - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-13" target="_blank">[Task 13]</a></li>
+</ul></section><section id="nn---many-to-many" class="title-slide slide level2"><h2>n:n - many to many</h2><p><code>@ManyToMany</code></p></section><section id="nn---many-to-many---example" class="title-slide slide level2"><h2>n:n - many to many - example</h2><pre><code>@Entity
+class Post {
+    @Id
+    private Long id;
+    
+    @ManyToOne
+    private List&lt;Tag&gt; tags = new ArrayList&lt;&gt;();
+}
+
+@Entity
+class Tag {
+    @Id
+    private Long id;
+
+    @ManyToMany(mappedBy = &quot;tags&quot;)
+    private List&lt;Post&gt; posts;
+}</code></pre></section><section id="nn---many-to-many-join-table" class="title-slide slide level2"><h2>n:n - many to many: Join table</h2><pre><code>@ManyToMany
+@JoinTable(name = &quot;post_tag&quot;,
+    joinColumns = @JoinColumn(name = &quot;post_id&quot;),
+    inverseJoinColumns = @JoinColumn(name = &quot;tag_id&quot;)
+)</code></pre></section><section id="nn---many-to-many---task" class="title-slide slide level2"><h2>n:n - many to many - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-14" target="_blank">[Task 14]</a></li>
+</ul></section><section id="column-names" class="title-slide slide level2"><h2>Column names</h2><ul>
+<li><p><code>@Column</code> - for a field</p></li>
+<li><p><code>@JoinColumn(name = "invoice_id")</code> - for relation</p></li>
+</ul></section><section id="cascades" class="title-slide slide level2"><h2>Cascades</h2><ul>
+<li><code>ALL</code></li>
+<li><code>PERSIST</code></li>
+<li><code>MERGE</code></li>
+<li><code>REMOVE</code></li>
+<li><code>REFRESH</code></li>
+<li><code>DETACH</code></li>
+</ul>
+<pre><code>@OneToMany(mappedBy = &quot;person&quot;, cascade = CascadeType.ALL)
+private List&lt;Address&gt; addresses;</code></pre></section><section id="lazy--vs-eager-loading" class="title-slide slide level2"><h2>Lazy- vs Eager-Loading</h2></section></section>
+<section><section id="querying-jpql" class="title-slide slide level1"><h1>Querying: JPQL</h1></section><section id="jpql" class="title-slide slide level2"><h2>JPQL</h2><pre><code>Query query = entitymanager.createQuery( &quot;Select e from Employee e&quot; );
+
+List&lt;Employee&gt; list=(List&lt;Employee&gt;)query.getResultList( );</code></pre>
+<pre><code>Query query = entitymanager.createQuery( &quot;Select e from Employee e where e.salary Between 30000 and 40000&quot; );
+
+List&lt;Employee&gt; list=(List&lt;Employee&gt;)query.getResultList( );</code></pre></section><section id="jpql---task" class="title-slide slide level2"><h2>JPQL - task</h2><ul>
+<li><a href="ee-jpa.html#/zadanie-15" target="_blank">[Task 15]</a></li>
+</ul></section></section>
+<section><section id="querying-criteria" class="title-slide slide level1"><h1>Querying: criteria</h1></section><section id="criteria---basics" class="title-slide slide level2"><h2>Criteria - basics</h2></section><section id="order" class="title-slide slide level2"><h2>Order</h2></section><section id="group" class="title-slide slide level2"><h2>Group</h2></section><section id="having" class="title-slide slide level2"><h2>Having</h2></section></section>
+<section><section id="entity-inheritance" class="title-slide slide level1"><h1>Entity inheritance</h1></section><section id="entity-inheritance-types" class="title-slide slide level2"><h2>Entity inheritance types</h2><ul>
+<li><p><code>SINGLE_TABLE</code></p></li>
+<li><p><code>JOINED</code></p></li>
+<li><p><code>TABLE_PER_CLASS</code></p></li>
+</ul></section><section id="entity-inheritance-single-table" class="title-slide slide level2"><h2>Entity inheritance: single table</h2><div style="font-size: 60%">
+<pre><code>@Entity
+@Inheritance
+@DiscriminatorColumn(name=&quot;PROJ_TYPE&quot;)
+@Table(name=&quot;PROJECT&quot;)
+public  class Project implements serializable{
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+  ...
+}
+
+@Entity
+@DiscriminatorValue(&quot;L&quot;)
+public class LargeProject extends Project {
+  private BigDecimal budget;
+}
+
+@Entity
+@DiscriminatorValue(&quot;S&quot;)
+public class SmallProject extends Project {
+}</code></pre>
+</div></section><section id="entity-inheritance-joined" class="title-slide slide level2"><h2>Entity inheritance: joined</h2><div style="font-size: 60%">
+<pre><code>@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name=&quot;PROJ_TYPE&quot;)
+@Table(name=&quot;PROJECT&quot;)
+public abstract class Project {
+  @Id
+  private long id;
+  
+  private String name;
+  ...
+}
+
+@Entity
+@DiscriminatorValue(&quot;L&quot;)
+@Table(name=&quot;LARGEPROJECT&quot;)
+public class LargeProject extends Project {
+  private BigDecimal budget;
+}
+
+@Entity
+@DiscriminatorValue(&quot;S&quot;)
+@Table(name=&quot;SMALLPROJECT&quot;)
+public class SmallProject extends Project {
+}</code></pre>
+</div></section><section id="entity-inheritance-table-per-class" class="title-slide slide level2"><h2>Entity inheritance: table per class</h2><div style="font-size: 60%">
+<pre><code>@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class Project {
+  @Id
+  private long id;
+  ...
+}
+
+@Entity
+@Table(name=&quot;LARGEPROJECT&quot;)
+public class LargeProject extends Project {
+  private BigDecimal budget;
+}
+
+@Entity
+@Table(name=&quot;SMALLPROJECT&quot;)
+public class SmallProject extends Project {
+}</code></pre>
+</div></section></section>
+<section id="transactions" class="title-slide slide level1"><h1>Transactions</h1></section>
+<section><section id="cache" class="title-slide slide level1"><h1>Cache</h1></section><section id="two-levels-of-cache" class="title-slide slide level2"><h2>Two levels of cache</h2></section><section id="cache-level-1" class="title-slide slide level2"><h2>Cache level 1</h2></section><section id="cache-level-2" class="title-slide slide level2"><h2>Cache level 2</h2></section></section>
+<section id="the-end" class="title-slide slide level1"><h1>The end</h1><!-- 
+
+Official: 
+
+* https://javaee.github.io/tutorial/partpersist.html
+
+* https://hibernate.org/orm/documentation/6.0/ , https://hibernate.org/orm/documentation/getting-started/
+
+Another:
+
+* https://www.vogella.com/tutorials/JavaPersistenceAPI/article.html
+
+* https://www.journaldev.com/3793/hibernate-tutorial
+
+* https://www.objectdb.com/api/java/jpa
+
+* https://openjpa.apache.org/builds/1.2.3/apache-openjpa/docs/manual.html
+*
+
+--></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
