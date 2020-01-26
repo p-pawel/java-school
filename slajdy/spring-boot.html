@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Spring Boot etc.</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/blackschool.css" id="theme">
+    <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1>Spring Boot etc.</h1>
+    
+    <p>
+    <h4></h4>
+    </p>
+  </section>
+
+
+<section id="introduction" class="title-slide slide level1"><h1>Introduction</h1></section>
+<section><section id="spring-boot---getting-started" class="title-slide slide level1"><h1>Spring Boot - getting started</h1></section><section id="spring-initializr" class="title-slide slide level2"><h2>Spring Initializr</h2><p><img data-src="https://spring.io/guides/gs/rest-service/images/initializr.png" /></p></section><section id="spring-initializr---task" class="title-slide slide level2"><h2>Spring Initializr - task</h2></section><section id="common-application-properties" class="title-slide slide level2"><h2>Common application properties</h2><ul>
+<li><code>application.properties</code></li>
+<li><code>application.yaml</code></li>
+<li>command line switches</li>
+</ul>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html" target="_blank">docs</a></p></section><section id="values" class="title-slide slide level2"><h2>Values</h2></section><section id="loggers" class="title-slide slide level2"><h2>Loggers</h2></section><section id="running" class="title-slide slide level2"><h2>Running</h2><pre><code>java -jar target/application-1.0.0.jar</code></pre></section></section>
+<section><section id="spring-data" class="title-slide slide level1"><h1>Spring Data</h1></section><section id="modules" class="title-slide slide level2"><h2>Modules</h2><p><a href="https://spring.io/projects/spring-data" target="_blank">https://spring.io/projects/spring-data</a></p></section><section id="spring-data-jpa" class="title-slide slide level2"><h2>Spring Data JPA</h2><aside class="notes">
+https://spring.io/guides/gs/accessing-data-mysql/ https://spring.io/guides/gs/accessing-data-rest/
+</aside></section></section>
+<section><section id="spring-web" class="title-slide slide level1"><h1>Spring Web</h1></section><section id="restful-application" class="title-slide slide level2"><h2>RESTful application</h2><aside class="notes">
+https://spring.io/guides/gs/rest-service/
+</aside></section><section id="spring-mvc-application" class="title-slide slide level2"><h2>Spring MVC application</h2><aside class="notes">
+https://spring.io/guides/gs/serving-web-content/
+</aside></section></section>
+<section><section id="spring-security" class="title-slide slide level1"><h1>Spring Security</h1></section><section id="example" class="title-slide slide level2"><h2>Example</h2><p><a href="https://spring.io/guides/gs/securing-web/" target="_blank">https://spring.io/guides/gs/securing-web/</a></p></section></section>
+<section><section id="tests-in-spring" class="title-slide slide level1"><h1>Tests in Spring</h1></section><section id="unit-tests" class="title-slide slide level2"><h2>Unit tests</h2></section><section id="integration-tests" class="title-slide slide level2"><h2>Integration tests</h2></section><section id="mockmvc" class="title-slide slide level2"><h2>MockMVC</h2><aside class="notes">
+https://spring.io/guides/gs/testing-web/
+</aside></section></section>
+<section id="others" class="title-slide slide level1"><h1>Others</h1><!--
+
+
+https://spring.io/guides/gs/spring-boot-docker/
+
+-->
+<p>SpEL</p></section>
+    </div>
+  </div>
+    <script src="reveal.js/js/reveal.js"></script>
+
+      <script>
+
+          // Full list of configuration options available at:
+          // https://github.com/hakimel/reveal.js#configuration
+          Reveal.initialize({
+              // Push each slide change to the browser history
+              history: true,
+              slideNumber: true,
+
+              // Optional reveal.js plugins
+              dependencies: [
+                  { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                  { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                  { src: 'reveal.js/plugin/notes/notes.js', async: true }
+              ]
+          });
+      </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41987357-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-41987357-2');
+</script>
+</body>
+</html>
