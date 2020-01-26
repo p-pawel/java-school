@@ -1,4 +1,4 @@
-package com.example;
+package com.example.billing;
 
 import com.example.dto.Bill;
 import com.example.dto.CreditCard;

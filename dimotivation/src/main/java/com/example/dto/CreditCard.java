@@ -1,7 +1,8 @@
 package com.example.dto;
 
 public class CreditCard {
-	public CreditCard(String s) {
-
+	private String cardNumber;
+	public CreditCard(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 }

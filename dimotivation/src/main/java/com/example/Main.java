@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.di.DependenciesContainer;
+import com.example.billing.ConcreteBillingService;
 import com.example.di.DependenciesContainerReal;
 import com.example.di.DependencyConfig;
 import com.example.dto.Bill;
@@ -15,10 +15,7 @@ public class Main {
 
 		DependencyConfig.setDependenciesContainer(new DependenciesContainerReal());
 
-
-		/////
-
-		chargeOrder(new BigDecimal(args[0]), args[1]);
+		chargeOrder(new BigDecimal(30), "asdf");   // argumenty z konsoli
 	}
 
 	private static void chargeOrder(BigDecimal amount, String cardNumber) {
@@ -27,9 +24,9 @@ public class Main {
 
 		CreditCard creditCard = new CreditCard(cardNumber);
 
-		DefaultBillingService defaultBillingService = new DefaultBillingService();
+		ConcreteBillingService concreteBillingService = new ConcreteBillingService();
 
-		Bill bill = defaultBillingService.chargeOrder(order, creditCard);
+		Bill bill = concreteBillingService.chargeOrder(order, creditCard);
 
 		System.out.println("Pozostało do zapłaty: " + bill.getDue());
 	}
